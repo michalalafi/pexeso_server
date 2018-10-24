@@ -1,13 +1,16 @@
-#include <stdio.h> 
-#include <stdlib.h> 
-#include <time.h> 
+#include "utils.h"
 
 
 void swap (char ** array, int i, int j)
 { 
 	char* temp = (char*) malloc(strlen(array[i]) * sizeof(char));
+		
 	strcpy(temp,array[i]);
+	array[i] = (char*) realloc(array[i],strlen(array[j]) * sizeof(char));
+	
 	strcpy(array[i],array[j]);
+	
+	array[j] = (char*) realloc(array[j],strlen(temp) * sizeof(char));
 	strcpy(array[j],temp);
 	
 	free(temp);

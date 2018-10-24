@@ -14,6 +14,9 @@
 #include <stdio.h>
 #include "file_processor.h"
 #include "utils.h"
+#include "game.h"
+#include "client.h"
+#include "lobby.h"
 
 
 /**
@@ -23,18 +26,83 @@
  * @return
  */
 int main(int argc, char *argv[]) {
+	
+	client* c = create_client(0,"Pepa");
+	client* c2 = create_client(0,"Anca");
+	client* c3 = create_client(0,"Karel");
+	client* c4 = create_client(0,"Michal");
+	client* c5 = create_client(0,"Ota");
+	client* c6 = create_client(0,"Pavel");
+	
+	lobby* lobby = create_lobby();
+	
+	add_client_to_lobby(c,lobby);
+	add_client_to_lobby(c2,lobby);
+	add_client_to_lobby(c3,lobby);
+	add_client_to_lobby(c4,lobby);
+	add_client_to_lobby(c5,lobby);
+	
+	print_clients(lobby);
+	
+	return;
+	
+	
+	
 	int sounds_length = 0;
-	char** sounds = get_sounds_for_puzzle("./sounds", &sounds_length);
+	// Ziskame vsechny zvuky v zadane slozce
+	char** sounds = get_sounds_for_puzzle("D:/Projekty/sounds", &sounds_length);
+	if (sounds == NULL)
+	{
+		return 0;
+	}
 	print_all_sounds(sounds,sounds_length);
+	// Promichame je
 	printf("SHUFFLE\n");
 	shuffle(sounds, sounds_length);
 	print_all_sounds(sounds,sounds_length);
+	// Vezmeme jich 32
 	printf("SHRINK\n");
-	shrink_array(sounds,&sounds_length,32);
+	shrink_array(sounds,&sounds_length,4);
 	print_all_sounds(sounds,sounds_length);
+	// Zduplikujeme je
 	printf("DUPLICATE\n");
 	sounds_length = duplicate(sounds,sounds_length);
 	print_all_sounds(sounds,sounds_length);
+	// Promichame je
+	printf("SHUFFLE\n");
+	shuffle(sounds, sounds_length);
+	print_all_sounds(sounds,sounds_length);
+	printf("NEW GAME\n");
+	game* new_game = create_game(sounds, sounds_length);
+	print_all_sounds(new_game->puzzles,sounds_length);
+	printf("Reveal\n");
+	char buff[1024];
+	while(1){
+		printf("Hrac: %d>",new_game->actual_player);
+		fgets(buff, sizeof(buff),stdin);
+		int puzzle = atoi(buff);
+		int valid = isValid(puzzle,new_game);
+		if(valid == 0){
+			reveal(puzzle,new_game);
+		
+			// Pokud nejsou nastaveny vsechny potrebne atributy - tzn ze hrac jeste nehral po druhe, pokracujeme
+			if(scored(new_game) < 0)
+			{
+				continue;
+			}
+			
+			int next = nextTurn(new_game);
+			print_all_sounds(new_game->puzzles,sounds_length);
+			if(next == GAME_OVER){
+				printf("Konec hry\n");
+				break;
+			}
+		}
+		else{
+			printf("Nevalidni :%d\n",valid);
+		}
+		
+	}
 	/*int server_socket;
 	int port = 10000;
 	int server_is_runnning = 1;

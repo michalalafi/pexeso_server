@@ -1,6 +1,4 @@
-#include <stdio.h>
-#include <sys/types.h>
-#include <dirent.h>
+#include "file_processor.h"
 
 char *get_filename_ext(char *filename) {
     char *dot = strrchr(filename, '.');
@@ -48,6 +46,7 @@ char** get_sounds_for_puzzle(char* folder_name, int * sounds_length){
 	}
 	else{
 		perror("FOLDER ERROR - Couldn't open the directory");
+		return NULL;
 	}
 	printf("---All sounds loaded!---\n");
 	*sounds_length = sounds_count;
