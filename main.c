@@ -26,7 +26,7 @@
  * @return
  */
 int main(int argc, char *argv[]) {
-	
+	/*
 	client* c = create_client(0,"Pepa");
 	client* c2 = create_client(0,"Anca");
 	client* c3 = create_client(0,"Karel");
@@ -44,7 +44,7 @@ int main(int argc, char *argv[]) {
 	
 	print_clients(lobby);
 	
-	return;
+	return; */
 	
 	
 	
@@ -56,6 +56,8 @@ int main(int argc, char *argv[]) {
 		return 0;
 	}
 	print_all_sounds(sounds,sounds_length);
+	
+	return;
 	// Promichame je
 	printf("SHUFFLE\n");
 	shuffle(sounds, sounds_length);

@@ -14,7 +14,7 @@ void print_all_sounds(char** sounds, int sound_length)
 		puts(sounds[i]);
 	}
 }
-char** get_sounds_for_puzzle(char* folder_name, int * sounds_length){
+char** get_sounds_for_puzzle(char* folder_name, int* sounds_length){
 	DIR *dir;
 	struct dirent *ep;
 	
@@ -30,7 +30,7 @@ char** get_sounds_for_puzzle(char* folder_name, int * sounds_length){
 		while(ep = readdir(dir))
 		{
 			if(strcmp(get_filename_ext(ep->d_name),"mp3") == 0){
-				sounds[i] = (char *)malloc(strlen(ep->d_name)* sizeof(char));
+				sounds[i] = (char*)malloc((strlen(ep->d_name) + 1) * sizeof(char)); // + 1 for '\0' character 
 				strcpy(sounds[i],ep->d_name);
 				sounds_count++;
 				i++;
