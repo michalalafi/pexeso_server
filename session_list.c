@@ -1,0 +1,81 @@
+#include "session_list.h"
+
+
+session_list* create_session_list(){
+	session_list* new_session_list= (session_list*)malloc(sizeof(session_list));
+	if(new_session_list == NULL){
+		perror("SESSION LIST ERROR - Creating session list failed!");
+		return NULL;
+	}
+	new_session_list->first = NULL;
+	new_session_list->last = NULL;
+	
+	printf("SESSION LIST CREATED \n");
+	return new_session_list;
+}
+
+void add_session_to_session_list(session* new_session, session_list* actual_session_list){
+	session* first = actual_session_list->first;
+	if(first == NULL){
+		actual_session_list->first = new_session;
+		actual_session_list->last = new_session;
+		
+		actual_session_list->first->next = NULL;
+		actual_session_list->first->previous = NULL;
+		printf("SESSION LIST - New session - %d - was added to start of list!\n", new_session->id);
+		return;
+	}
+	
+	session* last = actual_session_list->last;
+	last = NULL;
+	if(last == NULL){
+		perror("SESSION LIST ERROR - Adding in session list failed\n Last is NULL!");
+		return;
+	}
+	last->next = new_session;
+	new_session->previous = last;
+	actual_session_list->last = new_session;
+	printf("SESSION LIST - New session - %d - was added to end of list!\n", new_session->id);
+	
+}
+
+void remove_session_from_session_list(session* session_to_remove, lobby* actual_session_list){
+	session* previous = session_to_remove->previous;
+	session* next = session_to_remove->next;
+	// Je prvek prvni?	
+	if(actual_session_list->first == session_to_remove){
+		// A ma nasledujici?
+		if(next != NULL){
+			//Prenastavime zacatek na jeho dalsiho
+			actual_session_list->first = next;
+			actual_session_list->first->previous = NULL;
+		}
+		else{
+			//Jinak je seznam prazdny
+			actual_session_list->first = NULL;
+			actual_session_list->last = NULL;
+		}
+	}
+	// Je prvek posledni?
+	else if(actual_session_list->last == session_to_remove){
+		// A ma predchoziho?
+		if(previous != NULL){
+			//Prenastavime konec na jeho predchoziho
+			actual_session_list->last = previous;
+			actual_session_list->last->next = NULL;
+		}
+		else{
+			//Jinak je seznam prazdny
+			actual_session_list->first = NULL;
+			actual_session_list->last = NULL;
+		}
+	}
+	// Je nekde mezi?
+	if( next != NULL && previous != NULL){
+		// Preskocime ho		
+		previous->next = next;
+		next->previous = previous;
+	}
+	session_to_remove->next = NULL;
+	session_to_remove->previous = NULL;
+}

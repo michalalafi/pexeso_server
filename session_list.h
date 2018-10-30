@@ -6,6 +6,11 @@
 #include "session.h"
 
 typedef struct SESSION_LIST{
+	struct SESSION* first;
+	struct SESSION* last;
 }session_list;
+
+session_list* create_session_list();
+void add_session_to_session_list(session* new_session, session_list* actual_session_list);
 
 #endif
