@@ -17,25 +17,26 @@ void print_all_sounds(char** sounds, int sound_length)
 char** get_sounds_for_puzzle(char* folder_name, int* sounds_length){
 	DIR *dir;
 	struct dirent *ep;
-	
+
 	int sounds_size = 1000;
 	char** sounds = (char **) malloc( sounds_size * sizeof(char*));
-	
+
 	int sounds_count = 0;
 	int offset = 10;
 	int i = 0;
-	
+
 	dir = opendir(folder_name);
 	if(dir != NULL){
 		while(ep = readdir(dir))
 		{
 			if(strcmp(get_filename_ext(ep->d_name),"mp3") == 0){
-				sounds[i] = (char*)malloc((strlen(ep->d_name) + 1) * sizeof(char)); // + 1 for '\0' character 
+                /* + 1 for \0 character */
+				sounds[i] = (char*)malloc((strlen(ep->d_name) + 1) * sizeof(char));
 				strcpy(sounds[i],ep->d_name);
 				sounds_count++;
 				i++;
 			}
-			
+
 			if(sounds_count >= sounds_size)
 			{
 				sounds = (char **) realloc(sounds, (sounds_size + offset) * sizeof(char*));
