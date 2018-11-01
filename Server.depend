@@ -1,0 +1,79 @@
+# depslib dependency file v1.0
+1540408372 source:/home/michal/Desktop/workspace/Server/pexeso_server/client.c
+	"client.h"
+
+1540410010 /home/michal/Desktop/workspace/Server/pexeso_server/client.h
+	<stdio.h>
+	<stdlib.h>
+
+1541093375 source:/home/michal/Desktop/workspace/Server/pexeso_server/file_processor.c
+	"file_processor.h"
+
+1541091265 /home/michal/Desktop/workspace/Server/pexeso_server/file_processor.h
+	<stdio.h>
+	<stdlib.h>
+	<sys/types.h>
+	<dirent.h>
+	<string.h>
+
+1540404930 source:/home/michal/Desktop/workspace/Server/pexeso_server/game.c
+	"game.h"
+
+1540740392 /home/michal/Desktop/workspace/Server/pexeso_server/game.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
+1540411003 source:/home/michal/Desktop/workspace/Server/pexeso_server/lobby.c
+	"lobby.h"
+
+1540410016 /home/michal/Desktop/workspace/Server/pexeso_server/lobby.h
+	<stdio.h>
+	<stdlib.h>
+	"client.h"
+
+1540919989 source:/home/michal/Desktop/workspace/Server/pexeso_server/session.c
+	"session.h"
+
+1540919453 /home/michal/Desktop/workspace/Server/pexeso_server/session.h
+	<stdio.h>
+	<stdlib.h>
+	"client.h"
+	"game.h"
+
+1540920869 source:/home/michal/Desktop/workspace/Server/pexeso_server/session_list.c
+	"session_list.h"
+
+1541091488 /home/michal/Desktop/workspace/Server/pexeso_server/session_list.h
+	<stdio.h>
+	<stdlib.h>
+	"session.h"
+	"lobby.h"
+
+1540918444 source:/home/michal/Desktop/workspace/Server/pexeso_server/utils.c
+	"utils.h"
+
+1540808226 /home/michal/Desktop/workspace/Server/pexeso_server/utils.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<time.h>
+
+1541096205 source:/home/michal/Desktop/workspace/Server/pexeso_server/main.c
+	<sys/types.h>
+	<sys/socket.h>
+	<sys/un.h>
+	<unistd.h>
+	<netinet/in.h>
+	<stdlib.h>
+	<string.h>
+	<pthread.h>
+	<stdio.h>
+	"file_processor.h"
+	"utils.h"
+	"game.h"
+	"client.h"
+	"lobby.h"
+	"session.h"
+	"session_list.h"
+

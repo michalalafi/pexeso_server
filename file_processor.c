@@ -30,7 +30,7 @@ char** get_sounds_for_puzzle(char* folder_name, int* sounds_length){
 		while(ep = readdir(dir))
 		{
 			if(strcmp(get_filename_ext(ep->d_name),"mp3") == 0){
-                /* + 1 for \0 character */
+                // + 1 for \0 character //
 				sounds[i] = (char*)malloc((strlen(ep->d_name) + 1) * sizeof(char));
 				strcpy(sounds[i],ep->d_name);
 				sounds_count++;

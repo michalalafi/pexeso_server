@@ -45,11 +45,12 @@ int main(int argc, char *argv[]) {
 
 
 	int sounds_length = 0;
+	char* path = "../sounds";
 	// Ziskame vsechny zvuky v zadane slozce
-	char** sounds = get_sounds_for_puzzle("D:/Projekty/sounds", &sounds_length);
-	if (sounds == NULL)
+	char** sounds = get_sounds_for_puzzle(path, &sounds_length);
+	if(sounds == NULL)
 	{
-		return 0;
+        return 0;
 	}
 	print_all_sounds(sounds,sounds_length);
 	// Promichame je
