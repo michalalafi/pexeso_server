@@ -59,21 +59,49 @@
 	<string.h>
 	<time.h>
 
-1541096205 source:/home/michal/Desktop/workspace/Server/pexeso_server/main.c
+1541708982 source:/home/michal/Desktop/workspace/Server/pexeso_server/main.c
+	<stdio.h>
 	<sys/types.h>
 	<sys/socket.h>
 	<sys/un.h>
 	<unistd.h>
 	<netinet/in.h>
 	<stdlib.h>
-	<string.h>
+	<sys/ioctl.h>
 	<pthread.h>
+	<memory.h>
+	<sys/select.h>
+	"session_list.h"
+	"communication_manager.h"
+	"lobby.h"
+	"test.h"
+	"client_handle_container.h"
+
+1541686923 /home/michal/Desktop/workspace/Server/pexeso_server/test.h
 	<stdio.h>
+	<stdlib.h>
+	"client.h"
 	"file_processor.h"
 	"utils.h"
-	"game.h"
-	"client.h"
 	"lobby.h"
-	"session.h"
+
+1541696008 source:/home/michal/Desktop/workspace/Server/pexeso_server/test.c
+	"test.h"
+
+1541708289 source:/home/michal/Desktop/workspace/Server/pexeso_server/client_handle_container.c
+	"client_handle_container.h"
+
+1541708302 /home/michal/Desktop/workspace/Server/pexeso_server/client_handle_container.h
+	"lobby.h"
 	"session_list.h"
+
+1541708322 source:/home/michal/Desktop/workspace/Server/pexeso_server/communication_manager.c
+	"communication_manager.h"
+
+1541708513 /home/michal/Desktop/workspace/Server/pexeso_server/communication_manager.h
+	<stdio.h>
+	<stdlib.h>
+	"session.h"
+	"lobby.h"
+	"client_handle_container.h"
 

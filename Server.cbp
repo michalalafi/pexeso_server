@@ -11,9 +11,14 @@
 				<Option object_output="obj/Debug/" />
 				<Option type="1" />
 				<Option compiler="gcc" />
+				<Option projectLinkerOptionsRelation="2" />
 				<Compiler>
 					<Add option="-g" />
+					<Add option="-pthread" />
 				</Compiler>
+				<ResourceCompiler>
+					<Add option="-pthread" />
+				</ResourceCompiler>
 			</Target>
 		</Build>
 		<Compiler>
@@ -23,6 +28,15 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="client.h" />
+		<Unit filename="client_handle_container.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="client_handle_container.h" />
+		<Unit filename="communication_manager" />
+		<Unit filename="communication_manager.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="communication_manager.h" />
 		<Unit filename="file_processor.c">
 			<Option compilerVar="CC" />
 		</Unit>
@@ -46,6 +60,10 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="session_list.h" />
+		<Unit filename="test.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="test.h" />
 		<Unit filename="utils.c">
 			<Option compilerVar="CC" />
 		</Unit>

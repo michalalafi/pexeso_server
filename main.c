@@ -1,22 +1,21 @@
-/*#include <stdio.h>
+#include <stdio.h>
 #include <sys/types.h>
 #include <sys/socket.h>
 #include <sys/un.h>
 #include <unistd.h>
 #include <netinet/in.h>
 #include <stdlib.h>
-#include <string.h>
-#include <pthread.h> */
+// kvuli iotctl
+#include <sys/ioctl.h>
+#include <pthread.h>
+#include <memory.h>
+#include <sys/select.h>
 
-
-#include <stdio.h>
-#include "file_processor.h"
-#include "utils.h"
-#include "game.h"
-#include "client.h"
-#include "lobby.h"
-#include "session.h"
 #include "session_list.h"
+#include "communication_manager.h"
+#include "lobby.h"
+#include "test.h"
+#include "client_handle_container.h"
 
 /**
  * Hlavni funkce, ktera zprostredkovava pripojeni hracu
@@ -26,61 +25,98 @@
  */
 int main(int argc, char *argv[]) {
 
-	client* c = create_client(0,"Pepa");
-	client* c2 = create_client(0,"Anca");
-	client* c3 = create_client(0,"Karel");
-	client* c4 = create_client(0,"Michal");
-	client* c5 = create_client(0,"Ota");
-	client* c6 = create_client(0,"Pavel");
+    int server_socket;
+	int client_socket, fd;
+	int return_value;
+	char cbuf;
+	int len_addr;
+	int a2read;
+	struct sockaddr_in my_addr, peer_addr;
+	fd_set client_socks, tests;
 
-	lobby* lobby = create_lobby();
+	server_socket = socket(AF_INET, SOCK_STREAM, 0);
 
-	add_client_to_lobby(c,lobby);
-	add_client_to_lobby(c2,lobby);
-	add_client_to_lobby(c3,lobby);
-	add_client_to_lobby(c4,lobby);
-	add_client_to_lobby(c5,lobby);
+	memset(&my_addr, 0, sizeof(struct sockaddr_in));
 
-	print_clients(lobby);
+	my_addr.sin_family = AF_INET;
+	my_addr.sin_port = htons(10000);
+	my_addr.sin_addr.s_addr = INADDR_ANY;
 
+	return_value = bind(server_socket, (struct sockaddr *) &my_addr, \
+		sizeof(struct sockaddr_in));
 
-	int sounds_length = 0;
-	char* path = "../sounds";
-	// Ziskame vsechny zvuky v zadane slozce
-	char** sounds = get_sounds_for_puzzle(path, &sounds_length);
-	if(sounds == NULL)
-	{
-        return 0;
+	if (return_value == 0)
+		printf("BIND SUCCESSFUL\n");
+	else {
+		printf("BIND ERROR - PORT IS PROPABLY OCCUPIED\n");
+		return -1;
 	}
-	print_all_sounds(sounds,sounds_length);
-	// Promichame je
-	printf("SHUFFLE\n");
-	shuffle(sounds, sounds_length);
 
-	print_all_sounds(sounds,sounds_length);
-	// Vezmeme jich 32
-	printf("SHRINK\n");
-	shrink_array(sounds,&sounds_length,4);
-	print_all_sounds(sounds,sounds_length);
-	// Zduplikujeme je
-	printf("DUPLICATE\n");
-	sounds_length = duplicate(sounds,sounds_length);
-	print_all_sounds(sounds,sounds_length);
-	// Promichame je
-	printf("SHUFFLE\n");
-	shuffle(sounds, sounds_length);
-	print_all_sounds(sounds,sounds_length);
-	printf("NEW GAME\n");
-	game* new_game = create_game(sounds, sounds_length);
-	print_all_sounds(new_game->puzzles,sounds_length);
+	return_value = listen(server_socket, 5);
+	if (return_value == 0){
+		printf("LISTEN SUCCESSFUL\n");
+	} else {
+		printf("LISTEN ERROR\n");
+	}
 
-	session_list* new_session_list = create_session_list();
-	session* new_session = create_session(c,c2,new_game,0);
+    lobby* actual_lobby = create_lobby();
+    session_list* actual_session_list = create_session_list();
 
-	add_session_to_session_list(new_session,new_session_list);
+	// vyprazdnime sadu deskriptoru a vlozime server socket
+	FD_ZERO( &client_socks );
+	FD_SET( server_socket, &client_socks );
 
-	return;
-	printf("Reveal\n");
+	pthread_t thread_id;;
+
+	for (;;){
+
+		tests = client_socks;
+		// sada deskriptoru je po kazdem volani select prepsana sadou deskriptoru kde se neco delo
+		return_value = select( FD_SETSIZE, &tests, ( fd_set *)0, ( fd_set *)0, ( struct timeval *)0 );
+
+		if (return_value < 0) {
+			printf("Select - ERR\n");
+			return -1;
+		}
+		// vynechavame stdin, stdout, stderr
+		for( fd = 3; fd < FD_SETSIZE; fd++ ){
+			// je dany socket v sade fd ze kterych lze cist ?
+			if( FD_ISSET( fd, &tests ) ){
+			// je to server socket ? prijmeme nove spojeni
+				if (fd == server_socket){
+					client_socket = accept(server_socket, (struct sockaddr *) &peer_addr, &len_addr);
+					FD_SET( client_socket, &client_socks );
+					printf("Pripojen novy klient a pridan do sady socketu\n");
+				}
+				// je to klientsky socket ? prijmem data
+				else {
+					// pocet bajtu co je pripraveno ke cteni
+					ioctl( fd, FIONREAD, &a2read );
+					// mame co cist
+					if (a2read > 0){
+                        //client_handle_container* h_container = create_client_handle_container(actual_lobby,actual_session_list,fd);
+                        pthread_create(&thread_id, NULL,(void *)&handle_client, (void *)NULL);
+						/*recv(fd, &cbuf, 1, 0);
+						printf("Prijato %c\n",cbuf);
+						read(fd, &cbuf, 1);
+						printf("Prijato %c\n",cbuf); */
+					}
+					// na socketu se stalo neco spatneho
+					else {
+						close(fd);
+						FD_CLR( fd, &client_socks );
+						printf("Klient se odpojil a byl odebran ze sady socketu\n");
+					}
+				}
+			}
+		}
+
+	}
+
+
+
+    test();
+	/*printf("Reveal\n");
 	char buff[1024];
 	while(1){
 		printf("Hrac: %d>",new_game->actual_player);
@@ -106,146 +142,7 @@ int main(int argc, char *argv[]) {
 		else{
 			printf("Nevalidni :%d\n",valid);
 		}
-	}
-
-	/*int server_sock;
-	int client_sock;
-	int return_value;
-	char cbuf;
-	int *th_socket;
-	struct sockaddr_in local_addr;
-	struct sockaddr_in remote_addr;
-	socklen_t	remote_addr_len;
-	pthread_t thread_id;;
-	pthread_t thread_id2;;
-
-	server_sock = socket(AF_INET, SOCK_STREAM, 0);
-
-	if (server_sock<=0) return -1;
-
-	memset(&local_addr, 0, sizeof(struct sockaddr_in));
-
-	local_addr.sin_family = AF_INET;
-	local_addr.sin_port = htons(10000);
-	local_addr.sin_addr.s_addr = INADDR_ANY;
-
-	return_value = bind(server_sock, (struct sockaddr *)&local_addr,\
-                sizeof(struct sockaddr_in));
-
-	if (return_value == 0)
-		printf("Bind OK\n");
-	else{
-		printf("Bind ER\n");
-		return -1;
-	}
-
-	return_value = listen(server_sock, 5);
-	if (return_value == 0)
-		printf("Listen OK\n");
-	else{
-		printf("Listen ER\n");
-	}
-
-
-	while(1){
-		client_sock = accept(server_sock,\
-			(struct sockaddr *)&remote_addr,\
-			&remote_addr_len);
-		if (client_sock > 0 ) {
-			th_socket=malloc(sizeof(int));
-			*th_socket=client_sock;
-			pthread_create(&thread_id, NULL,\
-                                  (void *)&write_client, (void *)th_socket);
-			pthread_create(&thread_id2, NULL,\
-                              	(void *)&read_client, (void *)th_socket);
-		} else {
-			printf("Trable\n");
-			return -1;
-		}
 	} */
-	/*int server_socket;
-	int port = 10000;
-	int server_is_runnning = 1;
-	struct sockaddr_in local_sock_addr, peer_addr;
-
-
-	int client_socket, fd;
-	char cbuf;
-	int len_addr;
-	int a2read;
-	fd_set client_socks, tests;
-
-	server_socket = socket(AF_INET, SOCK_STREAM, 0);
-
-	memset(&local_sock_addr, 0, sizeof(struct sockaddr_in));
-	local_sock_addr.sin_family = AF_INET;
-	local_sock_addr.sin_port = htons(port);
-	local_sock_addr.sin_addr.s_addr = INADDR_ANY;
-
-	if (bind(server_socket, (struct sockaddr *) &local_sock_addr, sizeof(struct sockaddr_in)) < 0)
-	{
-		perror("BIND ERROR - Bind is already occupied!\n");
-		return -1;
-	}
-
-	return_value = listen(server_socket, 5);
-	if (listen(server_socket, 5) < 0){
-		perror("LISTEN ERROR!\n");
-		return -1;
-	}
-
-	fd_set file_descriptor_set;
-	while(server_is_runnning){
-
-	}
-
-
-	// vyprazdnime sadu deskriptoru a vlozime server socket
-	FD_ZERO( &client_socks );
-	FD_SET( server_socket, &client_socks );
-
-/*	for (;;){
-
-		tests = client_socks;
-		// sada deskriptoru je po kazdem volani select prepsana sadou deskriptoru kde se neco delo
-		return_value = select( FD_SETSIZE, &tests, ( fd_set *)0, ( fd_set *)0, ( struct timeval *)0 );
-
-		if (return_value < 0) {
-			printf("Select - ERR\n");
-			return -1;
-		}
-		// vynechavame stdin, stdout, stderr
-		for( fd = 3; fd < FD_SETSIZE; fd++ ){
-			// je dany socket v sade fd ze kterych lze cist ?
-			if( FD_ISSET( fd, &tests ) ){
-			// je to server socket ? prijmeme nove spojeni
-				if (fd = server_socket){
-					client_socket = accept(server_socket, (struct sockaddr *) &peer_addr, &len_addr);
-					FD_SET( client_socket, &client_socks );
-					printf("Pripojen novy klient a pridan do sady socketu\n");
-				}
-				// je to klientsky socket ? prijmem data
-				else {
-					// pocet bajtu co je pripraveno ke cteni
-					ioctl( fd, FIONREAD, &a2read );
-					// mame co cist
-					if (a2read > 0){
-						recv(fd, &cbuf, 1, 0);
-						printf("Prijato %c\n",cbuf);
-						read(fd, &cbuf, 1);
-						printf("Prijato %c\n",cbuf);
-					}
-					// na socketu se stalo neco spatneho
-					else {
-						close(fd);
-						FD_CLR( fd, &client_socks );
-						printf("Klient se odpojil a byl odebran ze sady socketu\n");
-					}
-				}
-			}
-		}
-
-	}	*/
 
 	return 0;
 }
