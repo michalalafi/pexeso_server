@@ -94,12 +94,11 @@ int main(int argc, char *argv[]) {
 					ioctl( fd, FIONREAD, &a2read );
 					// mame co cist
 					if (a2read > 0){
-                        //client_handle_container* h_container = create_client_handle_container(actual_lobby,actual_session_list,fd);
+                        char message[1024];
+                        recv(fd, &message, 1024, 0);
+                        printf("Prijato %s /n", message);
+                        client_handle_container* h_container = create_client_handle_container(actual_lobby,actual_session_list,fd,message);
                         pthread_create(&thread_id, NULL,(void *)&handle_client, (void *)NULL);
-						/*recv(fd, &cbuf, 1, 0);
-						printf("Prijato %c\n",cbuf);
-						read(fd, &cbuf, 1);
-						printf("Prijato %c\n",cbuf); */
 					}
 					// na socketu se stalo neco spatneho
 					else {
