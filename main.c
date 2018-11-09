@@ -96,9 +96,9 @@ int main(int argc, char *argv[]) {
 					if (a2read > 0){
                         char message[1024];
                         recv(fd, &message, 1024, 0);
-                        printf("Prijato %s /n", message);
+                        printf("Prijato %s", message);
                         client_handle_container* h_container = create_client_handle_container(actual_lobby,actual_session_list,fd,message);
-                        pthread_create(&thread_id, NULL,(void *)&handle_client, (void *)NULL);
+                        pthread_create(&thread_id, NULL,(void *)&handle_client, (void *)h_container);
 					}
 					// na socketu se stalo neco spatneho
 					else {

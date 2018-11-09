@@ -2,7 +2,13 @@
 
 
 void *handle_client(void *arg){
-	printf("Spusteni cteni od clienta\n");
+	printf("Spusteni obsluhy clienta\n");
+    client_handle_container* container = (client_handle_container*) arg;
+    if(container == NULL)
+        printf("Neco se pokazilo u conteineru /n");
+    else
+        printf("Container obsahuje: client_socket = %d | message = '%s'/n",container->client_socket,container->message);
+
 
 
 

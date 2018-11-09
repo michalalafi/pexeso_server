@@ -32,7 +32,6 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="client_handle_container.h" />
-		<Unit filename="communication_manager" />
 		<Unit filename="communication_manager.c">
 			<Option compilerVar="CC" />
 		</Unit>
