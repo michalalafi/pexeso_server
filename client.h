@@ -4,6 +4,7 @@
 typedef struct CLIENT
 {
 	int socket;
+	int id;
 	char* name;
 	struct CLIENT* next;
 	struct CLIENT* previous;
@@ -11,7 +12,8 @@ typedef struct CLIENT
 
 #include <stdio.h>
 #include <stdlib.h>
+#include "lobby.h"
 
-client* create_client(int client_socket,char* client_name);
+client* create_client(int client_socket,char* client_name, int unique_id);
 
 #endif

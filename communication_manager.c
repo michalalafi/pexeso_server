@@ -5,9 +5,14 @@ void *handle_client(void *arg){
 	printf("Spusteni obsluhy clienta\n");
     client_handle_container* container = (client_handle_container*) arg;
     if(container == NULL)
+    {
         printf("Neco se pokazilo u conteineru /n");
+        return;
+    }
     else
         printf("Container obsahuje: client_socket = %d | message = '%s'/n",container->client_socket,container->message);
+
+    //find_client_by_id();
 
 
 

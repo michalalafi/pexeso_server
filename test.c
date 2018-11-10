@@ -2,24 +2,25 @@
 
 int number_of_clients = 6;
 
-client** test_client_creation(){
+client** test_client_creation(lobby* lobby){
 
     char* names[] = {"Pepa","Anca","Karel","Michal","Ota","Pavel"};
     client** clients = (client**) malloc(sizeof(client*) * number_of_clients);
 
     int i = 0;
     for(i;i < number_of_clients ;i++){
-        client* c = create_client(0,names[i]);
+        client* c = create_client(0,names[i], get_new_client_unique_id(lobby));
         if(c == NULL) return NULL;
-        else clients[i] = c;
+        else {
+            add_client_to_lobby(c,lobby);
+            clients[i] = c;
+        }
     }
 
 	return clients;
 }
 
-lobby* test_lobby_creation(client** clients){
-	lobby* lobby = create_lobby();
-
+lobby* test_lobby_adding(client** clients, lobby* lobby){
     int i = 0;
     for(i;i < number_of_clients; i++){
         add_client_to_lobby(clients[i],lobby);
@@ -72,7 +73,9 @@ void test_session(){
 	return;
 } */
 void test(){
-    client** clients = test_client_creation();
+    lobby* lobby = create_lobby();
+
+    client** clients = test_client_creation(lobby);
     if(clients == NULL){
         perror("Vytvareni clientu se nezdarilo! \n");
         return;
@@ -80,7 +83,7 @@ void test(){
     else
         printf("Clienti vytvoreni!\n");
 
-    lobby* lobby = test_lobby_creation(clients);
+    //lobby = test_lobby_adding(clients, lobby);
     if(lobby == NULL){
         perror("Vytvareni lobby se nezdarilo! \n");
         return;
@@ -88,7 +91,7 @@ void test(){
     else
         printf("Lobby vytvoreno!\n");
 
-    char** sounds = test_sounds_extration();
+    //char** sounds = test_sounds_extration();
 
 
 

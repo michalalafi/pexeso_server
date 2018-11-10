@@ -1,10 +1,11 @@
 # depslib dependency file v1.0
-1540408372 source:/home/michal/Desktop/workspace/Server/pexeso_server/client.c
+1541857389 source:/home/michal/Desktop/workspace/Server/pexeso_server/client.c
 	"client.h"
 
-1540410010 /home/michal/Desktop/workspace/Server/pexeso_server/client.h
+1541858890 /home/michal/Desktop/workspace/Server/pexeso_server/client.h
 	<stdio.h>
 	<stdlib.h>
+	"lobby.h"
 
 1541093375 source:/home/michal/Desktop/workspace/Server/pexeso_server/file_processor.c
 	"file_processor.h"
@@ -24,10 +25,10 @@
 	<stdlib.h>
 	<string.h>
 
-1540411003 source:/home/michal/Desktop/workspace/Server/pexeso_server/lobby.c
+1541859956 source:/home/michal/Desktop/workspace/Server/pexeso_server/lobby.c
 	"lobby.h"
 
-1540410016 /home/michal/Desktop/workspace/Server/pexeso_server/lobby.h
+1541859811 /home/michal/Desktop/workspace/Server/pexeso_server/lobby.h
 	<stdio.h>
 	<stdlib.h>
 	"client.h"
@@ -59,7 +60,7 @@
 	<string.h>
 	<time.h>
 
-1541708982 source:/home/michal/Desktop/workspace/Server/pexeso_server/main.c
+1541859915 source:/home/michal/Desktop/workspace/Server/pexeso_server/main.c
 	<stdio.h>
 	<sys/types.h>
 	<sys/socket.h>
@@ -85,7 +86,7 @@
 	"utils.h"
 	"lobby.h"
 
-1541696008 source:/home/michal/Desktop/workspace/Server/pexeso_server/test.c
+1541860070 source:/home/michal/Desktop/workspace/Server/pexeso_server/test.c
 	"test.h"
 
 1541794850 source:/home/michal/Desktop/workspace/Server/pexeso_server/client_handle_container.c
@@ -95,7 +96,7 @@
 	"lobby.h"
 	"session_list.h"
 
-1541708322 source:/home/michal/Desktop/workspace/Server/pexeso_server/communication_manager.c
+1541856395 source:/home/michal/Desktop/workspace/Server/pexeso_server/communication_manager.c
 	"communication_manager.h"
 
 1541708513 /home/michal/Desktop/workspace/Server/pexeso_server/communication_manager.h

@@ -24,6 +24,10 @@
  * @return
  */
 int main(int argc, char *argv[]) {
+    srand(time(NULL));
+
+    test();
+    return;
 
     int server_socket;
 	int client_socket, fd;
@@ -87,6 +91,8 @@ int main(int argc, char *argv[]) {
 					client_socket = accept(server_socket, (struct sockaddr *) &peer_addr, &len_addr);
 					FD_SET( client_socket, &client_socks );
 					printf("Pripojen novy klient a pridan do sady socketu\n");
+                    client* new_client = create_client(client_socket, "empty", get_new_client_unique_id(actual_lobby));
+                    add_client_to_lobby(new_client,actual_lobby);
 				}
 				// je to klientsky socket ? prijmem data
 				else {
@@ -112,9 +118,6 @@ int main(int argc, char *argv[]) {
 
 	}
 
-
-
-    test();
 	/*printf("Reveal\n");
 	char buff[1024];
 	while(1){
