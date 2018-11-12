@@ -1,9 +1,25 @@
 #include "client_handle_container.h"
 
+/*
+* Function: create_client_handle_container
+* ------------------------
+* Vytvori novy kontejner pro predani parametru vlaknu
+*
+* actual_lobby: aktualni lobby serveru
+* actual_session_list: aktualni session list serveru
+* actual_client_socket: socket klienta
+* client_message: zprava od klienta
+*
+* returns: novy kontejner s vlozenimi parametry
+*/
 client_handle_container* create_client_handle_container(lobby* actual_lobby, session_list* actual_session_list, int actual_client_socket, char* client_message){
+    if(actual_lobby == NULL || actual_session_list == NULL || actual_session_list == NULL ){
+        printf("CLIENT HANDLE CONTAINER ERROR - Creating client handle container failed, arguments not valid! \n");
+		return NULL;
+	}
 	client_handle_container* new_client_handle_container = (client_handle_container*)malloc(sizeof(client_handle_container));
 	if(new_client_handle_container == NULL){
-		perror("CLIENT HANDLE CONTAINER ERROR - Creating client handle container failed!");
+		printf("CLIENT HANDLE CONTAINER ERROR - Creating client handle container failed! \n");
 		return NULL;
 	}
 	new_client_handle_container->lobby = actual_lobby;
@@ -11,6 +27,5 @@ client_handle_container* create_client_handle_container(lobby* actual_lobby, ses
 	new_client_handle_container->client_socket = actual_client_socket;
 	new_client_handle_container->message = client_message;
 
-	printf("CLIENT HANDLE CONTAINER CREATED \n");
 	return new_client_handle_container;
 }

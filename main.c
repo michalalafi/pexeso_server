@@ -27,7 +27,7 @@ int main(int argc, char *argv[]) {
     srand(time(NULL));
 
     test();
-    return;
+    return 0;
 
     int server_socket;
 	int client_socket, fd;

@@ -7,7 +7,7 @@
 #include <dirent.h>
 #include <string.h>
 
-char** get_sounds_for_puzzle(char* folder_name, int * sounds_length);
+char** get_sounds_from_folder(char* folder_name, int * sounds_length);
 
 char *get_filename_ext(char *filename);
 

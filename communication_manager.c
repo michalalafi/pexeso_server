@@ -1,6 +1,14 @@
 #include "communication_manager.h"
 
-
+/*
+* Function: handle_client
+* ------------------------
+* Zpracuje zpravu od klienta
+*
+* arg: argument, ktery obsahuje client_handle_container
+*
+* returns: void
+*/
 void *handle_client(void *arg){
 	printf("Spusteni obsluhy clienta\n");
     client_handle_container* container = (client_handle_container*) arg;

@@ -1,12 +1,37 @@
 #include "file_processor.h"
 
-char *get_filename_ext(char *filename) {
+/* Function: get_filename_ext
+* ------------------------
+* Z vlozeneho stringu zjisti koncovku souboru
+*
+* filename: nazev souboru
+*
+* returns: koncovka souboru
+*/
+char* get_filename_ext(char* filename) {
+    if(filename == NULL){
+        printf("FILENAME EXTENSTION ERROR - No filename passed! \n");
+        return NULL;
+    }
     char *dot = strrchr(filename, '.');
     if(!dot || dot == filename) return "";
     return dot + 1;
 }
+/* Function: print_all_sounds
+* ------------------------
+* Vytiskne pole zvuku
+*
+* sounds: pole zvuku
+* sound_length: velikost pole
+*
+* returns: void
+*/
 void print_all_sounds(char** sounds, int sound_length)
 {
+    if(sounds == NULL){
+        printf("PRINT SOUNDS ERROR - No sounds passed! \n");
+        return;
+    }
 	int i = 0;
 	for(i; i < sound_length; i++)
 	{
@@ -14,30 +39,41 @@ void print_all_sounds(char** sounds, int sound_length)
 		puts(sounds[i]);
 	}
 }
-char** get_sounds_for_puzzle(char* folder_name, int* sounds_length){
+/* Function: get_sounds_from_folder
+* ------------------------
+* Ziska zvuky ze zadane slozky a nastavi delku pole
+*
+* folder_name: nazev slozky
+* sound_length: velikost pole
+*
+* returns: pole zvuku
+*/
+char** get_sounds_from_folder(char* folder_name, int* sounds_length){
+    if(folder_name == NULL){
+        printf("GET SOUNDS FROM FOLDER ERROR - No foldername passed! \n");
+        return NULL;
+    }
 	DIR *dir;
 	struct dirent *ep;
+	int sounds_size = 1000; // Defaultni delka pole
+    int i = 0,
+        offset = 10; // Delka zvetseni pole
 
-	int sounds_size = 1000;
-	char** sounds = (char **) malloc( sounds_size * sizeof(char*));
-
-	int sounds_count = 0;
-	int offset = 10;
-	int i = 0;
+	char** sounds = (char **) malloc( sounds_size * sizeof(char*)); // Vyhrazeni mista pro zvuky
 
 	dir = opendir(folder_name);
 	if(dir != NULL){
 		while(ep = readdir(dir))
 		{
+            // Je koncovka mp3?
 			if(strcmp(get_filename_ext(ep->d_name),"mp3") == 0){
                 // + 1 for \0 character //
 				sounds[i] = (char*)malloc((strlen(ep->d_name) + 1) * sizeof(char));
 				strcpy(sounds[i],ep->d_name);
-				sounds_count++;
 				i++;
 			}
-
-			if(sounds_count >= sounds_size)
+            // Pokud dojde kapacita pole, zvetsime ji
+			if(i >= sounds_size)
 			{
 				sounds = (char **) realloc(sounds, (sounds_size + offset) * sizeof(char*));
 				sounds_size += offset;
@@ -50,7 +86,7 @@ char** get_sounds_for_puzzle(char* folder_name, int* sounds_length){
 		return NULL;
 	}
 	printf("---All sounds loaded!---\n");
-	*sounds_length = sounds_count;
+	*sounds_length = i;
 	return sounds;
 }
 

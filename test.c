@@ -32,9 +32,9 @@ lobby* test_lobby_adding(client** clients, lobby* lobby){
 
 char** test_sounds_extration(){
     int sounds_length = 0;
-	char* path = "../sounds";
+	char* path = "../../sounds";
 	// Ziskame vsechny zvuky v zadane slozce
-	char** sounds = get_sounds_for_puzzle(path, &sounds_length);
+	char** sounds = get_sounds_from_folder(path, &sounds_length);
 	if(sounds == NULL)
 	{
         return NULL;
@@ -91,7 +91,7 @@ void test(){
     else
         printf("Lobby vytvoreno!\n");
 
-    //char** sounds = test_sounds_extration();
+    char** sounds = test_sounds_extration();
 
 
 
