@@ -7,6 +7,7 @@
 #include "file_processor.h"
 #include "utils.h"
 #include "lobby.h"
+#include "message_proccessing.h"
 
 void test();
 

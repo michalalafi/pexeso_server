@@ -51,6 +51,10 @@
 		<Unit filename="main.c">
 			<Option compilerVar="CC" />
 		</Unit>
+		<Unit filename="message_proccessing.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="message_proccessing.h" />
 		<Unit filename="session.c">
 			<Option compilerVar="CC" />
 		</Unit>

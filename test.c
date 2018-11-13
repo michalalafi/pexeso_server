@@ -72,8 +72,27 @@ void test_session(){
 
 	return;
 } */
+
+void message_test(){
+
+    char* raw_messages[] = {
+                            "vasdas:7sasdads|asd|Pa",
+                            "aaaID:aaa5148|ACTION:2|PARAMS:avasdasfdasd",
+                            "asdaaaaaaa",
+                            "894513",
+                            "ID:aaaaaaa|ACTION",
+                            "ID:aaaaa",
+                            "ID:4554|ACTION:po"
+
+                        };
+
+    int i = 0;
+    for(i; i < 7; i++){
+        extract_message(raw_messages[i]);
+    }
+}
 void test(){
-    lobby* lobby = create_lobby();
+   /* lobby* lobby = create_lobby();
 
     client** clients = test_client_creation(lobby);
     if(clients == NULL){
@@ -91,8 +110,8 @@ void test(){
     else
         printf("Lobby vytvoreno!\n");
 
-    char** sounds = test_sounds_extration();
+    char** sounds = test_sounds_extration(); */
 
-
+    message_test();
 
 }

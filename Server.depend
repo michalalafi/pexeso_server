@@ -138,7 +138,7 @@
 	"client.h"
 	"game.h"
 
-1540740392 /home/michal/Desktop/workspace/Server/ups_server/pexeso_server/game.h
+1542122273 /home/michal/Desktop/workspace/Server/ups_server/pexeso_server/game.h
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
@@ -163,7 +163,7 @@
 	<dirent.h>
 	<string.h>
 
-1542055491 source:/home/michal/Desktop/workspace/Server/ups_server/pexeso_server/game.c
+1542122786 source:/home/michal/Desktop/workspace/Server/ups_server/pexeso_server/game.c
 	"game.h"
 
 1541860110 source:/home/michal/Desktop/workspace/Server/ups_server/pexeso_server/lobby.c
@@ -187,13 +187,14 @@
 	"test.h"
 	"client_handle_container.h"
 
-1541686923 /home/michal/Desktop/workspace/Server/ups_server/pexeso_server/test.h
+1542135088 /home/michal/Desktop/workspace/Server/ups_server/pexeso_server/test.h
 	<stdio.h>
 	<stdlib.h>
 	"client.h"
 	"file_processor.h"
 	"utils.h"
 	"lobby.h"
+	"message_proccessing.h"
 
 1540808226 /home/michal/Desktop/workspace/Server/ups_server/pexeso_server/utils.h
 	<stdio.h>
@@ -207,9 +208,18 @@
 1540920869 source:/home/michal/Desktop/workspace/Server/ups_server/pexeso_server/session_list.c
 	"session_list.h"
 
-1542052611 source:/home/michal/Desktop/workspace/Server/ups_server/pexeso_server/test.c
+1542143399 source:/home/michal/Desktop/workspace/Server/ups_server/pexeso_server/test.c
 	"test.h"
 
 1540918444 source:/home/michal/Desktop/workspace/Server/ups_server/pexeso_server/utils.c
 	"utils.h"
+
+1542136883 /home/michal/Desktop/workspace/Server/ups_server/pexeso_server/message_proccessing.h
+	<stdio.h>
+	<stdlib.h>
+	"client.h"
+	<string.h>
+
+1542143346 source:/home/michal/Desktop/workspace/Server/ups_server/pexeso_server/message_proccessing.c
+	"message_proccessing.h"
 
