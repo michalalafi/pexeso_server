@@ -7,23 +7,23 @@
 
 #define NEXT_TURN 20
 // Hrac skoroval
-#define PLAYER_SCORED 40 
+#define PLAYER_SCORED 40
 // Hrac neskoroval
 #define PLAYER_NOT_SCORED 41
-// Hrac odhalil puzzli
-#define PLAYER_REVEALED_PUZZLE 42
-// Index puzzle je spatny 
-#define INVALID_PUZZLE_REVEAL 91 
-// Odhaleni puzzle, ktera uz je odhalena
-#define REVEALED_PUZZLE_REVEAL 92 
+// Hrac odhalil pexeso
+#define PLAYER_REVEALED_PEXESO 42
+// Index pexesa je spatny
+#define INVALID_PEXESO_REVEAL 91
+// Odhaleni pexesa, ktera uz je odhalena
+#define REVEALED_PEXESO_REVEAL 92
 // Konec hry
-#define GAME_OVER 100 
+#define GAME_OVER 100
 
 typedef struct GAME{
-	char** puzzles; // puzzle
-	int puzzle_count; // pocet puzzli
-	int remaining_puzzle_count; // kolik zbyva puzzli
-	//hraè 1 
+	char** pexesos; // pexesa
+	int pexeso_count; // pocet pexesa
+	int remaining_pexeso_count; // kolik zbyva pexesa
+	//hraè 1
 	//hráè 2
 	int p1_score; // p1 score
 	int p2_score; // p2 score

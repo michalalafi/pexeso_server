@@ -20,9 +20,9 @@ game* create_game(char** sounds, int sound_count){
         printf("CREATE GAME ERROR - Creating game failed! \n");
 		return NULL;
 	}
-	new_game->puzzles = sounds;
-	new_game->puzzle_count = sound_count;
-	new_game->remaining_puzzle_count = sound_count;
+	new_game->pexesos = sounds;
+	new_game->pexeso_count = sound_count;
+	new_game->remaining_pexeso_count = sound_count;
 	new_game->p1_score = 0;
 	new_game->p2_score = 0;
 	new_game->first_reveal = -1;
@@ -33,14 +33,14 @@ game* create_game(char** sounds, int sound_count){
 }
 /* Function: reveal
 * ------------------------
-* Nastavi hodnoty zahranych puzzli na indexy odhalenych
+* Nastavi hodnoty zahranych pexeses na indexy odhalenych
 *
-* puzzle_revealed: odhalena puzzle
+* pexeso_revealed: odhalene pexeso
 * actual_game: aktualni hra
 *
 * returns: MESSAGE
 */
-int reveal(int puzzle_revealed, game* actual_game){
+int reveal(int pexeso_revealed, game* actual_game){
     if(actual_game == NULL){
         printf("REVEAL ERROR - Reveal failed, no game passed! \n");
         return -1;
@@ -49,49 +49,49 @@ int reveal(int puzzle_revealed, game* actual_game){
 	if(actual_game->first_reveal < 0)
 	{
 		printf("Prvni tah!\n");
-		printf("	index: %d\n",puzzle_revealed);
-		printf("		 : %s\n",actual_game->puzzles[puzzle_revealed]);
-		actual_game->first_reveal = puzzle_revealed;
+		printf("	index: %d\n",pexeso_revealed);
+		printf("		 : %s\n",actual_game->pexesos[pexeso_revealed]);
+		actual_game->first_reveal = pexeso_revealed;
 	}
 	// Zahral druhy tah
 	else{
 		printf("Druhy tah!\n");
-		printf("	index: %d\n",puzzle_revealed);
-		printf("		 : %s\n",actual_game->puzzles[puzzle_revealed]);
-		actual_game->second_reveal = puzzle_revealed;
+		printf("	index: %d\n",pexeso_revealed);
+		printf("		 : %s\n",actual_game->pexesos[pexeso_revealed]);
+		actual_game->second_reveal = pexeso_revealed;
 	}
-	return PLAYER_REVEALED_PUZZLE;
+	return PLAYER_REVEALED_PEXESO;
 }
 
 /* Function: isValid
 * ------------------------
-* Zkontroluje jestli odhalena puzzle je validni
+* Zkontroluje jestli odhalene pexeso je validni
 *
-* puzzle_revealed: odhalena puzzle
+* pexeso_revealed: odhalene pexeso
 * actual_game: aktualni hra
 *
 * returns: MESSAGE
 */
-int isValid(int puzzle_revealed, game* actual_game){
+int isValid(int pexeso_revealed, game* actual_game){
     if(actual_game == NULL){
         printf("ISVALID ERROR - Is valid failed, no game passed! \n");
         return -1;
     }
 	//Spatny index v poli zvuku
-	if(puzzle_revealed < 0 || puzzle_revealed >= actual_game->puzzle_count){
-		printf("Byl zadan spatny index: %d\n",puzzle_revealed);
-		return REVEALED_PUZZLE_REVEAL;
+	if(pexeso_revealed < 0 || pexeso_revealed >= actual_game->pexeso_count){
+		printf("Byl zadan spatny index: %d\n",pexeso_revealed);
+		return REVEALED_PEXESO_REVEAL;
 	}
-	//Odhaleni jiz odhalene puzzle - Jiz obodovane
-	if(strcmp(actual_game->puzzles[puzzle_revealed],"") == 0){
-		printf("Chyba byl zadan index, kde uz je odhalena puzzle\n");
-		return INVALID_PUZZLE_REVEAL;
+	//Odhaleni jiz odhalene pexeso - Jiz obodovane
+	if(strcmp(actual_game->pexesos[pexeso_revealed],"") == 0){
+		printf("Chyba byl zadan index, kde uz je odhalene pexeso\n");
+		return INVALID_PEXESO_REVEAL;
 	}
-	// Pokud odhalil stejnou puzzli jako tu prvni
-	if(actual_game->first_reveal == puzzle_revealed)
+	// Pokud odhalil stejne pexeso jako tu prvni
+	if(actual_game->first_reveal == pexeso_revealed)
 	{
 		printf("	-Hahaha dobry pokus, stejne indexy nelze zadat!\n 	-Zkus to znovu!\n");
-		return REVEALED_PUZZLE_REVEAL;
+		return REVEALED_PEXESO_REVEAL;
 	}
 
 	return 0;
@@ -99,7 +99,7 @@ int isValid(int puzzle_revealed, game* actual_game){
 /* Function: scored
 * ------------------------
 * Zkontroluje jestli hrac scoroval
-* Pokud jo, pricte skore a smaze puzzle
+* Pokud jo, pricte skore a smaze pexeso
 *
 * actual_game: aktualni hra
 *
@@ -117,18 +117,18 @@ int scored(game* actual_game){
 		return -1;
 	}
 
-	char* first_puzzle_revealed = actual_game->puzzles[first_reveal];
-	char* second_puzzle_revealed = actual_game->puzzles[second_reveal];
+	char* first_pexeso_revealed = actual_game->pexesos[first_reveal];
+	char* second_pexeso_revealed = actual_game->pexesos[second_reveal];
     // Jsou stejne odhalene puzzle
-	if(strcmp(first_puzzle_revealed, second_puzzle_revealed) == 0)
+	if(strcmp(first_pexeso_revealed, second_pexeso_revealed) == 0)
 	{
 		printf("	-Za skoroval jsi!\n");
 
 			printf("		1.index: %d\n",actual_game->first_reveal);
-			printf("			: %s\n",actual_game->puzzles[actual_game->first_reveal]);
+			printf("			: %s\n",first_pexeso_revealed);
 
 			printf("		2.index: %d\n",second_reveal);
-			printf("			: %s\n",second_puzzle_revealed);
+			printf("			: %s\n",second_pexeso_revealed);
 
 		if(actual_game->actual_player == 0){
 			actual_game->p1_score += 1;
@@ -137,20 +137,20 @@ int scored(game* actual_game){
 			actual_game->p2_score += 1;
 		}
 		//Odecteme pocet puzzli
-		actual_game->remaining_puzzle_count -= 2;
+		actual_game->remaining_pexeso_count -= 2;
         // Smazeni puzzli ktere odhalil
-        strcpy(actual_game->puzzles[actual_game->first_reveal],"");
-        strcpy(actual_game->puzzles[actual_game->second_reveal],"");
+        strcpy(actual_game->pexesos[actual_game->first_reveal],"");
+        strcpy(actual_game->pexesos[actual_game->second_reveal],"");
 
 		return PLAYER_SCORED;
 	}
 	else{
 		printf("	-Spatne puzzle!\n");
 			printf("		1.index: %d\n",actual_game->first_reveal);
-			printf("			: %s\n",actual_game->puzzles[actual_game->first_reveal]);
+			printf("			: %s\n",actual_game->pexesos[actual_game->first_reveal]);
 
 			printf("		2.index: %d\n",second_reveal);
-			printf("			: %s\n",second_puzzle_revealed);
+			printf("			: %s\n",second_pexeso_revealed);
 
 		return PLAYER_NOT_SCORED;
 	}
@@ -175,9 +175,9 @@ int nextTurn(game* actual_game){
 	actual_game->second_reveal = -1;
 
 	printf("SCORE %d:%d\n",actual_game->p1_score,actual_game->p2_score);
-	printf("Zbyva: %d\n",actual_game->remaining_puzzle_count);
+	printf("Zbyva: %d\n",actual_game->remaining_pexeso_count);
 
-	if(actual_game->remaining_puzzle_count <= 0){
+	if(actual_game->remaining_pexeso_count <= 0){
 		return GAME_OVER;
 	}
 	return NEXT_TURN;
