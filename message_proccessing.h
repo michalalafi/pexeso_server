@@ -6,6 +6,11 @@
 #include "client.h"
 #include <string.h>
 
+#define MAX_DELIMITERS 2
+#define MAX_PARTS 3
+#define PARTS_DELIMITER_C '|'
+#define PARTS_DELIMITER_S "|"
+
 typedef struct MESSAGE{
 	int client_id;
 	int action;
@@ -13,5 +18,9 @@ typedef struct MESSAGE{
 }message;
 
 message* extract_message(char* raw_message);
+
+char** split_parts(char* raw_message);
+
+int count_of_delimiter(char* string, char delimiter);
 
 #endif

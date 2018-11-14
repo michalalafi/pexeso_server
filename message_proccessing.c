@@ -1,66 +1,97 @@
 #include "message_proccessing.h"
 
-message* extract_message(char* raw_message){
-    printf("RAW MESSAGE: %s \n",raw_message);
-    message* extracted_message = (message*) malloc(sizeof(message));
-
-
-    // Rozdelime na casti podle |
-    // Pak kazdou cast zpracujeme podle ID: ACTION: PARAMS: "
-    // Pak budeme kontrolovat konzistenci
-    // Obsahuje string 'ID:'
-    char* ptr =strstr(raw_message,"ID:");
-    if(ptr == NULL){
-        return NULL;
+message* create_message(){
+    message* new_message = (message*) malloc(sizeof(message));
+    if(new_message == NULL){
+        printf("MESSAGE ERROR - Creating message failed! \n");
     }
-    // Pozice zacatku ID
-    int pos = ptr - raw_message;
-
-    char* each_delimiter[] = {"ID:","ACTION:","PARAMS:"};
-    int i_deli = 0;
-    char* split;
-    printf("    Pozice ID je: %d \n",pos);
-    printf("    Od pozice string je: %s\n",raw_message + pos);
-    char* parts_delimiter = "|";
-    char* to_split = malloc(sizeof(raw_message));
-    strcpy(to_split,raw_message + pos);
-    printf("    To split: -%s- \n",to_split);
-    split = strtok(to_split, parts_delimiter);
-
-    while(split != NULL){
-        printf("    Split je: %s \n",split);
-        char* pom = malloc(sizeof(split));
-        strcpy(pom,split);
-        printf("    POM je: %s \n",pom);
-        char* pom_split = strtok(pom,each_delimiter[i_deli]);
-        printf("    POM split je: %s \n",pom_split);
-
-        char* end;
-        long number = strtol(pom_split,&end, 0);
-        if(*end == '\0'){
-            printf("    ID je:%d \n",number);
-        }
-        else{
-            printf("MESSAGE CORUPTED \n");
-            return NULL;
-        }
-        split = strtok(NULL, parts_delimiter);
-    }
-    return NULL;
-  /*  if(split != NULL){
-
-    }
-    split = strtok(NULL, delimiter);
-    if(split != NULL)
-        printf("    Split je: %s \n",split);
-    split = strtok(NULL, delimiter);
-    if(split != NULL)
-        printf("    Split je: %s \n",split);
-    printf("MESSAGE VALID \n"); */
+    new_message->action = -50;
+    new_message->client_id = -50;
+    new_message->params = NULL;
+    return new_message;
 }
 
-//char*[]
+message* extract_message(char* raw_message){
+    printf("%s -> ",raw_message);
+    message* extracted_message = create_message();
 
+    int delimiter_count = count_of_delimiter(raw_message, PARTS_DELIMITER_C);
+    if(delimiter_count != MAX_DELIMITERS){
+        return NULL;
+    }
+    char** parts = split_parts(raw_message);
+    if(parts == NULL){
+        return NULL;
+    }
+
+    if(parts[0] != NULL){
+        char* end;
+        long number = strtol(parts[0],&end, 0);
+        if(*end == '\0'){
+            extracted_message->client_id = number;
+        }
+        else{
+            return NULL;
+        }
+    }
+    if(parts[1] != NULL){
+        char* end;
+        long number = strtol(parts[1],&end, 0);
+        if(*end == '\0'){
+            extracted_message->action = number;
+        }
+        else{
+            return NULL;
+        }
+    }
+    if(parts[2] != NULL){
+        extracted_message->params = malloc((strlen(parts[2]) +1) * sizeof(char));
+        strcpy(extracted_message->params, parts[2]);
+    }
+
+    //printf("Struct message: \n message->client_id = %d \n message->action = %d \n message->params = %s \n", extracted_message->client_id,extracted_message->action,extracted_message->params);
+    return extracted_message;
+}
+
+char** split_parts(char* raw_message){
+    //printf("SPLIT PARTS \n");
+    if(raw_message == NULL){
+        return NULL;
+    }
+    char** parts = (char**) malloc(sizeof(char*) * MAX_PARTS);
+    // Prekopirujeme raw_message aby jsme ho neupravili
+    char* split_pom = malloc((strlen(raw_message) + 1) * sizeof(char));
+    strcpy(split_pom,raw_message);
+    // Prvni rozdeleni
+    char* split = strtok(split_pom, PARTS_DELIMITER_S);
+    int i = 0;
+    while(split != NULL){
+        if(i >= MAX_PARTS){
+            return NULL;
+        }
+        parts[i] = (char*)malloc( (strlen(split) + 1) * sizeof(char));
+        //printf("Split %s \n",split);
+        //Nakopirovani vysledku
+        strcpy(parts[i], split);
+        // Dalsi rozdeleni
+        split = strtok(NULL,"|");
+        i++;
+    }
+  /*  for(i = 0; i < MAX_PARTS; i++){
+        printf("part[%d] = %s \n",i,parts[i]);
+    } */
+    return parts;
+
+}
+
+int count_of_delimiter(char* string, char delimiter){
+    int i = 0, count = 0;
+    for(i; i < strlen(string); i++){
+        if(string[i] == delimiter)
+            count++;
+    }
+    return count;
+}
 
 
 

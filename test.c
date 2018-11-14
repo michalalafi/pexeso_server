@@ -77,18 +77,24 @@ void message_test(){
 
     char* raw_messages[] = {
                             "vasdas:7sasdads|asd|Pa",
-                            "aaaID:aaa5148|ACTION:2|PARAMS:avasdasfdasd",
+                            "aaaID:aaa5148|2|avasdasfdasd",
                             "asdaaaaaaa",
                             "894513",
                             "ID:aaaaaaa|ACTION",
                             "ID:aaaaa",
-                            "ID:4554|ACTION:po"
+                            "4554|ACTION:po",
+                            "4555|1|",
+                            "4555|1",
+                            "4555|1|4555|1",
+                            "|||||||||"
 
                         };
 
     int i = 0;
-    for(i; i < 7; i++){
-        extract_message(raw_messages[i]);
+    for(i; i < 11; i++){
+        message* m = extract_message(raw_messages[i]);
+        if(m == NULL) printf("Nevalidni zprava \n");
+        else printf("Validni zprava \n");
     }
 }
 void test(){
