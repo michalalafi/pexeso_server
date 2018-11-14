@@ -86,12 +86,15 @@ void message_test(){
                             "4555|1|",
                             "4555|1",
                             "4555|1|4555|1",
-                            "|||||||||"
+                            "|||||||||",
+                            "4|6|",
+                            "4|6|",
+                            "4|6|"
 
                         };
 
     int i = 0;
-    for(i; i < 11; i++){
+    for(i; i < 14; i++){
         message* m = extract_message(raw_messages[i]);
         if(m == NULL) printf("Nevalidni zprava \n");
         else printf("Validni zprava \n");

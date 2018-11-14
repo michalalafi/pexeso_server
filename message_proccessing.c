@@ -59,12 +59,16 @@ char** split_parts(char* raw_message){
         return NULL;
     }
     char** parts = (char**) malloc(sizeof(char*) * MAX_PARTS);
+    int i = 0;
+    for(i = 0; i < MAX_PARTS; i++){
+        parts[i] = NULL;
+    }
     // Prekopirujeme raw_message aby jsme ho neupravili
     char* split_pom = malloc((strlen(raw_message) + 1) * sizeof(char));
     strcpy(split_pom,raw_message);
     // Prvni rozdeleni
     char* split = strtok(split_pom, PARTS_DELIMITER_S);
-    int i = 0;
+    i = 0;
     while(split != NULL){
         if(i >= MAX_PARTS){
             return NULL;
@@ -77,9 +81,10 @@ char** split_parts(char* raw_message){
         split = strtok(NULL,"|");
         i++;
     }
-  /*  for(i = 0; i < MAX_PARTS; i++){
+    for(i = 0; i < MAX_PARTS; i++){
         printf("part[%d] = %s \n",i,parts[i]);
-    } */
+    }
+
     return parts;
 
 }
