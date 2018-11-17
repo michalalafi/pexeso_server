@@ -55,6 +55,7 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="message_proccessing.h" />
+		<Unit filename="protocol.h" />
 		<Unit filename="session.c">
 			<Option compilerVar="CC" />
 		</Unit>

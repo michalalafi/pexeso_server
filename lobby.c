@@ -79,9 +79,9 @@ int is_lobby_empty(lobby* actual_lobby){
     return 0;
 }
 client* find_client_by_id(int client_id, lobby* actual_lobby){
-    printf("FINDING CLIENT BY ID: %d \n",client_id);
+    //printf("FINDING CLIENT BY ID: %d \n",client_id);
     if(is_lobby_empty(actual_lobby)){
-        printf("NO CLIENT FOUND DUE EMPTY LOBBY \n");
+        //printf("NO CLIENT FOUND DUE EMPTY LOBBY \n");
         return NULL;
     }
 
@@ -93,27 +93,27 @@ client* find_client_by_id(int client_id, lobby* actual_lobby){
         }
         pom = pom->next;
     }
-    printf("NO CLIENT FOUND WITH ID: %d \n",client_id);
+    //printf("NO CLIENT FOUND WITH ID: %d \n",client_id);
     return NULL;
 }
 
 int get_new_client_unique_id(lobby* actual_lobby){
-    printf("GET UNIQUE ID CLIENT \n");
+    //printf("GET UNIQUE ID CLIENT \n");
     int unique_id = rand() % 10000;
     client* existing_client = find_client_by_id(unique_id, actual_lobby);
     while(existing_client != NULL){
-        printf("FOUND USER WITH ID: %d  NEW GENERATE\n",unique_id);
+        //printf("FOUND USER WITH ID: %d  NEW GENERATE\n",unique_id);
         unique_id = rand();
         existing_client = find_client_by_id(unique_id, actual_lobby);
     }
-    printf("NEW UNIQUE ID: %d \n",unique_id);
+    //printf("NEW UNIQUE ID: %d \n",unique_id);
     return unique_id;
 }
 
 void print_clients(lobby* actual_lobby){
 	client* pom = actual_lobby->first;
 	while(pom != NULL){
-		printf("Client: %s %d \n", pom->name, pom->id);
+		printf("Client: %s ID:%d \n", pom->name, pom->id);
 		pom = pom->next;
 	}
 }

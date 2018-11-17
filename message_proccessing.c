@@ -53,6 +53,16 @@ message* extract_message(char* raw_message){
     return extracted_message;
 }
 
+char* create_raw_message_for_client(int action, char* params){
+    char* raw_message = (char*) malloc(1024 * sizeof(char));
+
+    sprintf(raw_message,"%d|%s",action,params);
+
+    printf("CREATED MESSAGE %s \n",raw_message);
+
+    return raw_message;
+}
+
 char** split_parts(char* raw_message){
     //printf("SPLIT PARTS \n");
     if(raw_message == NULL){
@@ -91,7 +101,7 @@ char** split_parts(char* raw_message){
 
 int count_of_delimiter(char* string, char delimiter){
     int i = 0, count = 0;
-    for(i; i < strlen(string); i++){
+    for(; i < strlen(string); i++){
         if(string[i] == delimiter)
             count++;
     }

@@ -15,12 +15,29 @@ void *handle_client(void *arg){
     if(container == NULL)
     {
         printf("Neco se pokazilo u conteineru /n");
-        return;
+        return (void*) NULL;
     }
-    else
-        printf("Container obsahuje: client_socket = %d | message = '%s'/n",container->client_socket,container->message);
+    printf("Container obsahuje: client_socket = %d | message = '%s'\n",container->client_socket,container->message);
 
-    //find_client_by_id();
+    message* client_message = extract_message(container->message);
+    if(client_message == NULL){
+        printf("NOT VALID MESSAGE \n");
+    }
+
+    printf("Struct message: \n message->client_id = %d \n message->action = %d \n message->params = %s \n", client_message->client_id,client_message->action,client_message->params);
+
+    client* actual_client  = find_client_by_id(client_message->client_id, container->lobby);
+    if(actual_client == NULL){
+        printf("Client nenalezen \n");
+        return (void*) NULL;
+    }
+    else{
+        printf("Client nalezen \n");
+    }
+
+    printf("Aktualni zpracovavany client: \n");
+    printf("POMMMMMMMMMMMMM NAME = %s \n",actual_client->name);
+    //printf("    client->id = %d \n  client->name = %s \n    client->socket = %d\n",actual_client->id/*,actual_client->name,actual_client->socket*/);
 
 
 
@@ -43,4 +60,14 @@ void *handle_client(void *arg){
 			printf("Client: %s \n",buff);
 		}
 	} */
+	return (void*) NULL;
+}
+void handle_client_connect(int client_socket, lobby* actual_lobby){
+    client* new_client = create_client(client_socket, get_new_client_unique_id(actual_lobby));
+    if(new_client == NULL){
+        return;
+    }
+    add_client_to_lobby(new_client,actual_lobby);
+
+    print_clients(actual_lobby);
 }

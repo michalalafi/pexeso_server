@@ -25,7 +25,11 @@ client_handle_container* create_client_handle_container(lobby* actual_lobby, ses
 	new_client_handle_container->lobby = actual_lobby;
 	new_client_handle_container->session_list = actual_session_list;
 	new_client_handle_container->client_socket = actual_client_socket;
-	new_client_handle_container->message = client_message;
+
+
+    new_client_handle_container->message = (char*) malloc(strlen(client_message) * sizeof(client_message));
+	strcpy(new_client_handle_container->message, client_message);
+	replace_new_line_char(new_client_handle_container->message);
 
 	return new_client_handle_container;
 }

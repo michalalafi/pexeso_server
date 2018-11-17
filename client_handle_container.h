@@ -3,6 +3,7 @@
 
 #include "lobby.h"
 #include "session_list.h"
+#include "utils.h"
 
 typedef struct CLIENT_HANDLE_CONTAINER{
 	struct LOBBY* lobby;

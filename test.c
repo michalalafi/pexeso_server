@@ -4,12 +4,11 @@ int number_of_clients = 6;
 
 client** test_client_creation(lobby* lobby){
 
-    char* names[] = {"Pepa","Anca","Karel","Michal","Ota","Pavel"};
     client** clients = (client**) malloc(sizeof(client*) * number_of_clients);
 
     int i = 0;
-    for(i;i < number_of_clients ;i++){
-        client* c = create_client(0,names[i], get_new_client_unique_id(lobby));
+    for(;i < number_of_clients ;i++){
+        client* c = create_client(0, get_new_client_unique_id(lobby));
         if(c == NULL) return NULL;
         else {
             add_client_to_lobby(c,lobby);
@@ -22,7 +21,7 @@ client** test_client_creation(lobby* lobby){
 
 lobby* test_lobby_adding(client** clients, lobby* lobby){
     int i = 0;
-    for(i;i < number_of_clients; i++){
+    for(;i < number_of_clients; i++){
         add_client_to_lobby(clients[i],lobby);
     }
 	print_clients(lobby);
@@ -94,14 +93,20 @@ void message_test(){
                         };
 
     int i = 0;
-    for(i; i < 14; i++){
+    for(; i < 14; i++){
         message* m = extract_message(raw_messages[i]);
         if(m == NULL) printf("Nevalidni zprava \n");
         else printf("Validni zprava \n");
     }
 }
+
+void test_init_connection(){
+    lobby* lobby = create_lobby();
+    handle_client_connect(0,lobby);
+
+}
 void test(){
-   /* lobby* lobby = create_lobby();
+    lobby* lobby = create_lobby();
 
     client** clients = test_client_creation(lobby);
     if(clients == NULL){
@@ -111,8 +116,10 @@ void test(){
     else
         printf("Clienti vytvoreni!\n");
 
+    print_clients(lobby);
+
     //lobby = test_lobby_adding(clients, lobby);
-    if(lobby == NULL){
+  /*  if(lobby == NULL){
         perror("Vytvareni lobby se nezdarilo! \n");
         return;
     }
@@ -121,6 +128,6 @@ void test(){
 
     char** sounds = test_sounds_extration(); */
 
-    message_test();
+    //message_test();
 
 }

@@ -33,7 +33,7 @@ void print_all_sounds(char** sounds, int sound_length)
         return;
     }
 	int i = 0;
-	for(i; i < sound_length; i++)
+	for(; i < sound_length; i++)
 	{
 		printf("%d - ",i);
 		puts(sounds[i]);

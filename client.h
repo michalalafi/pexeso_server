@@ -1,6 +1,11 @@
 #ifndef CLIENT_H
 #define CLIENT_H
 
+#include <stdio.h>
+#include <stdlib.h>
+
+#define CLIENT_PREFIX "guest"
+
 typedef struct CLIENT
 {
 	int socket;
@@ -10,10 +15,6 @@ typedef struct CLIENT
 	struct CLIENT* previous;
 }client;
 
-#include <stdio.h>
-#include <stdlib.h>
-#include "lobby.h"
-
-client* create_client(int client_socket,char* client_name, int unique_id);
+client* create_client(int client_socket, int unique_id);
 
 #endif
