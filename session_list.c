@@ -9,7 +9,7 @@ session_list* create_session_list(){
 	}
 	new_session_list->first = NULL;
 	new_session_list->last = NULL;
-	
+
 	printf("SESSION LIST CREATED \n");
 	return new_session_list;
 }
@@ -19,13 +19,13 @@ void add_session_to_session_list(session* new_session, session_list* actual_sess
 	if(first == NULL){
 		actual_session_list->first = new_session;
 		actual_session_list->last = new_session;
-		
+
 		actual_session_list->first->next = NULL;
 		actual_session_list->first->previous = NULL;
 		printf("SESSION LIST - New session - %d - was added to start of list!\n", new_session->id);
 		return;
 	}
-	
+
 	session* last = actual_session_list->last;
 	last = NULL;
 	if(last == NULL){
@@ -36,13 +36,13 @@ void add_session_to_session_list(session* new_session, session_list* actual_sess
 	new_session->previous = last;
 	actual_session_list->last = new_session;
 	printf("SESSION LIST - New session - %d - was added to end of list!\n", new_session->id);
-	
+
 }
 
 void remove_session_from_session_list(session* session_to_remove, lobby* actual_session_list){
 	session* previous = session_to_remove->previous;
 	session* next = session_to_remove->next;
-	// Je prvek prvni?	
+	// Je prvek prvni?
 	if(actual_session_list->first == session_to_remove){
 		// A ma nasledujici?
 		if(next != NULL){
@@ -72,10 +72,47 @@ void remove_session_from_session_list(session* session_to_remove, lobby* actual_
 	}
 	// Je nekde mezi?
 	if( next != NULL && previous != NULL){
-		// Preskocime ho		
+		// Preskocime ho
 		previous->next = next;
 		next->previous = previous;
 	}
 	session_to_remove->next = NULL;
 	session_to_remove->previous = NULL;
+}
+int is_session_list_empty(session_list* actual_session_list){
+    if(actual_session_list->first == NULL){
+        return 1;
+    }
+    return 0;
+}
+session* get_open_session(session_list* actual_session_list){
+    printf("Ziskavame sessionu \n");
+    if(is_session_list_empty(actual_session_list)){
+        printf("Je prazdna \n");
+        return NULL;
+    }
+    printf("Neni prazdna \n");
+    session* pom =  actual_session_list->first;
+    while(pom != NULL){
+        if(is_session_open(pom)){
+            return pom;
+        }
+        pom = pom->next;
+    }
+    return NULL;
+}
+session* get_session_by_client(client* actual_client, session_list* actual_session_list){
+    if(is_session_list_empty(actual_session_list)){
+        printf("Je prazdna \n");
+        return NULL;
+    }
+    session* pom = actual_session_list->first;
+    while(pom != NULL){
+        if(is_client_in_session(actual_client,pom)){
+            return pom;
+        }
+        pom = pom->next;
+    }
+    return NULL;
+
 }

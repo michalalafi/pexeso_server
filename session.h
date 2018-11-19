@@ -17,4 +17,12 @@ typedef struct SESSION{
 
 session* create_session(client* first_client, client* second_client, game* actual_game, int id);
 
+int is_session_open(session* actual_session);
+
+int is_client_in_session(client* actual_client, session* actual_session);
+
+int get_client_player_order(client* actual_client, session* actual_session);
+
+int is_client_on_turn(client* actual_client, session* actual_session);
+
 #endif

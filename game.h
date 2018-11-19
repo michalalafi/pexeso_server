@@ -42,4 +42,8 @@ int scored(game* actual_game);
 
 int nextTurn(game* actual_game);
 
+int is_end_of_turn(game* actual_game);
+
+int is_game_over(game* actual_game);
+
 #endif

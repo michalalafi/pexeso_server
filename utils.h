@@ -9,6 +9,7 @@
 void swap (char ** array, int i, int j);
 void shuffle(char** array, int array_length );
 int duplicate(char** array, int array_length);
-void shrink_array(char** array, int* array_length, int new_array_length);
+void shrink_array(char** array, int new_array_length);
 void replace_new_line_char(char* string_to_replace);
+long convert_string_to_long(char* string);
 #endif

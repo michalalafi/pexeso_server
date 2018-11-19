@@ -25,24 +25,18 @@ message* extract_message(char* raw_message){
     }
 
     if(parts[0] != NULL){
-        char* end;
-        long number = strtol(parts[0],&end, 0);
-        if(*end == '\0'){
-            extracted_message->client_id = number;
-        }
-        else{
+        long id = convert_string_to_long(parts[0]);
+        if(id == -1){
             return NULL;
         }
+        extracted_message->client_id = id;
     }
     if(parts[1] != NULL){
-        char* end;
-        long number = strtol(parts[1],&end, 0);
-        if(*end == '\0'){
-            extracted_message->action = number;
-        }
-        else{
+        long action = convert_string_to_long(parts[1]);
+        if(action == -1){
             return NULL;
         }
+        extracted_message->action = action;
     }
     if(parts[2] != NULL){
         extracted_message->params = malloc((strlen(parts[2]) +1) * sizeof(char));

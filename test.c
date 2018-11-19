@@ -46,7 +46,8 @@ char** test_sounds_extration(){
 	print_all_sounds(sounds,sounds_length);
 	// Vezmeme jich 32
 	printf("SHRINK\n");
-	shrink_array(sounds,&sounds_length,4);
+	shrink_array(sounds,4);
+	sounds_length = 4;
 	print_all_sounds(sounds,sounds_length);
 	// Zduplikujeme je
 	printf("DUPLICATE\n");

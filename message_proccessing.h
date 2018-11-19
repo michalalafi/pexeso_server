@@ -4,6 +4,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "client.h"
+#include "utils.h"
 #include <string.h>
 
 #define MAX_DELIMITERS 2

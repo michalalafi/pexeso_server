@@ -94,7 +94,7 @@ int isValid(int pexeso_revealed, game* actual_game){
 		return REVEALED_PEXESO_REVEAL;
 	}
 
-	return 0;
+	return 1;
 }
 /* Function: scored
 * ------------------------
@@ -110,15 +110,14 @@ int scored(game* actual_game){
         printf("SCORED ERROR - Scored failed, no game passed! \n");
         return -1;
     }
-	int first_reveal = actual_game->first_reveal;
-	int second_reveal = actual_game->second_reveal;
-	//Nejsou zadany tahy hrace
-	if(second_reveal < 0 || first_reveal < 0){
+	if(!is_end_of_turn(actual_game)){
+        printf("Neni konec hracova kola, nelze urcit skorovani \n");
 		return -1;
 	}
-
-	char* first_pexeso_revealed = actual_game->pexesos[first_reveal];
-	char* second_pexeso_revealed = actual_game->pexesos[second_reveal];
+    int first_reveal = actual_game->first_reveal;
+	int second_reveal = actual_game->second_reveal;
+	char* first_pexeso_revealed = actual_game->pexesos[actual_game->first_reveal];
+	char* second_pexeso_revealed = actual_game->pexesos[actual_game->second_reveal];
     // Jsou stejne odhalene puzzle
 	if(strcmp(first_pexeso_revealed, second_pexeso_revealed) == 0)
 	{
@@ -142,7 +141,7 @@ int scored(game* actual_game){
         strcpy(actual_game->pexesos[actual_game->first_reveal],"");
         strcpy(actual_game->pexesos[actual_game->second_reveal],"");
 
-		return PLAYER_SCORED;
+		return 1;
 	}
 	else{
 		printf("	-Spatne puzzle!\n");
@@ -152,8 +151,17 @@ int scored(game* actual_game){
 			printf("		2.index: %d\n",second_reveal);
 			printf("			: %s\n",second_pexeso_revealed);
 
-		return PLAYER_NOT_SCORED;
+		return 0;
 	}
+}
+int is_end_of_turn(game* actual_game){
+    int first_reveal = actual_game->first_reveal;
+	int second_reveal = actual_game->second_reveal;
+	//Nejsou zadany tahy hrace
+	if(second_reveal < 0 || first_reveal < 0){
+		return 0;
+	}
+	return 1;
 }
 /* Function: nextTurn
 * ------------------------
@@ -177,8 +185,12 @@ int nextTurn(game* actual_game){
 	printf("SCORE %d:%d\n",actual_game->p1_score,actual_game->p2_score);
 	printf("Zbyva: %d\n",actual_game->remaining_pexeso_count);
 
-	if(actual_game->remaining_pexeso_count <= 0){
-		return GAME_OVER;
-	}
 	return NEXT_TURN;
+}
+
+int is_game_over(game* actual_game){
+    if(actual_game->remaining_pexeso_count <= 0){
+        return 1;
+    }
+    return 0;
 }

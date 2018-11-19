@@ -3,6 +3,8 @@
 
 #define NEW_GAME_REQUEST 5
 
+#define PEXESO_REVEALED_REQUEST 20
+
 /*
 #define NEXT_TURN 20
 // Hrac skoroval

@@ -50,11 +50,10 @@ int duplicate(char** array, int array_length){
 	return new_array_length;
 }
 
-void shrink_array(char** array, int * array_length, int new_array_length){
+void shrink_array(char** array, int new_array_length){
 	char** temp = realloc(array, sizeof(char*) * new_array_length);
 	if(temp){
 		array = temp;
-		*array_length = new_array_length;
 	}
 }
 
@@ -65,4 +64,13 @@ void replace_new_line_char(char* string_to_replace){
             string_to_replace[i] = '\0';
         }
     }
+}
+
+long convert_string_to_long(char* string){
+    char* end;
+    long number = strtol(string,&end, 0);
+    if(*end == '\0'){
+        return number;
+    }
+    return -1;
 }

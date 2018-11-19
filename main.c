@@ -117,33 +117,5 @@ int main(int argc, char *argv[]) {
 
 	}
 
-	/*printf("Reveal\n");
-	char buff[1024];
-	while(1){
-		printf("Hrac: %d>",new_game->actual_player);
-		fgets(buff, sizeof(buff),stdin);
-		int puzzle = atoi(buff);
-		int valid = isValid(puzzle,new_game);
-		if(valid == 0){
-			reveal(puzzle,new_game);
-
-			// Pokud nejsou nastaveny vsechny potrebne atributy - tzn ze hrac jeste nehral po druhe, pokracujeme
-			if(scored(new_game) < 0)
-			{
-				continue;
-			}
-
-			int next = nextTurn(new_game);
-			print_all_sounds(new_game->puzzles,sounds_length);
-			if(next == GAME_OVER){
-				printf("Konec hry\n");
-				break;
-			}
-		}
-		else{
-			printf("Nevalidni :%d\n",valid);
-		}
-	} */
-
 	return 0;
 }
