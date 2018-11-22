@@ -39,11 +39,11 @@ void add_session_to_session_list(session* new_session, session_list* actual_sess
 
 }
 
-void remove_session_from_session_list(session* session_to_remove, lobby* actual_session_list){
+void remove_session_from_session_list(session* session_to_remove, session_list* actual_session_list){
 	session* previous = session_to_remove->previous;
 	session* next = session_to_remove->next;
 	// Je prvek prvni?
-	if(actual_session_list->first == session_to_remove){
+	if(actual_session_list->first->id == session_to_remove->id){
 		// A ma nasledujici?
 		if(next != NULL){
 			//Prenastavime zacatek na jeho dalsiho
@@ -57,7 +57,7 @@ void remove_session_from_session_list(session* session_to_remove, lobby* actual_
 		}
 	}
 	// Je prvek posledni?
-	else if(actual_session_list->last == session_to_remove){
+	else if(actual_session_list->last->id == session_to_remove->id){
 		// A ma predchoziho?
 		if(previous != NULL){
 			//Prenastavime konec na jeho predchoziho
@@ -114,5 +114,34 @@ session* get_session_by_client(client* actual_client, session_list* actual_sessi
         pom = pom->next;
     }
     return NULL;
+}
+session* get_session_by_id(int session_id, session_list* actual_session_list){
+    //printf("FINDING SESSION BY ID: %d \n",session_id);
+    if(is_session_list_empty(actual_session_list)){
+        //printf("NO CLIENT FOUND DUE EMPTY LOBBY \n");
+        return NULL;
+    }
 
+    session* pom = actual_session_list->first;
+    while(pom != NULL){
+        if(pom->id == session_id){
+            printf("SESSION FOUND: ID = %d\n",pom->id);
+            return pom;
+        }
+        pom = pom->next;
+    }
+    //printf("NO SESSION FOUND WITH ID: %d \n",session_id);
+    return NULL;
+
+}
+
+int get_new_session_unique_id(session_list* actual_session_list){
+    int unique_id = 0;
+    session* existing_session = NULL;
+    do{
+        unique_id = rand() % 10000;
+        existing_session = get_session_by_id(unique_id, actual_session_list);
+    }while(existing_session != NULL);
+
+    return unique_id;
 }

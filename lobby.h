@@ -6,8 +6,8 @@
 #include "client.h"
 
 typedef struct LOBBY{
-	struct CLIENT* first;
-	struct CLIENT* last;
+	client* first;
+	client* last;
 }lobby;
 
 lobby* create_lobby();

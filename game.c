@@ -123,7 +123,7 @@ int scored(game* actual_game){
 	{
 		printf("	-Za skoroval jsi!\n");
 
-			printf("		1.index: %d\n",actual_game->first_reveal);
+			printf("		1.index: %d\n",first_reveal);
 			printf("			: %s\n",first_pexeso_revealed);
 
 			printf("		2.index: %d\n",second_reveal);
@@ -145,7 +145,7 @@ int scored(game* actual_game){
 	}
 	else{
 		printf("	-Spatne puzzle!\n");
-			printf("		1.index: %d\n",actual_game->first_reveal);
+			printf("		1.index: %d\n",first_reveal);
 			printf("			: %s\n",actual_game->pexesos[actual_game->first_reveal]);
 
 			printf("		2.index: %d\n",second_reveal);

@@ -113,7 +113,7 @@
 	<stdio.h>
 	<stdlib.h>
 
-1542394189 /home/michal/Desktop/workspace/Server/ups_server/pexeso_server/lobby.h
+1542909316 /home/michal/Desktop/workspace/Server/ups_server/pexeso_server/lobby.h
 	<stdio.h>
 	<stdlib.h>
 	"client.h"
@@ -126,51 +126,56 @@
 	"session_list.h"
 	"utils.h"
 
-1541091488 /home/michal/Desktop/workspace/Server/ups_server/pexeso_server/session_list.h
+1542909657 /home/michal/Desktop/workspace/Server/ups_server/pexeso_server/session_list.h
 	<stdio.h>
 	<stdlib.h>
 	"session.h"
 	"lobby.h"
 
-1540919453 /home/michal/Desktop/workspace/Server/ups_server/pexeso_server/session.h
+1542909673 /home/michal/Desktop/workspace/Server/ups_server/pexeso_server/session.h
 	<stdio.h>
 	<stdlib.h>
 	"client.h"
 	"game.h"
 
-1542122273 /home/michal/Desktop/workspace/Server/ups_server/pexeso_server/game.h
+1542655961 /home/michal/Desktop/workspace/Server/ups_server/pexeso_server/game.h
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
 
-1542394800 source:/home/michal/Desktop/workspace/Server/ups_server/pexeso_server/communication_manager.c
+1542909202 source:/home/michal/Desktop/workspace/Server/ups_server/pexeso_server/communication_manager.c
 	"communication_manager.h"
 
-1542395081 /home/michal/Desktop/workspace/Server/ups_server/pexeso_server/communication_manager.h
+1542826987 /home/michal/Desktop/workspace/Server/ups_server/pexeso_server/communication_manager.h
 	<stdio.h>
 	<stdlib.h>
+	"session_list.h"
 	"session.h"
 	"lobby.h"
 	"client_handle_container.h"
 	"message_proccessing.h"
+	"protocol.h"
+	"file_processor.h"
+	<unistd.h>
 
-1542054103 source:/home/michal/Desktop/workspace/Server/ups_server/pexeso_server/file_processor.c
+1542630424 source:/home/michal/Desktop/workspace/Server/ups_server/pexeso_server/file_processor.c
 	"file_processor.h"
 
-1542051922 /home/michal/Desktop/workspace/Server/ups_server/pexeso_server/file_processor.h
+1542630343 /home/michal/Desktop/workspace/Server/ups_server/pexeso_server/file_processor.h
 	<stdio.h>
 	<stdlib.h>
 	<sys/types.h>
 	<dirent.h>
 	<string.h>
+	"utils.h"
 
-1542122786 source:/home/michal/Desktop/workspace/Server/ups_server/pexeso_server/game.c
+1542656132 source:/home/michal/Desktop/workspace/Server/ups_server/pexeso_server/game.c
 	"game.h"
 
-1542394867 source:/home/michal/Desktop/workspace/Server/ups_server/pexeso_server/lobby.c
+1542908970 source:/home/michal/Desktop/workspace/Server/ups_server/pexeso_server/lobby.c
 	"lobby.h"
 
-1542395195 source:/home/michal/Desktop/workspace/Server/ups_server/pexeso_server/main.c
+1542828253 source:/home/michal/Desktop/workspace/Server/ups_server/pexeso_server/main.c
 	<stdio.h>
 	<sys/types.h>
 	<sys/socket.h>
@@ -179,7 +184,6 @@
 	<netinet/in.h>
 	<stdlib.h>
 	<sys/ioctl.h>
-	<pthread.h>
 	<memory.h>
 	<sys/select.h>
 	"session_list.h"
@@ -188,7 +192,7 @@
 	"test.h"
 	"client_handle_container.h"
 
-1542135088 /home/michal/Desktop/workspace/Server/ups_server/pexeso_server/test.h
+1542462973 /home/michal/Desktop/workspace/Server/ups_server/pexeso_server/test.h
 	<stdio.h>
 	<stdlib.h>
 	"client.h"
@@ -196,31 +200,35 @@
 	"utils.h"
 	"lobby.h"
 	"message_proccessing.h"
+	"communication_manager.h"
 
-1540808226 /home/michal/Desktop/workspace/Server/ups_server/pexeso_server/utils.h
+1542648959 /home/michal/Desktop/workspace/Server/ups_server/pexeso_server/utils.h
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
 	<time.h>
 
-1540919989 source:/home/michal/Desktop/workspace/Server/ups_server/pexeso_server/session.c
+1542640872 source:/home/michal/Desktop/workspace/Server/ups_server/pexeso_server/session.c
 	"session.h"
 
-1540920869 source:/home/michal/Desktop/workspace/Server/ups_server/pexeso_server/session_list.c
+1542909471 source:/home/michal/Desktop/workspace/Server/ups_server/pexeso_server/session_list.c
 	"session_list.h"
 
-1542394536 source:/home/michal/Desktop/workspace/Server/ups_server/pexeso_server/test.c
+1542630457 source:/home/michal/Desktop/workspace/Server/ups_server/pexeso_server/test.c
 	"test.h"
 
-1542396317 source:/home/michal/Desktop/workspace/Server/ups_server/pexeso_server/utils.c
+1542649010 source:/home/michal/Desktop/workspace/Server/ups_server/pexeso_server/utils.c
 	"utils.h"
 
-1542215451 /home/michal/Desktop/workspace/Server/ups_server/pexeso_server/message_proccessing.h
+1542649089 /home/michal/Desktop/workspace/Server/ups_server/pexeso_server/message_proccessing.h
 	<stdio.h>
 	<stdlib.h>
 	"client.h"
+	"utils.h"
 	<string.h>
 
-1542223081 source:/home/michal/Desktop/workspace/Server/ups_server/pexeso_server/message_proccessing.c
+1542649633 source:/home/michal/Desktop/workspace/Server/ups_server/pexeso_server/message_proccessing.c
 	"message_proccessing.h"
+
+1542639917 /home/michal/Desktop/workspace/Server/ups_server/pexeso_server/protocol.h
 

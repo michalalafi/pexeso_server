@@ -98,15 +98,13 @@ client* find_client_by_id(int client_id, lobby* actual_lobby){
 }
 
 int get_new_client_unique_id(lobby* actual_lobby){
-    //printf("GET UNIQUE ID CLIENT \n");
-    int unique_id = rand() % 10000;
-    client* existing_client = find_client_by_id(unique_id, actual_lobby);
-    while(existing_client != NULL){
-        //printf("FOUND USER WITH ID: %d  NEW GENERATE\n",unique_id);
-        unique_id = rand();
+    int unique_id = 0;
+    client* existing_client = NULL;
+    do{
+        unique_id = rand() % 10000;
         existing_client = find_client_by_id(unique_id, actual_lobby);
-    }
-    //printf("NEW UNIQUE ID: %d \n",unique_id);
+    }while(existing_client != NULL);
+
     return unique_id;
 }
 

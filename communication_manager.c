@@ -9,20 +9,19 @@
 *
 * returns: void
 */
-void *handle_client(void *arg){
+void handle_client(client_handle_container* container){
 	printf("Spusteni obsluhy clienta\n");
-    client_handle_container* container = (client_handle_container*) arg;
     if(container == NULL)
     {
         printf("Neco se pokazilo u conteineru /n");
-        return (void*) NULL;
+        return;
     }
     printf("Container obsahuje: client_socket = %d | message = '%s'\n",container->client_socket,container->message);
 
     message* client_message = extract_message(container->message);
     if(client_message == NULL){
         printf("NOT VALID MESSAGE \n");
-        return (void*) NULL;
+        return;
     }
 
     //printf("Struct message: \n message->client_id = %d \n message->action = %d \n message->params = %s \n", client_message->client_id,client_message->action,client_message->params);
@@ -30,7 +29,7 @@ void *handle_client(void *arg){
     client* actual_client  = find_client_by_id(client_message->client_id, container->lobby);
     if(actual_client == NULL){
         printf("Client nenalezen \n");
-        return (void*) NULL;
+        return;
     }
     else{
         printf("Client nalezen \n");
@@ -60,7 +59,7 @@ void *handle_client(void *arg){
 			printf("Client: %s \n",buff);
 		}
 	} */
-	return (void*) NULL;
+	return;
 }
 void execute_client_action(client* actual_client, int action, char* params, client_handle_container* container){
     printf("EXECEUT ACTION: %d \n",action);
@@ -80,7 +79,7 @@ void new_game_request(client* actual_client, session_list* actual_session_list){
     if(actual_session == NULL){
         printf("Vytvarime novou session \n");
         // Vytvorime novou sessionu
-        actual_session = create_session(actual_client,NULL,NULL,0);
+        actual_session = create_session(actual_client,NULL,NULL,get_new_session_unique_id(actual_session_list));
         // Pridame ji do listu
         add_session_to_session_list(actual_session, actual_session_list);
     }
@@ -89,7 +88,7 @@ void new_game_request(client* actual_client, session_list* actual_session_list){
         actual_session->second_client = actual_client;
         char** sounds = get_sounds_for_pexeso("../../sounds",8);
         actual_session->game = create_game(sounds,8);
-        printf("Pridelana sessiona, hra \n");
+        printf("Pridelana sessiona: %d, hra \n",actual_session->id);
     }
     //TODO pridat do session listu
     //TODO hru pridat az kdyz se pripoji druhy

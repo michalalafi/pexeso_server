@@ -12,7 +12,7 @@
 #include "file_processor.h"
 #include <unistd.h>
 
-void *handle_client(void *arg);
+void handle_client(client_handle_container* container);
 
 void handle_client_connect(int client_socket, lobby* actual_lobby);
 

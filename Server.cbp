@@ -36,6 +36,10 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="communication_manager.h" />
+		<Unit filename="disconnected_clients.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="disconnected_clients.h" />
 		<Unit filename="file_processor.c">
 			<Option compilerVar="CC" />
 		</Unit>

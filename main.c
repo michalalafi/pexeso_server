@@ -7,10 +7,9 @@
 #include <stdlib.h>
 // kvuli iotctl
 #include <sys/ioctl.h>
-#include <pthread.h>
 #include <memory.h>
 #include <sys/select.h>
-
+#include "session.h"
 #include "session_list.h"
 #include "communication_manager.h"
 #include "lobby.h"
@@ -32,7 +31,7 @@ int main(int argc, char *argv[]) {
     int server_socket;
 	int client_socket, fd;
 	int return_value;
-	char cbuf;
+//	char cbuf;
 	int len_addr;
 	int a2read;
 	struct sockaddr_in my_addr, peer_addr;
@@ -70,8 +69,6 @@ int main(int argc, char *argv[]) {
 	FD_ZERO( &client_socks );
 	FD_SET( server_socket, &client_socks );
 
-	pthread_t thread_id;;
-
 	for (;;){
 
 		tests = client_socks;
@@ -103,7 +100,7 @@ int main(int argc, char *argv[]) {
                         recv(fd, &message, 1024, 0);
                         printf("Prijato %s", message);
                         client_handle_container* h_container = create_client_handle_container(actual_lobby,actual_session_list,fd,message);
-                        pthread_create(&thread_id, NULL,(void *)&handle_client, (void *)h_container);
+                        handle_client(h_container);
 					}
 					// na socketu se stalo neco spatneho
 					else {
