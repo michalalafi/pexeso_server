@@ -85,6 +85,20 @@ int is_session_list_empty(session_list* actual_session_list){
     }
     return 0;
 }
+int is_client_in_session_list(client* actual_client, session_list* actual_session_list){
+    if(is_session_list_empty(actual_session_list)){
+        return 0;
+    }
+    session* pom = actual_session_list->first;
+    while(pom != NULL){
+        if(is_client_in_session(actual_client, pom)){
+            return 1;
+        }
+
+        pom = pom->next;
+    }
+    return 0;
+}
 session* get_open_session(session_list* actual_session_list){
     printf("Ziskavame sessionu \n");
     if(is_session_list_empty(actual_session_list)){

@@ -96,6 +96,19 @@ client* find_client_by_id(int client_id, lobby* actual_lobby){
     //printf("NO CLIENT FOUND WITH ID: %d \n",client_id);
     return NULL;
 }
+int is_client_in_lobby_by_socket(int socket,lobby* actual_lobby){
+    if(is_lobby_empty(actual_lobby)){
+        return 0;
+    }
+    client* pom = actual_lobby->first;
+    while(pom != NULL){
+        if(pom->socket == socket){
+            return 1;
+        }
+        pom = pom->next;
+    }
+    return 0;
+}
 
 int get_new_client_unique_id(lobby* actual_lobby){
     int unique_id = 0;
@@ -109,9 +122,10 @@ int get_new_client_unique_id(lobby* actual_lobby){
 }
 
 void print_clients(lobby* actual_lobby){
+    printf("    CLIENTS IN LOBBY\n");
 	client* pom = actual_lobby->first;
 	while(pom != NULL){
-		printf("Client: %s ID:%d \n", pom->name, pom->id);
+		printf("        Client: %s ID:%d socket:%d \n", pom->name, pom->id, pom->socket);
 		pom = pom->next;
 	}
 }

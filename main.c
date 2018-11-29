@@ -70,7 +70,6 @@ int main(int argc, char *argv[]) {
 	FD_SET( server_socket, &client_socks );
 
 	for (;;){
-
 		tests = client_socks;
 		// sada deskriptoru je po kazdem volani select prepsana sadou deskriptoru kde se neco delo
 		return_value = select( FD_SETSIZE, &tests, ( fd_set *)0, ( fd_set *)0, ( struct timeval *)0 );
@@ -88,7 +87,7 @@ int main(int argc, char *argv[]) {
 					client_socket = accept(server_socket, (struct sockaddr *) &peer_addr, &len_addr);
 					FD_SET( client_socket, &client_socks );
 					printf("Pripojen novy klient a pridan do sady socketu\n");
-					handle_client_connect(client_socket, actual_lobby);
+					sleep(1);
 				}
 				// je to klientsky socket ? prijmem data
 				else {

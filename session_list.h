@@ -27,4 +27,6 @@ session* get_session_by_id(int session_id, session_list* actual_session_list);
 
 int get_new_session_unique_id(session_list* actual_session_list);
 
+int is_client_in_session_list(client* actual_client, session_list* actual_session_list);
+
 #endif

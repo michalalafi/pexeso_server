@@ -10,55 +10,67 @@
 * returns: void
 */
 void handle_client(client_handle_container* container){
-	printf("Spusteni obsluhy clienta\n");
+    printf("------CLIENT HANDLE STARTED------\n");
+    clock_t t = clock();
+
     if(container == NULL)
     {
-        printf("Neco se pokazilo u conteineru /n");
+        printf("    CLIENT HANDLE ERROR - No container passed!/n");
         return;
     }
-    printf("Container obsahuje: client_socket = %d | message = '%s'\n",container->client_socket,container->message);
-
+    printf("    Container obsahuje: client_socket = %d | message = '%s'\n",container->client_socket,container->message);
+    //TODO je client v lobby?
+    //TODO zprava neprejde pres parsovani bez id
+    //Zpracujeme zpravu od clienta
     message* client_message = extract_message(container->message);
+    // Neposlal message podle formatu
     if(client_message == NULL){
-        printf("NOT VALID MESSAGE \n");
-        return;
+        // Je message zadost o pripojeni do lobby?
+        if(is_raw_message_login_to_lobby_request(container->message)){
+            // Je client uz v lobby?
+            if(is_client_in_lobby_by_socket(container->client_socket, container->lobby)){
+                // Posleme zpravu ze uz je v lobby
+                printf("CLIENT ALREADY IN LOBBY\n");
+                send_client_message(container->client_socket,ALREADY_LOGGED_IN,"");
+            }
+            else{
+                // Pridame do lobby
+                handle_client_connect(container->client_socket, container->lobby);
+                printf("    Client pridan do lobby\n");
+                //send_client_message(container->client_socket,LOGGED_IN_LOBBY,"");
+            }
+        }
+        else{
+            printf("    NOT VALID MESSAGE \n");
+            send_client_message(container->client_socket, NOT_VALID_MESSAGE,"");
+        }
     }
-
-    //printf("Struct message: \n message->client_id = %d \n message->action = %d \n message->params = %s \n", client_message->client_id,client_message->action,client_message->params);
-
-    client* actual_client  = find_client_by_id(client_message->client_id, container->lobby);
-    if(actual_client == NULL){
-        printf("Client nenalezen \n");
-        return;
-    }
+    // Zprava je ve spravnem formatu, tudiz zpracujeme pozadavek
     else{
-        printf("Client nalezen \n");
+        //printf("Struct message: \n message->client_id = %d \n message->action = %d \n message->params = %s \n", client_message->client_id,client_message->action,client_message->params);
+        //Zkusime najit clienta podle id ve zprave
+        client* actual_client  = find_client_by_id(client_message->client_id, container->lobby);
+        if(actual_client == NULL){
+            printf("    Client nenalezen \n");
+            // Je clientovi odeslana zprava ze neni prihlasen
+            send_client_message(container->client_socket, NOT_LOGGED_IN_LOBBY,"");
+            return;
+        }
+
+        printf("    Client nalezen \n");
+        printf("    Aktualni zpracovavany client: \n");
+        printf("        client->id = %d \n",actual_client->id);
+        printf("        client->name = %s \n",actual_client->name);
+        printf("        client->socket = %d\n",actual_client->socket);
+
+        execute_client_action(actual_client,client_message->action,client_message->params,container);
     }
 
-    printf("Aktualni zpracovavany client: \n");
-    printf("    client->id = %d \n  client->name = %s \n    client->socket = %d\n",actual_client->id, actual_client->name,actual_client->socket);
+    t = clock() - t;
 
-    execute_client_action(actual_client,client_message->action,client_message->params,container);
-
-
-	/*int client_sock =
-	char buff[1024];
-	int nbytes;
-
-	//pretypujem parametr z netypoveho ukazate na ukazatel na int
-	client_sock = *(int *) arg;
-
-	while(1){
-		if ((recv(client_sock, &buff, sizeof(buff), 0))< 0) {
-			perror("Error cteni zpravy od clienta!");
-			close(client_sock);
-			break;
-		}
-		else
-		{
-			printf("Client: %s \n",buff);
-		}
-	} */
+    double time_taken = ((double)t)/CLOCKS_PER_SEC;
+    print_clients(container->lobby);
+    printf("------CLIENT HANDLE ENDED WITH TIME: %fs------\n", time_taken);
 	return;
 }
 void execute_client_action(client* actual_client, int action, char* params, client_handle_container* container){
@@ -74,7 +86,13 @@ void execute_client_action(client* actual_client, int action, char* params, clie
 
 }
 void new_game_request(client* actual_client, session_list* actual_session_list){
-    printf("New game request \n");
+    // Pokud je uz v sessione, tak mu napiseme zpravu
+    if(is_client_in_session_list(actual_client, actual_session_list)){
+        send_client_message(actual_client->socket, ALREADY_IN_SESSION,"");
+        return;
+    }
+    printf("New game//session request \n");
+
     session* actual_session = get_open_session(actual_session_list);
     if(actual_session == NULL){
         printf("Vytvarime novou session \n");
@@ -92,11 +110,8 @@ void new_game_request(client* actual_client, session_list* actual_session_list){
     }
     //TODO pridat do session listu
     //TODO hru pridat az kdyz se pripoji druhy
-    printf("Odpoved \n");
-    char buff[1024];
-    sprintf(buff,"%s%d","Pridelena sessiona:",actual_session->id);
-    write(actual_client->socket,buff,sizeof(buff));
-
+    //TODO poslat id sessiony
+    send_client_message(actual_client->socket,SESSION_RESPONSE,"");
 }
 
 void pexeso_reveale_request(client* actual_client, char* params, session_list* actual_session_list){
@@ -127,12 +142,12 @@ void pexeso_reveale_request(client* actual_client, char* params, session_list* a
                 if(scored(actual_session->game)){
                     char buff[1024];
                     sprintf(buff,"%s%d","Hrac skoroval:",actual_client->id);
-                    send_message_both_clients_in_session(buff,actual_session);
+                    send_message_both_clients_in_session(PEXESO_REVEALED_REQUEST,buff,actual_session);
                 }
                 else{
                     char buff[1024];
                     sprintf(buff,"%s%d","Hrac neskoroval:",actual_client->id);
-                    send_message_both_clients_in_session(buff,actual_session);
+                    send_message_both_clients_in_session(PEXESO_REVEALED_REQUEST,buff,actual_session);
                 }
 
                 if(is_game_over(actual_session->game)){
@@ -158,21 +173,54 @@ void pexeso_reveale_request(client* actual_client, char* params, session_list* a
         printf("Hrac neni na rade!\n");
     }
 }
-void send_message_both_clients_in_session(char* buff,session* actual_session){
-    printf("Posilani zpravy obema clientum v session: %s \n",buff);
-    write(actual_session->first_client->socket,buff,sizeof(buff));
-    write(actual_session->second_client->socket,buff,sizeof(buff));
+void send_message_both_clients_in_session(int action, char* params,session* actual_session){
+    printf("Posilani zpravy obema clientum v session \n");
+    send_client_message(actual_session->first_client->socket, action, params);
+    send_client_message(actual_session->second_client->socket, action, params);
 }
 void handle_client_connect(int client_socket, lobby* actual_lobby){
+    printf("    HANDLE CONNECT\n");
     client* new_client = create_client(client_socket, get_new_client_unique_id(actual_lobby));
     if(new_client == NULL){
         return;
     }
     add_client_to_lobby(new_client,actual_lobby);
 
-    print_clients(actual_lobby);
-
-    char buff[1024];
-    sprintf(buff,"%s%d","ID:",new_client->id);
-    write(new_client->socket,buff,sizeof(buff));
+    send_client_message(client_socket, SENDING_CLIENTS_NAME, new_client->name);
 }
+
+
+/*
+* Function: send_client_message
+* ------------------------
+* Posle clientovi zpravu s akci a parametrama
+*
+* client_socket: clientovo socket
+* action: cislo akce
+* params: parametry
+*
+* returns: void
+*/
+void send_client_message(int client_socket, int action, char* params){
+    const char message_terminator = '\n';
+    char* buff = create_raw_message_for_client(action,params);
+    printf("    Odeslana zprava: %s \n",buff);
+    send(client_socket, buff, (size_t) strlen(buff),0);
+    send(client_socket, &message_terminator, 1,0);
+}
+
+int is_raw_message_login_to_lobby_request(char* raw_message){
+    long action = convert_string_to_long(raw_message);
+    if(action == -1){
+        return 0;
+    }
+
+    if(action == LOGIN_TO_LOBBY_REQUEST){
+        return 1;
+    }
+
+    return 0;
+}
+
+
+

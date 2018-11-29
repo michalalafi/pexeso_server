@@ -4,6 +4,7 @@ message* create_message(){
     message* new_message = (message*) malloc(sizeof(message));
     if(new_message == NULL){
         printf("MESSAGE ERROR - Creating message failed! \n");
+        return NULL;
     }
     new_message->action = -50;
     new_message->client_id = -50;
@@ -12,7 +13,7 @@ message* create_message(){
 }
 
 message* extract_message(char* raw_message){
-    printf("%s -> ",raw_message);
+    //printf("%s -> ",raw_message);
     message* extracted_message = create_message();
 
     int delimiter_count = count_of_delimiter(raw_message, PARTS_DELIMITER_C);
@@ -50,7 +51,7 @@ message* extract_message(char* raw_message){
 char* create_raw_message_for_client(int action, char* params){
     char* raw_message = (char*) malloc(1024 * sizeof(char));
 
-    sprintf(raw_message,"%d|%s",action,params);
+    sprintf(raw_message,"%d%c%s%c",action,PARTS_DELIMITER_C,params,'\0');
 
     printf("CREATED MESSAGE %s \n",raw_message);
 
@@ -82,12 +83,12 @@ char** split_parts(char* raw_message){
         //Nakopirovani vysledku
         strcpy(parts[i], split);
         // Dalsi rozdeleni
-        split = strtok(NULL,"|");
+        split = strtok(NULL,PARTS_DELIMITER_S);
         i++;
     }
-    for(i = 0; i < MAX_PARTS; i++){
+   /* for(i = 0; i < MAX_PARTS; i++){
         printf("part[%d] = %s \n",i,parts[i]);
-    }
+    } */
 
     return parts;
 
