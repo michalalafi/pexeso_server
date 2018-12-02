@@ -122,7 +122,7 @@ int get_new_client_unique_id(lobby* actual_lobby){
 }
 
 void print_clients(lobby* actual_lobby){
-    printf("    CLIENTS IN LOBBY\n");
+    printf("    LOBBY\n");
 	client* pom = actual_lobby->first;
 	while(pom != NULL){
 		printf("        Client: %s ID:%d socket:%d \n", pom->name, pom->id, pom->socket);

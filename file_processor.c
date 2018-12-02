@@ -44,7 +44,7 @@ char** get_sounds_from_folder(char* folder_path, int* sounds_length){
 		while(ep = readdir(dir))
 		{
             // Je koncovka mp3?
-			if(strcmp(get_filename_ext(ep->d_name),"mp3") == 0){
+			if(strcmp(get_filename_ext(ep->d_name),"wav") == 0){
                 // + 1 for \0 character //
 				sounds[i] = (char*)malloc((strlen(ep->d_name) + 1) * sizeof(char));
 				strcpy(sounds[i],ep->d_name);

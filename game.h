@@ -34,7 +34,7 @@ typedef struct GAME{
 
 game* create_game(char** sounds, int sound_count);
 
-int reveal(int puzzle_revealed, game* actual_game);
+char* reveal(int pexeso_revealed, game* actual_game);
 
 int isValid(int puzzle_revealed, game* actual_game);
 

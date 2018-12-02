@@ -53,7 +53,7 @@ char* create_raw_message_for_client(int action, char* params){
 
     sprintf(raw_message,"%d%c%s%c",action,PARTS_DELIMITER_C,params,'\0');
 
-    printf("CREATED MESSAGE %s \n",raw_message);
+    //printf("CREATED MESSAGE %s \n",raw_message);
 
     return raw_message;
 }

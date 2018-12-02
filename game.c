@@ -40,10 +40,10 @@ game* create_game(char** sounds, int sound_count){
 *
 * returns: MESSAGE
 */
-int reveal(int pexeso_revealed, game* actual_game){
+char* reveal(int pexeso_revealed, game* actual_game){
     if(actual_game == NULL){
         printf("REVEAL ERROR - Reveal failed, no game passed! \n");
-        return -1;
+        return NULL;
     }
 	// Zahral prvni tah
 	if(actual_game->first_reveal < 0)
@@ -60,7 +60,7 @@ int reveal(int pexeso_revealed, game* actual_game){
 		printf("		 : %s\n",actual_game->pexesos[pexeso_revealed]);
 		actual_game->second_reveal = pexeso_revealed;
 	}
-	return PLAYER_REVEALED_PEXESO;
+    return actual_game->pexesos[pexeso_revealed];
 }
 
 /* Function: isValid

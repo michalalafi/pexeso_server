@@ -19,6 +19,8 @@ void handle_client(client_handle_container* container);
 
 void handle_client_connect(int client_socket, lobby* actual_lobby);
 
+void new_session_request(client* actual_client, session_list* actual_session_list);
+
 void execute_client_action(client* actual_client, int action, char* params, client_handle_container* container);
 
 void new_game_request(client* actual_client, session_list* actual_session_list);

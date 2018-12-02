@@ -97,7 +97,7 @@ int main(int argc, char *argv[]) {
 					if (a2read > 0){
                         char message[1024];
                         recv(fd, &message, 1024, 0);
-                        printf("Prijato %s", message);
+                        printf("Prijato %s \n", message);
                         client_handle_container* h_container = create_client_handle_container(actual_lobby,actual_session_list,fd,message);
                         handle_client(h_container);
 					}

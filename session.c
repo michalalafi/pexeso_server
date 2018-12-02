@@ -32,8 +32,22 @@ int is_session_open(session* actual_session){
     return 0;
 }
 int is_client_in_session(client* actual_client, session* actual_session){
-    if(actual_session->first_client->id == actual_client->id || actual_session->second_client->id == actual_client->id){
-        return 1;
+    printf("        IS CLIENT IN SESSION\n");
+    if(actual_session == NULL || actual_client == NULL){
+        printf("        NENI PROTOZE SESSION NEBO CLIENT JE NULL\n");
+        return 0;
+    }
+    if(actual_session->first_client != NULL){
+        if(actual_session->first_client->id == actual_client->id){
+            printf("       JE PROTOZE JE PRVNI CLIENT\n");
+            return 1;
+        }
+    }
+    if(actual_session->second_client != NULL){
+        if(actual_session->second_client->id == actual_client->id){
+            printf("       JE PROTOZE JE DRUHY CLIENT\n");
+            return 1;
+        }
     }
     return 0;
 }

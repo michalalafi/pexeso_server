@@ -80,15 +80,25 @@ void remove_session_from_session_list(session* session_to_remove, session_list* 
 	session_to_remove->previous = NULL;
 }
 int is_session_list_empty(session_list* actual_session_list){
+    printf("        -IS SESSION LIST EMPTY-\n");
+    if(actual_session_list == NULL){
+        printf("            SESSION LIST JE NULL!\n");
+    }
+    printf("            SESSION LIST NENI NULL!\n");
     if(actual_session_list->first == NULL){
+        printf("        SESSION LIST IS EMPTY\n");
         return 1;
     }
+    printf("        SESSION LIST IS NOT EMPTY\n");
     return 0;
 }
 int is_client_in_session_list(client* actual_client, session_list* actual_session_list){
+    printf("    IS CLIENT IN SESSION LIST \n");
     if(is_session_list_empty(actual_session_list)){
+        printf("          VRACIME 0\n");
         return 0;
     }
+    printf("        POKRACUJEME A HLEDAME JESTLI JE CLIENT V SESSIONE\n");
     session* pom = actual_session_list->first;
     while(pom != NULL){
         if(is_client_in_session(actual_client, pom)){
@@ -102,7 +112,7 @@ int is_client_in_session_list(client* actual_client, session_list* actual_sessio
 session* get_open_session(session_list* actual_session_list){
     printf("Ziskavame sessionu \n");
     if(is_session_list_empty(actual_session_list)){
-        printf("Je prazdna \n");
+        printf("Session list je prazdny \n");
         return NULL;
     }
     printf("Neni prazdna \n");
@@ -116,8 +126,9 @@ session* get_open_session(session_list* actual_session_list){
     return NULL;
 }
 session* get_session_by_client(client* actual_client, session_list* actual_session_list){
+    printf("    GET SESSION BY CLIENT\n");
     if(is_session_list_empty(actual_session_list)){
-        printf("Je prazdna \n");
+        printf("Get session - session list je prazdny \n");
         return NULL;
     }
     session* pom = actual_session_list->first;
@@ -158,4 +169,14 @@ int get_new_session_unique_id(session_list* actual_session_list){
     }while(existing_session != NULL);
 
     return unique_id;
+}
+
+void print_session_list(session_list* actual_session_list){
+    printf("    SESSION LIST\n");
+    session* pom = actual_session_list->first;
+    while(pom != NULL){
+        printf("        Session id: %d first_client: %s second_client: %s \n", pom->id, pom->first_client==NULL?"NULL":pom->first_client->name,pom->second_client==NULL?"NULL":pom->second_client->name);
+
+        pom = pom->next;
+    }
 }
