@@ -14,12 +14,20 @@
 #include "message_proccessing.h"
 #include "protocol.h"
 #include "file_processor.h"
+#include "disconnected_clients.h"
+#include "log.h"
+
+#define DISCONECTED_TIME_VAL 10
 
 void handle_client(client_handle_container* container);
 
 void handle_client_connect(int client_socket, lobby* actual_lobby);
 
+void handle_client_disconnect(int client_socket, lobby* actual_lobby, disconnected_clients_list* actual_disconnected_clients_list);
+
 void new_session_request(client* actual_client, session_list* actual_session_list);
+
+void handle_disconnected_clients_list(disconnected_clients_list* actual_disconnected_clients_list);
 
 void execute_client_action(client* actual_client, int action, char* params, client_handle_container* container);
 

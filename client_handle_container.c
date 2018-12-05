@@ -12,7 +12,7 @@
 *
 * returns: novy kontejner s vlozenimi parametry
 */
-client_handle_container* create_client_handle_container(lobby* actual_lobby, session_list* actual_session_list, int actual_client_socket, char* client_message){
+client_handle_container* create_client_handle_container(lobby* actual_lobby, session_list* actual_session_list, int actual_client_socket, char* client_message, disconnected_clients_list* actual_disconnected_clients_list){
     if(actual_lobby == NULL || actual_session_list == NULL || actual_session_list == NULL ){
         printf("CLIENT HANDLE CONTAINER ERROR - Creating client handle container failed, arguments not valid! \n");
 		return NULL;
@@ -25,6 +25,7 @@ client_handle_container* create_client_handle_container(lobby* actual_lobby, ses
 	new_client_handle_container->lobby = actual_lobby;
 	new_client_handle_container->session_list = actual_session_list;
 	new_client_handle_container->client_socket = actual_client_socket;
+	new_client_handle_container->disconnected_clients_list = actual_disconnected_clients_list;
 
 
     new_client_handle_container->message = (char*) malloc(strlen(client_message) * sizeof(client_message));

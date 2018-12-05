@@ -96,6 +96,25 @@ client* find_client_by_id(int client_id, lobby* actual_lobby){
     //printf("NO CLIENT FOUND WITH ID: %d \n",client_id);
     return NULL;
 }
+
+client* find_client_by_socket(int client_socket, lobby* actual_lobby){
+    //printf("FINDING CLIENT BY ID: %d \n",client_id);
+    if(is_lobby_empty(actual_lobby)){
+        //printf("NO CLIENT FOUND DUE EMPTY LOBBY \n");
+        return NULL;
+    }
+
+    client* pom = actual_lobby->first;
+    while(pom != NULL){
+        if(pom->socket == client_socket){
+            printf("CLIENT FOUND: ID = %d NAME = %s \n",pom->id,pom->name);
+            return pom;
+        }
+        pom = pom->next;
+    }
+    //printf("NO CLIENT FOUND WITH ID: %d \n",client_id);
+    return NULL;
+}
 int is_client_in_lobby_by_socket(int socket,lobby* actual_lobby){
     if(is_lobby_empty(actual_lobby)){
         return 0;

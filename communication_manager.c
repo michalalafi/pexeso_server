@@ -75,7 +75,7 @@ void handle_client(client_handle_container* container){
 	return;
 }
 void handle_client_connect(int client_socket, lobby* actual_lobby){
-    printf("    HANDLE CONNECT\n");
+    log_info("HANDLE CONNECT\n");
     client* new_client = create_client(client_socket, get_new_client_unique_id(actual_lobby));
     if(new_client == NULL){
         return;
@@ -87,6 +87,40 @@ void handle_client_connect(int client_socket, lobby* actual_lobby){
     char* id_string = (char*) malloc(sizeof(char) * 10);
     sprintf(id_string,"%d",new_client->id);
     send_client_message(client_socket, CLIENTS_ID_RESPONSE, id_string);
+}
+
+void handle_client_disconnect(int client_socket, lobby* actual_lobby, disconnected_clients_list* actual_disconnected_clients_list){
+    //Najdeme clienta v lobby
+    client* actual_client = find_client_by_socket(client_socket, actual_lobby);
+    if(actual_client == NULL){
+        //TODO
+        return;
+    }
+    //Odstranimeho z lobby
+    remove_client_from_lobby(actual_client, actual_lobby);
+    //Vlozime do disconnected_list
+    disconnected_client* disconnected_client = create_disconnected_client(actual_client);
+    if(disconnected_client == NULL){
+        //TODO
+        return;
+    }
+    add_disconnected_client_to_disconnected_clients_list(disconnected_client, actual_disconnected_clients_list);
+
+    //Dame vedet uzivateli pokud je sessiona?
+
+}
+
+void handle_disconnected_clients_list(disconnected_clients_list* actual_disconnected_clients_list){
+    disconnected_client* pom = actual_disconnected_clients_list->first;
+    print_disconnected_clients(actual_disconnected_clients_list);
+    while(pom != NULL){
+        double diff_t = difftime(pom->time_of_disconnected, clock());
+        log_info("Diff time is %f", diff_t);
+        //if(pom->time_of_disconnected )
+
+        pom = pom->next;
+    }
+    printf("K h disco clients list \n");
 }
 void execute_client_action(client* actual_client, int action, char* params, client_handle_container* container){
     printf("EXECUTE ACTION: %d \n",action);
