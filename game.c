@@ -173,7 +173,7 @@ int is_end_of_turn(game* actual_game){
 */
 int nextTurn(game* actual_game){
     if(actual_game == NULL){
-        printf("NEXT TURN ERROR - Next turn failed, no game passed! \n");
+        log_error("NEXT TURN - Next turn failed, no game passed!");
         return -1;
     }
 	// Zmena hrace
@@ -182,7 +182,7 @@ int nextTurn(game* actual_game){
 	actual_game->first_reveal = -1;
 	actual_game->second_reveal = -1;
 
-	printf("SCORE %d:%d\n",actual_game->p1_score,actual_game->p2_score);
+	printf("SCORE P1:%d - P2:%d\n",actual_game->p1_score,actual_game->p2_score);
 	printf("Zbyva: %d\n",actual_game->remaining_pexeso_count);
 
 	return NEXT_TURN;

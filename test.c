@@ -107,7 +107,8 @@ void test_init_connection(){
 
 }
 void test(){
-    lobby* lobby = create_lobby();
+    //char** sounds = get_sounds_for_pexeso("../../../sounds",8);
+   /* lobby* lobby = create_lobby();
 
     client** clients = test_client_creation(lobby);
     if(clients == NULL){
@@ -117,7 +118,7 @@ void test(){
     else
         printf("Clienti vytvoreni!\n");
 
-    print_clients(lobby);
+    print_clients(lobby); */
 
     //lobby = test_lobby_adding(clients, lobby);
   /*  if(lobby == NULL){

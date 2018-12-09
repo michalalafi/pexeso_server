@@ -16,6 +16,7 @@
 #include "file_processor.h"
 #include "disconnected_clients.h"
 #include "log.h"
+#include "game.h"
 
 #define DISCONECTED_TIME_VAL 10
 
@@ -27,13 +28,17 @@ void handle_client_disconnect(int client_socket, lobby* actual_lobby, disconnect
 
 void new_session_request(client* actual_client, session_list* actual_session_list);
 
-void handle_disconnected_clients_list(disconnected_clients_list* actual_disconnected_clients_list);
+void handle_disconnected_clients_list(session_list* actual_session_list, disconnected_clients_list* actual_disconnected_clients_list);
+
+void throw_away_connection_with_client(disconnected_client* actual_disconnected_client, session_list* actual_session_list, disconnected_clients_list* actual_disconnected_clients_list);
 
 void execute_client_action(client* actual_client, int action, char* params, client_handle_container* container);
 
 void new_game_request(client* actual_client, session_list* actual_session_list);
 
 void pexeso_reveale_request(client* actual_client, char* params, session_list* actual_session_list);
+
+void send_who_is_on_turn_both_clients_in_session(session* actual_session);
 
 void send_message_both_clients_in_session(int action, char* params,session* actual_session);
 

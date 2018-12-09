@@ -51,7 +51,28 @@ int is_client_in_session(client* actual_client, session* actual_session){
     }
     return 0;
 }
+void remove_client_from_session(client* actual_client, session* actual_session){
+    if(actual_session->first_client != NULL){
+        if(actual_session->first_client->id == actual_client->id){
+            actual_session->first_client = NULL;
+        }
+    }
+    else if(actual_session->second_client != NULL){
+        if(actual_session->second_client->id == actual_client->id){
+            actual_session->second_client = NULL;
+        }
+    }
+}
 int get_client_player_order(client* actual_client, session* actual_session){
+    log_trace("GET CLIENT PLAYER ORDER");
+    if(actual_client == NULL || actual_session == NULL){
+        log_error("GET CLIENT PLAYER ORDER - Not valid params");
+        return -1;
+    }
+    if(actual_session->first_client == NULL || actual_session->second_client == NULL){
+        log_error("GET CLIENT PLAYER ORDER - Not valid session");
+        return -1;
+    }
     if(actual_client->id == actual_session->first_client->id){
         return 0;
     }
@@ -61,11 +82,21 @@ int get_client_player_order(client* actual_client, session* actual_session){
     return -1;
 }
 int is_client_on_turn(client* actual_client, session* actual_session){
+    log_trace("IS CLIENT ON TURN");
+    if(actual_client == NULL || actual_session == NULL){
+        log_error("IS CLIENT ON TURN - Not valid params");
+        return -1;
+    }
+    if(actual_session->game == NULL){
+        log_error("IS CLIENT ON TURN - No game");
+        return -1;
+    }
     int client_player_order = get_client_player_order(actual_client, actual_session);
     if(client_player_order == -1){
         printf("Chyba pri is client on turn\n");
         return -1;
     }
+    log_trace("Je player order: %d == actual player: %d",client_player_order,actual_session->game->actual_player);
     if(client_player_order == actual_session->game->actual_player){
         return 1;
     }

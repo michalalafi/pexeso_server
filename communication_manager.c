@@ -110,17 +110,40 @@ void handle_client_disconnect(int client_socket, lobby* actual_lobby, disconnect
 
 }
 
-void handle_disconnected_clients_list(disconnected_clients_list* actual_disconnected_clients_list){
+void handle_disconnected_clients_list(session_list* actual_session_list, disconnected_clients_list* actual_disconnected_clients_list){
+    log_trace("Checking disconnected clients list");
     disconnected_client* pom = actual_disconnected_clients_list->first;
     print_disconnected_clients(actual_disconnected_clients_list);
+    time_t now_t = time(0);
     while(pom != NULL){
-        double diff_t = difftime(pom->time_of_disconnected, clock());
-        log_info("Diff time is %f", diff_t);
-        //if(pom->time_of_disconnected )
-
+        double diff_t = difftime(now_t, pom->time_of_disconnected);
+        log_trace("Diff time is %f", diff_t);
+        disconnected_client* pom_to_throw_away = pom;
         pom = pom->next;
+        if(diff_t > LOGGED_OUT_TIMEOUT){
+            throw_away_connection_with_client(pom_to_throw_away,actual_session_list, actual_disconnected_clients_list);
+            //Remove client from disconnected
+            //Remove from session
+        }
+        //if(pom->time_of_disconnected )
     }
-    printf("K h disco clients list \n");
+}
+void throw_away_connection_with_client(disconnected_client* actual_disconnected_client, session_list* actual_session_list, disconnected_clients_list* actual_disconnected_clients_list){
+        log_trace("Client: %s will be thrown away",actual_disconnected_client->client->name);
+        //Odebereme ho z listu
+        remove_disconnected_client_from_disconnected_clients_list(actual_disconnected_client, actual_disconnected_clients_list);
+        //TODO odebrat ze sessiony a napsat druhemu hraci
+        session* actual_session = get_session_by_client(actual_disconnected_client->client, actual_session_list);
+        if(actual_session != NULL){
+
+            //TODO odebereme ho ze sessiony a dame vedet druhemu hraci
+            //TODO pokud je sessiona prazdna po odebrani zrusime sessionu
+
+        }
+        log_trace("Client was thrown away");
+
+
+
 }
 void execute_client_action(client* actual_client, int action, char* params, client_handle_container* container){
     printf("EXECUTE ACTION: %d \n",action);
@@ -162,12 +185,11 @@ void new_session_request(client* actual_client, session_list* actual_session_lis
         //Posleme zpravu
     }
     else{
-        printf("Nalezena otevrena sessiona \n");
+        log_trace("Nalezena otevrena sessiona \n");
         //TODO second?
         //TODO zjistit jaky hrac chybi
         //TODO poslat obema hracum
         actual_session->second_client = actual_client;
-        char** sounds = get_sounds_for_pexeso("../../sounds",8);
         //Hru vytvorime az pri requestu?
         //actual_session->game = create_game(sounds,8);
         printf("    Pridelana sessiona: %d, hra \n",actual_session->id);
@@ -190,7 +212,7 @@ void new_session_request(client* actual_client, session_list* actual_session_lis
 * returns: noveho clienta
 */
 void new_game_request(client* actual_client, session_list* actual_session_list){
-    printf(" NEW GAME REQUEST\n");
+    log_trace(" NEW GAME REQUEST\n");
     session* actual_session = get_session_by_client(actual_client, actual_session_list);
     if(actual_session == NULL){
         //Posleme clientovi ze jeste neni v sessione
@@ -204,17 +226,23 @@ void new_game_request(client* actual_client, session_list* actual_session_list){
     else{
         //TODO pokud maji uz zalozenou?
         printf("    Zakladame hru\n");
-        char** sounds = get_sounds_for_pexeso("../../sounds",8);
+        char** sounds = get_sounds_for_pexeso("../../../sounds",8);
         actual_session->game = create_game(sounds,8);
+        if(actual_session->game == NULL){
+            log_error("GAME CREATING FAILED");
+            return;
+        }
         //Napiseme ze zacla hra
         send_message_both_clients_in_session(NEW_GAME_BEGIN_RESPONSE,"",actual_session);
+        //Napiseme kdo hraje
+        send_who_is_on_turn_both_clients_in_session(actual_session);
     }
 
 
 }
 
 void pexeso_reveale_request(client* actual_client, char* params, session_list* actual_session_list){
-    printf("Pexeso reveal request \n");
+    log_trace("PEXESO REVEAL REQUEST");
     session* actual_session = get_session_by_client(actual_client, actual_session_list);
     if(actual_session == NULL){
         printf("CLIENT NENI V ZADNE SESSIONE \n");
@@ -223,17 +251,19 @@ void pexeso_reveale_request(client* actual_client, char* params, session_list* a
     //TODO je sessiana validni?
     int is_on_turn = is_client_on_turn(actual_client, actual_session);
     if(is_on_turn == -1){
-        printf("A jejda neco se pokazilo, is on turn vratilo -1\n");
+        log_error("IS ON TURN - Returned -1");
         return;
     }
     if(is_on_turn){
-
         int pexeso_revealed = convert_string_to_long(params);
         if(pexeso_revealed == -1){
+            //TODO POSLAT CHYBU
             printf("Nevalidni pexeso\n");
             return;
         }
+        //Zkontrolujeme pexeso
         int is_pexeso_revealed_valid = isValid(pexeso_revealed, actual_session->game);
+        //Je validni tah
         if(is_pexeso_revealed_valid){
             char* sound = reveal(pexeso_revealed, actual_session->game);
             if(sound == NULL){
@@ -241,21 +271,28 @@ void pexeso_reveale_request(client* actual_client, char* params, session_list* a
             }
             // Posleme obema ze byla revealnuta puzzle
             send_message_both_clients_in_session(PEXESO_REVEAL_RESPONSE,sound,actual_session);
+            send_message_both_clients_in_session(PEXESO_REVEAL_ID_RESPONSE,params, actual_session);
 
             // Je konec hracova kola?
             if(is_end_of_turn(actual_session->game)){
-                //TODO jak poslat score?
-                //TODO mozna poslat neco jako prvnimu 0:1
-                //TODO druhemu 1:0
+                //Pokud skoroval posleme obema skore a posleme obema puzzle ktere byli odhaleny
                 if(scored(actual_session->game)){
-                    char buff[1024];
-                    sprintf(buff,"%s%d","Hrac skoroval:",actual_client->id);
-                    send_message_both_clients_in_session(PEXESO_REVEALED_REQUEST,buff,actual_session);
+                    //Posleme skore
+                    char p1_score[256];
+                    sprintf(p1_score,"%d;%d",actual_session->game->p1_score,actual_session->game->p2_score);
+                    send_client_message(actual_session->first_client->socket,SCORE_RESPONSE,p1_score);
+
+                    char p2_score[256];
+                    sprintf(p2_score,"%d;%d",actual_session->game->p2_score,actual_session->game->p1_score);
+                    send_client_message(actual_session->second_client->socket,SCORE_RESPONSE,p2_score);
+                    //Posleme odhalene pexeso
+                    char revealed_pexeso[256];
+                    sprintf(revealed_pexeso,"%d;%d",actual_session->game->first_reveal,actual_session->game->second_reveal);
+                    send_message_both_clients_in_session(SUCCESFULLY_REVEALED_PEXESO_RESPONSE, revealed_pexeso, actual_session);
+
                 }
                 else{
-                    char buff[1024];
-                    sprintf(buff,"%s%d","Hrac neskoroval:",actual_client->id);
-                    send_message_both_clients_in_session(PEXESO_REVEALED_REQUEST,buff,actual_session);
+                    //TODO poslat vyresetovani
                 }
 
                 if(is_game_over(actual_session->game)){
@@ -264,14 +301,15 @@ void pexeso_reveale_request(client* actual_client, char* params, session_list* a
                 }
                 else{
                     nextTurn(actual_session->game);
+                    send_who_is_on_turn_both_clients_in_session(actual_session);
                 }
             }
             else{
                 printf("Hrac hraje jeste jednou\n");
+                send_client_message(actual_client->socket,PLAY_AGAIN_RESPONSE,"");
             }
-
-
         }
+        //Neni validni tah
         else{
             printf("Nevalidni tah\n");
         }
@@ -281,7 +319,26 @@ void pexeso_reveale_request(client* actual_client, char* params, session_list* a
         printf("Hrac neni na rade!\n");
     }
 }
+void send_who_is_on_turn_both_clients_in_session(session* actual_session){
+    log_trace("SEND WHO IS ON TURN BOTH CLIENTS");
+    char* yes = "1";
+    char* no = "0";
 
+    int p1_on_turn = is_client_on_turn(actual_session->first_client, actual_session);
+    //Je prvni hrac na tahu
+    if(p1_on_turn){
+        log_trace("SEND WHO IS ON TURN BOTH CLIENTS - P1 is on turn");
+        send_client_message(actual_session->first_client->socket,IS_PLAYER_TURN_RESPONSE, yes);
+        send_client_message(actual_session->second_client->socket,IS_PLAYER_TURN_RESPONSE, no);
+    }
+    //Neni prvni hrac na tahu
+    else{
+        log_trace("SEND WHO IS ON TURN BOTH CLIENTS - P2 is on turn");
+        send_client_message(actual_session->first_client->socket,IS_PLAYER_TURN_RESPONSE, no);
+        send_client_message(actual_session->second_client->socket,IS_PLAYER_TURN_RESPONSE, yes);
+    }
+
+}
 void send_message_both_clients_in_session(int action, char* params,session* actual_session){
     printf("Posilani zpravy obema clientum v session \n");
     send_client_message(actual_session->first_client->socket, action, params);

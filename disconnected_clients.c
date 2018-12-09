@@ -92,16 +92,27 @@ void remove_disconnected_client_from_disconnected_clients_list(disconnected_clie
 	disconnected_client_to_remove->next = NULL;
 	disconnected_client_to_remove->previous = NULL;
 }
-
+void free_disconnected_client(disconnected_client* actual_disconnected_client){
+    if(actual_disconnected_client == NULL){
+        return;
+    }
+    //Uvolnime klienta
+    free_client(actual_disconnected_client->client);
+    //Resetujeme parametry
+    actual_disconnected_client->next = NULL;
+    actual_disconnected_client->previous = NULL;
+    //Uvolnime odpojeneho klienta
+    free(actual_disconnected_client);
+}
 void print_disconnected_clients(disconnected_clients_list* actual_disconnected_clients_list){
+    log_info("DISCONNECTED CLIENTS");
     disconnected_client* pom = actual_disconnected_clients_list->first;
     while(pom != NULL){
         struct tm* tm_info = localtime(&pom->time_of_disconnected);
         char buffer[26];
 
         strftime(buffer, 26, "%Y-%m-%d %H:%M:%S", tm_info );
-        printf("        Client: %s ID:%d socket:%d disconnected_time:%s\n", pom->client->name, pom->client->id, pom->client->socket, buffer);
+        log_info("        Client: %s ID:%d socket:%d disconnected_time:%s\n", pom->client->name, pom->client->id, pom->client->socket, buffer);
         pom = pom->next;
     }
-    printf("K disc print \n");
 }

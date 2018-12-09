@@ -17,4 +17,6 @@ typedef struct CLIENT
 
 client* create_client(int client_socket, int unique_id);
 
+void free_client(client* actual_client);
+
 #endif

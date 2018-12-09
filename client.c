@@ -35,6 +35,15 @@ client* create_client(int client_socket, int unique_id){
 
 	return new_client;
 }
+void free_client(client* actual_client){
+    if(actual_client == NULL){
+        return;
+    }
+    free(actual_client->name);
+    actual_client->next = NULL;
+    actual_client->previous = NULL;
+    free(actual_client);
+}
 
 
 
