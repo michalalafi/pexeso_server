@@ -34,7 +34,7 @@ void throw_away_connection_with_client(disconnected_client* actual_disconnected_
 
 void execute_client_action(client* actual_client, int action, char* params, client_handle_container* container);
 
-void new_game_request(client* actual_client, session_list* actual_session_list);
+void new_game_request(client* actual_client, char* params, session_list* actual_session_list);
 
 void pexeso_reveale_request(client* actual_client, char* params, session_list* actual_session_list);
 

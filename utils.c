@@ -44,7 +44,7 @@ int duplicate(char** array, int array_length){
 
 	int i = array_length;
 	for(; i < new_array_length; i++){
-		array[i] = (char *) malloc(strlen(array[i%array_length])* sizeof(char));
+		array[i] = (char *) malloc((strlen(array[i%array_length])+1)* sizeof(char));
 		strcpy(array[i], array[i%array_length]);
 	}
 	return new_array_length;

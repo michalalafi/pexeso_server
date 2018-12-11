@@ -10,17 +10,14 @@
 * returns: void
 */
 void handle_client(client_handle_container* container){
-    printf("------CLIENT HANDLE STARTED------\n");
+    log_trace("------CLIENT HANDLE STARTED");
     clock_t t = clock();
 
     if(container == NULL)
     {
-        printf("    CLIENT HANDLE ERROR - No container passed!/n");
+        log_error("CLIENT HANDLE ERROR - Not valid params!");
         return;
     }
-    //printf("    Container obsahuje: client_socket = %d | message = '%s'\n",container->client_socket,container->message);
-    //TODO je client v lobby?
-    //TODO zprava neprejde pres parsovani bez id
     //Zpracujeme zpravu od clienta
     message* client_message = extract_message(container->message);
     // Neposlal message podle formatu
@@ -36,34 +33,27 @@ void handle_client(client_handle_container* container){
             else{
                 // Pridame do lobby
                 handle_client_connect(container->client_socket, container->lobby);
-                printf("    Client pridan do lobby\n");
-                //send_client_message(container->client_socket,LOGGED_IN_LOBBY,"");
+                log_info("Client pridan do lobby\n");
             }
         }
         else{
-            printf("    NOT VALID MESSAGE \n");
+            log_info("Client send - NOT VALID MESSAGE");
             send_client_message(container->client_socket, NOT_VALID_MESSAGE,"");
         }
     }
     // Zprava je ve spravnem formatu, tudiz zpracujeme pozadavek
     else{
-        //printf("Struct message: \n message->client_id = %d \n message->action = %d \n message->params = %s \n", client_message->client_id,client_message->action,client_message->params);
         //Zkusime najit clienta podle id ve zprave
         client* actual_client  = find_client_by_id(client_message->client_id, container->lobby);
         if(actual_client == NULL){
-            printf("    Client nenalezen \n");
+            log_info("Client nenalezen");
             // Je clientovi odeslana zprava ze neni prihlasen
             send_client_message(container->client_socket, NOT_LOGGED_IN_LOBBY,"");
             return;
         }
-
-      /*  printf("    Client nalezen \n");
-        printf("    Aktualni zpracovavany client: \n");
-        printf("        client->id = %d \n",actual_client->id);
-        printf("        client->name = %s \n",actual_client->name);
-        printf("        client->socket = %d\n",actual_client->socket); */
-
-        execute_client_action(actual_client,client_message->action,client_message->params,container);
+        else{
+            execute_client_action(actual_client,client_message->action,client_message->params,container);
+        }
     }
 
     t = clock() - t;
@@ -71,13 +61,14 @@ void handle_client(client_handle_container* container){
     double time_taken = ((double)t)/CLOCKS_PER_SEC;
     print_session_list(container->session_list);
     print_clients(container->lobby);
-    printf("------CLIENT HANDLE ENDED WITH TIME: %fs------\n", time_taken);
+    log_trace("------CLIENT HANDLE ENDED WITH TIME: %fs\n", time_taken);
 	return;
 }
 void handle_client_connect(int client_socket, lobby* actual_lobby){
-    log_info("HANDLE CONNECT\n");
+    log_trace("HANDLE CONNECT\n");
     client* new_client = create_client(client_socket, get_new_client_unique_id(actual_lobby));
     if(new_client == NULL){
+        log_error("HANDLE CLIENT CONNECT - Create client failed");
         return;
     }
     add_client_to_lobby(new_client,actual_lobby);
@@ -93,7 +84,7 @@ void handle_client_disconnect(int client_socket, lobby* actual_lobby, disconnect
     //Najdeme clienta v lobby
     client* actual_client = find_client_by_socket(client_socket, actual_lobby);
     if(actual_client == NULL){
-        //TODO
+        log_error("HANDLE CLIENT DISCONNECT - Client is not in lobby");
         return;
     }
     //Odstranimeho z lobby
@@ -101,49 +92,54 @@ void handle_client_disconnect(int client_socket, lobby* actual_lobby, disconnect
     //Vlozime do disconnected_list
     disconnected_client* disconnected_client = create_disconnected_client(actual_client);
     if(disconnected_client == NULL){
-        //TODO
+        log_error("HANDLE CLIENT DISCONNECT - Creating disconnected client failed");
         return;
     }
     add_disconnected_client_to_disconnected_clients_list(disconnected_client, actual_disconnected_clients_list);
-
-    //Dame vedet uzivateli pokud je sessiona?
-
+    log_info("Client added to disconnected clients list");
 }
 
 void handle_disconnected_clients_list(session_list* actual_session_list, disconnected_clients_list* actual_disconnected_clients_list){
-    log_trace("Checking disconnected clients list");
+    log_trace("HANDLE DISCONNECTED CLIENTS LIST");
     disconnected_client* pom = actual_disconnected_clients_list->first;
     print_disconnected_clients(actual_disconnected_clients_list);
     time_t now_t = time(0);
     while(pom != NULL){
         double diff_t = difftime(now_t, pom->time_of_disconnected);
-        log_trace("Diff time is %f", diff_t);
         disconnected_client* pom_to_throw_away = pom;
         pom = pom->next;
         if(diff_t > LOGGED_OUT_TIMEOUT){
             throw_away_connection_with_client(pom_to_throw_away,actual_session_list, actual_disconnected_clients_list);
-            //Remove client from disconnected
-            //Remove from session
         }
-        //if(pom->time_of_disconnected )
     }
 }
 void throw_away_connection_with_client(disconnected_client* actual_disconnected_client, session_list* actual_session_list, disconnected_clients_list* actual_disconnected_clients_list){
         log_trace("Client: %s will be thrown away",actual_disconnected_client->client->name);
         //Odebereme ho z listu
         remove_disconnected_client_from_disconnected_clients_list(actual_disconnected_client, actual_disconnected_clients_list);
-        //TODO odebrat ze sessiony a napsat druhemu hraci
+        //Ziskame sessionu pokud existuje
         session* actual_session = get_session_by_client(actual_disconnected_client->client, actual_session_list);
         if(actual_session != NULL){
+            //Odebereme ho ze sessiony
+            remove_client_from_session(actual_disconnected_client->client, actual_session);
+            //Pokud sessiona neni prazdna dame vedet oppentovi
+            if(!is_session_empty(actual_session)){
+                client* last_client_in_session = get_some_client_from_session(actual_session);
+                // Pokud existuje napiseme mu zpravu ze opponent opustil hru
+                if(last_client_in_session != NULL){
+                    send_client_message(last_client_in_session->socket, OPPONENT_LEFT,"");
+                }
+            }
+            else{
+                log_info("Session: %d will be deleted", actual_session->id);
+                //Smazeme z listu session
+                remove_session_from_session_list(actual_session, actual_session_list);
+                //Zrusime sessionu
+                free_session(actual_session);
 
-            //TODO odebereme ho ze sessiony a dame vedet druhemu hraci
-            //TODO pokud je sessiona prazdna po odebrani zrusime sessionu
-
+            }
         }
-        log_trace("Client was thrown away");
-
-
-
+        log_info("Client was thrown away");
 }
 void execute_client_action(client* actual_client, int action, char* params, client_handle_container* container){
     printf("EXECUTE ACTION: %d \n",action);
@@ -152,7 +148,7 @@ void execute_client_action(client* actual_client, int action, char* params, clie
             new_session_request(actual_client, container->session_list);
             break;
         case NEW_GAME_REQUEST:
-            new_game_request(actual_client,container->session_list);
+            new_game_request(actual_client, params, container->session_list);
             break;
         case PEXESO_REVEALED_REQUEST:
             pexeso_reveale_request(actual_client, params, container->session_list);
@@ -165,40 +161,44 @@ void execute_client_action(client* actual_client, int action, char* params, clie
 /*###########################REQUESTS#########################*/
 
 void new_session_request(client* actual_client, session_list* actual_session_list){
-    printf(" NEW SESSION REQUEST\n");
+    log_trace("NEW SESSION REQUEST");
     // Pokud je uz v sessione, tak mu napiseme zpravu
     if(is_client_in_session_list(actual_client, actual_session_list)){
-        printf(" USER ALREADY IN SESSION\n");
+        log_info(" USER ALREADY IN SESSION");
         send_client_message(actual_client->socket, ALREADY_IN_SESSION,"");
         return;
     }
-    printf(" Vytvorime/ pridame sessionu \n");
+    //Ziskame otevrenou sessionu, pokud neni zadna vytvorime
     session* actual_session = get_open_session(actual_session_list);
     if(actual_session == NULL){
-        printf("Nenalezena otevrena sessiona, zalozime novou\n");
+        log_info("Nenalezena otevrena sessiona, zalozime novou");
         // Vytvorime novou sessionu
         actual_session = create_session(actual_client,NULL,NULL,get_new_session_unique_id(actual_session_list));
         // Pridame ji do listu
         add_session_to_session_list(actual_session, actual_session_list);
 
-        printf("    Vytvorena nova sessiona\n");
-        //Posleme zpravu
+        log_info("    Vytvorena nova sessiona\n");
+
+        char* id_session_string = (char*) malloc(sizeof(char) * 10);
+        sprintf(id_session_string,"%d",actual_session->id);
+        send_client_message(actual_client->socket, SESSION_ID_RESPONSE, id_session_string);
+        //Posleme ze musi pockat na dalsiho hrace co se pripoji
+        send_client_message(actual_client->socket,WAIT_FOR_PLAYER_TO_JOIN,"");
     }
     else{
-        log_trace("Nalezena otevrena sessiona \n");
-        //TODO second?
-        //TODO zjistit jaky hrac chybi
-        //TODO poslat obema hracum
-        actual_session->second_client = actual_client;
-        //Hru vytvorime az pri requestu?
-        //actual_session->game = create_game(sounds,8);
-        printf("    Pridelana sessiona: %d, hra \n",actual_session->id);
-    }
+        log_info("Nalezena otevrena sessiona \n");
 
-    //TODO poslat id sessiony
-    char* id_session_string = (char*) malloc(sizeof(char) * 10);
-    sprintf(id_session_string,"%d",actual_session->id);
-    send_client_message(actual_client->socket, SESSION_ID_RESPONSE, id_session_string);
+        add_client_in_session(actual_client, actual_session);
+
+        char* id_session_string = (char*) malloc(sizeof(char) * 10);
+        sprintf(id_session_string,"%d",actual_session->id);
+        send_client_message(actual_client->socket, SESSION_ID_RESPONSE, id_session_string);
+
+        printf("    Pridelana sessiona: %d\n",actual_session->id);
+
+        //Dame vedet obema hracum ze jsou spojeni a jestli chteji hrat
+        send_message_both_clients_in_session(WANT_TO_PLAY_GAME_RESPONSE,"",actual_session);
+    }
 }
 /*
 * Function: create_client
@@ -211,17 +211,50 @@ void new_session_request(client* actual_client, session_list* actual_session_lis
 *
 * returns: noveho clienta
 */
-void new_game_request(client* actual_client, session_list* actual_session_list){
+void new_game_request(client* actual_client, char* params, session_list* actual_session_list){
     log_trace(" NEW GAME REQUEST\n");
     session* actual_session = get_session_by_client(actual_client, actual_session_list);
     if(actual_session == NULL){
+        log_error("NEW GAME REQUEST - Client isn't in session");
         //Posleme clientovi ze jeste neni v sessione
         return;
     }
+    if(!is_session_valid(actual_session)){
+        log_error("NEW GAME REQUEST - Session is not valid");
+        return;
+    }
+    int want_to_play = convert_string_to_long(params);
+    if(want_to_play){
+        log_info("Client wants to play:%d",want_to_play);
+        set_client_wants_play(actual_client, actual_session);
+
+        if(is_session_ready_to_play_game(actual_session)){
+            //TODO poslat obema ze se hraje
+            //TODO pokud maji uz zalozenou?
+            printf("    Zakladame hru\n");
+            char** sounds = get_sounds_for_pexeso("../../../sounds",8);
+            actual_session->game = create_game(sounds,8);
+            if(actual_session->game == NULL){
+                log_error("GAME CREATING FAILED");
+                return;
+            }
+            //Napiseme ze zacla hra
+            send_message_both_clients_in_session(NEW_GAME_BEGIN_RESPONSE,"",actual_session);
+            //Napiseme kdo hraje
+            send_who_is_on_turn_both_clients_in_session(actual_session);
+        }
+        else{
+            send_client_message(actual_client->socket, WAIT_FOR_OPPONENT_DECIDE_RESPONSE, "");
+        }
+    }
+    else{
+        //TODO napsat druhemu clientovi
+    }
+    /*
     if(is_session_open(actual_session)){
         printf("Client musi pockat na dalsiho hrace\n");
         //Posleme ze cekame na dalsiho clienta
-        send_client_message(actual_client->socket,WAIT_FOR_PLAYER_TO_JOIN,"");
+        send_client_message(actual_client->socket,WAIT_FOR_OPPONENT_DECIDE_RESPONSE,"");
     }
     else{
         //TODO pokud maji uz zalozenou?
@@ -236,7 +269,7 @@ void new_game_request(client* actual_client, session_list* actual_session_list){
         send_message_both_clients_in_session(NEW_GAME_BEGIN_RESPONSE,"",actual_session);
         //Napiseme kdo hraje
         send_who_is_on_turn_both_clients_in_session(actual_session);
-    }
+    } */
 
 
 }
@@ -248,7 +281,10 @@ void pexeso_reveale_request(client* actual_client, char* params, session_list* a
         printf("CLIENT NENI V ZADNE SESSIONE \n");
         return;
     }
-    //TODO je sessiana validni?
+    if(!is_session_valid(actual_session) || actual_session->game == NULL){
+        log_error("PEXESO REVEAL REQUEST - Not valid session or no game");
+        return;
+    }
     int is_on_turn = is_client_on_turn(actual_client, actual_session);
     if(is_on_turn == -1){
         log_error("IS ON TURN - Returned -1");

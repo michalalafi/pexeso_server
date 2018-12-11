@@ -2907,3 +2907,1946 @@
 2018-12-09 21:42:04 INFO  disconnected_clients.c:115:         Client: guest8605 ID:8605 socket:5 disconnected_time:2018-12-09 21:42:03
 
 2018-12-09 21:42:04 TRACE communication_manager.c:120: Diff time is 1.000000
+2018-12-10 15:20:31 INFO  main.c:36: SERVER SETUPED!
+2018-12-10 15:20:31 INFO  main.c:55: BIND SUCCESSFUL
+2018-12-10 15:20:31 INFO  main.c:66: LISTEN SUCCESSFUL
+2018-12-10 15:20:43 INFO  main.c:112: NEW CLIENT CONNECTED AND ADD TO SOCKET'S SET
+2018-12-10 15:20:43 TRACE communication_manager.c:114: Checking disconnected clients list
+2018-12-10 15:20:43 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-10 15:20:43 INFO  communication_manager.c:78: HANDLE CONNECT
+
+2018-12-10 15:20:43 TRACE communication_manager.c:114: Checking disconnected clients list
+2018-12-10 15:20:43 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-10 15:21:31 INFO  main.c:94: SELECT TIMEOUT
+2018-12-10 15:21:31 TRACE communication_manager.c:114: Checking disconnected clients list
+2018-12-10 15:21:31 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-10 15:22:31 INFO  main.c:94: SELECT TIMEOUT
+2018-12-10 15:22:31 TRACE communication_manager.c:114: Checking disconnected clients list
+2018-12-10 15:22:31 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-10 15:23:31 INFO  main.c:94: SELECT TIMEOUT
+2018-12-10 15:23:31 TRACE communication_manager.c:114: Checking disconnected clients list
+2018-12-10 15:23:31 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-10 15:24:31 INFO  main.c:94: SELECT TIMEOUT
+2018-12-10 15:24:31 TRACE communication_manager.c:114: Checking disconnected clients list
+2018-12-10 15:24:31 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-10 15:25:31 INFO  main.c:94: SELECT TIMEOUT
+2018-12-10 15:25:31 TRACE communication_manager.c:114: Checking disconnected clients list
+2018-12-10 15:25:31 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-10 15:26:31 INFO  main.c:94: SELECT TIMEOUT
+2018-12-10 15:26:31 TRACE communication_manager.c:114: Checking disconnected clients list
+2018-12-10 15:26:31 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-10 15:27:31 INFO  main.c:94: SELECT TIMEOUT
+2018-12-10 15:27:31 TRACE communication_manager.c:114: Checking disconnected clients list
+2018-12-10 15:27:31 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-10 15:28:31 INFO  main.c:94: SELECT TIMEOUT
+2018-12-10 15:28:31 TRACE communication_manager.c:114: Checking disconnected clients list
+2018-12-10 15:28:31 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-10 15:29:31 INFO  main.c:94: SELECT TIMEOUT
+2018-12-10 15:29:31 TRACE communication_manager.c:114: Checking disconnected clients list
+2018-12-10 15:29:31 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-10 15:30:21 INFO  main.c:112: NEW CLIENT CONNECTED AND ADD TO SOCKET'S SET
+2018-12-10 15:30:21 TRACE communication_manager.c:114: Checking disconnected clients list
+2018-12-10 15:30:21 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-10 15:30:21 INFO  communication_manager.c:78: HANDLE CONNECT
+
+2018-12-10 15:30:21 TRACE communication_manager.c:114: Checking disconnected clients list
+2018-12-10 15:30:21 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-10 15:30:31 INFO  main.c:94: SELECT TIMEOUT
+2018-12-10 15:30:31 TRACE communication_manager.c:114: Checking disconnected clients list
+2018-12-10 15:30:31 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-10 15:30:49 INFO  main.c:132: CLIENT HAS DISCONNECTED AND WAS REMOVED FROM SOCKET'S SET
+2018-12-10 15:30:49 TRACE communication_manager.c:114: Checking disconnected clients list
+2018-12-10 15:30:49 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-10 15:30:49 INFO  disconnected_clients.c:115:         Client: guest3104 ID:3104 socket:6 disconnected_time:2018-12-10 15:30:49
+
+2018-12-10 15:30:49 TRACE communication_manager.c:120: Diff time is 0.000000
+2018-12-10 15:30:56 INFO  main.c:112: NEW CLIENT CONNECTED AND ADD TO SOCKET'S SET
+2018-12-10 15:30:56 TRACE communication_manager.c:114: Checking disconnected clients list
+2018-12-10 15:30:56 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-10 15:30:56 INFO  disconnected_clients.c:115:         Client: guest3104 ID:3104 socket:6 disconnected_time:2018-12-10 15:30:49
+
+2018-12-10 15:30:56 TRACE communication_manager.c:120: Diff time is 7.000000
+2018-12-10 15:30:56 INFO  communication_manager.c:78: HANDLE CONNECT
+
+2018-12-10 15:30:56 TRACE communication_manager.c:114: Checking disconnected clients list
+2018-12-10 15:30:56 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-10 15:30:56 INFO  disconnected_clients.c:115:         Client: guest3104 ID:3104 socket:6 disconnected_time:2018-12-10 15:30:49
+
+2018-12-10 15:30:56 TRACE communication_manager.c:120: Diff time is 7.000000
+2018-12-10 15:31:31 INFO  main.c:94: SELECT TIMEOUT
+2018-12-10 15:31:31 TRACE communication_manager.c:114: Checking disconnected clients list
+2018-12-10 15:31:31 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-10 15:31:31 INFO  disconnected_clients.c:115:         Client: guest3104 ID:3104 socket:6 disconnected_time:2018-12-10 15:30:49
+
+2018-12-10 15:31:31 TRACE communication_manager.c:120: Diff time is 42.000000
+2018-12-10 15:32:32 INFO  main.c:94: SELECT TIMEOUT
+2018-12-10 15:32:32 TRACE communication_manager.c:114: Checking disconnected clients list
+2018-12-10 15:32:32 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-10 15:32:32 INFO  disconnected_clients.c:115:         Client: guest3104 ID:3104 socket:6 disconnected_time:2018-12-10 15:30:49
+
+2018-12-10 15:32:32 TRACE communication_manager.c:120: Diff time is 103.000000
+2018-12-10 15:32:32 TRACE communication_manager.c:132: Client: guest3104 will be thrown away
+2018-12-10 15:32:32 TRACE communication_manager.c:143: Client was thrown away
+2018-12-10 15:33:32 INFO  main.c:94: SELECT TIMEOUT
+2018-12-10 15:33:32 TRACE communication_manager.c:114: Checking disconnected clients list
+2018-12-10 15:33:32 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-10 15:34:32 INFO  main.c:94: SELECT TIMEOUT
+2018-12-10 15:34:32 TRACE communication_manager.c:114: Checking disconnected clients list
+2018-12-10 15:34:32 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-10 15:35:32 INFO  main.c:94: SELECT TIMEOUT
+2018-12-10 15:35:32 TRACE communication_manager.c:114: Checking disconnected clients list
+2018-12-10 15:35:32 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-10 15:36:32 INFO  main.c:94: SELECT TIMEOUT
+2018-12-10 15:36:32 TRACE communication_manager.c:114: Checking disconnected clients list
+2018-12-10 15:36:32 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-10 15:37:32 INFO  main.c:94: SELECT TIMEOUT
+2018-12-10 15:37:32 TRACE communication_manager.c:114: Checking disconnected clients list
+2018-12-10 15:37:32 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-10 15:38:32 INFO  main.c:94: SELECT TIMEOUT
+2018-12-10 15:38:32 TRACE communication_manager.c:114: Checking disconnected clients list
+2018-12-10 15:38:32 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-10 15:39:32 INFO  main.c:94: SELECT TIMEOUT
+2018-12-10 15:39:32 TRACE communication_manager.c:114: Checking disconnected clients list
+2018-12-10 15:39:32 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-10 15:40:32 INFO  main.c:94: SELECT TIMEOUT
+2018-12-10 15:40:32 TRACE communication_manager.c:114: Checking disconnected clients list
+2018-12-10 15:40:32 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-10 15:41:32 INFO  main.c:94: SELECT TIMEOUT
+2018-12-10 15:41:32 TRACE communication_manager.c:114: Checking disconnected clients list
+2018-12-10 15:41:32 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-10 15:42:32 INFO  main.c:94: SELECT TIMEOUT
+2018-12-10 15:42:32 TRACE communication_manager.c:114: Checking disconnected clients list
+2018-12-10 15:42:32 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-10 15:43:32 INFO  main.c:94: SELECT TIMEOUT
+2018-12-10 15:43:32 TRACE communication_manager.c:114: Checking disconnected clients list
+2018-12-10 15:43:32 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-10 15:44:32 INFO  main.c:94: SELECT TIMEOUT
+2018-12-10 15:44:32 TRACE communication_manager.c:114: Checking disconnected clients list
+2018-12-10 15:44:32 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-10 15:45:32 INFO  main.c:94: SELECT TIMEOUT
+2018-12-10 15:45:32 TRACE communication_manager.c:114: Checking disconnected clients list
+2018-12-10 15:45:32 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-10 15:46:32 INFO  main.c:94: SELECT TIMEOUT
+2018-12-10 15:46:32 TRACE communication_manager.c:114: Checking disconnected clients list
+2018-12-10 15:46:32 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-10 15:47:32 INFO  main.c:94: SELECT TIMEOUT
+2018-12-10 15:47:32 TRACE communication_manager.c:114: Checking disconnected clients list
+2018-12-10 15:47:32 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-10 15:48:32 INFO  main.c:94: SELECT TIMEOUT
+2018-12-10 15:48:32 TRACE communication_manager.c:114: Checking disconnected clients list
+2018-12-10 15:48:32 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-10 15:49:32 INFO  main.c:94: SELECT TIMEOUT
+2018-12-10 15:49:32 TRACE communication_manager.c:114: Checking disconnected clients list
+2018-12-10 15:49:32 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-10 15:50:32 INFO  main.c:94: SELECT TIMEOUT
+2018-12-10 15:50:32 TRACE communication_manager.c:114: Checking disconnected clients list
+2018-12-10 15:50:32 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-10 15:51:32 INFO  main.c:94: SELECT TIMEOUT
+2018-12-10 15:51:32 TRACE communication_manager.c:114: Checking disconnected clients list
+2018-12-10 15:51:32 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-10 15:52:33 INFO  main.c:94: SELECT TIMEOUT
+2018-12-10 15:52:33 TRACE communication_manager.c:114: Checking disconnected clients list
+2018-12-10 15:52:33 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-10 15:53:33 INFO  main.c:94: SELECT TIMEOUT
+2018-12-10 15:53:33 TRACE communication_manager.c:114: Checking disconnected clients list
+2018-12-10 15:53:33 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-10 15:54:33 INFO  main.c:94: SELECT TIMEOUT
+2018-12-10 15:54:33 TRACE communication_manager.c:114: Checking disconnected clients list
+2018-12-10 15:54:33 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-10 15:55:33 INFO  main.c:94: SELECT TIMEOUT
+2018-12-10 15:55:33 TRACE communication_manager.c:114: Checking disconnected clients list
+2018-12-10 15:55:33 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-10 15:56:33 INFO  main.c:94: SELECT TIMEOUT
+2018-12-10 15:56:33 TRACE communication_manager.c:114: Checking disconnected clients list
+2018-12-10 15:56:33 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-10 15:57:33 INFO  main.c:94: SELECT TIMEOUT
+2018-12-10 15:57:33 TRACE communication_manager.c:114: Checking disconnected clients list
+2018-12-10 15:57:33 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-10 15:58:33 INFO  main.c:94: SELECT TIMEOUT
+2018-12-10 15:58:33 TRACE communication_manager.c:114: Checking disconnected clients list
+2018-12-10 15:58:33 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-10 15:59:33 INFO  main.c:94: SELECT TIMEOUT
+2018-12-10 15:59:33 TRACE communication_manager.c:114: Checking disconnected clients list
+2018-12-10 15:59:33 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-10 16:00:33 INFO  main.c:94: SELECT TIMEOUT
+2018-12-10 16:00:33 TRACE communication_manager.c:114: Checking disconnected clients list
+2018-12-10 16:00:33 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-10 16:01:33 INFO  main.c:94: SELECT TIMEOUT
+2018-12-10 16:01:33 TRACE communication_manager.c:114: Checking disconnected clients list
+2018-12-10 16:01:33 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-10 16:02:33 INFO  main.c:94: SELECT TIMEOUT
+2018-12-10 16:02:33 TRACE communication_manager.c:114: Checking disconnected clients list
+2018-12-10 16:02:33 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-10 16:03:33 INFO  main.c:94: SELECT TIMEOUT
+2018-12-10 16:03:33 TRACE communication_manager.c:114: Checking disconnected clients list
+2018-12-10 16:03:33 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-10 16:04:33 INFO  main.c:94: SELECT TIMEOUT
+2018-12-10 16:04:33 TRACE communication_manager.c:114: Checking disconnected clients list
+2018-12-10 16:04:33 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-10 16:05:33 INFO  main.c:94: SELECT TIMEOUT
+2018-12-10 16:05:33 TRACE communication_manager.c:114: Checking disconnected clients list
+2018-12-10 16:05:33 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-10 16:06:33 INFO  main.c:94: SELECT TIMEOUT
+2018-12-10 16:06:33 TRACE communication_manager.c:114: Checking disconnected clients list
+2018-12-10 16:06:33 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-10 16:07:33 INFO  main.c:94: SELECT TIMEOUT
+2018-12-10 16:07:33 TRACE communication_manager.c:114: Checking disconnected clients list
+2018-12-10 16:07:33 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-10 16:08:33 INFO  main.c:94: SELECT TIMEOUT
+2018-12-10 16:08:33 TRACE communication_manager.c:114: Checking disconnected clients list
+2018-12-10 16:08:33 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-10 16:09:33 INFO  main.c:94: SELECT TIMEOUT
+2018-12-10 16:09:33 TRACE communication_manager.c:114: Checking disconnected clients list
+2018-12-10 16:09:33 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-10 16:10:33 INFO  main.c:94: SELECT TIMEOUT
+2018-12-10 16:10:33 TRACE communication_manager.c:114: Checking disconnected clients list
+2018-12-10 16:10:33 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-10 16:11:33 INFO  main.c:94: SELECT TIMEOUT
+2018-12-10 16:11:33 TRACE communication_manager.c:114: Checking disconnected clients list
+2018-12-10 16:11:33 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-10 16:12:34 INFO  main.c:94: SELECT TIMEOUT
+2018-12-10 16:12:34 TRACE communication_manager.c:114: Checking disconnected clients list
+2018-12-10 16:12:34 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-10 16:13:34 INFO  main.c:94: SELECT TIMEOUT
+2018-12-10 16:13:34 TRACE communication_manager.c:114: Checking disconnected clients list
+2018-12-10 16:13:34 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-10 16:14:34 INFO  main.c:94: SELECT TIMEOUT
+2018-12-10 16:14:34 TRACE communication_manager.c:114: Checking disconnected clients list
+2018-12-10 16:14:34 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-10 16:15:34 INFO  main.c:94: SELECT TIMEOUT
+2018-12-10 16:15:34 TRACE communication_manager.c:114: Checking disconnected clients list
+2018-12-10 16:15:34 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-10 16:16:34 INFO  main.c:94: SELECT TIMEOUT
+2018-12-10 16:16:34 TRACE communication_manager.c:114: Checking disconnected clients list
+2018-12-10 16:16:34 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-10 16:17:34 INFO  main.c:94: SELECT TIMEOUT
+2018-12-10 16:17:34 TRACE communication_manager.c:114: Checking disconnected clients list
+2018-12-10 16:17:34 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-10 16:18:34 INFO  main.c:94: SELECT TIMEOUT
+2018-12-10 16:18:34 TRACE communication_manager.c:114: Checking disconnected clients list
+2018-12-10 16:18:34 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-10 16:19:34 INFO  main.c:94: SELECT TIMEOUT
+2018-12-10 16:19:34 TRACE communication_manager.c:114: Checking disconnected clients list
+2018-12-10 16:19:34 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-10 16:20:34 INFO  main.c:94: SELECT TIMEOUT
+2018-12-10 16:20:34 TRACE communication_manager.c:114: Checking disconnected clients list
+2018-12-10 16:20:34 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-10 16:21:34 INFO  main.c:94: SELECT TIMEOUT
+2018-12-10 16:21:34 TRACE communication_manager.c:114: Checking disconnected clients list
+2018-12-10 16:21:34 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-10 16:22:34 INFO  main.c:94: SELECT TIMEOUT
+2018-12-10 16:22:34 TRACE communication_manager.c:114: Checking disconnected clients list
+2018-12-10 16:22:34 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-10 16:23:34 INFO  main.c:94: SELECT TIMEOUT
+2018-12-10 16:23:34 TRACE communication_manager.c:114: Checking disconnected clients list
+2018-12-10 16:23:34 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-10 16:24:34 INFO  main.c:94: SELECT TIMEOUT
+2018-12-10 16:24:34 TRACE communication_manager.c:114: Checking disconnected clients list
+2018-12-10 16:24:34 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-10 16:25:34 INFO  main.c:94: SELECT TIMEOUT
+2018-12-10 16:25:34 TRACE communication_manager.c:114: Checking disconnected clients list
+2018-12-10 16:25:34 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-10 16:26:34 INFO  main.c:94: SELECT TIMEOUT
+2018-12-10 16:26:34 TRACE communication_manager.c:114: Checking disconnected clients list
+2018-12-10 16:26:34 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-10 16:27:34 INFO  main.c:94: SELECT TIMEOUT
+2018-12-10 16:27:34 TRACE communication_manager.c:114: Checking disconnected clients list
+2018-12-10 16:27:34 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-10 16:28:34 INFO  main.c:94: SELECT TIMEOUT
+2018-12-10 16:28:34 TRACE communication_manager.c:114: Checking disconnected clients list
+2018-12-10 16:28:34 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-10 16:29:34 INFO  main.c:94: SELECT TIMEOUT
+2018-12-10 16:29:34 TRACE communication_manager.c:114: Checking disconnected clients list
+2018-12-10 16:29:34 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-10 16:30:34 INFO  main.c:94: SELECT TIMEOUT
+2018-12-10 16:30:34 TRACE communication_manager.c:114: Checking disconnected clients list
+2018-12-10 16:30:34 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-10 16:31:34 INFO  main.c:94: SELECT TIMEOUT
+2018-12-10 16:31:34 TRACE communication_manager.c:114: Checking disconnected clients list
+2018-12-10 16:31:34 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-10 16:32:35 INFO  main.c:94: SELECT TIMEOUT
+2018-12-10 16:32:35 TRACE communication_manager.c:114: Checking disconnected clients list
+2018-12-10 16:32:35 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-10 16:33:35 INFO  main.c:94: SELECT TIMEOUT
+2018-12-10 16:33:35 TRACE communication_manager.c:114: Checking disconnected clients list
+2018-12-10 16:33:35 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-10 16:34:35 INFO  main.c:94: SELECT TIMEOUT
+2018-12-10 16:34:35 TRACE communication_manager.c:114: Checking disconnected clients list
+2018-12-10 16:34:35 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-10 16:35:35 INFO  main.c:94: SELECT TIMEOUT
+2018-12-10 16:35:35 TRACE communication_manager.c:114: Checking disconnected clients list
+2018-12-10 16:35:35 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-10 16:36:35 INFO  main.c:94: SELECT TIMEOUT
+2018-12-10 16:36:35 TRACE communication_manager.c:114: Checking disconnected clients list
+2018-12-10 16:36:35 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-10 16:37:35 INFO  main.c:94: SELECT TIMEOUT
+2018-12-10 16:37:35 TRACE communication_manager.c:114: Checking disconnected clients list
+2018-12-10 16:37:35 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-10 16:38:35 INFO  main.c:94: SELECT TIMEOUT
+2018-12-10 16:38:35 TRACE communication_manager.c:114: Checking disconnected clients list
+2018-12-10 16:38:35 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-10 16:39:35 INFO  main.c:94: SELECT TIMEOUT
+2018-12-10 16:39:35 TRACE communication_manager.c:114: Checking disconnected clients list
+2018-12-10 16:39:35 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-10 16:40:35 INFO  main.c:94: SELECT TIMEOUT
+2018-12-10 16:40:35 TRACE communication_manager.c:114: Checking disconnected clients list
+2018-12-10 16:40:35 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-10 16:41:35 INFO  main.c:94: SELECT TIMEOUT
+2018-12-10 16:41:35 TRACE communication_manager.c:114: Checking disconnected clients list
+2018-12-10 16:41:35 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-10 16:42:35 INFO  main.c:94: SELECT TIMEOUT
+2018-12-10 16:42:35 TRACE communication_manager.c:114: Checking disconnected clients list
+2018-12-10 16:42:35 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-10 16:43:35 INFO  main.c:94: SELECT TIMEOUT
+2018-12-10 16:43:35 TRACE communication_manager.c:114: Checking disconnected clients list
+2018-12-10 16:43:35 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-10 16:44:35 INFO  main.c:94: SELECT TIMEOUT
+2018-12-10 16:44:35 TRACE communication_manager.c:114: Checking disconnected clients list
+2018-12-10 16:44:35 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-10 16:45:35 INFO  main.c:94: SELECT TIMEOUT
+2018-12-10 16:45:35 TRACE communication_manager.c:114: Checking disconnected clients list
+2018-12-10 16:45:35 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-10 16:46:35 INFO  main.c:94: SELECT TIMEOUT
+2018-12-10 16:46:35 TRACE communication_manager.c:114: Checking disconnected clients list
+2018-12-10 16:46:35 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-10 16:47:35 INFO  main.c:94: SELECT TIMEOUT
+2018-12-10 16:47:35 TRACE communication_manager.c:114: Checking disconnected clients list
+2018-12-10 16:47:35 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-10 16:48:35 INFO  main.c:94: SELECT TIMEOUT
+2018-12-10 16:48:35 TRACE communication_manager.c:114: Checking disconnected clients list
+2018-12-10 16:48:35 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-10 16:49:35 INFO  main.c:94: SELECT TIMEOUT
+2018-12-10 16:49:35 TRACE communication_manager.c:114: Checking disconnected clients list
+2018-12-10 16:49:35 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-10 16:50:35 INFO  main.c:94: SELECT TIMEOUT
+2018-12-10 16:50:35 TRACE communication_manager.c:114: Checking disconnected clients list
+2018-12-10 16:50:35 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-10 16:51:35 INFO  main.c:94: SELECT TIMEOUT
+2018-12-10 16:51:35 TRACE communication_manager.c:114: Checking disconnected clients list
+2018-12-10 16:51:35 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-10 16:52:35 INFO  main.c:94: SELECT TIMEOUT
+2018-12-10 16:52:35 TRACE communication_manager.c:114: Checking disconnected clients list
+2018-12-10 16:52:35 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-10 16:53:35 INFO  main.c:94: SELECT TIMEOUT
+2018-12-10 16:53:35 TRACE communication_manager.c:114: Checking disconnected clients list
+2018-12-10 16:53:35 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-10 16:54:35 INFO  main.c:94: SELECT TIMEOUT
+2018-12-10 16:54:35 TRACE communication_manager.c:114: Checking disconnected clients list
+2018-12-10 16:54:35 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-10 16:55:36 INFO  main.c:94: SELECT TIMEOUT
+2018-12-10 16:55:36 TRACE communication_manager.c:114: Checking disconnected clients list
+2018-12-10 16:55:36 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-10 16:56:36 INFO  main.c:94: SELECT TIMEOUT
+2018-12-10 16:56:36 TRACE communication_manager.c:114: Checking disconnected clients list
+2018-12-10 16:56:36 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-10 16:57:36 INFO  main.c:94: SELECT TIMEOUT
+2018-12-10 16:57:36 TRACE communication_manager.c:114: Checking disconnected clients list
+2018-12-10 16:57:36 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-10 16:58:36 INFO  main.c:94: SELECT TIMEOUT
+2018-12-10 16:58:36 TRACE communication_manager.c:114: Checking disconnected clients list
+2018-12-10 16:58:36 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-10 16:59:36 INFO  main.c:94: SELECT TIMEOUT
+2018-12-10 16:59:36 TRACE communication_manager.c:114: Checking disconnected clients list
+2018-12-10 16:59:36 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-10 17:00:36 INFO  main.c:94: SELECT TIMEOUT
+2018-12-10 17:00:36 TRACE communication_manager.c:114: Checking disconnected clients list
+2018-12-10 17:00:36 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-10 17:01:36 INFO  main.c:94: SELECT TIMEOUT
+2018-12-10 17:01:36 TRACE communication_manager.c:114: Checking disconnected clients list
+2018-12-10 17:01:36 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-10 17:02:36 INFO  main.c:94: SELECT TIMEOUT
+2018-12-10 17:02:36 TRACE communication_manager.c:114: Checking disconnected clients list
+2018-12-10 17:02:36 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-10 17:03:36 INFO  main.c:94: SELECT TIMEOUT
+2018-12-10 17:03:36 TRACE communication_manager.c:114: Checking disconnected clients list
+2018-12-10 17:03:36 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-10 17:04:36 INFO  main.c:94: SELECT TIMEOUT
+2018-12-10 17:04:36 TRACE communication_manager.c:114: Checking disconnected clients list
+2018-12-10 17:04:36 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-10 17:05:36 INFO  main.c:94: SELECT TIMEOUT
+2018-12-10 17:05:36 TRACE communication_manager.c:114: Checking disconnected clients list
+2018-12-10 17:05:36 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-10 17:06:36 INFO  main.c:94: SELECT TIMEOUT
+2018-12-10 17:06:36 TRACE communication_manager.c:114: Checking disconnected clients list
+2018-12-10 17:06:36 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-10 17:07:36 INFO  main.c:94: SELECT TIMEOUT
+2018-12-10 17:07:36 TRACE communication_manager.c:114: Checking disconnected clients list
+2018-12-10 17:07:36 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-10 17:08:36 INFO  main.c:94: SELECT TIMEOUT
+2018-12-10 17:08:36 TRACE communication_manager.c:114: Checking disconnected clients list
+2018-12-10 17:08:36 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-10 17:09:36 INFO  main.c:94: SELECT TIMEOUT
+2018-12-10 17:09:36 TRACE communication_manager.c:114: Checking disconnected clients list
+2018-12-10 17:09:36 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-10 17:10:36 INFO  main.c:94: SELECT TIMEOUT
+2018-12-10 17:10:36 TRACE communication_manager.c:114: Checking disconnected clients list
+2018-12-10 17:10:36 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-10 17:11:36 INFO  main.c:94: SELECT TIMEOUT
+2018-12-10 17:11:36 TRACE communication_manager.c:114: Checking disconnected clients list
+2018-12-10 17:11:36 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-10 17:12:36 INFO  main.c:94: SELECT TIMEOUT
+2018-12-10 17:12:36 TRACE communication_manager.c:114: Checking disconnected clients list
+2018-12-10 17:12:36 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-10 17:13:36 INFO  main.c:94: SELECT TIMEOUT
+2018-12-10 17:13:36 TRACE communication_manager.c:114: Checking disconnected clients list
+2018-12-10 17:13:36 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-10 17:14:37 INFO  main.c:94: SELECT TIMEOUT
+2018-12-10 17:14:37 TRACE communication_manager.c:114: Checking disconnected clients list
+2018-12-10 17:14:37 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-10 17:15:37 INFO  main.c:94: SELECT TIMEOUT
+2018-12-10 17:15:37 TRACE communication_manager.c:114: Checking disconnected clients list
+2018-12-10 17:15:37 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-10 17:16:37 INFO  main.c:94: SELECT TIMEOUT
+2018-12-10 17:16:37 TRACE communication_manager.c:114: Checking disconnected clients list
+2018-12-10 17:16:37 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-10 17:17:37 INFO  main.c:94: SELECT TIMEOUT
+2018-12-10 17:17:37 TRACE communication_manager.c:114: Checking disconnected clients list
+2018-12-10 17:17:37 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-10 17:18:37 INFO  main.c:94: SELECT TIMEOUT
+2018-12-10 17:18:37 TRACE communication_manager.c:114: Checking disconnected clients list
+2018-12-10 17:18:37 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-10 17:19:37 INFO  main.c:94: SELECT TIMEOUT
+2018-12-10 17:19:37 TRACE communication_manager.c:114: Checking disconnected clients list
+2018-12-10 17:19:37 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-10 17:20:37 INFO  main.c:94: SELECT TIMEOUT
+2018-12-10 17:20:37 TRACE communication_manager.c:114: Checking disconnected clients list
+2018-12-10 17:20:37 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-10 17:21:37 INFO  main.c:94: SELECT TIMEOUT
+2018-12-10 17:21:37 TRACE communication_manager.c:114: Checking disconnected clients list
+2018-12-10 17:21:37 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-10 17:22:37 INFO  main.c:94: SELECT TIMEOUT
+2018-12-10 17:22:37 TRACE communication_manager.c:114: Checking disconnected clients list
+2018-12-10 17:22:37 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-10 17:23:37 INFO  main.c:94: SELECT TIMEOUT
+2018-12-10 17:23:37 TRACE communication_manager.c:114: Checking disconnected clients list
+2018-12-10 17:23:37 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-10 17:24:37 INFO  main.c:94: SELECT TIMEOUT
+2018-12-10 17:24:37 TRACE communication_manager.c:114: Checking disconnected clients list
+2018-12-10 17:24:37 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-10 17:25:37 INFO  main.c:94: SELECT TIMEOUT
+2018-12-10 17:25:37 TRACE communication_manager.c:114: Checking disconnected clients list
+2018-12-10 17:25:37 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-10 17:26:37 INFO  main.c:94: SELECT TIMEOUT
+2018-12-10 17:26:37 TRACE communication_manager.c:114: Checking disconnected clients list
+2018-12-10 17:26:37 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-10 17:27:37 INFO  main.c:94: SELECT TIMEOUT
+2018-12-10 17:27:37 TRACE communication_manager.c:114: Checking disconnected clients list
+2018-12-10 17:27:37 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-10 17:28:37 INFO  main.c:94: SELECT TIMEOUT
+2018-12-10 17:28:37 TRACE communication_manager.c:114: Checking disconnected clients list
+2018-12-10 17:28:37 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-10 17:29:37 INFO  main.c:94: SELECT TIMEOUT
+2018-12-10 17:29:37 TRACE communication_manager.c:114: Checking disconnected clients list
+2018-12-10 17:29:37 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-10 17:30:37 INFO  main.c:94: SELECT TIMEOUT
+2018-12-10 17:30:37 TRACE communication_manager.c:114: Checking disconnected clients list
+2018-12-10 17:30:37 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-10 17:31:37 INFO  main.c:94: SELECT TIMEOUT
+2018-12-10 17:31:37 TRACE communication_manager.c:114: Checking disconnected clients list
+2018-12-10 17:31:37 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-10 17:32:37 INFO  main.c:94: SELECT TIMEOUT
+2018-12-10 17:32:37 TRACE communication_manager.c:114: Checking disconnected clients list
+2018-12-10 17:32:37 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-10 17:33:37 INFO  main.c:94: SELECT TIMEOUT
+2018-12-10 17:33:37 TRACE communication_manager.c:114: Checking disconnected clients list
+2018-12-10 17:33:37 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-10 17:34:37 INFO  main.c:94: SELECT TIMEOUT
+2018-12-10 17:34:37 TRACE communication_manager.c:114: Checking disconnected clients list
+2018-12-10 17:34:37 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-10 17:35:38 INFO  main.c:94: SELECT TIMEOUT
+2018-12-10 17:35:38 TRACE communication_manager.c:114: Checking disconnected clients list
+2018-12-10 17:35:38 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-10 17:36:38 INFO  main.c:94: SELECT TIMEOUT
+2018-12-10 17:36:38 TRACE communication_manager.c:114: Checking disconnected clients list
+2018-12-10 17:36:38 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-10 17:37:38 INFO  main.c:94: SELECT TIMEOUT
+2018-12-10 17:37:38 TRACE communication_manager.c:114: Checking disconnected clients list
+2018-12-10 17:37:38 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-10 17:38:38 INFO  main.c:94: SELECT TIMEOUT
+2018-12-10 17:38:38 TRACE communication_manager.c:114: Checking disconnected clients list
+2018-12-10 17:38:38 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-10 17:39:38 INFO  main.c:94: SELECT TIMEOUT
+2018-12-10 17:39:38 TRACE communication_manager.c:114: Checking disconnected clients list
+2018-12-10 17:39:38 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-10 17:40:38 INFO  main.c:94: SELECT TIMEOUT
+2018-12-10 17:40:38 TRACE communication_manager.c:114: Checking disconnected clients list
+2018-12-10 17:40:38 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-10 17:41:38 INFO  main.c:94: SELECT TIMEOUT
+2018-12-10 17:41:38 TRACE communication_manager.c:114: Checking disconnected clients list
+2018-12-10 17:41:38 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-10 17:42:38 INFO  main.c:94: SELECT TIMEOUT
+2018-12-10 17:42:38 TRACE communication_manager.c:114: Checking disconnected clients list
+2018-12-10 17:42:38 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-10 17:43:38 INFO  main.c:94: SELECT TIMEOUT
+2018-12-10 17:43:38 TRACE communication_manager.c:114: Checking disconnected clients list
+2018-12-10 17:43:38 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-10 17:44:38 INFO  main.c:94: SELECT TIMEOUT
+2018-12-10 17:44:38 TRACE communication_manager.c:114: Checking disconnected clients list
+2018-12-10 17:44:38 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-10 17:45:38 INFO  main.c:94: SELECT TIMEOUT
+2018-12-10 17:45:38 TRACE communication_manager.c:114: Checking disconnected clients list
+2018-12-10 17:45:38 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-10 17:46:38 INFO  main.c:94: SELECT TIMEOUT
+2018-12-10 17:46:38 TRACE communication_manager.c:114: Checking disconnected clients list
+2018-12-10 17:46:38 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-10 17:47:38 INFO  main.c:94: SELECT TIMEOUT
+2018-12-10 17:47:38 TRACE communication_manager.c:114: Checking disconnected clients list
+2018-12-10 17:47:38 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-10 17:48:38 INFO  main.c:94: SELECT TIMEOUT
+2018-12-10 17:48:38 TRACE communication_manager.c:114: Checking disconnected clients list
+2018-12-10 17:48:38 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-10 17:49:38 INFO  main.c:94: SELECT TIMEOUT
+2018-12-10 17:49:38 TRACE communication_manager.c:114: Checking disconnected clients list
+2018-12-10 17:49:38 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-10 17:50:38 INFO  main.c:94: SELECT TIMEOUT
+2018-12-10 17:50:38 TRACE communication_manager.c:114: Checking disconnected clients list
+2018-12-10 17:50:38 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-10 17:51:38 INFO  main.c:94: SELECT TIMEOUT
+2018-12-10 17:51:38 TRACE communication_manager.c:114: Checking disconnected clients list
+2018-12-10 17:51:38 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-10 17:52:38 INFO  main.c:94: SELECT TIMEOUT
+2018-12-10 17:52:38 TRACE communication_manager.c:114: Checking disconnected clients list
+2018-12-10 17:52:38 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-10 17:53:38 INFO  main.c:94: SELECT TIMEOUT
+2018-12-10 17:53:38 TRACE communication_manager.c:114: Checking disconnected clients list
+2018-12-10 17:53:38 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-10 17:54:39 INFO  main.c:94: SELECT TIMEOUT
+2018-12-10 17:54:39 TRACE communication_manager.c:114: Checking disconnected clients list
+2018-12-10 17:54:39 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-10 17:55:39 INFO  main.c:94: SELECT TIMEOUT
+2018-12-10 17:55:39 TRACE communication_manager.c:114: Checking disconnected clients list
+2018-12-10 17:55:39 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-10 17:56:39 INFO  main.c:94: SELECT TIMEOUT
+2018-12-10 17:56:39 TRACE communication_manager.c:114: Checking disconnected clients list
+2018-12-10 17:56:39 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-10 17:57:39 INFO  main.c:94: SELECT TIMEOUT
+2018-12-10 17:57:39 TRACE communication_manager.c:114: Checking disconnected clients list
+2018-12-10 17:57:39 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-10 17:58:39 INFO  main.c:94: SELECT TIMEOUT
+2018-12-10 17:58:39 TRACE communication_manager.c:114: Checking disconnected clients list
+2018-12-10 17:58:39 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-10 17:59:39 INFO  main.c:94: SELECT TIMEOUT
+2018-12-10 17:59:39 TRACE communication_manager.c:114: Checking disconnected clients list
+2018-12-10 17:59:39 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-10 18:00:39 INFO  main.c:94: SELECT TIMEOUT
+2018-12-10 18:00:39 TRACE communication_manager.c:114: Checking disconnected clients list
+2018-12-10 18:00:39 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-10 18:01:39 INFO  main.c:94: SELECT TIMEOUT
+2018-12-10 18:01:39 TRACE communication_manager.c:114: Checking disconnected clients list
+2018-12-10 18:01:39 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-10 18:02:39 INFO  main.c:94: SELECT TIMEOUT
+2018-12-10 18:02:39 TRACE communication_manager.c:114: Checking disconnected clients list
+2018-12-10 18:02:39 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-10 18:03:39 INFO  main.c:94: SELECT TIMEOUT
+2018-12-10 18:03:39 TRACE communication_manager.c:114: Checking disconnected clients list
+2018-12-10 18:03:39 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-10 18:04:39 INFO  main.c:94: SELECT TIMEOUT
+2018-12-10 18:04:39 TRACE communication_manager.c:114: Checking disconnected clients list
+2018-12-10 18:04:39 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-10 18:05:39 INFO  main.c:94: SELECT TIMEOUT
+2018-12-10 18:05:39 TRACE communication_manager.c:114: Checking disconnected clients list
+2018-12-10 18:05:39 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-10 18:06:39 INFO  main.c:94: SELECT TIMEOUT
+2018-12-10 18:06:39 TRACE communication_manager.c:114: Checking disconnected clients list
+2018-12-10 18:06:39 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-10 18:06:49 INFO  main.c:36: SERVER SETUPED!
+2018-12-10 18:06:49 ERROR main.c:57: BIND - PORT IS PROPABLY OCCUPIED
+2018-12-10 18:10:52 INFO  main.c:36: SERVER SETUPED!
+2018-12-10 18:10:52 INFO  main.c:55: BIND SUCCESSFUL
+2018-12-10 18:10:52 INFO  main.c:66: LISTEN SUCCESSFUL
+2018-12-10 18:11:16 INFO  main.c:112: NEW CLIENT CONNECTED AND ADD TO SOCKET'S SET
+2018-12-10 18:11:16 TRACE communication_manager.c:114: Checking disconnected clients list
+2018-12-10 18:11:16 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-10 18:11:16 INFO  communication_manager.c:78: HANDLE CONNECT
+
+2018-12-10 18:11:16 TRACE communication_manager.c:114: Checking disconnected clients list
+2018-12-10 18:11:16 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-10 18:11:36 INFO  main.c:132: CLIENT HAS DISCONNECTED AND WAS REMOVED FROM SOCKET'S SET
+2018-12-10 18:11:36 TRACE communication_manager.c:114: Checking disconnected clients list
+2018-12-10 18:11:36 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-10 18:11:36 INFO  disconnected_clients.c:115:         Client: guest7273 ID:7273 socket:5 disconnected_time:2018-12-10 18:11:36
+
+2018-12-10 18:11:36 TRACE communication_manager.c:120: Diff time is 0.000000
+2018-12-10 18:11:52 INFO  main.c:94: SELECT TIMEOUT
+2018-12-10 18:11:52 TRACE communication_manager.c:114: Checking disconnected clients list
+2018-12-10 18:11:52 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-10 18:11:52 INFO  disconnected_clients.c:115:         Client: guest7273 ID:7273 socket:5 disconnected_time:2018-12-10 18:11:36
+
+2018-12-10 18:11:52 TRACE communication_manager.c:120: Diff time is 16.000000
+2018-12-10 18:12:52 INFO  main.c:94: SELECT TIMEOUT
+2018-12-10 18:12:52 TRACE communication_manager.c:114: Checking disconnected clients list
+2018-12-10 18:12:52 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-10 18:12:52 INFO  disconnected_clients.c:115:         Client: guest7273 ID:7273 socket:5 disconnected_time:2018-12-10 18:11:36
+
+2018-12-10 18:12:52 TRACE communication_manager.c:120: Diff time is 76.000000
+2018-12-10 18:12:52 TRACE communication_manager.c:132: Client: guest7273 will be thrown away
+2018-12-10 18:12:52 TRACE communication_manager.c:157: Client was thrown away
+2018-12-10 18:14:49 INFO  main.c:36: SERVER SETUPED!
+2018-12-10 18:14:49 INFO  main.c:55: BIND SUCCESSFUL
+2018-12-10 18:14:49 INFO  main.c:66: LISTEN SUCCESSFUL
+2018-12-10 18:15:13 INFO  main.c:112: NEW CLIENT CONNECTED AND ADD TO SOCKET'S SET
+2018-12-10 18:15:13 TRACE communication_manager.c:114: Checking disconnected clients list
+2018-12-10 18:15:13 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-10 18:15:13 INFO  communication_manager.c:78: HANDLE CONNECT
+
+2018-12-10 18:15:13 TRACE communication_manager.c:114: Checking disconnected clients list
+2018-12-10 18:15:13 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-10 18:15:14 TRACE communication_manager.c:114: Checking disconnected clients list
+2018-12-10 18:15:14 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-10 18:15:14 TRACE communication_manager.c:226:  NEW GAME REQUEST
+
+2018-12-10 18:15:14 TRACE session.c:22: IS SESSION OPEN
+2018-12-10 18:15:14 TRACE communication_manager.c:114: Checking disconnected clients list
+2018-12-10 18:15:14 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-10 18:15:21 INFO  main.c:132: CLIENT HAS DISCONNECTED AND WAS REMOVED FROM SOCKET'S SET
+2018-12-10 18:15:21 TRACE communication_manager.c:114: Checking disconnected clients list
+2018-12-10 18:15:21 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-10 18:15:21 INFO  disconnected_clients.c:115:         Client: guest1647 ID:1647 socket:5 disconnected_time:2018-12-10 18:15:21
+
+2018-12-10 18:15:21 TRACE communication_manager.c:120: Diff time is 0.000000
+2018-12-10 18:15:49 INFO  main.c:94: SELECT TIMEOUT
+2018-12-10 18:15:49 TRACE communication_manager.c:114: Checking disconnected clients list
+2018-12-10 18:15:49 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-10 18:15:49 INFO  disconnected_clients.c:115:         Client: guest1647 ID:1647 socket:5 disconnected_time:2018-12-10 18:15:21
+
+2018-12-10 18:15:49 TRACE communication_manager.c:120: Diff time is 28.000000
+2018-12-10 18:16:49 INFO  main.c:94: SELECT TIMEOUT
+2018-12-10 18:16:49 TRACE communication_manager.c:114: Checking disconnected clients list
+2018-12-10 18:16:49 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-10 18:16:49 INFO  disconnected_clients.c:115:         Client: guest1647 ID:1647 socket:5 disconnected_time:2018-12-10 18:15:21
+
+2018-12-10 18:16:49 TRACE communication_manager.c:120: Diff time is 88.000000
+2018-12-10 18:16:49 TRACE communication_manager.c:132: Client: guest1647 will be thrown away
+2018-12-10 18:16:49 INFO  communication_manager.c:149: Session: 3405 will be deleted
+2018-12-10 18:16:49 TRACE communication_manager.c:157: Client was thrown away
+2018-12-10 18:17:49 INFO  main.c:94: SELECT TIMEOUT
+2018-12-10 18:17:49 TRACE communication_manager.c:114: Checking disconnected clients list
+2018-12-10 18:17:49 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-10 18:26:58 INFO  main.c:36: SERVER SETUPED!
+2018-12-10 18:26:58 INFO  main.c:55: BIND SUCCESSFUL
+2018-12-10 18:26:58 INFO  main.c:66: LISTEN SUCCESSFUL
+2018-12-10 18:27:07 INFO  main.c:112: NEW CLIENT CONNECTED AND ADD TO SOCKET'S SET
+2018-12-10 18:27:07 TRACE communication_manager.c:115: Checking disconnected clients list
+2018-12-10 18:27:07 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-10 18:27:07 INFO  communication_manager.c:79: HANDLE CONNECT
+
+2018-12-10 18:27:07 INFO  communication_manager.c:39: Client pridan do lobby
+
+2018-12-10 18:27:07 TRACE communication_manager.c:75: ------CLIENT HANDLE ENDED WITH TIME: 0.000058s
+
+2018-12-10 18:27:07 TRACE communication_manager.c:115: Checking disconnected clients list
+2018-12-10 18:27:07 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-10 18:27:12 INFO  main.c:132: CLIENT HAS DISCONNECTED AND WAS REMOVED FROM SOCKET'S SET
+2018-12-10 18:27:12 TRACE communication_manager.c:115: Checking disconnected clients list
+2018-12-10 18:27:12 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-10 18:27:12 INFO  disconnected_clients.c:115:         Client: guest792 ID:792 socket:5 disconnected_time:2018-12-10 18:27:12
+
+2018-12-10 18:27:12 TRACE communication_manager.c:121: Diff time is 0.000000
+2018-12-10 18:27:22 INFO  main.c:112: NEW CLIENT CONNECTED AND ADD TO SOCKET'S SET
+2018-12-10 18:27:22 TRACE communication_manager.c:115: Checking disconnected clients list
+2018-12-10 18:27:22 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-10 18:27:22 INFO  disconnected_clients.c:115:         Client: guest792 ID:792 socket:5 disconnected_time:2018-12-10 18:27:12
+
+2018-12-10 18:27:22 TRACE communication_manager.c:121: Diff time is 10.000000
+2018-12-10 18:27:22 INFO  communication_manager.c:79: HANDLE CONNECT
+
+2018-12-10 18:27:22 INFO  communication_manager.c:39: Client pridan do lobby
+
+2018-12-10 18:27:22 TRACE communication_manager.c:75: ------CLIENT HANDLE ENDED WITH TIME: 0.000058s
+
+2018-12-10 18:27:22 TRACE communication_manager.c:115: Checking disconnected clients list
+2018-12-10 18:27:22 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-10 18:27:22 INFO  disconnected_clients.c:115:         Client: guest792 ID:792 socket:5 disconnected_time:2018-12-10 18:27:12
+
+2018-12-10 18:27:22 TRACE communication_manager.c:121: Diff time is 10.000000
+2018-12-10 18:27:58 INFO  main.c:94: SELECT TIMEOUT
+2018-12-10 18:27:58 TRACE communication_manager.c:115: Checking disconnected clients list
+2018-12-10 18:27:58 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-10 18:27:58 INFO  disconnected_clients.c:115:         Client: guest792 ID:792 socket:5 disconnected_time:2018-12-10 18:27:12
+
+2018-12-10 18:27:58 TRACE communication_manager.c:121: Diff time is 46.000000
+2018-12-10 21:42:47 INFO  main.c:36: SERVER SETUPED!
+2018-12-10 21:42:47 INFO  main.c:55: BIND SUCCESSFUL
+2018-12-10 21:42:47 INFO  main.c:66: LISTEN SUCCESSFUL
+2018-12-10 21:43:25 INFO  main.c:112: NEW CLIENT CONNECTED AND ADD TO SOCKET'S SET
+2018-12-10 21:43:25 TRACE communication_manager.c:103: HANDLE DISCONNECTED CLIENTS LIST
+2018-12-10 21:43:25 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-10 21:43:25 TRACE communication_manager.c:13: ------CLIENT HANDLE STARTED
+2018-12-10 21:43:25 TRACE communication_manager.c:68: HANDLE CONNECT
+
+2018-12-10 21:43:25 INFO  communication_manager.c:36: Client pridan do lobby
+
+2018-12-10 21:43:25 TRACE communication_manager.c:64: ------CLIENT HANDLE ENDED WITH TIME: 0.000047s
+
+2018-12-10 21:43:25 TRACE communication_manager.c:103: HANDLE DISCONNECTED CLIENTS LIST
+2018-12-10 21:43:25 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-10 21:43:26 TRACE communication_manager.c:13: ------CLIENT HANDLE STARTED
+2018-12-10 21:43:26 TRACE communication_manager.c:164: NEW SESSION REQUEST
+2018-12-10 21:43:26 INFO  communication_manager.c:174: Nenalezena otevrena sessiona, zalozime novou
+2018-12-10 21:43:26 INFO  communication_manager.c:180:     Vytvorena nova sessiona
+
+2018-12-10 21:43:26 TRACE communication_manager.c:64: ------CLIENT HANDLE ENDED WITH TIME: 0.000060s
+
+2018-12-10 21:43:26 TRACE communication_manager.c:103: HANDLE DISCONNECTED CLIENTS LIST
+2018-12-10 21:43:26 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-10 21:43:27 TRACE communication_manager.c:13: ------CLIENT HANDLE STARTED
+2018-12-10 21:43:27 TRACE communication_manager.c:205:  NEW GAME REQUEST
+
+2018-12-10 21:43:27 ERROR communication_manager.c:213: NEW GAME REQUEST - Session is not valid
+2018-12-10 21:43:27 TRACE communication_manager.c:64: ------CLIENT HANDLE ENDED WITH TIME: 0.000030s
+
+2018-12-10 21:43:27 TRACE communication_manager.c:103: HANDLE DISCONNECTED CLIENTS LIST
+2018-12-10 21:43:27 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-10 21:43:28 INFO  main.c:112: NEW CLIENT CONNECTED AND ADD TO SOCKET'S SET
+2018-12-10 21:43:28 TRACE communication_manager.c:103: HANDLE DISCONNECTED CLIENTS LIST
+2018-12-10 21:43:28 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-10 21:43:28 TRACE communication_manager.c:13: ------CLIENT HANDLE STARTED
+2018-12-10 21:43:28 TRACE communication_manager.c:68: HANDLE CONNECT
+
+2018-12-10 21:43:28 INFO  communication_manager.c:36: Client pridan do lobby
+
+2018-12-10 21:43:28 TRACE communication_manager.c:64: ------CLIENT HANDLE ENDED WITH TIME: 0.000028s
+
+2018-12-10 21:43:28 TRACE communication_manager.c:103: HANDLE DISCONNECTED CLIENTS LIST
+2018-12-10 21:43:28 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-10 21:43:29 TRACE communication_manager.c:13: ------CLIENT HANDLE STARTED
+2018-12-10 21:43:29 TRACE communication_manager.c:164: NEW SESSION REQUEST
+2018-12-10 21:43:29 TRACE session.c:22: IS SESSION OPEN
+2018-12-10 21:43:29 INFO  communication_manager.c:183: Nalezena otevrena sessiona 
+
+2018-12-10 21:43:29 TRACE communication_manager.c:64: ------CLIENT HANDLE ENDED WITH TIME: 0.000087s
+
+2018-12-10 21:43:29 TRACE communication_manager.c:103: HANDLE DISCONNECTED CLIENTS LIST
+2018-12-10 21:43:29 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-10 21:43:29 TRACE communication_manager.c:13: ------CLIENT HANDLE STARTED
+2018-12-10 21:43:29 TRACE communication_manager.c:205:  NEW GAME REQUEST
+
+2018-12-10 21:43:29 TRACE session.c:22: IS SESSION OPEN
+2018-12-10 21:43:29 TRACE communication_manager.c:322: SEND WHO IS ON TURN BOTH CLIENTS
+2018-12-10 21:43:29 TRACE session.c:133: IS CLIENT ON TURN
+2018-12-10 21:43:29 TRACE session.c:115: GET CLIENT PLAYER ORDER
+2018-12-10 21:43:29 TRACE session.c:147: Je player order: 0 == actual player: 0
+2018-12-10 21:43:29 TRACE communication_manager.c:329: SEND WHO IS ON TURN BOTH CLIENTS - P1 is on turn
+2018-12-10 21:43:29 TRACE communication_manager.c:64: ------CLIENT HANDLE ENDED WITH TIME: 0.000650s
+
+2018-12-10 21:43:29 TRACE communication_manager.c:103: HANDLE DISCONNECTED CLIENTS LIST
+2018-12-10 21:43:29 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-10 21:43:47 INFO  main.c:94: SELECT TIMEOUT
+2018-12-10 21:43:47 TRACE communication_manager.c:103: HANDLE DISCONNECTED CLIENTS LIST
+2018-12-10 21:43:47 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-10 21:43:50 TRACE communication_manager.c:13: ------CLIENT HANDLE STARTED
+2018-12-10 21:43:50 TRACE communication_manager.c:241: PEXESO REVEAL REQUEST
+2018-12-10 21:43:50 TRACE session.c:133: IS CLIENT ON TURN
+2018-12-10 21:43:50 TRACE session.c:115: GET CLIENT PLAYER ORDER
+2018-12-10 21:43:50 TRACE session.c:147: Je player order: 0 == actual player: 0
+2018-12-10 21:43:50 TRACE communication_manager.c:64: ------CLIENT HANDLE ENDED WITH TIME: 0.000083s
+
+2018-12-10 21:43:50 TRACE communication_manager.c:103: HANDLE DISCONNECTED CLIENTS LIST
+2018-12-10 21:43:50 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-10 21:43:54 TRACE communication_manager.c:13: ------CLIENT HANDLE STARTED
+2018-12-10 21:43:54 TRACE communication_manager.c:241: PEXESO REVEAL REQUEST
+2018-12-10 21:43:54 TRACE session.c:133: IS CLIENT ON TURN
+2018-12-10 21:43:54 TRACE session.c:115: GET CLIENT PLAYER ORDER
+2018-12-10 21:43:54 TRACE session.c:147: Je player order: 0 == actual player: 0
+2018-12-10 21:43:54 TRACE communication_manager.c:322: SEND WHO IS ON TURN BOTH CLIENTS
+2018-12-10 21:43:54 TRACE session.c:133: IS CLIENT ON TURN
+2018-12-10 21:43:54 TRACE session.c:115: GET CLIENT PLAYER ORDER
+2018-12-10 21:43:54 TRACE session.c:147: Je player order: 0 == actual player: 1
+2018-12-10 21:43:54 TRACE communication_manager.c:335: SEND WHO IS ON TURN BOTH CLIENTS - P2 is on turn
+2018-12-10 21:43:54 TRACE communication_manager.c:64: ------CLIENT HANDLE ENDED WITH TIME: 0.000138s
+
+2018-12-10 21:43:54 TRACE communication_manager.c:103: HANDLE DISCONNECTED CLIENTS LIST
+2018-12-10 21:43:54 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-10 21:44:01 TRACE communication_manager.c:13: ------CLIENT HANDLE STARTED
+2018-12-10 21:44:01 TRACE communication_manager.c:241: PEXESO REVEAL REQUEST
+2018-12-10 21:44:01 TRACE session.c:133: IS CLIENT ON TURN
+2018-12-10 21:44:01 TRACE session.c:115: GET CLIENT PLAYER ORDER
+2018-12-10 21:44:01 TRACE session.c:147: Je player order: 1 == actual player: 1
+2018-12-10 21:44:01 TRACE communication_manager.c:64: ------CLIENT HANDLE ENDED WITH TIME: 0.000095s
+
+2018-12-10 21:44:01 TRACE communication_manager.c:103: HANDLE DISCONNECTED CLIENTS LIST
+2018-12-10 21:44:01 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-10 21:44:05 TRACE communication_manager.c:13: ------CLIENT HANDLE STARTED
+2018-12-10 21:44:05 TRACE communication_manager.c:241: PEXESO REVEAL REQUEST
+2018-12-10 21:44:05 TRACE session.c:133: IS CLIENT ON TURN
+2018-12-10 21:44:05 TRACE session.c:115: GET CLIENT PLAYER ORDER
+2018-12-10 21:44:05 TRACE session.c:147: Je player order: 1 == actual player: 1
+2018-12-10 21:44:05 TRACE communication_manager.c:322: SEND WHO IS ON TURN BOTH CLIENTS
+2018-12-10 21:44:05 TRACE session.c:133: IS CLIENT ON TURN
+2018-12-10 21:44:05 TRACE session.c:115: GET CLIENT PLAYER ORDER
+2018-12-10 21:44:05 TRACE session.c:147: Je player order: 0 == actual player: 0
+2018-12-10 21:44:05 TRACE communication_manager.c:329: SEND WHO IS ON TURN BOTH CLIENTS - P1 is on turn
+2018-12-10 21:44:05 TRACE communication_manager.c:64: ------CLIENT HANDLE ENDED WITH TIME: 0.000245s
+
+2018-12-10 21:44:05 TRACE communication_manager.c:103: HANDLE DISCONNECTED CLIENTS LIST
+2018-12-10 21:44:05 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-10 21:44:10 TRACE communication_manager.c:13: ------CLIENT HANDLE STARTED
+2018-12-10 21:44:10 TRACE communication_manager.c:241: PEXESO REVEAL REQUEST
+2018-12-10 21:44:10 TRACE session.c:133: IS CLIENT ON TURN
+2018-12-10 21:44:10 TRACE session.c:115: GET CLIENT PLAYER ORDER
+2018-12-10 21:44:10 TRACE session.c:147: Je player order: 0 == actual player: 0
+2018-12-10 21:44:10 TRACE communication_manager.c:64: ------CLIENT HANDLE ENDED WITH TIME: 0.000098s
+
+2018-12-10 21:44:10 TRACE communication_manager.c:103: HANDLE DISCONNECTED CLIENTS LIST
+2018-12-10 21:44:10 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-10 21:44:14 TRACE communication_manager.c:13: ------CLIENT HANDLE STARTED
+2018-12-10 21:44:14 TRACE communication_manager.c:241: PEXESO REVEAL REQUEST
+2018-12-10 21:44:14 TRACE session.c:133: IS CLIENT ON TURN
+2018-12-10 21:44:14 TRACE session.c:115: GET CLIENT PLAYER ORDER
+2018-12-10 21:44:14 TRACE session.c:147: Je player order: 0 == actual player: 0
+2018-12-10 21:44:14 TRACE communication_manager.c:322: SEND WHO IS ON TURN BOTH CLIENTS
+2018-12-10 21:44:14 TRACE session.c:133: IS CLIENT ON TURN
+2018-12-10 21:44:14 TRACE session.c:115: GET CLIENT PLAYER ORDER
+2018-12-10 21:44:14 TRACE session.c:147: Je player order: 0 == actual player: 1
+2018-12-10 21:44:14 TRACE communication_manager.c:335: SEND WHO IS ON TURN BOTH CLIENTS - P2 is on turn
+2018-12-10 21:44:14 TRACE communication_manager.c:64: ------CLIENT HANDLE ENDED WITH TIME: 0.000267s
+
+2018-12-10 21:44:14 TRACE communication_manager.c:103: HANDLE DISCONNECTED CLIENTS LIST
+2018-12-10 21:44:14 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-10 21:44:19 TRACE communication_manager.c:13: ------CLIENT HANDLE STARTED
+2018-12-10 21:44:19 TRACE communication_manager.c:241: PEXESO REVEAL REQUEST
+2018-12-10 21:44:19 TRACE session.c:133: IS CLIENT ON TURN
+2018-12-10 21:44:19 TRACE session.c:115: GET CLIENT PLAYER ORDER
+2018-12-10 21:44:19 TRACE session.c:147: Je player order: 1 == actual player: 1
+2018-12-10 21:44:19 TRACE communication_manager.c:64: ------CLIENT HANDLE ENDED WITH TIME: 0.000096s
+
+2018-12-10 21:44:19 TRACE communication_manager.c:103: HANDLE DISCONNECTED CLIENTS LIST
+2018-12-10 21:44:19 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-10 21:44:22 TRACE communication_manager.c:13: ------CLIENT HANDLE STARTED
+2018-12-10 21:44:22 TRACE communication_manager.c:241: PEXESO REVEAL REQUEST
+2018-12-10 21:44:22 TRACE session.c:133: IS CLIENT ON TURN
+2018-12-10 21:44:22 TRACE session.c:115: GET CLIENT PLAYER ORDER
+2018-12-10 21:44:22 TRACE session.c:147: Je player order: 1 == actual player: 1
+2018-12-10 21:44:22 TRACE communication_manager.c:322: SEND WHO IS ON TURN BOTH CLIENTS
+2018-12-10 21:44:22 TRACE session.c:133: IS CLIENT ON TURN
+2018-12-10 21:44:22 TRACE session.c:115: GET CLIENT PLAYER ORDER
+2018-12-10 21:44:22 TRACE session.c:147: Je player order: 0 == actual player: 0
+2018-12-10 21:44:22 TRACE communication_manager.c:329: SEND WHO IS ON TURN BOTH CLIENTS - P1 is on turn
+2018-12-10 21:44:22 TRACE communication_manager.c:64: ------CLIENT HANDLE ENDED WITH TIME: 0.000137s
+
+2018-12-10 21:44:22 TRACE communication_manager.c:103: HANDLE DISCONNECTED CLIENTS LIST
+2018-12-10 21:44:22 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-10 21:44:47 INFO  main.c:94: SELECT TIMEOUT
+2018-12-10 21:44:47 TRACE communication_manager.c:103: HANDLE DISCONNECTED CLIENTS LIST
+2018-12-10 21:44:47 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-10 21:44:48 TRACE communication_manager.c:13: ------CLIENT HANDLE STARTED
+2018-12-10 21:44:48 TRACE communication_manager.c:241: PEXESO REVEAL REQUEST
+2018-12-10 21:44:48 TRACE session.c:133: IS CLIENT ON TURN
+2018-12-10 21:44:48 TRACE session.c:115: GET CLIENT PLAYER ORDER
+2018-12-10 21:44:48 TRACE session.c:147: Je player order: 0 == actual player: 0
+2018-12-10 21:44:48 TRACE communication_manager.c:64: ------CLIENT HANDLE ENDED WITH TIME: 0.000097s
+
+2018-12-10 21:44:48 TRACE communication_manager.c:103: HANDLE DISCONNECTED CLIENTS LIST
+2018-12-10 21:44:48 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-10 21:44:52 TRACE communication_manager.c:13: ------CLIENT HANDLE STARTED
+2018-12-10 21:44:52 TRACE communication_manager.c:241: PEXESO REVEAL REQUEST
+2018-12-10 21:44:52 TRACE session.c:133: IS CLIENT ON TURN
+2018-12-10 21:44:52 TRACE session.c:115: GET CLIENT PLAYER ORDER
+2018-12-10 21:44:52 TRACE session.c:147: Je player order: 0 == actual player: 0
+2018-12-10 21:44:52 TRACE communication_manager.c:322: SEND WHO IS ON TURN BOTH CLIENTS
+2018-12-10 21:44:52 TRACE session.c:133: IS CLIENT ON TURN
+2018-12-10 21:44:52 TRACE session.c:115: GET CLIENT PLAYER ORDER
+2018-12-10 21:44:52 TRACE session.c:147: Je player order: 0 == actual player: 1
+2018-12-10 21:44:52 TRACE communication_manager.c:335: SEND WHO IS ON TURN BOTH CLIENTS - P2 is on turn
+2018-12-10 21:44:52 TRACE communication_manager.c:64: ------CLIENT HANDLE ENDED WITH TIME: 0.000222s
+
+2018-12-10 21:44:52 TRACE communication_manager.c:103: HANDLE DISCONNECTED CLIENTS LIST
+2018-12-10 21:44:52 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-10 21:45:01 TRACE communication_manager.c:13: ------CLIENT HANDLE STARTED
+2018-12-10 21:45:01 TRACE communication_manager.c:241: PEXESO REVEAL REQUEST
+2018-12-10 21:45:01 TRACE session.c:133: IS CLIENT ON TURN
+2018-12-10 21:45:01 TRACE session.c:115: GET CLIENT PLAYER ORDER
+2018-12-10 21:45:01 TRACE session.c:147: Je player order: 1 == actual player: 1
+2018-12-10 21:45:01 TRACE communication_manager.c:64: ------CLIENT HANDLE ENDED WITH TIME: 0.000098s
+
+2018-12-10 21:45:01 TRACE communication_manager.c:103: HANDLE DISCONNECTED CLIENTS LIST
+2018-12-10 21:45:01 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-10 21:45:04 TRACE communication_manager.c:13: ------CLIENT HANDLE STARTED
+2018-12-10 21:45:04 TRACE communication_manager.c:241: PEXESO REVEAL REQUEST
+2018-12-10 21:45:04 TRACE session.c:133: IS CLIENT ON TURN
+2018-12-10 21:45:04 TRACE session.c:115: GET CLIENT PLAYER ORDER
+2018-12-10 21:45:04 TRACE session.c:147: Je player order: 1 == actual player: 1
+2018-12-10 21:45:04 TRACE communication_manager.c:322: SEND WHO IS ON TURN BOTH CLIENTS
+2018-12-10 21:45:04 TRACE session.c:133: IS CLIENT ON TURN
+2018-12-10 21:45:04 TRACE session.c:115: GET CLIENT PLAYER ORDER
+2018-12-10 21:45:04 TRACE session.c:147: Je player order: 0 == actual player: 0
+2018-12-10 21:45:04 TRACE communication_manager.c:329: SEND WHO IS ON TURN BOTH CLIENTS - P1 is on turn
+2018-12-10 21:45:04 TRACE communication_manager.c:64: ------CLIENT HANDLE ENDED WITH TIME: 0.000142s
+
+2018-12-10 21:45:04 TRACE communication_manager.c:103: HANDLE DISCONNECTED CLIENTS LIST
+2018-12-10 21:45:04 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-10 21:45:25 TRACE communication_manager.c:13: ------CLIENT HANDLE STARTED
+2018-12-10 21:45:25 TRACE communication_manager.c:241: PEXESO REVEAL REQUEST
+2018-12-10 21:45:25 TRACE session.c:133: IS CLIENT ON TURN
+2018-12-10 21:45:25 TRACE session.c:115: GET CLIENT PLAYER ORDER
+2018-12-10 21:45:25 TRACE session.c:147: Je player order: 0 == actual player: 0
+2018-12-10 21:45:25 TRACE communication_manager.c:64: ------CLIENT HANDLE ENDED WITH TIME: 0.000098s
+
+2018-12-10 21:45:25 TRACE communication_manager.c:103: HANDLE DISCONNECTED CLIENTS LIST
+2018-12-10 21:45:25 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-10 21:45:35 TRACE communication_manager.c:13: ------CLIENT HANDLE STARTED
+2018-12-10 21:45:35 TRACE communication_manager.c:241: PEXESO REVEAL REQUEST
+2018-12-10 21:45:35 TRACE session.c:133: IS CLIENT ON TURN
+2018-12-10 21:45:35 TRACE session.c:115: GET CLIENT PLAYER ORDER
+2018-12-10 21:45:35 TRACE session.c:147: Je player order: 0 == actual player: 0
+2018-12-10 21:45:35 TRACE communication_manager.c:322: SEND WHO IS ON TURN BOTH CLIENTS
+2018-12-10 21:45:35 TRACE session.c:133: IS CLIENT ON TURN
+2018-12-10 21:45:35 TRACE session.c:115: GET CLIENT PLAYER ORDER
+2018-12-10 21:45:35 TRACE session.c:147: Je player order: 0 == actual player: 1
+2018-12-10 21:45:35 TRACE communication_manager.c:335: SEND WHO IS ON TURN BOTH CLIENTS - P2 is on turn
+2018-12-10 21:45:35 TRACE communication_manager.c:64: ------CLIENT HANDLE ENDED WITH TIME: 0.000145s
+
+2018-12-10 21:45:35 TRACE communication_manager.c:103: HANDLE DISCONNECTED CLIENTS LIST
+2018-12-10 21:45:35 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-10 21:45:47 INFO  main.c:94: SELECT TIMEOUT
+2018-12-10 21:45:47 TRACE communication_manager.c:103: HANDLE DISCONNECTED CLIENTS LIST
+2018-12-10 21:45:47 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-10 21:46:47 INFO  main.c:94: SELECT TIMEOUT
+2018-12-10 21:46:47 TRACE communication_manager.c:103: HANDLE DISCONNECTED CLIENTS LIST
+2018-12-10 21:46:47 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-10 21:47:13 INFO  communication_manager.c:99: Client added to disconnected clients list
+2018-12-10 21:47:13 INFO  main.c:132: CLIENT HAS DISCONNECTED AND WAS REMOVED FROM SOCKET'S SET
+2018-12-10 21:47:13 TRACE communication_manager.c:103: HANDLE DISCONNECTED CLIENTS LIST
+2018-12-10 21:47:13 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-10 21:47:13 INFO  disconnected_clients.c:115:         Client: guest6959 ID:6959 socket:6 disconnected_time:2018-12-10 21:47:13
+
+2018-12-10 21:47:15 INFO  communication_manager.c:99: Client added to disconnected clients list
+2018-12-10 21:47:15 INFO  main.c:132: CLIENT HAS DISCONNECTED AND WAS REMOVED FROM SOCKET'S SET
+2018-12-10 21:47:15 TRACE communication_manager.c:103: HANDLE DISCONNECTED CLIENTS LIST
+2018-12-10 21:47:15 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-10 21:47:15 INFO  disconnected_clients.c:115:         Client: guest6959 ID:6959 socket:6 disconnected_time:2018-12-10 21:47:13
+
+2018-12-10 21:50:39 INFO  main.c:36: SERVER SETUPED!
+2018-12-10 21:50:39 INFO  main.c:55: BIND SUCCESSFUL
+2018-12-10 21:50:39 INFO  main.c:66: LISTEN SUCCESSFUL
+2018-12-10 21:50:57 INFO  main.c:112: NEW CLIENT CONNECTED AND ADD TO SOCKET'S SET
+2018-12-10 21:50:57 TRACE communication_manager.c:103: HANDLE DISCONNECTED CLIENTS LIST
+2018-12-10 21:50:57 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-10 21:50:57 TRACE communication_manager.c:13: ------CLIENT HANDLE STARTED
+2018-12-10 21:50:57 TRACE communication_manager.c:68: HANDLE CONNECT
+
+2018-12-10 21:50:57 INFO  communication_manager.c:36: Client pridan do lobby
+
+2018-12-10 21:50:57 TRACE communication_manager.c:64: ------CLIENT HANDLE ENDED WITH TIME: 0.000034s
+
+2018-12-10 21:50:57 TRACE communication_manager.c:103: HANDLE DISCONNECTED CLIENTS LIST
+2018-12-10 21:50:57 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-10 21:50:58 TRACE communication_manager.c:13: ------CLIENT HANDLE STARTED
+2018-12-10 21:50:58 TRACE communication_manager.c:164: NEW SESSION REQUEST
+2018-12-10 21:50:58 INFO  communication_manager.c:174: Nenalezena otevrena sessiona, zalozime novou
+2018-12-10 21:50:58 INFO  communication_manager.c:180:     Vytvorena nova sessiona
+
+2018-12-10 21:50:58 TRACE communication_manager.c:64: ------CLIENT HANDLE ENDED WITH TIME: 0.000062s
+
+2018-12-10 21:50:58 TRACE communication_manager.c:103: HANDLE DISCONNECTED CLIENTS LIST
+2018-12-10 21:50:58 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-10 21:50:58 TRACE communication_manager.c:13: ------CLIENT HANDLE STARTED
+2018-12-10 21:50:58 TRACE communication_manager.c:205:  NEW GAME REQUEST
+
+2018-12-10 21:50:58 ERROR communication_manager.c:213: NEW GAME REQUEST - Session is not valid
+2018-12-10 21:50:58 TRACE communication_manager.c:64: ------CLIENT HANDLE ENDED WITH TIME: 0.000028s
+
+2018-12-10 21:50:58 TRACE communication_manager.c:103: HANDLE DISCONNECTED CLIENTS LIST
+2018-12-10 21:50:58 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-10 21:50:59 INFO  main.c:112: NEW CLIENT CONNECTED AND ADD TO SOCKET'S SET
+2018-12-10 21:50:59 TRACE communication_manager.c:103: HANDLE DISCONNECTED CLIENTS LIST
+2018-12-10 21:50:59 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-10 21:50:59 TRACE communication_manager.c:13: ------CLIENT HANDLE STARTED
+2018-12-10 21:50:59 TRACE communication_manager.c:68: HANDLE CONNECT
+
+2018-12-10 21:50:59 INFO  communication_manager.c:36: Client pridan do lobby
+
+2018-12-10 21:50:59 TRACE communication_manager.c:64: ------CLIENT HANDLE ENDED WITH TIME: 0.000034s
+
+2018-12-10 21:50:59 TRACE communication_manager.c:103: HANDLE DISCONNECTED CLIENTS LIST
+2018-12-10 21:50:59 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-10 21:50:59 TRACE communication_manager.c:13: ------CLIENT HANDLE STARTED
+2018-12-10 21:50:59 TRACE communication_manager.c:164: NEW SESSION REQUEST
+2018-12-10 21:50:59 TRACE session.c:22: IS SESSION OPEN
+2018-12-10 21:50:59 INFO  communication_manager.c:183: Nalezena otevrena sessiona 
+
+2018-12-10 21:50:59 TRACE communication_manager.c:64: ------CLIENT HANDLE ENDED WITH TIME: 0.000064s
+
+2018-12-10 21:50:59 TRACE communication_manager.c:103: HANDLE DISCONNECTED CLIENTS LIST
+2018-12-10 21:50:59 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-10 21:50:59 TRACE communication_manager.c:13: ------CLIENT HANDLE STARTED
+2018-12-10 21:50:59 TRACE communication_manager.c:205:  NEW GAME REQUEST
+
+2018-12-10 21:50:59 TRACE session.c:22: IS SESSION OPEN
+2018-12-10 21:50:59 TRACE communication_manager.c:322: SEND WHO IS ON TURN BOTH CLIENTS
+2018-12-10 21:50:59 TRACE session.c:133: IS CLIENT ON TURN
+2018-12-10 21:50:59 TRACE session.c:115: GET CLIENT PLAYER ORDER
+2018-12-10 21:50:59 TRACE session.c:147: Je player order: 0 == actual player: 0
+2018-12-10 21:50:59 TRACE communication_manager.c:329: SEND WHO IS ON TURN BOTH CLIENTS - P1 is on turn
+2018-12-10 21:50:59 TRACE communication_manager.c:64: ------CLIENT HANDLE ENDED WITH TIME: 0.000286s
+
+2018-12-10 21:50:59 TRACE communication_manager.c:103: HANDLE DISCONNECTED CLIENTS LIST
+2018-12-10 21:50:59 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-10 21:51:39 INFO  main.c:94: SELECT TIMEOUT
+2018-12-10 21:51:39 TRACE communication_manager.c:103: HANDLE DISCONNECTED CLIENTS LIST
+2018-12-10 21:51:39 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-10 21:52:51 INFO  main.c:36: SERVER SETUPED!
+2018-12-10 21:52:51 ERROR main.c:57: BIND - PORT IS PROPABLY OCCUPIED
+2018-12-10 21:53:04 INFO  main.c:36: SERVER SETUPED!
+2018-12-10 21:53:04 ERROR main.c:57: BIND - PORT IS PROPABLY OCCUPIED
+2018-12-10 21:53:21 INFO  main.c:36: SERVER SETUPED!
+2018-12-10 21:53:21 ERROR main.c:57: BIND - PORT IS PROPABLY OCCUPIED
+2018-12-10 21:53:22 INFO  main.c:36: SERVER SETUPED!
+2018-12-10 21:53:22 ERROR main.c:57: BIND - PORT IS PROPABLY OCCUPIED
+2018-12-10 21:53:30 INFO  main.c:36: SERVER SETUPED!
+2018-12-10 21:53:30 ERROR main.c:57: BIND - PORT IS PROPABLY OCCUPIED
+2018-12-10 21:53:46 INFO  main.c:36: SERVER SETUPED!
+2018-12-10 21:53:46 INFO  main.c:55: BIND SUCCESSFUL
+2018-12-10 21:53:46 INFO  main.c:66: LISTEN SUCCESSFUL
+2018-12-10 21:53:48 INFO  main.c:112: NEW CLIENT CONNECTED AND ADD TO SOCKET'S SET
+2018-12-10 21:53:48 TRACE communication_manager.c:103: HANDLE DISCONNECTED CLIENTS LIST
+2018-12-10 21:53:48 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-10 21:53:48 TRACE communication_manager.c:13: ------CLIENT HANDLE STARTED
+2018-12-10 21:53:48 TRACE communication_manager.c:68: HANDLE CONNECT
+
+2018-12-10 21:53:48 INFO  communication_manager.c:36: Client pridan do lobby
+
+2018-12-10 21:53:48 TRACE communication_manager.c:64: ------CLIENT HANDLE ENDED WITH TIME: 0.000036s
+
+2018-12-10 21:53:48 TRACE communication_manager.c:103: HANDLE DISCONNECTED CLIENTS LIST
+2018-12-10 21:53:48 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-10 21:53:49 INFO  main.c:112: NEW CLIENT CONNECTED AND ADD TO SOCKET'S SET
+2018-12-10 21:53:49 TRACE communication_manager.c:103: HANDLE DISCONNECTED CLIENTS LIST
+2018-12-10 21:53:49 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-10 21:53:49 TRACE communication_manager.c:13: ------CLIENT HANDLE STARTED
+2018-12-10 21:53:49 TRACE communication_manager.c:68: HANDLE CONNECT
+
+2018-12-10 21:53:49 INFO  communication_manager.c:36: Client pridan do lobby
+
+2018-12-10 21:53:49 TRACE communication_manager.c:64: ------CLIENT HANDLE ENDED WITH TIME: 0.000034s
+
+2018-12-10 21:53:49 TRACE communication_manager.c:103: HANDLE DISCONNECTED CLIENTS LIST
+2018-12-10 21:53:49 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-10 21:53:50 TRACE communication_manager.c:13: ------CLIENT HANDLE STARTED
+2018-12-10 21:53:50 TRACE communication_manager.c:164: NEW SESSION REQUEST
+2018-12-10 21:53:50 INFO  communication_manager.c:174: Nenalezena otevrena sessiona, zalozime novou
+2018-12-10 21:53:50 INFO  communication_manager.c:180:     Vytvorena nova sessiona
+
+2018-12-10 21:53:50 TRACE communication_manager.c:64: ------CLIENT HANDLE ENDED WITH TIME: 0.000062s
+
+2018-12-10 21:53:50 TRACE communication_manager.c:103: HANDLE DISCONNECTED CLIENTS LIST
+2018-12-10 21:53:50 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-10 21:53:50 TRACE communication_manager.c:13: ------CLIENT HANDLE STARTED
+2018-12-10 21:53:50 TRACE communication_manager.c:205:  NEW GAME REQUEST
+
+2018-12-10 21:53:50 ERROR communication_manager.c:213: NEW GAME REQUEST - Session is not valid
+2018-12-10 21:53:50 TRACE communication_manager.c:64: ------CLIENT HANDLE ENDED WITH TIME: 0.000027s
+
+2018-12-10 21:53:50 TRACE communication_manager.c:103: HANDLE DISCONNECTED CLIENTS LIST
+2018-12-10 21:53:50 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-10 21:53:51 TRACE communication_manager.c:13: ------CLIENT HANDLE STARTED
+2018-12-10 21:53:51 TRACE communication_manager.c:164: NEW SESSION REQUEST
+2018-12-10 21:53:51 TRACE session.c:22: IS SESSION OPEN
+2018-12-10 21:53:51 INFO  communication_manager.c:183: Nalezena otevrena sessiona 
+
+2018-12-10 21:53:51 TRACE communication_manager.c:64: ------CLIENT HANDLE ENDED WITH TIME: 0.000061s
+
+2018-12-10 21:53:51 TRACE communication_manager.c:103: HANDLE DISCONNECTED CLIENTS LIST
+2018-12-10 21:53:51 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-10 21:53:51 TRACE communication_manager.c:13: ------CLIENT HANDLE STARTED
+2018-12-10 21:53:51 TRACE communication_manager.c:205:  NEW GAME REQUEST
+
+2018-12-10 21:53:51 TRACE session.c:22: IS SESSION OPEN
+2018-12-10 21:53:51 TRACE communication_manager.c:322: SEND WHO IS ON TURN BOTH CLIENTS
+2018-12-10 21:53:51 TRACE session.c:133: IS CLIENT ON TURN
+2018-12-10 21:53:51 TRACE session.c:115: GET CLIENT PLAYER ORDER
+2018-12-10 21:53:51 TRACE session.c:147: Je player order: 0 == actual player: 0
+2018-12-10 21:53:51 TRACE communication_manager.c:329: SEND WHO IS ON TURN BOTH CLIENTS - P1 is on turn
+2018-12-10 21:53:51 TRACE communication_manager.c:64: ------CLIENT HANDLE ENDED WITH TIME: 0.000322s
+
+2018-12-10 21:53:51 TRACE communication_manager.c:103: HANDLE DISCONNECTED CLIENTS LIST
+2018-12-10 21:53:51 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-10 21:54:46 INFO  main.c:94: SELECT TIMEOUT
+2018-12-10 21:54:46 TRACE communication_manager.c:103: HANDLE DISCONNECTED CLIENTS LIST
+2018-12-10 21:54:46 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-10 21:55:55 INFO  main.c:36: SERVER SETUPED!
+2018-12-10 21:55:55 INFO  main.c:55: BIND SUCCESSFUL
+2018-12-10 21:55:55 INFO  main.c:66: LISTEN SUCCESSFUL
+2018-12-10 21:56:12 INFO  main.c:112: NEW CLIENT CONNECTED AND ADD TO SOCKET'S SET
+2018-12-10 21:56:12 TRACE communication_manager.c:103: HANDLE DISCONNECTED CLIENTS LIST
+2018-12-10 21:56:12 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-10 21:56:12 TRACE communication_manager.c:13: ------CLIENT HANDLE STARTED
+2018-12-10 21:56:12 TRACE communication_manager.c:68: HANDLE CONNECT
+
+2018-12-10 21:56:12 INFO  communication_manager.c:36: Client pridan do lobby
+
+2018-12-10 21:56:12 TRACE communication_manager.c:64: ------CLIENT HANDLE ENDED WITH TIME: 0.000034s
+
+2018-12-10 21:56:12 TRACE communication_manager.c:103: HANDLE DISCONNECTED CLIENTS LIST
+2018-12-10 21:56:12 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-10 21:56:12 TRACE communication_manager.c:13: ------CLIENT HANDLE STARTED
+2018-12-10 21:56:12 TRACE communication_manager.c:164: NEW SESSION REQUEST
+2018-12-10 21:56:12 INFO  communication_manager.c:174: Nenalezena otevrena sessiona, zalozime novou
+2018-12-10 21:56:12 INFO  communication_manager.c:180:     Vytvorena nova sessiona
+
+2018-12-10 21:56:12 TRACE communication_manager.c:64: ------CLIENT HANDLE ENDED WITH TIME: 0.000061s
+
+2018-12-10 21:56:12 TRACE communication_manager.c:103: HANDLE DISCONNECTED CLIENTS LIST
+2018-12-10 21:56:12 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-10 21:56:13 TRACE communication_manager.c:13: ------CLIENT HANDLE STARTED
+2018-12-10 21:56:13 TRACE communication_manager.c:205:  NEW GAME REQUEST
+
+2018-12-10 21:56:13 ERROR communication_manager.c:213: NEW GAME REQUEST - Session is not valid
+2018-12-10 21:56:13 TRACE communication_manager.c:64: ------CLIENT HANDLE ENDED WITH TIME: 0.000025s
+
+2018-12-10 21:56:13 TRACE communication_manager.c:103: HANDLE DISCONNECTED CLIENTS LIST
+2018-12-10 21:56:13 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-10 21:56:13 INFO  main.c:112: NEW CLIENT CONNECTED AND ADD TO SOCKET'S SET
+2018-12-10 21:56:13 TRACE communication_manager.c:103: HANDLE DISCONNECTED CLIENTS LIST
+2018-12-10 21:56:13 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-10 21:56:13 TRACE communication_manager.c:13: ------CLIENT HANDLE STARTED
+2018-12-10 21:56:13 TRACE communication_manager.c:68: HANDLE CONNECT
+
+2018-12-10 21:56:13 INFO  communication_manager.c:36: Client pridan do lobby
+
+2018-12-10 21:56:13 TRACE communication_manager.c:64: ------CLIENT HANDLE ENDED WITH TIME: 0.000032s
+
+2018-12-10 21:56:13 TRACE communication_manager.c:103: HANDLE DISCONNECTED CLIENTS LIST
+2018-12-10 21:56:13 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-10 21:56:19 TRACE communication_manager.c:13: ------CLIENT HANDLE STARTED
+2018-12-10 21:56:19 TRACE communication_manager.c:164: NEW SESSION REQUEST
+2018-12-10 21:56:19 TRACE session.c:22: IS SESSION OPEN
+2018-12-10 21:56:19 INFO  communication_manager.c:183: Nalezena otevrena sessiona 
+
+2018-12-10 21:56:19 TRACE communication_manager.c:64: ------CLIENT HANDLE ENDED WITH TIME: 0.000058s
+
+2018-12-10 21:56:19 TRACE communication_manager.c:103: HANDLE DISCONNECTED CLIENTS LIST
+2018-12-10 21:56:19 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-10 21:56:19 TRACE communication_manager.c:13: ------CLIENT HANDLE STARTED
+2018-12-10 21:56:19 TRACE communication_manager.c:205:  NEW GAME REQUEST
+
+2018-12-10 21:56:19 TRACE session.c:22: IS SESSION OPEN
+2018-12-10 21:56:19 TRACE communication_manager.c:322: SEND WHO IS ON TURN BOTH CLIENTS
+2018-12-10 21:56:19 TRACE session.c:133: IS CLIENT ON TURN
+2018-12-10 21:56:19 TRACE session.c:115: GET CLIENT PLAYER ORDER
+2018-12-10 21:56:19 TRACE session.c:147: Je player order: 0 == actual player: 0
+2018-12-10 21:56:19 TRACE communication_manager.c:329: SEND WHO IS ON TURN BOTH CLIENTS - P1 is on turn
+2018-12-10 21:56:19 TRACE communication_manager.c:64: ------CLIENT HANDLE ENDED WITH TIME: 0.000285s
+
+2018-12-10 21:56:19 TRACE communication_manager.c:103: HANDLE DISCONNECTED CLIENTS LIST
+2018-12-10 21:56:19 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-10 21:56:55 INFO  main.c:94: SELECT TIMEOUT
+2018-12-10 21:56:55 TRACE communication_manager.c:103: HANDLE DISCONNECTED CLIENTS LIST
+2018-12-10 21:56:55 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-10 21:57:56 INFO  main.c:94: SELECT TIMEOUT
+2018-12-10 21:57:56 TRACE communication_manager.c:103: HANDLE DISCONNECTED CLIENTS LIST
+2018-12-10 21:57:56 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-11 20:23:51 INFO  main.c:36: SERVER SETUPED!
+2018-12-11 20:23:51 INFO  main.c:55: BIND SUCCESSFUL
+2018-12-11 20:23:51 INFO  main.c:66: LISTEN SUCCESSFUL
+2018-12-11 20:24:20 INFO  main.c:112: NEW CLIENT CONNECTED AND ADD TO SOCKET'S SET
+2018-12-11 20:24:20 TRACE communication_manager.c:103: HANDLE DISCONNECTED CLIENTS LIST
+2018-12-11 20:24:20 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-11 20:24:20 TRACE communication_manager.c:13: ------CLIENT HANDLE STARTED
+2018-12-11 20:24:20 TRACE communication_manager.c:68: HANDLE CONNECT
+
+2018-12-11 20:24:20 INFO  communication_manager.c:36: Client pridan do lobby
+
+2018-12-11 20:24:20 TRACE communication_manager.c:64: ------CLIENT HANDLE ENDED WITH TIME: 0.000064s
+
+2018-12-11 20:24:20 TRACE communication_manager.c:103: HANDLE DISCONNECTED CLIENTS LIST
+2018-12-11 20:24:20 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-11 20:24:21 TRACE communication_manager.c:13: ------CLIENT HANDLE STARTED
+2018-12-11 20:24:21 TRACE communication_manager.c:164: NEW SESSION REQUEST
+2018-12-11 20:24:21 INFO  communication_manager.c:174: Nenalezena otevrena sessiona, zalozime novou
+2018-12-11 20:24:21 INFO  communication_manager.c:180:     Vytvorena nova sessiona
+
+2018-12-11 20:24:21 TRACE communication_manager.c:64: ------CLIENT HANDLE ENDED WITH TIME: 0.000118s
+
+2018-12-11 20:24:21 TRACE communication_manager.c:103: HANDLE DISCONNECTED CLIENTS LIST
+2018-12-11 20:24:21 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-11 20:24:42 INFO  main.c:112: NEW CLIENT CONNECTED AND ADD TO SOCKET'S SET
+2018-12-11 20:24:42 TRACE communication_manager.c:103: HANDLE DISCONNECTED CLIENTS LIST
+2018-12-11 20:24:42 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-11 20:24:42 TRACE communication_manager.c:13: ------CLIENT HANDLE STARTED
+2018-12-11 20:24:42 TRACE communication_manager.c:68: HANDLE CONNECT
+
+2018-12-11 20:24:42 INFO  communication_manager.c:36: Client pridan do lobby
+
+2018-12-11 20:24:42 TRACE communication_manager.c:64: ------CLIENT HANDLE ENDED WITH TIME: 0.000058s
+
+2018-12-11 20:24:42 TRACE communication_manager.c:103: HANDLE DISCONNECTED CLIENTS LIST
+2018-12-11 20:24:42 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-11 20:24:44 TRACE communication_manager.c:13: ------CLIENT HANDLE STARTED
+2018-12-11 20:24:44 TRACE communication_manager.c:164: NEW SESSION REQUEST
+2018-12-11 20:24:44 TRACE session.c:22: IS SESSION OPEN
+2018-12-11 20:24:44 INFO  communication_manager.c:185: Nalezena otevrena sessiona 
+
+2018-12-11 20:24:44 TRACE communication_manager.c:64: ------CLIENT HANDLE ENDED WITH TIME: 0.000104s
+
+2018-12-11 20:24:44 TRACE communication_manager.c:103: HANDLE DISCONNECTED CLIENTS LIST
+2018-12-11 20:24:44 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-11 20:24:51 INFO  main.c:94: SELECT TIMEOUT
+2018-12-11 20:24:51 TRACE communication_manager.c:103: HANDLE DISCONNECTED CLIENTS LIST
+2018-12-11 20:24:51 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-11 20:25:51 INFO  main.c:94: SELECT TIMEOUT
+2018-12-11 20:25:51 TRACE communication_manager.c:103: HANDLE DISCONNECTED CLIENTS LIST
+2018-12-11 20:25:51 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-11 20:26:51 INFO  main.c:94: SELECT TIMEOUT
+2018-12-11 20:26:51 TRACE communication_manager.c:103: HANDLE DISCONNECTED CLIENTS LIST
+2018-12-11 20:26:51 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-11 20:27:45 INFO  main.c:36: SERVER SETUPED!
+2018-12-11 20:27:45 ERROR main.c:57: BIND - PORT IS PROPABLY OCCUPIED
+2018-12-11 20:29:48 INFO  main.c:36: SERVER SETUPED!
+2018-12-11 20:29:48 INFO  main.c:55: BIND SUCCESSFUL
+2018-12-11 20:29:48 INFO  main.c:66: LISTEN SUCCESSFUL
+2018-12-11 20:30:10 INFO  main.c:112: NEW CLIENT CONNECTED AND ADD TO SOCKET'S SET
+2018-12-11 20:30:10 TRACE communication_manager.c:103: HANDLE DISCONNECTED CLIENTS LIST
+2018-12-11 20:30:10 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-11 20:30:10 TRACE communication_manager.c:13: ------CLIENT HANDLE STARTED
+2018-12-11 20:30:10 TRACE communication_manager.c:68: HANDLE CONNECT
+
+2018-12-11 20:30:10 INFO  communication_manager.c:36: Client pridan do lobby
+
+2018-12-11 20:30:10 TRACE communication_manager.c:64: ------CLIENT HANDLE ENDED WITH TIME: 0.000071s
+
+2018-12-11 20:30:10 TRACE communication_manager.c:103: HANDLE DISCONNECTED CLIENTS LIST
+2018-12-11 20:30:10 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-11 20:30:13 TRACE communication_manager.c:13: ------CLIENT HANDLE STARTED
+2018-12-11 20:30:13 TRACE communication_manager.c:164: NEW SESSION REQUEST
+2018-12-11 20:30:13 INFO  communication_manager.c:174: Nenalezena otevrena sessiona, zalozime novou
+2018-12-11 20:30:13 INFO  communication_manager.c:180:     Vytvorena nova sessiona
+
+2018-12-11 20:30:13 TRACE communication_manager.c:64: ------CLIENT HANDLE ENDED WITH TIME: 0.000105s
+
+2018-12-11 20:30:13 TRACE communication_manager.c:103: HANDLE DISCONNECTED CLIENTS LIST
+2018-12-11 20:30:13 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-11 20:30:15 INFO  main.c:112: NEW CLIENT CONNECTED AND ADD TO SOCKET'S SET
+2018-12-11 20:30:15 TRACE communication_manager.c:103: HANDLE DISCONNECTED CLIENTS LIST
+2018-12-11 20:30:15 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-11 20:30:15 TRACE communication_manager.c:13: ------CLIENT HANDLE STARTED
+2018-12-11 20:30:15 TRACE communication_manager.c:68: HANDLE CONNECT
+
+2018-12-11 20:30:15 INFO  communication_manager.c:36: Client pridan do lobby
+
+2018-12-11 20:30:15 TRACE communication_manager.c:64: ------CLIENT HANDLE ENDED WITH TIME: 0.000080s
+
+2018-12-11 20:30:15 TRACE communication_manager.c:103: HANDLE DISCONNECTED CLIENTS LIST
+2018-12-11 20:30:15 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-11 20:30:16 TRACE communication_manager.c:13: ------CLIENT HANDLE STARTED
+2018-12-11 20:30:16 TRACE communication_manager.c:164: NEW SESSION REQUEST
+2018-12-11 20:30:16 TRACE session.c:22: IS SESSION OPEN
+2018-12-11 20:30:16 INFO  communication_manager.c:189: Nalezena otevrena sessiona 
+
+2018-12-11 20:30:16 TRACE communication_manager.c:64: ------CLIENT HANDLE ENDED WITH TIME: 0.000126s
+
+2018-12-11 20:30:16 TRACE communication_manager.c:103: HANDLE DISCONNECTED CLIENTS LIST
+2018-12-11 20:30:16 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-11 20:30:48 INFO  main.c:94: SELECT TIMEOUT
+2018-12-11 20:30:48 TRACE communication_manager.c:103: HANDLE DISCONNECTED CLIENTS LIST
+2018-12-11 20:30:48 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-11 20:31:46 INFO  main.c:36: SERVER SETUPED!
+2018-12-11 20:31:46 ERROR main.c:57: BIND - PORT IS PROPABLY OCCUPIED
+2018-12-11 20:33:34 INFO  main.c:36: SERVER SETUPED!
+2018-12-11 20:33:34 INFO  main.c:55: BIND SUCCESSFUL
+2018-12-11 20:33:34 INFO  main.c:66: LISTEN SUCCESSFUL
+2018-12-11 20:33:56 INFO  main.c:112: NEW CLIENT CONNECTED AND ADD TO SOCKET'S SET
+2018-12-11 20:33:56 TRACE communication_manager.c:103: HANDLE DISCONNECTED CLIENTS LIST
+2018-12-11 20:33:56 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-11 20:33:56 TRACE communication_manager.c:13: ------CLIENT HANDLE STARTED
+2018-12-11 20:33:56 TRACE communication_manager.c:68: HANDLE CONNECT
+
+2018-12-11 20:33:56 INFO  communication_manager.c:36: Client pridan do lobby
+
+2018-12-11 20:33:56 TRACE communication_manager.c:64: ------CLIENT HANDLE ENDED WITH TIME: 0.000079s
+
+2018-12-11 20:33:56 TRACE communication_manager.c:103: HANDLE DISCONNECTED CLIENTS LIST
+2018-12-11 20:33:56 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-11 20:33:57 TRACE communication_manager.c:13: ------CLIENT HANDLE STARTED
+2018-12-11 20:33:57 TRACE communication_manager.c:164: NEW SESSION REQUEST
+2018-12-11 20:33:57 INFO  communication_manager.c:174: Nenalezena otevrena sessiona, zalozime novou
+2018-12-11 20:33:57 INFO  communication_manager.c:180:     Vytvorena nova sessiona
+
+2018-12-11 20:33:57 TRACE communication_manager.c:64: ------CLIENT HANDLE ENDED WITH TIME: 0.000164s
+
+2018-12-11 20:33:57 TRACE communication_manager.c:103: HANDLE DISCONNECTED CLIENTS LIST
+2018-12-11 20:33:57 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-11 20:33:59 INFO  main.c:112: NEW CLIENT CONNECTED AND ADD TO SOCKET'S SET
+2018-12-11 20:33:59 TRACE communication_manager.c:103: HANDLE DISCONNECTED CLIENTS LIST
+2018-12-11 20:33:59 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-11 20:33:59 TRACE communication_manager.c:13: ------CLIENT HANDLE STARTED
+2018-12-11 20:33:59 TRACE communication_manager.c:68: HANDLE CONNECT
+
+2018-12-11 20:33:59 INFO  communication_manager.c:36: Client pridan do lobby
+
+2018-12-11 20:33:59 TRACE communication_manager.c:64: ------CLIENT HANDLE ENDED WITH TIME: 0.000084s
+
+2018-12-11 20:33:59 TRACE communication_manager.c:103: HANDLE DISCONNECTED CLIENTS LIST
+2018-12-11 20:33:59 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-11 20:34:00 TRACE communication_manager.c:13: ------CLIENT HANDLE STARTED
+2018-12-11 20:34:00 TRACE communication_manager.c:164: NEW SESSION REQUEST
+2018-12-11 20:34:00 TRACE session.c:22: IS SESSION OPEN
+2018-12-11 20:34:00 INFO  communication_manager.c:189: Nalezena otevrena sessiona 
+
+2018-12-11 20:34:00 TRACE communication_manager.c:64: ------CLIENT HANDLE ENDED WITH TIME: 0.000149s
+
+2018-12-11 20:34:00 TRACE communication_manager.c:103: HANDLE DISCONNECTED CLIENTS LIST
+2018-12-11 20:34:00 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-11 20:34:26 INFO  communication_manager.c:99: Client added to disconnected clients list
+2018-12-11 20:34:26 INFO  main.c:132: CLIENT HAS DISCONNECTED AND WAS REMOVED FROM SOCKET'S SET
+2018-12-11 20:34:26 TRACE communication_manager.c:103: HANDLE DISCONNECTED CLIENTS LIST
+2018-12-11 20:34:26 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-11 20:34:26 INFO  disconnected_clients.c:115:         Client: guest7073 ID:7073 socket:6 disconnected_time:2018-12-11 20:34:26
+
+2018-12-11 20:36:11 INFO  main.c:36: SERVER SETUPED!
+2018-12-11 20:36:11 INFO  main.c:55: BIND SUCCESSFUL
+2018-12-11 20:36:11 INFO  main.c:66: LISTEN SUCCESSFUL
+2018-12-11 20:36:19 INFO  main.c:112: NEW CLIENT CONNECTED AND ADD TO SOCKET'S SET
+2018-12-11 20:36:19 TRACE communication_manager.c:103: HANDLE DISCONNECTED CLIENTS LIST
+2018-12-11 20:36:19 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-11 20:36:19 TRACE communication_manager.c:13: ------CLIENT HANDLE STARTED
+2018-12-11 20:36:19 TRACE communication_manager.c:68: HANDLE CONNECT
+
+2018-12-11 20:36:19 INFO  communication_manager.c:36: Client pridan do lobby
+
+2018-12-11 20:36:19 TRACE communication_manager.c:64: ------CLIENT HANDLE ENDED WITH TIME: 0.000040s
+
+2018-12-11 20:36:19 TRACE communication_manager.c:103: HANDLE DISCONNECTED CLIENTS LIST
+2018-12-11 20:36:19 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-11 20:36:20 TRACE communication_manager.c:13: ------CLIENT HANDLE STARTED
+2018-12-11 20:36:20 TRACE communication_manager.c:164: NEW SESSION REQUEST
+2018-12-11 20:36:20 INFO  communication_manager.c:174: Nenalezena otevrena sessiona, zalozime novou
+2018-12-11 20:36:20 INFO  communication_manager.c:180:     Vytvorena nova sessiona
+
+2018-12-11 20:36:20 TRACE communication_manager.c:64: ------CLIENT HANDLE ENDED WITH TIME: 0.000092s
+
+2018-12-11 20:36:20 TRACE communication_manager.c:103: HANDLE DISCONNECTED CLIENTS LIST
+2018-12-11 20:36:20 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-11 20:36:35 INFO  main.c:112: NEW CLIENT CONNECTED AND ADD TO SOCKET'S SET
+2018-12-11 20:36:35 TRACE communication_manager.c:103: HANDLE DISCONNECTED CLIENTS LIST
+2018-12-11 20:36:35 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-11 20:36:36 TRACE communication_manager.c:13: ------CLIENT HANDLE STARTED
+2018-12-11 20:36:36 TRACE communication_manager.c:68: HANDLE CONNECT
+
+2018-12-11 20:36:36 INFO  communication_manager.c:36: Client pridan do lobby
+
+2018-12-11 20:36:36 TRACE communication_manager.c:64: ------CLIENT HANDLE ENDED WITH TIME: 0.000059s
+
+2018-12-11 20:36:36 TRACE communication_manager.c:103: HANDLE DISCONNECTED CLIENTS LIST
+2018-12-11 20:36:36 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-11 20:36:36 TRACE communication_manager.c:13: ------CLIENT HANDLE STARTED
+2018-12-11 20:36:36 TRACE communication_manager.c:164: NEW SESSION REQUEST
+2018-12-11 20:36:36 TRACE session.c:22: IS SESSION OPEN
+2018-12-11 20:36:36 INFO  communication_manager.c:189: Nalezena otevrena sessiona 
+
+2018-12-11 20:36:36 TRACE communication_manager.c:64: ------CLIENT HANDLE ENDED WITH TIME: 0.000098s
+
+2018-12-11 20:36:36 TRACE communication_manager.c:103: HANDLE DISCONNECTED CLIENTS LIST
+2018-12-11 20:36:36 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-11 20:37:11 INFO  main.c:94: SELECT TIMEOUT
+2018-12-11 20:37:11 TRACE communication_manager.c:103: HANDLE DISCONNECTED CLIENTS LIST
+2018-12-11 20:37:11 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-11 20:38:12 INFO  main.c:94: SELECT TIMEOUT
+2018-12-11 20:38:12 TRACE communication_manager.c:103: HANDLE DISCONNECTED CLIENTS LIST
+2018-12-11 20:38:12 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-11 20:39:32 INFO  main.c:36: SERVER SETUPED!
+2018-12-11 20:39:32 ERROR main.c:57: BIND - PORT IS PROPABLY OCCUPIED
+2018-12-11 20:39:33 INFO  main.c:36: SERVER SETUPED!
+2018-12-11 20:39:33 ERROR main.c:57: BIND - PORT IS PROPABLY OCCUPIED
+2018-12-11 20:39:34 INFO  main.c:36: SERVER SETUPED!
+2018-12-11 20:39:34 ERROR main.c:57: BIND - PORT IS PROPABLY OCCUPIED
+2018-12-11 20:40:01 INFO  main.c:36: SERVER SETUPED!
+2018-12-11 20:40:01 INFO  main.c:55: BIND SUCCESSFUL
+2018-12-11 20:40:01 INFO  main.c:66: LISTEN SUCCESSFUL
+2018-12-11 20:40:25 INFO  main.c:112: NEW CLIENT CONNECTED AND ADD TO SOCKET'S SET
+2018-12-11 20:40:25 TRACE communication_manager.c:103: HANDLE DISCONNECTED CLIENTS LIST
+2018-12-11 20:40:25 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-11 20:40:25 TRACE communication_manager.c:13: ------CLIENT HANDLE STARTED
+2018-12-11 20:40:25 TRACE communication_manager.c:68: HANDLE CONNECT
+
+2018-12-11 20:40:25 INFO  communication_manager.c:36: Client pridan do lobby
+
+2018-12-11 20:40:25 TRACE communication_manager.c:64: ------CLIENT HANDLE ENDED WITH TIME: 0.000042s
+
+2018-12-11 20:40:25 TRACE communication_manager.c:103: HANDLE DISCONNECTED CLIENTS LIST
+2018-12-11 20:40:25 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-11 20:40:26 TRACE communication_manager.c:13: ------CLIENT HANDLE STARTED
+2018-12-11 20:40:26 TRACE communication_manager.c:164: NEW SESSION REQUEST
+2018-12-11 20:40:26 INFO  communication_manager.c:174: Nenalezena otevrena sessiona, zalozime novou
+2018-12-11 20:40:26 INFO  communication_manager.c:180:     Vytvorena nova sessiona
+
+2018-12-11 20:40:26 TRACE communication_manager.c:64: ------CLIENT HANDLE ENDED WITH TIME: 0.000085s
+
+2018-12-11 20:40:26 TRACE communication_manager.c:103: HANDLE DISCONNECTED CLIENTS LIST
+2018-12-11 20:40:26 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-11 20:40:27 INFO  main.c:112: NEW CLIENT CONNECTED AND ADD TO SOCKET'S SET
+2018-12-11 20:40:27 TRACE communication_manager.c:103: HANDLE DISCONNECTED CLIENTS LIST
+2018-12-11 20:40:27 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-11 20:40:27 TRACE communication_manager.c:13: ------CLIENT HANDLE STARTED
+2018-12-11 20:40:27 TRACE communication_manager.c:68: HANDLE CONNECT
+
+2018-12-11 20:40:27 INFO  communication_manager.c:36: Client pridan do lobby
+
+2018-12-11 20:40:27 TRACE communication_manager.c:64: ------CLIENT HANDLE ENDED WITH TIME: 0.000056s
+
+2018-12-11 20:40:27 TRACE communication_manager.c:103: HANDLE DISCONNECTED CLIENTS LIST
+2018-12-11 20:40:27 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-11 20:40:28 TRACE communication_manager.c:13: ------CLIENT HANDLE STARTED
+2018-12-11 20:40:28 TRACE communication_manager.c:164: NEW SESSION REQUEST
+2018-12-11 20:40:28 TRACE session.c:22: IS SESSION OPEN
+2018-12-11 20:40:28 INFO  communication_manager.c:189: Nalezena otevrena sessiona 
+
+2018-12-11 20:40:28 TRACE communication_manager.c:64: ------CLIENT HANDLE ENDED WITH TIME: 0.000155s
+
+2018-12-11 20:40:28 TRACE communication_manager.c:103: HANDLE DISCONNECTED CLIENTS LIST
+2018-12-11 20:40:28 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-11 20:41:01 INFO  main.c:94: SELECT TIMEOUT
+2018-12-11 20:41:01 TRACE communication_manager.c:103: HANDLE DISCONNECTED CLIENTS LIST
+2018-12-11 20:41:01 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-11 20:42:01 INFO  main.c:94: SELECT TIMEOUT
+2018-12-11 20:42:01 TRACE communication_manager.c:103: HANDLE DISCONNECTED CLIENTS LIST
+2018-12-11 20:42:01 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-11 20:48:53 INFO  main.c:36: SERVER SETUPED!
+2018-12-11 20:48:53 INFO  main.c:55: BIND SUCCESSFUL
+2018-12-11 20:48:53 INFO  main.c:66: LISTEN SUCCESSFUL
+2018-12-11 20:48:58 INFO  main.c:36: SERVER SETUPED!
+2018-12-11 20:48:58 INFO  main.c:55: BIND SUCCESSFUL
+2018-12-11 20:48:58 INFO  main.c:66: LISTEN SUCCESSFUL
+2018-12-11 20:49:24 INFO  main.c:112: NEW CLIENT CONNECTED AND ADD TO SOCKET'S SET
+2018-12-11 20:49:24 TRACE communication_manager.c:103: HANDLE DISCONNECTED CLIENTS LIST
+2018-12-11 20:49:24 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-11 20:49:25 TRACE communication_manager.c:13: ------CLIENT HANDLE STARTED
+2018-12-11 20:49:25 TRACE communication_manager.c:68: HANDLE CONNECT
+
+2018-12-11 20:49:25 INFO  communication_manager.c:36: Client pridan do lobby
+
+2018-12-11 20:49:25 TRACE communication_manager.c:64: ------CLIENT HANDLE ENDED WITH TIME: 0.000072s
+
+2018-12-11 20:49:25 TRACE communication_manager.c:103: HANDLE DISCONNECTED CLIENTS LIST
+2018-12-11 20:49:25 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-11 20:49:26 INFO  main.c:112: NEW CLIENT CONNECTED AND ADD TO SOCKET'S SET
+2018-12-11 20:49:26 TRACE communication_manager.c:103: HANDLE DISCONNECTED CLIENTS LIST
+2018-12-11 20:49:26 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-11 20:49:26 TRACE communication_manager.c:13: ------CLIENT HANDLE STARTED
+2018-12-11 20:49:26 TRACE communication_manager.c:68: HANDLE CONNECT
+
+2018-12-11 20:49:26 INFO  communication_manager.c:36: Client pridan do lobby
+
+2018-12-11 20:49:26 TRACE communication_manager.c:64: ------CLIENT HANDLE ENDED WITH TIME: 0.000060s
+
+2018-12-11 20:49:26 TRACE communication_manager.c:103: HANDLE DISCONNECTED CLIENTS LIST
+2018-12-11 20:49:26 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-11 20:49:27 TRACE communication_manager.c:13: ------CLIENT HANDLE STARTED
+2018-12-11 20:49:27 TRACE communication_manager.c:164: NEW SESSION REQUEST
+2018-12-11 20:49:27 INFO  communication_manager.c:174: Nenalezena otevrena sessiona, zalozime novou
+2018-12-11 20:49:27 INFO  communication_manager.c:180:     Vytvorena nova sessiona
+
+2018-12-11 20:49:27 TRACE communication_manager.c:64: ------CLIENT HANDLE ENDED WITH TIME: 0.000116s
+
+2018-12-11 20:49:27 TRACE communication_manager.c:103: HANDLE DISCONNECTED CLIENTS LIST
+2018-12-11 20:49:27 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-11 20:49:28 TRACE communication_manager.c:13: ------CLIENT HANDLE STARTED
+2018-12-11 20:49:28 TRACE communication_manager.c:164: NEW SESSION REQUEST
+2018-12-11 20:49:28 TRACE session.c:22: IS SESSION OPEN
+2018-12-11 20:49:28 INFO  communication_manager.c:189: Nalezena otevrena sessiona 
+
+2018-12-11 20:49:28 TRACE communication_manager.c:64: ------CLIENT HANDLE ENDED WITH TIME: 0.000104s
+
+2018-12-11 20:49:28 TRACE communication_manager.c:103: HANDLE DISCONNECTED CLIENTS LIST
+2018-12-11 20:49:28 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-11 20:50:08 INFO  main.c:36: SERVER SETUPED!
+2018-12-11 20:50:08 ERROR main.c:57: BIND - PORT IS PROPABLY OCCUPIED
+2018-12-11 20:51:49 INFO  main.c:36: SERVER SETUPED!
+2018-12-11 20:51:49 INFO  main.c:55: BIND SUCCESSFUL
+2018-12-11 20:51:49 INFO  main.c:66: LISTEN SUCCESSFUL
+2018-12-11 20:52:49 INFO  main.c:94: SELECT TIMEOUT
+2018-12-11 20:52:49 TRACE communication_manager.c:103: HANDLE DISCONNECTED CLIENTS LIST
+2018-12-11 20:52:49 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-11 20:52:58 INFO  main.c:112: NEW CLIENT CONNECTED AND ADD TO SOCKET'S SET
+2018-12-11 20:52:58 TRACE communication_manager.c:103: HANDLE DISCONNECTED CLIENTS LIST
+2018-12-11 20:52:58 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-11 20:52:58 TRACE communication_manager.c:13: ------CLIENT HANDLE STARTED
+2018-12-11 20:52:58 TRACE communication_manager.c:68: HANDLE CONNECT
+
+2018-12-11 20:52:58 INFO  communication_manager.c:36: Client pridan do lobby
+
+2018-12-11 20:52:58 TRACE communication_manager.c:64: ------CLIENT HANDLE ENDED WITH TIME: 0.000047s
+
+2018-12-11 20:52:58 TRACE communication_manager.c:103: HANDLE DISCONNECTED CLIENTS LIST
+2018-12-11 20:52:58 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-11 20:52:59 TRACE communication_manager.c:13: ------CLIENT HANDLE STARTED
+2018-12-11 20:52:59 TRACE communication_manager.c:164: NEW SESSION REQUEST
+2018-12-11 20:52:59 INFO  communication_manager.c:174: Nenalezena otevrena sessiona, zalozime novou
+2018-12-11 20:52:59 INFO  communication_manager.c:180:     Vytvorena nova sessiona
+
+2018-12-11 20:52:59 TRACE communication_manager.c:64: ------CLIENT HANDLE ENDED WITH TIME: 0.000156s
+
+2018-12-11 20:52:59 TRACE communication_manager.c:103: HANDLE DISCONNECTED CLIENTS LIST
+2018-12-11 20:52:59 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-11 20:53:00 INFO  main.c:112: NEW CLIENT CONNECTED AND ADD TO SOCKET'S SET
+2018-12-11 20:53:00 TRACE communication_manager.c:103: HANDLE DISCONNECTED CLIENTS LIST
+2018-12-11 20:53:00 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-11 20:53:00 TRACE communication_manager.c:13: ------CLIENT HANDLE STARTED
+2018-12-11 20:53:00 TRACE communication_manager.c:68: HANDLE CONNECT
+
+2018-12-11 20:53:00 INFO  communication_manager.c:36: Client pridan do lobby
+
+2018-12-11 20:53:00 TRACE communication_manager.c:64: ------CLIENT HANDLE ENDED WITH TIME: 0.000097s
+
+2018-12-11 20:53:00 TRACE communication_manager.c:103: HANDLE DISCONNECTED CLIENTS LIST
+2018-12-11 20:53:00 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-11 20:53:01 TRACE communication_manager.c:13: ------CLIENT HANDLE STARTED
+2018-12-11 20:53:01 TRACE communication_manager.c:164: NEW SESSION REQUEST
+2018-12-11 20:53:01 TRACE session.c:22: IS SESSION OPEN
+2018-12-11 20:53:01 INFO  communication_manager.c:189: Nalezena otevrena sessiona 
+
+2018-12-11 20:53:01 TRACE communication_manager.c:64: ------CLIENT HANDLE ENDED WITH TIME: 0.000125s
+
+2018-12-11 20:53:01 TRACE communication_manager.c:103: HANDLE DISCONNECTED CLIENTS LIST
+2018-12-11 20:53:01 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-11 20:53:03 TRACE communication_manager.c:13: ------CLIENT HANDLE STARTED
+2018-12-11 20:53:03 TRACE communication_manager.c:215:  NEW GAME REQUEST
+
+2018-12-11 20:53:03 TRACE session.c:22: IS SESSION OPEN
+2018-12-11 20:53:03 TRACE communication_manager.c:332: SEND WHO IS ON TURN BOTH CLIENTS
+2018-12-11 20:53:03 TRACE session.c:133: IS CLIENT ON TURN
+2018-12-11 20:53:03 TRACE session.c:115: GET CLIENT PLAYER ORDER
+2018-12-11 20:53:03 TRACE session.c:147: Je player order: 0 == actual player: 0
+2018-12-11 20:53:03 TRACE communication_manager.c:339: SEND WHO IS ON TURN BOTH CLIENTS - P1 is on turn
+2018-12-11 20:53:03 TRACE communication_manager.c:64: ------CLIENT HANDLE ENDED WITH TIME: 0.000615s
+
+2018-12-11 20:53:03 TRACE communication_manager.c:103: HANDLE DISCONNECTED CLIENTS LIST
+2018-12-11 20:53:03 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-11 20:53:13 TRACE communication_manager.c:13: ------CLIENT HANDLE STARTED
+2018-12-11 20:53:13 TRACE communication_manager.c:215:  NEW GAME REQUEST
+
+2018-12-11 20:53:13 TRACE session.c:22: IS SESSION OPEN
+2018-12-11 20:53:13 TRACE communication_manager.c:332: SEND WHO IS ON TURN BOTH CLIENTS
+2018-12-11 20:53:13 TRACE session.c:133: IS CLIENT ON TURN
+2018-12-11 20:53:13 TRACE session.c:115: GET CLIENT PLAYER ORDER
+2018-12-11 20:53:13 TRACE session.c:147: Je player order: 0 == actual player: 0
+2018-12-11 20:53:13 TRACE communication_manager.c:339: SEND WHO IS ON TURN BOTH CLIENTS - P1 is on turn
+2018-12-11 20:53:13 TRACE communication_manager.c:64: ------CLIENT HANDLE ENDED WITH TIME: 0.000445s
+
+2018-12-11 20:53:13 TRACE communication_manager.c:103: HANDLE DISCONNECTED CLIENTS LIST
+2018-12-11 20:53:13 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-11 20:53:49 INFO  main.c:94: SELECT TIMEOUT
+2018-12-11 20:53:49 TRACE communication_manager.c:103: HANDLE DISCONNECTED CLIENTS LIST
+2018-12-11 20:53:49 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-11 20:54:39 INFO  communication_manager.c:99: Client added to disconnected clients list
+2018-12-11 20:54:39 INFO  main.c:132: CLIENT HAS DISCONNECTED AND WAS REMOVED FROM SOCKET'S SET
+2018-12-11 20:54:39 TRACE communication_manager.c:103: HANDLE DISCONNECTED CLIENTS LIST
+2018-12-11 20:54:39 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-11 20:54:39 INFO  disconnected_clients.c:115:         Client: guest5973 ID:5973 socket:5 disconnected_time:2018-12-11 20:54:39
+
+2018-12-11 21:58:32 INFO  main.c:36: SERVER SETUPED!
+2018-12-11 21:58:32 INFO  main.c:55: BIND SUCCESSFUL
+2018-12-11 21:58:32 INFO  main.c:66: LISTEN SUCCESSFUL
+2018-12-11 21:58:43 INFO  main.c:112: NEW CLIENT CONNECTED AND ADD TO SOCKET'S SET
+2018-12-11 21:58:43 TRACE communication_manager.c:103: HANDLE DISCONNECTED CLIENTS LIST
+2018-12-11 21:58:43 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-11 21:58:43 TRACE communication_manager.c:13: ------CLIENT HANDLE STARTED
+2018-12-11 21:58:43 TRACE communication_manager.c:68: HANDLE CONNECT
+
+2018-12-11 21:58:43 INFO  communication_manager.c:36: Client pridan do lobby
+
+2018-12-11 21:58:43 TRACE communication_manager.c:64: ------CLIENT HANDLE ENDED WITH TIME: 0.000040s
+
+2018-12-11 21:58:43 TRACE communication_manager.c:103: HANDLE DISCONNECTED CLIENTS LIST
+2018-12-11 21:58:43 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-11 21:58:44 TRACE communication_manager.c:13: ------CLIENT HANDLE STARTED
+2018-12-11 21:58:44 TRACE communication_manager.c:164: NEW SESSION REQUEST
+2018-12-11 21:58:44 INFO  communication_manager.c:174: Nenalezena otevrena sessiona, zalozime novou
+2018-12-11 21:58:44 INFO  communication_manager.c:180:     Vytvorena nova sessiona
+
+2018-12-11 21:58:44 TRACE communication_manager.c:64: ------CLIENT HANDLE ENDED WITH TIME: 0.000098s
+
+2018-12-11 21:58:44 TRACE communication_manager.c:103: HANDLE DISCONNECTED CLIENTS LIST
+2018-12-11 21:58:44 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-11 21:58:54 INFO  main.c:112: NEW CLIENT CONNECTED AND ADD TO SOCKET'S SET
+2018-12-11 21:58:54 TRACE communication_manager.c:103: HANDLE DISCONNECTED CLIENTS LIST
+2018-12-11 21:58:54 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-11 21:58:54 TRACE communication_manager.c:13: ------CLIENT HANDLE STARTED
+2018-12-11 21:58:54 TRACE communication_manager.c:68: HANDLE CONNECT
+
+2018-12-11 21:58:54 INFO  communication_manager.c:36: Client pridan do lobby
+
+2018-12-11 21:58:54 TRACE communication_manager.c:64: ------CLIENT HANDLE ENDED WITH TIME: 0.000088s
+
+2018-12-11 21:58:54 TRACE communication_manager.c:103: HANDLE DISCONNECTED CLIENTS LIST
+2018-12-11 21:58:54 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-11 21:58:55 TRACE communication_manager.c:13: ------CLIENT HANDLE STARTED
+2018-12-11 21:58:55 TRACE communication_manager.c:164: NEW SESSION REQUEST
+2018-12-11 21:58:55 TRACE session.c:24: IS SESSION OPEN
+2018-12-11 21:58:55 INFO  communication_manager.c:189: Nalezena otevrena sessiona 
+
+2018-12-11 21:58:55 TRACE communication_manager.c:64: ------CLIENT HANDLE ENDED WITH TIME: 0.000144s
+
+2018-12-11 21:58:55 TRACE communication_manager.c:103: HANDLE DISCONNECTED CLIENTS LIST
+2018-12-11 21:58:55 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-11 21:58:57 TRACE communication_manager.c:13: ------CLIENT HANDLE STARTED
+2018-12-11 21:58:57 TRACE communication_manager.c:215:  NEW GAME REQUEST
+
+2018-12-11 21:58:57 TRACE communication_manager.c:358: SEND WHO IS ON TURN BOTH CLIENTS
+2018-12-11 21:58:57 TRACE session.c:159: IS CLIENT ON TURN
+2018-12-11 21:58:57 TRACE session.c:141: GET CLIENT PLAYER ORDER
+2018-12-11 21:58:57 TRACE session.c:173: Je player order: 0 == actual player: 0
+2018-12-11 21:58:57 TRACE communication_manager.c:365: SEND WHO IS ON TURN BOTH CLIENTS - P1 is on turn
+2018-12-11 21:58:57 TRACE communication_manager.c:64: ------CLIENT HANDLE ENDED WITH TIME: 0.000430s
+
+2018-12-11 21:58:57 TRACE communication_manager.c:103: HANDLE DISCONNECTED CLIENTS LIST
+2018-12-11 21:58:57 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-11 21:59:00 TRACE communication_manager.c:13: ------CLIENT HANDLE STARTED
+2018-12-11 21:59:00 TRACE communication_manager.c:215:  NEW GAME REQUEST
+
+2018-12-11 21:59:00 TRACE communication_manager.c:358: SEND WHO IS ON TURN BOTH CLIENTS
+2018-12-11 21:59:00 TRACE session.c:159: IS CLIENT ON TURN
+2018-12-11 21:59:00 TRACE session.c:141: GET CLIENT PLAYER ORDER
+2018-12-11 21:59:00 TRACE session.c:173: Je player order: 0 == actual player: 0
+2018-12-11 21:59:00 TRACE communication_manager.c:365: SEND WHO IS ON TURN BOTH CLIENTS - P1 is on turn
+2018-12-11 21:59:00 TRACE communication_manager.c:64: ------CLIENT HANDLE ENDED WITH TIME: 0.000410s
+
+2018-12-11 21:59:00 TRACE communication_manager.c:103: HANDLE DISCONNECTED CLIENTS LIST
+2018-12-11 21:59:00 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-11 21:59:32 INFO  main.c:94: SELECT TIMEOUT
+2018-12-11 21:59:32 TRACE communication_manager.c:103: HANDLE DISCONNECTED CLIENTS LIST
+2018-12-11 21:59:32 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-11 22:06:54 INFO  main.c:36: SERVER SETUPED!
+2018-12-11 22:06:54 INFO  main.c:55: BIND SUCCESSFUL
+2018-12-11 22:06:54 INFO  main.c:66: LISTEN SUCCESSFUL
+2018-12-11 22:07:30 INFO  main.c:112: NEW CLIENT CONNECTED AND ADD TO SOCKET'S SET
+2018-12-11 22:07:30 TRACE communication_manager.c:103: HANDLE DISCONNECTED CLIENTS LIST
+2018-12-11 22:07:30 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-11 22:07:30 TRACE communication_manager.c:13: ------CLIENT HANDLE STARTED
+2018-12-11 22:07:30 TRACE communication_manager.c:68: HANDLE CONNECT
+
+2018-12-11 22:07:30 INFO  communication_manager.c:36: Client pridan do lobby
+
+2018-12-11 22:07:30 TRACE communication_manager.c:64: ------CLIENT HANDLE ENDED WITH TIME: 0.000036s
+
+2018-12-11 22:07:30 TRACE communication_manager.c:103: HANDLE DISCONNECTED CLIENTS LIST
+2018-12-11 22:07:30 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-11 22:07:31 TRACE communication_manager.c:13: ------CLIENT HANDLE STARTED
+2018-12-11 22:07:31 TRACE communication_manager.c:164: NEW SESSION REQUEST
+2018-12-11 22:07:31 INFO  communication_manager.c:174: Nenalezena otevrena sessiona, zalozime novou
+2018-12-11 22:07:31 INFO  communication_manager.c:180:     Vytvorena nova sessiona
+
+2018-12-11 22:07:31 TRACE communication_manager.c:64: ------CLIENT HANDLE ENDED WITH TIME: 0.000123s
+
+2018-12-11 22:07:31 TRACE communication_manager.c:103: HANDLE DISCONNECTED CLIENTS LIST
+2018-12-11 22:07:31 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-11 22:07:35 INFO  main.c:112: NEW CLIENT CONNECTED AND ADD TO SOCKET'S SET
+2018-12-11 22:07:35 TRACE communication_manager.c:103: HANDLE DISCONNECTED CLIENTS LIST
+2018-12-11 22:07:35 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-11 22:07:35 TRACE communication_manager.c:13: ------CLIENT HANDLE STARTED
+2018-12-11 22:07:35 TRACE communication_manager.c:68: HANDLE CONNECT
+
+2018-12-11 22:07:35 INFO  communication_manager.c:36: Client pridan do lobby
+
+2018-12-11 22:07:35 TRACE communication_manager.c:64: ------CLIENT HANDLE ENDED WITH TIME: 0.000084s
+
+2018-12-11 22:07:35 TRACE communication_manager.c:103: HANDLE DISCONNECTED CLIENTS LIST
+2018-12-11 22:07:35 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-11 22:07:38 TRACE communication_manager.c:13: ------CLIENT HANDLE STARTED
+2018-12-11 22:07:38 TRACE communication_manager.c:164: NEW SESSION REQUEST
+2018-12-11 22:07:38 TRACE session.c:24: IS SESSION OPEN
+2018-12-11 22:07:38 INFO  communication_manager.c:189: Nalezena otevrena sessiona 
+
+2018-12-11 22:07:38 TRACE communication_manager.c:64: ------CLIENT HANDLE ENDED WITH TIME: 0.000196s
+
+2018-12-11 22:07:38 TRACE communication_manager.c:103: HANDLE DISCONNECTED CLIENTS LIST
+2018-12-11 22:07:38 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-11 22:07:39 TRACE communication_manager.c:13: ------CLIENT HANDLE STARTED
+2018-12-11 22:07:39 TRACE communication_manager.c:215:  NEW GAME REQUEST
+
+2018-12-11 22:07:39 INFO  communication_manager.c:228: Client wants to play:1
+2018-12-11 22:07:39 TRACE communication_manager.c:64: ------CLIENT HANDLE ENDED WITH TIME: 0.000067s
+
+2018-12-11 22:07:39 TRACE communication_manager.c:103: HANDLE DISCONNECTED CLIENTS LIST
+2018-12-11 22:07:39 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-11 22:07:44 TRACE communication_manager.c:13: ------CLIENT HANDLE STARTED
+2018-12-11 22:07:44 TRACE communication_manager.c:215:  NEW GAME REQUEST
+
+2018-12-11 22:07:44 INFO  communication_manager.c:228: Client wants to play:1
+2018-12-11 22:07:44 TRACE communication_manager.c:359: SEND WHO IS ON TURN BOTH CLIENTS
+2018-12-11 22:07:44 TRACE session.c:159: IS CLIENT ON TURN
+2018-12-11 22:07:44 TRACE session.c:141: GET CLIENT PLAYER ORDER
+2018-12-11 22:07:44 TRACE session.c:173: Je player order: 0 == actual player: 0
+2018-12-11 22:07:44 TRACE communication_manager.c:366: SEND WHO IS ON TURN BOTH CLIENTS - P1 is on turn
+2018-12-11 22:07:44 TRACE communication_manager.c:64: ------CLIENT HANDLE ENDED WITH TIME: 0.000509s
+
+2018-12-11 22:07:44 TRACE communication_manager.c:103: HANDLE DISCONNECTED CLIENTS LIST
+2018-12-11 22:07:44 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-11 22:07:54 INFO  main.c:94: SELECT TIMEOUT
+2018-12-11 22:07:54 TRACE communication_manager.c:103: HANDLE DISCONNECTED CLIENTS LIST
+2018-12-11 22:07:54 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-11 22:13:18 INFO  main.c:36: SERVER SETUPED!
+2018-12-11 22:13:18 INFO  main.c:55: BIND SUCCESSFUL
+2018-12-11 22:13:18 INFO  main.c:66: LISTEN SUCCESSFUL
+2018-12-11 22:13:50 INFO  main.c:112: NEW CLIENT CONNECTED AND ADD TO SOCKET'S SET
+2018-12-11 22:13:50 TRACE communication_manager.c:103: HANDLE DISCONNECTED CLIENTS LIST
+2018-12-11 22:13:50 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-11 22:13:50 TRACE communication_manager.c:13: ------CLIENT HANDLE STARTED
+2018-12-11 22:13:50 TRACE communication_manager.c:68: HANDLE CONNECT
+
+2018-12-11 22:13:50 INFO  communication_manager.c:36: Client pridan do lobby
+
+2018-12-11 22:13:50 TRACE communication_manager.c:64: ------CLIENT HANDLE ENDED WITH TIME: 0.000085s
+
+2018-12-11 22:13:50 TRACE communication_manager.c:103: HANDLE DISCONNECTED CLIENTS LIST
+2018-12-11 22:13:50 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-11 22:13:50 TRACE communication_manager.c:13: ------CLIENT HANDLE STARTED
+2018-12-11 22:13:50 TRACE communication_manager.c:164: NEW SESSION REQUEST
+2018-12-11 22:13:50 INFO  communication_manager.c:174: Nenalezena otevrena sessiona, zalozime novou
+2018-12-11 22:13:50 INFO  communication_manager.c:180:     Vytvorena nova sessiona
+
+2018-12-11 22:13:50 TRACE communication_manager.c:64: ------CLIENT HANDLE ENDED WITH TIME: 0.000120s
+
+2018-12-11 22:13:50 TRACE communication_manager.c:103: HANDLE DISCONNECTED CLIENTS LIST
+2018-12-11 22:13:50 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-11 22:13:51 INFO  main.c:112: NEW CLIENT CONNECTED AND ADD TO SOCKET'S SET
+2018-12-11 22:13:51 TRACE communication_manager.c:103: HANDLE DISCONNECTED CLIENTS LIST
+2018-12-11 22:13:51 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-11 22:13:52 TRACE communication_manager.c:13: ------CLIENT HANDLE STARTED
+2018-12-11 22:13:52 TRACE communication_manager.c:68: HANDLE CONNECT
+
+2018-12-11 22:13:52 INFO  communication_manager.c:36: Client pridan do lobby
+
+2018-12-11 22:13:52 TRACE communication_manager.c:64: ------CLIENT HANDLE ENDED WITH TIME: 0.000059s
+
+2018-12-11 22:13:52 TRACE communication_manager.c:103: HANDLE DISCONNECTED CLIENTS LIST
+2018-12-11 22:13:52 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-11 22:13:52 TRACE communication_manager.c:13: ------CLIENT HANDLE STARTED
+2018-12-11 22:13:52 TRACE communication_manager.c:164: NEW SESSION REQUEST
+2018-12-11 22:13:52 TRACE session.c:24: IS SESSION OPEN
+2018-12-11 22:13:52 INFO  communication_manager.c:189: Nalezena otevrena sessiona 
+
+2018-12-11 22:13:52 TRACE communication_manager.c:64: ------CLIENT HANDLE ENDED WITH TIME: 0.000119s
+
+2018-12-11 22:13:52 TRACE communication_manager.c:103: HANDLE DISCONNECTED CLIENTS LIST
+2018-12-11 22:13:52 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-11 22:13:54 TRACE communication_manager.c:13: ------CLIENT HANDLE STARTED
+2018-12-11 22:13:54 TRACE communication_manager.c:215:  NEW GAME REQUEST
+
+2018-12-11 22:13:54 INFO  communication_manager.c:228: Client wants to play:1
+2018-12-11 22:13:54 TRACE communication_manager.c:64: ------CLIENT HANDLE ENDED WITH TIME: 0.000057s
+
+2018-12-11 22:13:54 TRACE communication_manager.c:103: HANDLE DISCONNECTED CLIENTS LIST
+2018-12-11 22:13:54 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-11 22:13:57 TRACE communication_manager.c:13: ------CLIENT HANDLE STARTED
+2018-12-11 22:13:57 TRACE communication_manager.c:215:  NEW GAME REQUEST
+
+2018-12-11 22:13:57 INFO  communication_manager.c:228: Client wants to play:1
+2018-12-11 22:13:57 TRACE communication_manager.c:359: SEND WHO IS ON TURN BOTH CLIENTS
+2018-12-11 22:13:57 TRACE session.c:159: IS CLIENT ON TURN
+2018-12-11 22:13:57 TRACE session.c:141: GET CLIENT PLAYER ORDER
+2018-12-11 22:13:57 TRACE session.c:173: Je player order: 0 == actual player: 0
+2018-12-11 22:13:57 TRACE communication_manager.c:366: SEND WHO IS ON TURN BOTH CLIENTS - P1 is on turn
+2018-12-11 22:13:57 TRACE communication_manager.c:64: ------CLIENT HANDLE ENDED WITH TIME: 0.000495s
+
+2018-12-11 22:13:57 TRACE communication_manager.c:103: HANDLE DISCONNECTED CLIENTS LIST
+2018-12-11 22:13:57 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-11 22:14:01 TRACE communication_manager.c:13: ------CLIENT HANDLE STARTED
+2018-12-11 22:14:01 TRACE communication_manager.c:278: PEXESO REVEAL REQUEST
+2018-12-11 22:14:01 TRACE session.c:159: IS CLIENT ON TURN
+2018-12-11 22:14:01 TRACE session.c:141: GET CLIENT PLAYER ORDER
+2018-12-11 22:14:01 TRACE session.c:173: Je player order: 0 == actual player: 0
+2018-12-11 22:14:01 TRACE communication_manager.c:64: ------CLIENT HANDLE ENDED WITH TIME: 0.000142s
+
+2018-12-11 22:14:01 TRACE communication_manager.c:103: HANDLE DISCONNECTED CLIENTS LIST
+2018-12-11 22:14:01 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-11 22:14:05 TRACE communication_manager.c:13: ------CLIENT HANDLE STARTED
+2018-12-11 22:14:05 TRACE communication_manager.c:278: PEXESO REVEAL REQUEST
+2018-12-11 22:14:05 TRACE session.c:159: IS CLIENT ON TURN
+2018-12-11 22:14:05 TRACE session.c:141: GET CLIENT PLAYER ORDER
+2018-12-11 22:14:05 TRACE session.c:173: Je player order: 0 == actual player: 0
+2018-12-11 22:14:05 TRACE communication_manager.c:359: SEND WHO IS ON TURN BOTH CLIENTS
+2018-12-11 22:14:05 TRACE session.c:159: IS CLIENT ON TURN
+2018-12-11 22:14:05 TRACE session.c:141: GET CLIENT PLAYER ORDER
+2018-12-11 22:14:05 TRACE session.c:173: Je player order: 0 == actual player: 1
+2018-12-11 22:14:05 TRACE communication_manager.c:372: SEND WHO IS ON TURN BOTH CLIENTS - P2 is on turn
+2018-12-11 22:14:05 TRACE communication_manager.c:64: ------CLIENT HANDLE ENDED WITH TIME: 0.000276s
+
+2018-12-11 22:14:05 TRACE communication_manager.c:103: HANDLE DISCONNECTED CLIENTS LIST
+2018-12-11 22:14:05 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-11 22:14:09 TRACE communication_manager.c:13: ------CLIENT HANDLE STARTED
+2018-12-11 22:14:09 TRACE communication_manager.c:278: PEXESO REVEAL REQUEST
+2018-12-11 22:14:09 TRACE session.c:159: IS CLIENT ON TURN
+2018-12-11 22:14:09 TRACE session.c:141: GET CLIENT PLAYER ORDER
+2018-12-11 22:14:09 TRACE session.c:173: Je player order: 1 == actual player: 1
+2018-12-11 22:14:09 TRACE communication_manager.c:64: ------CLIENT HANDLE ENDED WITH TIME: 0.000153s
+
+2018-12-11 22:14:09 TRACE communication_manager.c:103: HANDLE DISCONNECTED CLIENTS LIST
+2018-12-11 22:14:09 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-11 22:14:13 TRACE communication_manager.c:13: ------CLIENT HANDLE STARTED
+2018-12-11 22:14:13 TRACE communication_manager.c:278: PEXESO REVEAL REQUEST
+2018-12-11 22:14:13 TRACE session.c:159: IS CLIENT ON TURN
+2018-12-11 22:14:13 TRACE session.c:141: GET CLIENT PLAYER ORDER
+2018-12-11 22:14:13 TRACE session.c:173: Je player order: 1 == actual player: 1
+2018-12-11 22:14:13 TRACE communication_manager.c:359: SEND WHO IS ON TURN BOTH CLIENTS
+2018-12-11 22:14:13 TRACE session.c:159: IS CLIENT ON TURN
+2018-12-11 22:14:13 TRACE session.c:141: GET CLIENT PLAYER ORDER
+2018-12-11 22:14:13 TRACE session.c:173: Je player order: 0 == actual player: 0
+2018-12-11 22:14:13 TRACE communication_manager.c:366: SEND WHO IS ON TURN BOTH CLIENTS - P1 is on turn
+2018-12-11 22:14:13 TRACE communication_manager.c:64: ------CLIENT HANDLE ENDED WITH TIME: 0.000302s
+
+2018-12-11 22:14:13 TRACE communication_manager.c:103: HANDLE DISCONNECTED CLIENTS LIST
+2018-12-11 22:14:13 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-11 22:14:17 TRACE communication_manager.c:13: ------CLIENT HANDLE STARTED
+2018-12-11 22:14:17 TRACE communication_manager.c:278: PEXESO REVEAL REQUEST
+2018-12-11 22:14:17 TRACE session.c:159: IS CLIENT ON TURN
+2018-12-11 22:14:17 TRACE session.c:141: GET CLIENT PLAYER ORDER
+2018-12-11 22:14:17 TRACE session.c:173: Je player order: 0 == actual player: 0
+2018-12-11 22:14:17 TRACE communication_manager.c:64: ------CLIENT HANDLE ENDED WITH TIME: 0.000160s
+
+2018-12-11 22:14:17 TRACE communication_manager.c:103: HANDLE DISCONNECTED CLIENTS LIST
+2018-12-11 22:14:17 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-11 22:14:18 INFO  main.c:94: SELECT TIMEOUT
+2018-12-11 22:14:18 TRACE communication_manager.c:103: HANDLE DISCONNECTED CLIENTS LIST
+2018-12-11 22:14:18 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-11 22:14:21 TRACE communication_manager.c:13: ------CLIENT HANDLE STARTED
+2018-12-11 22:14:21 TRACE communication_manager.c:278: PEXESO REVEAL REQUEST
+2018-12-11 22:14:21 TRACE session.c:159: IS CLIENT ON TURN
+2018-12-11 22:14:21 TRACE session.c:141: GET CLIENT PLAYER ORDER
+2018-12-11 22:14:21 TRACE session.c:173: Je player order: 0 == actual player: 0
+2018-12-11 22:14:21 TRACE communication_manager.c:359: SEND WHO IS ON TURN BOTH CLIENTS
+2018-12-11 22:14:21 TRACE session.c:159: IS CLIENT ON TURN
+2018-12-11 22:14:21 TRACE session.c:141: GET CLIENT PLAYER ORDER
+2018-12-11 22:14:21 TRACE session.c:173: Je player order: 0 == actual player: 1
+2018-12-11 22:14:21 TRACE communication_manager.c:372: SEND WHO IS ON TURN BOTH CLIENTS - P2 is on turn
+2018-12-11 22:14:21 TRACE communication_manager.c:64: ------CLIENT HANDLE ENDED WITH TIME: 0.000233s
+
+2018-12-11 22:14:21 TRACE communication_manager.c:103: HANDLE DISCONNECTED CLIENTS LIST
+2018-12-11 22:14:21 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-11 22:14:25 TRACE communication_manager.c:13: ------CLIENT HANDLE STARTED
+2018-12-11 22:14:25 TRACE communication_manager.c:278: PEXESO REVEAL REQUEST
+2018-12-11 22:14:25 TRACE session.c:159: IS CLIENT ON TURN
+2018-12-11 22:14:25 TRACE session.c:141: GET CLIENT PLAYER ORDER
+2018-12-11 22:14:25 TRACE session.c:173: Je player order: 1 == actual player: 1
+2018-12-11 22:14:25 TRACE communication_manager.c:64: ------CLIENT HANDLE ENDED WITH TIME: 0.000165s
+
+2018-12-11 22:14:25 TRACE communication_manager.c:103: HANDLE DISCONNECTED CLIENTS LIST
+2018-12-11 22:14:25 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-11 22:14:29 TRACE communication_manager.c:13: ------CLIENT HANDLE STARTED
+2018-12-11 22:14:29 TRACE communication_manager.c:278: PEXESO REVEAL REQUEST
+2018-12-11 22:14:29 TRACE session.c:159: IS CLIENT ON TURN
+2018-12-11 22:14:29 TRACE session.c:141: GET CLIENT PLAYER ORDER
+2018-12-11 22:14:29 TRACE session.c:173: Je player order: 1 == actual player: 1
+2018-12-11 22:14:29 TRACE communication_manager.c:359: SEND WHO IS ON TURN BOTH CLIENTS
+2018-12-11 22:14:29 TRACE session.c:159: IS CLIENT ON TURN
+2018-12-11 22:14:29 TRACE session.c:141: GET CLIENT PLAYER ORDER
+2018-12-11 22:14:29 TRACE session.c:173: Je player order: 0 == actual player: 0
+2018-12-11 22:14:29 TRACE communication_manager.c:366: SEND WHO IS ON TURN BOTH CLIENTS - P1 is on turn
+2018-12-11 22:14:29 TRACE communication_manager.c:64: ------CLIENT HANDLE ENDED WITH TIME: 0.000239s
+
+2018-12-11 22:14:29 TRACE communication_manager.c:103: HANDLE DISCONNECTED CLIENTS LIST
+2018-12-11 22:14:29 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-11 22:14:33 TRACE communication_manager.c:13: ------CLIENT HANDLE STARTED
+2018-12-11 22:14:33 TRACE communication_manager.c:278: PEXESO REVEAL REQUEST
+2018-12-11 22:14:33 TRACE session.c:159: IS CLIENT ON TURN
+2018-12-11 22:14:33 TRACE session.c:141: GET CLIENT PLAYER ORDER
+2018-12-11 22:14:33 TRACE session.c:173: Je player order: 0 == actual player: 0
+2018-12-11 22:14:33 TRACE communication_manager.c:64: ------CLIENT HANDLE ENDED WITH TIME: 0.000139s
+
+2018-12-11 22:14:33 TRACE communication_manager.c:103: HANDLE DISCONNECTED CLIENTS LIST
+2018-12-11 22:14:33 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-11 22:14:37 TRACE communication_manager.c:13: ------CLIENT HANDLE STARTED
+2018-12-11 22:14:37 TRACE communication_manager.c:278: PEXESO REVEAL REQUEST
+2018-12-11 22:14:37 TRACE session.c:159: IS CLIENT ON TURN
+2018-12-11 22:14:37 TRACE session.c:141: GET CLIENT PLAYER ORDER
+2018-12-11 22:14:37 TRACE session.c:173: Je player order: 0 == actual player: 0
+2018-12-11 22:14:37 TRACE communication_manager.c:359: SEND WHO IS ON TURN BOTH CLIENTS
+2018-12-11 22:14:37 TRACE session.c:159: IS CLIENT ON TURN
+2018-12-11 22:14:37 TRACE session.c:141: GET CLIENT PLAYER ORDER
+2018-12-11 22:14:37 TRACE session.c:173: Je player order: 0 == actual player: 1
+2018-12-11 22:14:37 TRACE communication_manager.c:372: SEND WHO IS ON TURN BOTH CLIENTS - P2 is on turn
+2018-12-11 22:14:37 TRACE communication_manager.c:64: ------CLIENT HANDLE ENDED WITH TIME: 0.000245s
+
+2018-12-11 22:14:37 TRACE communication_manager.c:103: HANDLE DISCONNECTED CLIENTS LIST
+2018-12-11 22:14:37 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-11 22:14:42 TRACE communication_manager.c:13: ------CLIENT HANDLE STARTED
+2018-12-11 22:14:42 TRACE communication_manager.c:278: PEXESO REVEAL REQUEST
+2018-12-11 22:14:42 TRACE session.c:159: IS CLIENT ON TURN
+2018-12-11 22:14:42 TRACE session.c:141: GET CLIENT PLAYER ORDER
+2018-12-11 22:14:42 TRACE session.c:173: Je player order: 1 == actual player: 1
+2018-12-11 22:14:42 TRACE communication_manager.c:64: ------CLIENT HANDLE ENDED WITH TIME: 0.000159s
+
+2018-12-11 22:14:42 TRACE communication_manager.c:103: HANDLE DISCONNECTED CLIENTS LIST
+2018-12-11 22:14:42 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-11 22:14:45 TRACE communication_manager.c:13: ------CLIENT HANDLE STARTED
+2018-12-11 22:14:45 TRACE communication_manager.c:278: PEXESO REVEAL REQUEST
+2018-12-11 22:14:45 TRACE session.c:159: IS CLIENT ON TURN
+2018-12-11 22:14:45 TRACE session.c:141: GET CLIENT PLAYER ORDER
+2018-12-11 22:14:45 TRACE session.c:173: Je player order: 1 == actual player: 1
+2018-12-11 22:14:45 TRACE communication_manager.c:359: SEND WHO IS ON TURN BOTH CLIENTS
+2018-12-11 22:14:45 TRACE session.c:159: IS CLIENT ON TURN
+2018-12-11 22:14:45 TRACE session.c:141: GET CLIENT PLAYER ORDER
+2018-12-11 22:14:45 TRACE session.c:173: Je player order: 0 == actual player: 0
+2018-12-11 22:14:45 TRACE communication_manager.c:366: SEND WHO IS ON TURN BOTH CLIENTS - P1 is on turn
+2018-12-11 22:14:45 TRACE communication_manager.c:64: ------CLIENT HANDLE ENDED WITH TIME: 0.000245s
+
+2018-12-11 22:14:45 TRACE communication_manager.c:103: HANDLE DISCONNECTED CLIENTS LIST
+2018-12-11 22:14:45 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-11 22:14:49 TRACE communication_manager.c:13: ------CLIENT HANDLE STARTED
+2018-12-11 22:14:49 TRACE communication_manager.c:278: PEXESO REVEAL REQUEST
+2018-12-11 22:14:49 TRACE session.c:159: IS CLIENT ON TURN
+2018-12-11 22:14:49 TRACE session.c:141: GET CLIENT PLAYER ORDER
+2018-12-11 22:14:49 TRACE session.c:173: Je player order: 0 == actual player: 0
+2018-12-11 22:14:49 TRACE communication_manager.c:64: ------CLIENT HANDLE ENDED WITH TIME: 0.000131s
+
+2018-12-11 22:14:49 TRACE communication_manager.c:103: HANDLE DISCONNECTED CLIENTS LIST
+2018-12-11 22:14:49 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-11 22:14:52 TRACE communication_manager.c:13: ------CLIENT HANDLE STARTED
+2018-12-11 22:14:52 TRACE communication_manager.c:278: PEXESO REVEAL REQUEST
+2018-12-11 22:14:52 TRACE session.c:159: IS CLIENT ON TURN
+2018-12-11 22:14:52 TRACE session.c:141: GET CLIENT PLAYER ORDER
+2018-12-11 22:14:52 TRACE session.c:173: Je player order: 0 == actual player: 0
+2018-12-11 22:14:52 TRACE communication_manager.c:359: SEND WHO IS ON TURN BOTH CLIENTS
+2018-12-11 22:14:52 TRACE session.c:159: IS CLIENT ON TURN
+2018-12-11 22:14:52 TRACE session.c:141: GET CLIENT PLAYER ORDER
+2018-12-11 22:14:52 TRACE session.c:173: Je player order: 0 == actual player: 1
+2018-12-11 22:14:52 TRACE communication_manager.c:372: SEND WHO IS ON TURN BOTH CLIENTS - P2 is on turn
+2018-12-11 22:14:52 TRACE communication_manager.c:64: ------CLIENT HANDLE ENDED WITH TIME: 0.000249s
+
+2018-12-11 22:14:52 TRACE communication_manager.c:103: HANDLE DISCONNECTED CLIENTS LIST
+2018-12-11 22:14:52 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-11 22:14:56 TRACE communication_manager.c:13: ------CLIENT HANDLE STARTED
+2018-12-11 22:14:56 TRACE communication_manager.c:278: PEXESO REVEAL REQUEST
+2018-12-11 22:14:56 TRACE session.c:159: IS CLIENT ON TURN
+2018-12-11 22:14:56 TRACE session.c:141: GET CLIENT PLAYER ORDER
+2018-12-11 22:14:56 TRACE session.c:173: Je player order: 1 == actual player: 1
+2018-12-11 22:14:56 TRACE communication_manager.c:64: ------CLIENT HANDLE ENDED WITH TIME: 0.000151s
+
+2018-12-11 22:14:56 TRACE communication_manager.c:103: HANDLE DISCONNECTED CLIENTS LIST
+2018-12-11 22:14:56 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-11 22:15:00 TRACE communication_manager.c:13: ------CLIENT HANDLE STARTED
+2018-12-11 22:15:00 TRACE communication_manager.c:278: PEXESO REVEAL REQUEST
+2018-12-11 22:15:00 TRACE session.c:159: IS CLIENT ON TURN
+2018-12-11 22:15:00 TRACE session.c:141: GET CLIENT PLAYER ORDER
+2018-12-11 22:15:00 TRACE session.c:173: Je player order: 1 == actual player: 1
+2018-12-11 22:15:00 TRACE communication_manager.c:64: ------CLIENT HANDLE ENDED WITH TIME: 0.000222s
+
+2018-12-11 22:15:00 TRACE communication_manager.c:103: HANDLE DISCONNECTED CLIENTS LIST
+2018-12-11 22:15:00 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-11 22:15:18 INFO  main.c:94: SELECT TIMEOUT
+2018-12-11 22:15:18 TRACE communication_manager.c:103: HANDLE DISCONNECTED CLIENTS LIST
+2018-12-11 22:15:18 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-11 22:16:18 INFO  main.c:94: SELECT TIMEOUT
+2018-12-11 22:16:18 TRACE communication_manager.c:103: HANDLE DISCONNECTED CLIENTS LIST
+2018-12-11 22:16:18 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-11 22:17:18 INFO  main.c:94: SELECT TIMEOUT
+2018-12-11 22:17:18 TRACE communication_manager.c:103: HANDLE DISCONNECTED CLIENTS LIST
+2018-12-11 22:17:18 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-11 22:18:18 INFO  main.c:94: SELECT TIMEOUT
+2018-12-11 22:18:18 TRACE communication_manager.c:103: HANDLE DISCONNECTED CLIENTS LIST
+2018-12-11 22:18:18 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-11 22:19:18 INFO  main.c:94: SELECT TIMEOUT
+2018-12-11 22:19:18 TRACE communication_manager.c:103: HANDLE DISCONNECTED CLIENTS LIST
+2018-12-11 22:19:18 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-11 22:19:36 INFO  communication_manager.c:99: Client added to disconnected clients list
+2018-12-11 22:19:36 INFO  main.c:132: CLIENT HAS DISCONNECTED AND WAS REMOVED FROM SOCKET'S SET
+2018-12-11 22:19:36 TRACE communication_manager.c:103: HANDLE DISCONNECTED CLIENTS LIST
+2018-12-11 22:19:36 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-11 22:19:36 INFO  disconnected_clients.c:115:         Client: guest818 ID:818 socket:5 disconnected_time:2018-12-11 22:19:36
+
+2018-12-11 22:19:37 INFO  communication_manager.c:99: Client added to disconnected clients list
+2018-12-11 22:19:37 INFO  main.c:132: CLIENT HAS DISCONNECTED AND WAS REMOVED FROM SOCKET'S SET
+2018-12-11 22:19:37 TRACE communication_manager.c:103: HANDLE DISCONNECTED CLIENTS LIST
+2018-12-11 22:19:37 INFO  disconnected_clients.c:108: DISCONNECTED CLIENTS
+2018-12-11 22:19:37 INFO  disconnected_clients.c:115:         Client: guest818 ID:818 socket:5 disconnected_time:2018-12-11 22:19:36
+
