@@ -80,25 +80,23 @@ void remove_session_from_session_list(session* session_to_remove, session_list* 
 	session_to_remove->previous = NULL;
 }
 int is_session_list_empty(session_list* actual_session_list){
-    printf("        -IS SESSION LIST EMPTY-\n");
+    log_trace("IS SESSION LIST EMPTY");
     if(actual_session_list == NULL){
+        log_error("IS SESSION LIST EMPTY - Not valid params");
+        return -1;
         printf("            SESSION LIST JE NULL!\n");
     }
-    printf("            SESSION LIST NENI NULL!\n");
     if(actual_session_list->first == NULL){
-        printf("        SESSION LIST IS EMPTY\n");
         return 1;
     }
-    printf("        SESSION LIST IS NOT EMPTY\n");
     return 0;
 }
 int is_client_in_session_list(client* actual_client, session_list* actual_session_list){
-    printf("    IS CLIENT IN SESSION LIST \n");
+    log_trace("IS CLIENT IN SESSION LIST");
     if(is_session_list_empty(actual_session_list)){
         printf("          VRACIME 0\n");
         return 0;
     }
-    printf("        POKRACUJEME A HLEDAME JESTLI JE CLIENT V SESSIONE\n");
     session* pom = actual_session_list->first;
     while(pom != NULL){
         if(is_client_in_session(actual_client, pom)){
@@ -110,12 +108,11 @@ int is_client_in_session_list(client* actual_client, session_list* actual_sessio
     return 0;
 }
 session* get_open_session(session_list* actual_session_list){
-    printf("Ziskavame sessionu \n");
+    log_trace("GET OPEN SESSION");
     if(is_session_list_empty(actual_session_list)){
         printf("Session list je prazdny \n");
         return NULL;
     }
-    printf("Neni prazdna \n");
     session* pom =  actual_session_list->first;
     while(pom != NULL){
         if(is_session_open(pom)){
@@ -126,7 +123,7 @@ session* get_open_session(session_list* actual_session_list){
     return NULL;
 }
 session* get_session_by_client(client* actual_client, session_list* actual_session_list){
-    printf("    GET SESSION BY CLIENT\n");
+    log_trace("GET SESSION BY CLIENT");
     if(is_session_list_empty(actual_session_list)){
         printf("Get session - session list je prazdny \n");
         return NULL;
@@ -164,7 +161,7 @@ int get_new_session_unique_id(session_list* actual_session_list){
     int unique_id = 0;
     session* existing_session = NULL;
     do{
-        unique_id = rand() % 10000;
+        unique_id = rand();
         existing_session = get_session_by_id(unique_id, actual_session_list);
     }while(existing_session != NULL);
 

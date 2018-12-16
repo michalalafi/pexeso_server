@@ -41,9 +41,8 @@ void add_disconnected_client_to_disconnected_clients_list(disconnected_client* n
 	}
 
 	disconnected_client* last = actual_disconnected_clients_list->last;
-	last = NULL;
 	if(last == NULL){
-		perror("DISCONNECTED CLIENTS LIST ERROR - Adding in disconnected clients list failed\n Last is NULL!");
+		log_error("DISCONNECTED CLIENTS LIST - Adding in disconnected clients list failed, last is NULL!");
 		return;
 	}
 	last->next = new_disconnected_client;

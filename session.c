@@ -20,6 +20,18 @@ session* create_session(client* first_client, client* second_client, game* actua
 	return new_session;
 }
 
+void reset_session_for_new_game(session* actual_session){
+    if(actual_session == NULL){
+        log_error("RESET SESSION FOR NEW GAME - Not valid params");
+        return;
+    }
+    free_game(actual_session->game);
+
+    actual_session->game = NULL;
+    actual_session->want_first_client_play = -1;
+    actual_session->want_second_client_play = -1;
+}
+
 int is_session_open(session* actual_session){
     log_trace("IS SESSION OPEN");
     if(actual_session == NULL){
@@ -63,44 +75,55 @@ client* get_some_client_from_session(session* actual_session){
     return NULL;
 }
 int is_client_in_session(client* actual_client, session* actual_session){
-    printf("        IS CLIENT IN SESSION\n");
+    log_trace("IS CLIENT IN SESSION");
     if(actual_session == NULL || actual_client == NULL){
-        printf("        NENI PROTOZE SESSION NEBO CLIENT JE NULL\n");
         return 0;
     }
     if(actual_session->first_client != NULL){
         if(actual_session->first_client->id == actual_client->id){
-            printf("       JE PROTOZE JE PRVNI CLIENT\n");
             return 1;
         }
     }
     if(actual_session->second_client != NULL){
         if(actual_session->second_client->id == actual_client->id){
-            printf("       JE PROTOZE JE DRUHY CLIENT\n");
             return 1;
         }
     }
     return 0;
 }
 void remove_client_from_session(client* actual_client, session* actual_session){
+    log_trace("REMOVE CLIENT FROM SESSION");
+    if(actual_session == NULL || actual_client == NULL){
+        log_error("REMOVE CLIENT FROM SESSION - Not valid params");
+        return;
+    }
+
     if(actual_session->first_client != NULL){
         if(actual_session->first_client->id == actual_client->id){
+            log_info("REMOVE CLIENT FROM SESSION - First client was removed");
             actual_session->first_client = NULL;
+            return;
         }
     }
-    else if(actual_session->second_client != NULL){
+    if(actual_session->second_client != NULL){
         if(actual_session->second_client->id == actual_client->id){
+            log_info("REMOVE CLIENT FROM SESSION - Second client was removed");
             actual_session->second_client = NULL;
+            return;
         }
     }
+
+    log_error("REMOVE CLIENT FROM SESSION - No client was removed");
+
 }
 int is_session_ready_to_play_game(session* actual_session){
+    log_trace("IS SESSION READY TO PLAY GAME");
     if(actual_session->want_first_client_play == 1 && actual_session->want_second_client_play == 1){
         return 1;
     }
     return 0;
 }
-void set_client_wants_play(client* actual_client, session* actual_session){
+void set_client_wants_play(client* actual_client, session* actual_session, int value){
     if(actual_client == NULL || actual_session == NULL){
         log_error("CLIENT WANT PLAY - Not valid params");
         return;
@@ -112,10 +135,10 @@ void set_client_wants_play(client* actual_client, session* actual_session){
     }
 
     if(actual_session->first_client->id == actual_client->id){
-        actual_session->want_first_client_play = 1;
+        actual_session->want_first_client_play = value;
     }
     else if(actual_session->second_client->id == actual_client->id){
-        actual_session->want_second_client_play = 1;
+        actual_session->want_second_client_play = value;
     }
 }
 void add_client_in_session(client* actual_client, session* actual_session){

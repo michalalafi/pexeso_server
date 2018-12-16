@@ -34,7 +34,7 @@ void remove_client_from_session(client* actual_client, session* actual_session);
 
 int is_session_ready_to_play_game(session* actual_session);
 
-void set_client_wants_play(client* actual_client, session* actual_session);
+void set_client_wants_play(client* actual_client, session* actual_session, int value);
 
 void add_client_in_session(client* actual_client, session* actual_session);
 
@@ -45,4 +45,6 @@ int get_client_player_order(client* actual_client, session* actual_session);
 int is_client_on_turn(client* actual_client, session* actual_session);
 
 void free_session(session* actual_session);
+
+void reset_session_for_new_game(session* actual_session);
 #endif

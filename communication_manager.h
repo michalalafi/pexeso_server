@@ -32,17 +32,25 @@ void handle_disconnected_clients_list(session_list* actual_session_list, disconn
 
 void throw_away_connection_with_client(disconnected_client* actual_disconnected_client, session_list* actual_session_list, disconnected_clients_list* actual_disconnected_clients_list);
 
-void execute_client_action(client* actual_client, int action, char* params, client_handle_container* container);
+void execute_client_action(client* actual_client, int action, char* params, client_handle_container* container, char* sounds_folder_path);
 
-void new_game_request(client* actual_client, char* params, session_list* actual_session_list);
+void new_game_request(client* actual_client, char* params, session_list* actual_session_list, char* sounds_folder_path);
 
 void pexeso_reveale_request(client* actual_client, char* params, session_list* actual_session_list);
+
+void session_id_request(client* actual_client, session_list* actual_session_list);
+
+void client_name_request(client* actual_client);
+
+void number_of_clients_online_request(client* actual_client, lobby* actual_lobby);
 
 void send_who_is_on_turn_both_clients_in_session(session* actual_session);
 
 void send_message_both_clients_in_session(int action, char* params,session* actual_session);
 
 void send_client_message(int client_socket, int action, char* params);
+
+void send_client_message_with_int_param(int client_socket, int action, int param);
 
 int is_raw_message_login_to_lobby_request(char* raw_message);
 

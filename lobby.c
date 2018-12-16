@@ -7,6 +7,7 @@ lobby* create_lobby(){
 	}
 	new_lobby->first = NULL;
 	new_lobby->last = NULL;
+	new_lobby->number_of_connected_clients = 0;
 
 	return new_lobby;
 }
@@ -19,6 +20,7 @@ void add_client_to_lobby(client* new_client, lobby* actual_lobby){
 
 		actual_lobby->first->next = NULL;
 		actual_lobby->first->previous = NULL;
+		actual_lobby->number_of_connected_clients += 1;
 		return;
 	}
 
@@ -29,7 +31,7 @@ void add_client_to_lobby(client* new_client, lobby* actual_lobby){
 	last->next = new_client;
 	new_client->previous = last;
 	actual_lobby->last = new_client;
-
+    actual_lobby->number_of_connected_clients += 1;
 }
 
 void remove_client_from_lobby(client* client_to_remove, lobby* actual_lobby){
@@ -71,6 +73,8 @@ void remove_client_from_lobby(client* client_to_remove, lobby* actual_lobby){
 	}
 	client_to_remove->next = NULL;
 	client_to_remove->previous = NULL;
+
+	actual_lobby->number_of_connected_clients -= 1;
 }
 int is_lobby_empty(lobby* actual_lobby){
     if(actual_lobby->first == NULL && actual_lobby->last == NULL){
@@ -98,21 +102,19 @@ client* find_client_by_id(int client_id, lobby* actual_lobby){
 }
 
 client* find_client_by_socket(int client_socket, lobby* actual_lobby){
-    //printf("FINDING CLIENT BY ID: %d \n",client_id);
+    log_trace("FIND CLIENT BY SOCKET");
     if(is_lobby_empty(actual_lobby)){
-        //printf("NO CLIENT FOUND DUE EMPTY LOBBY \n");
+        log_error("FIND CLIENT BY SOCKET - lobby is empty");
         return NULL;
     }
 
     client* pom = actual_lobby->first;
     while(pom != NULL){
         if(pom->socket == client_socket){
-            printf("CLIENT FOUND: ID = %d NAME = %s \n",pom->id,pom->name);
             return pom;
         }
         pom = pom->next;
     }
-    //printf("NO CLIENT FOUND WITH ID: %d \n",client_id);
     return NULL;
 }
 int is_client_in_lobby_by_socket(int socket,lobby* actual_lobby){
@@ -129,11 +131,18 @@ int is_client_in_lobby_by_socket(int socket,lobby* actual_lobby){
     return 0;
 }
 
+int get_number_of_clients_online(lobby* actual_lobby){
+    if(actual_lobby == NULL){
+        log_error("GET NUMBER OF CLIENTS ONLINE - Not valid params");
+        return -1;
+    }
+    return actual_lobby->number_of_connected_clients;
+}
 int get_new_client_unique_id(lobby* actual_lobby){
     int unique_id = 0;
     client* existing_client = NULL;
     do{
-        unique_id = rand() % 10000;
+        unique_id = rand();
         existing_client = find_client_by_id(unique_id, actual_lobby);
     }while(existing_client != NULL);
 

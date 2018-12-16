@@ -21,7 +21,8 @@
 int server_socket;
 struct sockaddr_in my_addr;
 
-int server_setup(){
+int server_setup(char* sounds_folder_path){
+
     srand(time(NULL));
     FILE* log_file;
 
@@ -33,6 +34,16 @@ int server_setup(){
     else{
         log_set_fp(log_file);
     }
+
+    if(is_folder_with_sounds_avaible(sounds_folder_path)){
+        log_info("SOUNDS FOLDER IS AVAIBLE");
+    }
+    else{
+        log_error("SOUNDS FOLDER ISN'T AVAIBLE");
+        return -1;
+    }
+
+
     log_info("SERVER SETUPED!");
 
     return 0;
@@ -59,7 +70,7 @@ int server_start(int port){
 	}
 	return 0;
 }
-int server_listen(){
+int server_listen(char* sounds_folder_path){
     //Co znamena 5?
     int return_value = listen(server_socket, 5);
     if (return_value == 0){
@@ -73,7 +84,7 @@ int server_listen(){
 
 	fd_set client_socks, client_set;
 	struct sockaddr_in peer_addr;
-	int len_addr;
+	socklen_t len_addr;
     int a2read;
 	int client_socket, fd;
 
@@ -119,8 +130,9 @@ int server_listen(){
 					if (a2read > 0){
                         char message[1024];
                         recv(fd, &message, 1024, 0);
-                        client_handle_container* h_container = create_client_handle_container(actual_lobby, actual_session_list, fd, message, actual_disconnected_clients);
+                        client_handle_container* h_container = create_client_handle_container(actual_lobby, actual_session_list, fd, message, actual_disconnected_clients, sounds_folder_path);
                         //TODO po pridani zpatky do lobby zmenit socket
+                        //TODO free containter
                         handle_client(h_container);
 					}
 					// na socketu se stalo neco spatneho
@@ -147,11 +159,12 @@ int server_listen(){
  * @return
  */
 int main(int argc, char *argv[]) {
-    if(server_setup() == -1)
+    char* sounds_folder_path = "../../../sounds";
+    if(server_setup(sounds_folder_path) == -1)
         return -1;
     if(server_start(10000))
         return -1;
-    if(server_listen())
+    if(server_listen(sounds_folder_path))
         return -1;
 
     return 0;

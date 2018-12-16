@@ -41,7 +41,7 @@ char** get_sounds_from_folder(char* folder_path, int* sounds_length){
 
 	dir = opendir(folder_path);
 	if(dir != NULL){
-		while(ep = readdir(dir))
+		while((ep = readdir(dir)))
 		{
             // Je koncovka mp3?
 			if(strcmp(get_filename_ext(ep->d_name),"wav") == 0){
@@ -60,7 +60,7 @@ char** get_sounds_from_folder(char* folder_path, int* sounds_length){
 		(void) closedir (dir);
 	}
 	else{
-		perror("FOLDER ERROR - Couldn't open the directory");
+		log_error("GET SOUNDS FROM FOLDER - Couldn't open the directory");
 		return NULL;
 	}
 	printf("---All sounds loaded!---\n");
@@ -103,7 +103,16 @@ char** get_sounds_for_pexeso(char* folder_path, int pexeso_count){
 	}
     printf("SOUNDS LOADED SUCCESSFULLY! \n");
     return sounds;
+}
 
+int is_folder_with_sounds_avaible(char* folder_path){
+    DIR *dir = opendir(folder_path);
+    if(dir != NULL){
+        (void) closedir (dir);
+        return 1;
+    }
+    (void) closedir (dir);
+    return 0;
 }
 /* Function: print_all_sounds
 * ------------------------
