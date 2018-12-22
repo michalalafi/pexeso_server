@@ -27,9 +27,8 @@ void add_session_to_session_list(session* new_session, session_list* actual_sess
 	}
 
 	session* last = actual_session_list->last;
-	last = NULL;
 	if(last == NULL){
-		perror("SESSION LIST ERROR - Adding in session list failed\n Last is NULL!");
+		log_error("SESSION LIST ERROR - Adding in session list failed\n Last is NULL!");
 		return;
 	}
 	last->next = new_session;

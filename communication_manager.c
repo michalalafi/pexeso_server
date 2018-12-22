@@ -11,6 +11,7 @@
 */
 void handle_client(client_handle_container* container){
     log_trace("------CLIENT HANDLE STARTED");
+    log_info("CLIENT MESSAGE: '%s' length:%d", container->message, strlen(container->message));
     clock_t t = clock();
 
     if(container == NULL)
@@ -46,10 +47,16 @@ void handle_client(client_handle_container* container){
         //Zkusime najit clienta podle id ve zprave
         client* actual_client  = find_client_by_id(client_message->client_id, container->lobby);
         if(actual_client == NULL){
-            log_info("Client nenalezen");
-            // Je clientovi odeslana zprava ze neni prihlasen
-            send_client_message(container->client_socket, NOT_LOGGED_IN_LOBBY,"");
-            return;
+            //TODO pokud je akce recconect tak predame metode
+            if(client_message->action == RECONNECT_REQUEST){
+                log_info("Zadost o reconnect");
+                handle_client_reconnect(container->client_socket, client_message, container->disconnected_clients_list, container->lobby, container->session_list);
+            }
+            else{
+                log_info("Client nenalezen");
+                // Je clientovi odeslana zprava ze neni prihlasen
+                send_client_message(container->client_socket, NOT_LOGGED_IN_LOBBY,"");
+            }
         }
         else{
             execute_client_action(actual_client,client_message->action,client_message->params,container, container->sounds_folder_path);
@@ -77,8 +84,8 @@ void handle_client_connect(int client_socket, lobby* actual_lobby){
     send_client_message(client_socket, STATUS_RESPONSE, "Lobby");
 }
 
-void handle_client_disconnect(int client_socket, lobby* actual_lobby, disconnected_clients_list* actual_disconnected_clients_list){
-    log_trace("HANDLE CLIENT DISCONNECT");
+void handle_client_disconnect(int client_socket, lobby* actual_lobby, disconnected_clients_list* actual_disconnected_clients_list, session_list* actual_session_list){
+    log_trace("HANDLE CLIENT DISCONNECT - Start");
     //Najdeme clienta v lobby
     client* actual_client = find_client_by_socket(client_socket, actual_lobby);
     if(actual_client == NULL){
@@ -87,6 +94,31 @@ void handle_client_disconnect(int client_socket, lobby* actual_lobby, disconnect
     }
     //Odstranimeho z lobby
     remove_client_from_lobby(actual_client, actual_lobby);
+
+    session* actual_session = get_session_by_client( actual_client, actual_session_list);
+    if(actual_session != NULL){
+        log_info("HANDLE CLIENT DISCONNET - Client was in session");
+        if(is_session_valid(actual_session)){
+            //Posleme opponentovi ze se client odpojil
+            if(actual_session->first_client->id == actual_client->id){
+                send_client_message(actual_session->second_client->socket, OPPONENT_LEFT_RESPONSE,"");
+                send_client_message(actual_session->second_client->socket, STATUS_RESPONSE, "Opponent left - Wait...");
+            }
+            else{
+                send_client_message(actual_session->first_client->socket, OPPONENT_LEFT_RESPONSE,"");
+                send_client_message(actual_session->first_client->socket, STATUS_RESPONSE, "Opponent left - Wait...");
+            }
+        }
+        else{
+            //Musime ji smazat protoze by se k ni mohl nekdo pripojit
+            log_info("Session: %d will be deleted", actual_session->id);
+            //Smazeme z listu session
+            remove_session_from_session_list(actual_session, actual_session_list);
+            //Zrusime sessionu
+            free_session(actual_session);
+        }
+    }
+
     //Vytvorime odpojeneho clienta
     disconnected_client* disconnected_client = create_disconnected_client(actual_client);
     if(disconnected_client == NULL){
@@ -95,7 +127,67 @@ void handle_client_disconnect(int client_socket, lobby* actual_lobby, disconnect
     }
     //Vlozime do listu odpojenych
     add_disconnected_client_to_disconnected_clients_list(disconnected_client, actual_disconnected_clients_list);
-    log_trace("HANDLE CLIENT DISCONNECT - END");
+    log_trace("HANDLE CLIENT DISCONNECT - End");
+}
+
+void handle_client_reconnect(int client_socket, message* client_message, disconnected_clients_list* actual_disconnected_clients_list, lobby* actual_lobby, session_list* actual_session_list){
+    log_trace("HANDLE CLIENT RECONNECT");
+    disconnected_client* actual_disconnected_client = find_disconnected_client_by_id(client_message->client_id, actual_disconnected_clients_list);
+    if(actual_disconnected_client == NULL){
+        handle_client_connect(client_socket, actual_lobby);
+    }
+    else{
+        client* actual_client = actual_disconnected_client->client;
+        //Nasli jsme ho
+        //TODO jestli mel zalozenou hru pripojime
+        //Rozhodne ho vratime do lobby
+        add_client_to_lobby(actual_disconnected_client->client, actual_lobby);
+        log_info("Pridali jsme disconnetleho clienta do lobby");
+
+        session* actual_session = get_session_by_client(actual_disconnected_client->client, actual_session_list);
+        if(actual_session == NULL){
+            //Nenalezena sessiona
+            //Posleme mu id
+            send_client_message_with_int_param(client_socket, CLIENTS_ID_RESPONSE, actual_disconnected_client->client->id);
+            send_client_message(client_socket, STATUS_RESPONSE, "Lobby");
+            log_info("Client was not in session");
+
+        }
+        else{
+            if(actual_session->game != NULL){
+                send_client_message_with_int_param(actual_client->socket, NUMBER_OF_PEXESOS_RESPONSE, PEXESO_COUNT);
+                //Napiseme ze zacla hra
+                send_client_message(actual_client->socket, NEW_GAME_BEGIN_RESPONSE, "");
+                //Napiseme jmeno clienta
+                send_client_message(actual_session->first_client->socket, OPPONENTS_NAME_RESPONSE,actual_session->second_client->name);
+                send_client_message(actual_session->second_client->socket, OPPONENTS_NAME_RESPONSE,actual_session->first_client->name);
+
+                send_client_message_with_ints_params(actual_client->socket, SCORE_RESPONSE, actual_session->game->p1_score, actual_session->game->p1_score);
+
+                int i;
+                int first_pexeso = -1;
+                for(i = 0; i < PEXESO_COUNT; i++){
+                    if(actual_session->game->revead_pexesos_indexes[i] != -1 && first_pexeso == -1)
+                        first_pexeso = i;
+                    else if(first_pexeso != -1 && actual_session->game->revead_pexesos_indexes[i] != -1){
+                        send_client_message_with_ints_params(actual_client->socket, SUCCESFULLY_REVEALED_PEXESO_RESPONSE, first_pexeso, i);
+                        first_pexeso = -1;
+                    }
+                }
+
+                //TODO posleme druhemu ze se uzivatel vratil
+                //TODO posleme tomu prvnime odhalene pexeso
+
+            }
+            else{
+                //TODO zalozit hru? a nebo je odpojit
+            }
+
+        }
+
+
+    }
+
 }
 
 void handle_disconnected_clients_list(session_list* actual_session_list, disconnected_clients_list* actual_disconnected_clients_list){
@@ -126,7 +218,8 @@ void throw_away_connection_with_client(disconnected_client* actual_disconnected_
                 client* last_client_in_session = get_some_client_from_session(actual_session);
                 // Pokud existuje napiseme mu zpravu ze opponent opustil hru
                 if(last_client_in_session != NULL){
-                    send_client_message(last_client_in_session->socket, OPPONENT_LEFT,"");
+                    //TODO poslat ze na dobro odesel
+                    send_client_message(last_client_in_session->socket, OPPONENT_LEFT_RESPONSE,"");
                 }
             }
             else{
@@ -162,6 +255,9 @@ void execute_client_action(client* actual_client, int action, char* params, clie
 
         case NUMBER_OF_CLIENTS_ONLINE_REQUEST:
             number_of_clients_online_request(actual_client, container->lobby);
+            break;
+
+        case IS_ALIVE_REQUEST:
             break;
 
     }
@@ -248,6 +344,7 @@ void new_game_request(client* actual_client, char* params, session_list* actual_
                     log_error("GAME CREATING FAILED");
                     return;
                 }
+                send_message_both_clients_in_session_with_int_param(actual_session, NUMBER_OF_PEXESOS_RESPONSE, PEXESO_COUNT);
                 //Napiseme ze zacla hra
                 send_message_both_clients_in_session(NEW_GAME_BEGIN_RESPONSE,"",actual_session);
                 //Napiseme jmeno clienta
@@ -325,18 +422,12 @@ void pexeso_reveale_request(client* actual_client, char* params, session_list* a
             if(is_end_of_turn(actual_session->game)){
                 //Pokud skoroval posleme obema skore a posleme obema puzzle ktere byli odhaleny
                 if(scored(actual_session->game)){
-                    //Posleme skore
-                    char p1_score[256];
-                    sprintf(p1_score,"%d;%d",actual_session->game->p1_score,actual_session->game->p2_score);
-                    send_client_message(actual_session->first_client->socket,SCORE_RESPONSE,p1_score);
-
-                    char p2_score[256];
-                    sprintf(p2_score,"%d;%d",actual_session->game->p2_score,actual_session->game->p1_score);
-                    send_client_message(actual_session->second_client->socket,SCORE_RESPONSE,p2_score);
+                    // Posleme skore prvnimu hraci
+                    send_client_message_with_ints_params(actual_session->first_client->socket, SCORE_RESPONSE,actual_session->game->p1_score,actual_session->game->p2_score);
+                    //Posleme skore druhemu hraci
+                    send_client_message_with_ints_params(actual_session->second_client->socket,SCORE_RESPONSE,actual_session->game->p2_score,actual_session->game->p1_score);
                     //Posleme odhalene pexeso
-                    char revealed_pexeso[256];
-                    sprintf(revealed_pexeso,"%d;%d",actual_session->game->first_reveal,actual_session->game->second_reveal);
-                    send_message_both_clients_in_session(SUCCESFULLY_REVEALED_PEXESO_RESPONSE, revealed_pexeso, actual_session);
+                    send_message_both_clients_in_session_with_ints_params(actual_session, SUCCESFULLY_REVEALED_PEXESO_RESPONSE, actual_session->game->first_reveal,actual_session->game->second_reveal);
 
                 }
                 else{
@@ -390,6 +481,9 @@ void number_of_clients_online_request(client* actual_client, lobby* actual_lobby
 
     send_client_message_with_int_param(actual_client->socket, NUMBER_OF_CLIENTS_ONLINE_RESPONSE, number_of_clients_online);
 }
+void is_alive_request(client* actual_client){
+    send_client_message(actual_client->socket, IS_ALIVE_RESPONSE, "");
+}
 void send_who_is_on_turn_both_clients_in_session(session* actual_session){
     log_trace("SEND WHO IS ON TURN BOTH CLIENTS");
     char* yes = "1";
@@ -432,19 +526,51 @@ void send_message_both_clients_in_session(int action, char* params,session* actu
 * returns: void
 */
 void send_client_message(int client_socket, int action, char* params){
+    log_trace("SEND CLIENT MESSAGE");
     const char message_terminator = '\n';
     char* buff = create_raw_message_for_client(action,params);
-    printf("    Odeslana zprava: %s \n",buff);
     send(client_socket, buff, (size_t) strlen(buff),0);
     send(client_socket, &message_terminator, 1,0);
+
+    log_info("SEND CLIENT MESSAGE - Sent message: %s", buff);
+    free(buff);
 }
 
 void send_client_message_with_int_param(int client_socket, int action, int param){
+    log_trace("SEND CLIENT MESSAGE WITH INT PARAM");
     char* int_string = (char*) malloc(sizeof(char) * 255);
     sprintf(int_string, "%d", param);
     send_client_message(client_socket, action, int_string);
-}
 
+    free(int_string);
+}
+void send_client_message_with_ints_params(int client_socket, int action, int param1, int param2){
+    log_trace("SEND CLIENT MESSAGE WITH INTS PARAMS");
+    char* int_string = (char*) malloc(sizeof(char) * 255 * 2);
+    sprintf(int_string, "%d;%d", param1,param2);
+    send_client_message(client_socket, action, int_string);
+
+    free(int_string);
+}
+void send_message_both_clients_in_session_with_ints_params(session* actual_session, int action, int param1, int param2){
+    log_trace("SEND MESSAGE BOTH CLIENTS IN SESSION WITH INTS PARAMS");
+    if(actual_session->first_client != NULL){
+        send_client_message_with_ints_params(actual_session->first_client->socket, action, param1, param2);
+    }
+    if(actual_session->second_client != NULL){
+        send_client_message_with_ints_params(actual_session->second_client->socket, action, param1, param2);
+    }
+}
+void send_message_both_clients_in_session_with_int_param(session* actual_session, int action, int param){
+    log_trace("SEND MESSAGE BOTH CLIENTS IN SESSION WITH INT PARAM");
+    if(actual_session->first_client != NULL){
+        send_client_message_with_int_param(actual_session->first_client->socket, action, param);
+    }
+    if(actual_session->second_client != NULL){
+        send_client_message_with_int_param(actual_session->second_client->socket, action, param);
+    }
+
+}
 int is_raw_message_login_to_lobby_request(char* raw_message){
     long action = convert_string_to_long(raw_message);
     if(action == -1){

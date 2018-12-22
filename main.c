@@ -9,6 +9,7 @@
 #include <sys/ioctl.h>
 #include <memory.h>
 #include <sys/select.h>
+#include <arpa/inet.h>
 #include "session.h"
 #include "session_list.h"
 #include "communication_manager.h"
@@ -17,6 +18,8 @@
 #include "client_handle_container.h"
 #include "disconnected_clients.h"
 #include "log.h"
+
+#define MAX_PORT 65535
 
 int server_socket;
 struct sockaddr_in my_addr;
@@ -48,7 +51,7 @@ int server_setup(char* sounds_folder_path){
 
     return 0;
 }
-int server_start(int port){
+int server_start(int port, in_addr_t adress){
     server_socket = socket(AF_INET, SOCK_STREAM, 0);
 
     //SETSOCKOPT?
@@ -57,7 +60,7 @@ int server_start(int port){
 
     my_addr.sin_family = AF_INET;
 	my_addr.sin_port = htons(port);
-	my_addr.sin_addr.s_addr = INADDR_ANY;
+	my_addr.sin_addr.s_addr = adress;
 
 	int return_value = bind(server_socket, (struct sockaddr *) &my_addr, \
 		sizeof(struct sockaddr_in));
@@ -140,18 +143,61 @@ int server_listen(char* sounds_folder_path){
 						close(fd);
 						FD_CLR( fd, &client_socks );
 
-						handle_client_disconnect(fd, actual_lobby, actual_disconnected_clients);
+						handle_client_disconnect(fd, actual_lobby, actual_disconnected_clients, actual_session_list);
 						log_info("CLIENT HAS DISCONNECTED AND WAS REMOVED FROM SOCKET'S SET");
 					}
 				}
 			}
 		}
-		//TODO zkontrolujeme kdy se odpojil a pokud uz mu ubehla doba vymazeme ho uplne
 		handle_disconnected_clients_list(actual_session_list, actual_disconnected_clients);
 
 	}
 }
+int start(int argc, char* argv[]){
+    int i;
+    int port = 10000;
+    int adress_result = 0;
+    int adress_index = 0;
+    in_addr_t adress = INADDR_ANY;
 
+    char* sounds_folder_path = "../../../sounds";
+
+    for(i = 0; i < argc; i++){
+        if(strcmp(argv[i], "-port") == 0 && (i + 1) < argc){
+            int value = (int)convert_string_to_long(argv[i + 1]);
+            if(value > MAX_PORT && value < 0){
+                log_error("NOT VALID PORT - Port is bigger than limit");
+            }
+            else{
+                port = value;
+            }
+        }
+        else if(strcmp(argv[i], "-address") == 0 && (i + 1) < argc){
+            adress_result = inet_pton(AF_INET, argv[i + 1], &adress);
+            adress_index = i + 1;
+        }
+        else if(strcmp(argv[i], "-folder" ) == 0 && (i + 1) < argc){
+            sounds_folder_path = (char* )malloc(sizeof(char) * (strlen( argv[i + 1]) + 1));
+            strcpy(sounds_folder_path, argv[i + 1]);
+        }
+
+    }
+    if(adress_result == 1){
+        log_info("SERVER IS STARTING ON ADRESS: %s/%d", argv[adress_index], port);
+    }
+    else{
+        log_info("SERVER IS STARTING ON ADRESS: %s/%d", "INADDR_ANY", port);
+    }
+    log_info("SERVER IS STARTING WITH PARAM- Folder of sounds: %s", sounds_folder_path);
+    if(server_setup(sounds_folder_path) == -1)
+        return -1;
+    if(server_start(port, adress))
+        return -1;
+    if(server_listen(sounds_folder_path))
+        return -1;
+
+    return 0;
+}
 /**
  * Hlavni funkce, ktera zprostredkovava pripojeni hracu
  * @param argc
@@ -159,13 +205,7 @@ int server_listen(char* sounds_folder_path){
  * @return
  */
 int main(int argc, char *argv[]) {
-    char* sounds_folder_path = "../../../sounds";
-    if(server_setup(sounds_folder_path) == -1)
-        return -1;
-    if(server_start(10000))
-        return -1;
-    if(server_listen(sounds_folder_path))
-        return -1;
+    start(argc, argv);
 
     return 0;
 }

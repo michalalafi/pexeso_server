@@ -24,7 +24,9 @@ void handle_client(client_handle_container* container);
 
 void handle_client_connect(int client_socket, lobby* actual_lobby);
 
-void handle_client_disconnect(int client_socket, lobby* actual_lobby, disconnected_clients_list* actual_disconnected_clients_list);
+void handle_client_disconnect(int client_socket, lobby* actual_lobby, disconnected_clients_list* actual_disconnected_clients_list, session_list* actual_session_list);
+
+void handle_client_reconnect(int client_socket, message* client_message, disconnected_clients_list* actual_disconnected_clients_list, lobby* actual_lobby, session_list* actual_session_list);
 
 void new_session_request(client* actual_client, session_list* actual_session_list);
 
@@ -44,6 +46,8 @@ void client_name_request(client* actual_client);
 
 void number_of_clients_online_request(client* actual_client, lobby* actual_lobby);
 
+void is_alive_request(client* actual_client);
+
 void send_who_is_on_turn_both_clients_in_session(session* actual_session);
 
 void send_message_both_clients_in_session(int action, char* params,session* actual_session);
@@ -51,6 +55,12 @@ void send_message_both_clients_in_session(int action, char* params,session* actu
 void send_client_message(int client_socket, int action, char* params);
 
 void send_client_message_with_int_param(int client_socket, int action, int param);
+
+void send_client_message_with_ints_params(int client_socket, int action, int param1, int param2);
+
+void send_message_both_clients_in_session_with_int_param(session* actual_session, int action, int param);
+
+void send_message_both_clients_in_session_with_ints_params(session* actual_session, int action, int param1, int param2);
 
 int is_raw_message_login_to_lobby_request(char* raw_message);
 

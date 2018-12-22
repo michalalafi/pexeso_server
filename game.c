@@ -25,7 +25,7 @@ game* create_game(char** sounds, int sound_count){
 
     int i;
     for(i = 0; i < PEXESO_COUNT; i++){
-        new_game->revead_pexesos_indexes[i] = 0;
+        new_game->revead_pexesos_indexes[i] = -1;
     }
 	new_game->remaining_pexeso_count = sound_count;
 	new_game->p1_score = 0;

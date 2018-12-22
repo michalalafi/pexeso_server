@@ -50,7 +50,27 @@ void add_disconnected_client_to_disconnected_clients_list(disconnected_client* n
 	actual_disconnected_clients_list->last = new_disconnected_client;
 	printf("DISCONNECTED CLIENTS LIST- New disconnected client - %s - was added to end of list!\n", new_disconnected_client->client->name);
 }
+disconnected_client* find_disconnected_client_by_id(int client_id, disconnected_clients_list* actual_disconnected_clients_list){
+    log_trace("FIND DISCONNECTED CLIENT BY ID");
+    if(is_disconnected_clients_list_empty(actual_disconnected_clients_list)){
+        return NULL;
+    }
 
+    disconnected_client* pom = actual_disconnected_clients_list->first;
+    while(pom != NULL){
+        if(pom->client->id == client_id){
+            return pom;
+        }
+        pom = pom->next;
+    }
+    return NULL;
+}
+int is_disconnected_clients_list_empty(disconnected_clients_list* actual_disconnected_clients_list){
+    if(actual_disconnected_clients_list->first == NULL && actual_disconnected_clients_list->last == NULL){
+        return 1;
+    }
+    return 0;
+}
 void remove_disconnected_client_from_disconnected_clients_list(disconnected_client* disconnected_client_to_remove, disconnected_clients_list* actual_disconnected_clients_list){
 	disconnected_client* previous = disconnected_client_to_remove->previous;
 	disconnected_client* next = disconnected_client_to_remove->next;
