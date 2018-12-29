@@ -142,7 +142,7 @@ int get_new_client_unique_id(lobby* actual_lobby){
     int unique_id = 0;
     client* existing_client = NULL;
     do{
-        unique_id = rand();
+        unique_id = rand() % 255;
         existing_client = find_client_by_id(unique_id, actual_lobby);
     }while(existing_client != NULL);
 

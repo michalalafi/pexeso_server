@@ -74,6 +74,24 @@ client* get_some_client_from_session(session* actual_session){
     }
     return NULL;
 }
+client* get_clients_opponent_in_session(client* actual_client, session* actual_session){
+    log_trace("GET CLIENTS OPPONENT IN SESSION");
+    if(actual_client == NULL || actual_session == NULL){
+        log_error("GET CLIENTS OPPONNET IN SESSION - Not valid params");
+        return NULL;
+    }
+
+    if(is_session_valid(actual_session)){
+        if(actual_session->first_client->id == actual_client->id){
+            return actual_session->second_client;
+        }
+        else if(actual_session->second_client->id == actual_client->id){
+            return actual_session->first_client;
+        }
+    }
+    return NULL;
+}
+
 int is_client_in_session(client* actual_client, session* actual_session){
     log_trace("IS CLIENT IN SESSION");
     if(actual_session == NULL || actual_client == NULL){

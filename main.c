@@ -5,6 +5,7 @@
 #include <unistd.h>
 #include <netinet/in.h>
 #include <stdlib.h>
+#include <pthread.h>
 // kvuli iotctl
 #include <sys/ioctl.h>
 #include <memory.h>
@@ -19,11 +20,34 @@
 #include "disconnected_clients.h"
 #include "log.h"
 
+#include "server_stats.h"
+
 #define MAX_PORT 65535
 
 int server_socket;
 struct sockaddr_in my_addr;
 
+void* server_stats_handle(void* vargp){
+    log_info("SERVER STATS HANDLE - Started");
+    server_stats* actual_server_stats = (server_stats*) vargp;
+    if(actual_server_stats == NULL){
+        log_error("SERVER STATS - Not valid params");
+        return NULL;
+    }
+    char input[256];
+    while(actual_server_stats->run){
+        fgets(input, 256, stdin);
+        char* pos;
+        if((pos = strchr(input, '\n')) != NULL){
+            *pos = '\0';
+            handle_admin_request(input, actual_server_stats);
+        }
+        else{
+            log_error("SERVER STATS HANDLE - Too long input");
+        }
+    }
+    return NULL;
+}
 int server_setup(char* sounds_folder_path){
 
     srand(time(NULL));
@@ -85,6 +109,11 @@ int server_listen(char* sounds_folder_path){
     session_list* actual_session_list = create_session_list();
     disconnected_clients_list* actual_disconnected_clients = create_disconnected_clients_list();
 
+    server_stats* actual_server_stats = create_server_stats(actual_lobby, actual_session_list, actual_disconnected_clients);
+
+    pthread_t thread_id;
+    pthread_create(&thread_id, NULL, server_stats_handle, actual_server_stats);
+
 	fd_set client_socks, client_set;
 	struct sockaddr_in peer_addr;
 	socklen_t len_addr;
@@ -100,7 +129,7 @@ int server_listen(char* sounds_folder_path){
     timeout.tv_sec = 60;
     timeout.tv_usec = 0;
 
-	for (;;){
+	while(actual_server_stats->run){
         client_set = client_socks;
 		// sada deskriptoru je po kazdem volani select prepsana sadou deskriptoru kde se neco delo
 		return_value = select( FD_SETSIZE +1, &client_set, ( fd_set *)0, ( fd_set *)0, /*( struct timeval *)1 */ &timeout);
@@ -133,7 +162,7 @@ int server_listen(char* sounds_folder_path){
 					if (a2read > 0){
                         char message[1024];
                         recv(fd, &message, 1024, 0);
-                        client_handle_container* h_container = create_client_handle_container(actual_lobby, actual_session_list, fd, message, actual_disconnected_clients, sounds_folder_path);
+                        client_handle_container* h_container = create_client_handle_container(actual_lobby, actual_session_list, fd, message, actual_disconnected_clients, sounds_folder_path, client_socks);
                         //TODO po pridani zpatky do lobby zmenit socket
                         //TODO free containter
                         handle_client(h_container);
@@ -141,7 +170,7 @@ int server_listen(char* sounds_folder_path){
 					// na socketu se stalo neco spatneho
 					else {
 						close(fd);
-						FD_CLR( fd, &client_socks );
+						FD_CLR( fd, &client_socks);
 
 						handle_client_disconnect(fd, actual_lobby, actual_disconnected_clients, actual_session_list);
 						log_info("CLIENT HAS DISCONNECTED AND WAS REMOVED FROM SOCKET'S SET");
@@ -152,6 +181,8 @@ int server_listen(char* sounds_folder_path){
 		handle_disconnected_clients_list(actual_session_list, actual_disconnected_clients);
 
 	}
+
+	return 0;
 }
 int start(int argc, char* argv[]){
     int i;

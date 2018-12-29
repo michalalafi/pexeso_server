@@ -68,6 +68,7 @@ void handle_client(client_handle_container* container){
     double time_taken = ((double)t)/CLOCKS_PER_SEC;
     print_session_list(container->session_list);
     print_clients(container->lobby);
+
     log_trace("------CLIENT HANDLE ENDED WITH TIME: %fs\n", time_taken);
 	return;
 }
@@ -108,6 +109,8 @@ void handle_client_disconnect(int client_socket, lobby* actual_lobby, disconnect
                 send_client_message(actual_session->first_client->socket, OPPONENT_LEFT_RESPONSE,"");
                 send_client_message(actual_session->first_client->socket, STATUS_RESPONSE, "Opponent left - Wait...");
             }
+            reset_actual_revealed_pexesos(actual_session->game);
+            log_info("Resetovany pexeso ");
         }
         else{
             //Musime ji smazat protoze by se k ni mohl nekdo pripojit
@@ -129,7 +132,23 @@ void handle_client_disconnect(int client_socket, lobby* actual_lobby, disconnect
     add_disconnected_client_to_disconnected_clients_list(disconnected_client, actual_disconnected_clients_list);
     log_trace("HANDLE CLIENT DISCONNECT - End");
 }
-
+void handle_client_correct_disconnect(int client_socket, lobby* actual_lobby, session_list* actual_session_list, fd_set client_socks){
+    log_trace("HANDLE CLIENT CORRECT DISCONNECT - Start");
+    //Najdeme clienta v lobby
+    client* actual_client = find_client_by_socket(client_socket, actual_lobby);
+    if(actual_client == NULL){
+        log_error("HANDLE CLIENT CORRECT DISCONNECT - Client is not in lobby");
+        return;
+    }
+    //Odstranimeho z lobby
+    remove_client_from_lobby(actual_client, actual_lobby);
+    //Ziskame sessionu pokud existuje
+    session* actual_session = get_session_by_client(actual_client, actual_session_list);
+    if(actual_session != NULL){
+        handle_client_remove_from_session(actual_client, actual_session, actual_session_list);
+    }
+    log_trace("HANDLE CLIENT CORRECT DISCONNECT - End");
+}
 void handle_client_reconnect(int client_socket, message* client_message, disconnected_clients_list* actual_disconnected_clients_list, lobby* actual_lobby, session_list* actual_session_list){
     log_trace("HANDLE CLIENT RECONNECT");
     disconnected_client* actual_disconnected_client = find_disconnected_client_by_id(client_message->client_id, actual_disconnected_clients_list);
@@ -174,7 +193,8 @@ void handle_client_reconnect(int client_socket, message* client_message, disconn
                         first_pexeso = -1;
                     }
                 }
-
+                //Posleme kdo je na rade
+                send_who_is_on_turn_both_clients_in_session(actual_session);
                 //TODO posleme druhemu ze se uzivatel vratil
                 //TODO posleme tomu prvnime odhalene pexeso
 
@@ -182,14 +202,9 @@ void handle_client_reconnect(int client_socket, message* client_message, disconn
             else{
                 //TODO zalozit hru? a nebo je odpojit
             }
-
         }
-
-
     }
-
 }
-
 void handle_disconnected_clients_list(session_list* actual_session_list, disconnected_clients_list* actual_disconnected_clients_list){
     log_trace("HANDLE DISCONNECTED CLIENTS LIST");
     disconnected_client* pom = actual_disconnected_clients_list->first;
@@ -211,27 +226,36 @@ void throw_away_connection_with_client(disconnected_client* actual_disconnected_
         //Ziskame sessionu pokud existuje
         session* actual_session = get_session_by_client(actual_disconnected_client->client, actual_session_list);
         if(actual_session != NULL){
-            //Odebereme ho ze sessiony
-            remove_client_from_session(actual_disconnected_client->client, actual_session);
-            //Pokud sessiona neni prazdna dame vedet oppentovi
-            if(!is_session_empty(actual_session)){
-                client* last_client_in_session = get_some_client_from_session(actual_session);
-                // Pokud existuje napiseme mu zpravu ze opponent opustil hru
-                if(last_client_in_session != NULL){
-                    //TODO poslat ze na dobro odesel
-                    send_client_message(last_client_in_session->socket, OPPONENT_LEFT_RESPONSE,"");
-                }
-            }
-            else{
-                log_info("Session: %d will be deleted", actual_session->id);
-                //Smazeme z listu session
-                remove_session_from_session_list(actual_session, actual_session_list);
-                //Zrusime sessionu
-                free_session(actual_session);
-
-            }
+            handle_client_remove_from_session(actual_disconnected_client->client, actual_session, actual_session_list);
         }
         log_info("Client was thrown away");
+}
+
+void handle_client_remove_from_session(client* actual_client, session* actual_session, session_list* actual_session_list){
+    log_trace("HANDLE CLIENT REMOVE FROM SESSION");
+    //Odebereme ho ze sessiony
+    remove_client_from_session(actual_client, actual_session);
+    //Pokud sessiona neni prazdna dame vedet oppentovi
+    if(!is_session_empty(actual_session)){
+        client* last_client_in_session = get_some_client_from_session(actual_session);
+        // Pokud existuje napiseme mu zpravu ze opponent opustil hru
+        if(last_client_in_session != NULL){
+
+            send_client_message(last_client_in_session->socket, OPPONENT_LEFT_COMPLETELY_RESPONSE,"");
+
+            send_client_message(last_client_in_session->socket, STATUS_RESPONSE, "Wait for player to join...");
+
+            reset_session_for_new_game(actual_session);
+        }
+    }
+    else{
+        log_info("Session: %d will be deleted", actual_session->id);
+        //Smazeme z listu session
+        remove_session_from_session_list(actual_session, actual_session_list);
+        //Zrusime sessionu
+        free_session(actual_session);
+
+    }
 }
 void execute_client_action(client* actual_client, int action, char* params, client_handle_container* container, char* sounds_folder_path){
     printf("EXECUTE ACTION: %d \n",action);
@@ -258,6 +282,9 @@ void execute_client_action(client* actual_client, int action, char* params, clie
             break;
 
         case IS_ALIVE_REQUEST:
+            break;
+        case DISCONNECT_REQUEST:
+            handle_client_correct_disconnect(container->client_socket, container->lobby, container->session_list, container->client_set);
             break;
 
     }
@@ -331,6 +358,7 @@ void new_game_request(client* actual_client, char* params, session_list* actual_
             log_error("NEW GAME REQUEST - Session is not valid");
             reset_session_for_new_game(actual_session);
             send_client_message(actual_client->socket, STATUS_RESPONSE, "Wait for player to join...");
+            send_client_message(actual_client->socket, OPPONENT_LEFT_COMPLETELY_RESPONSE, "");
         }
         else{
             set_client_wants_play(actual_client, actual_session, 1);
@@ -362,24 +390,11 @@ void new_game_request(client* actual_client, char* params, session_list* actual_
     }
     //Nechtel hrat
     else{
-        //Odstranime ho ze sessiony a vratime do lobby
-        remove_client_from_session(actual_client, actual_session);
-        log_info("Client odstranen ze sessiony");
+        //Odstranime ho ze sessiony
+        handle_client_remove_from_session(actual_client, actual_session, actual_session_list);
+
         send_client_message(actual_client->socket, RETURN_TO_LOBBY_RESPONSE, "");
         send_client_message(actual_client->socket, STATUS_RESPONSE, "Lobby");
-
-        if(is_session_empty(actual_session)){
-            log_info("Sessiona je prazdna je odstranena");
-            remove_session_from_session_list(actual_session, actual_session_list);
-            free(actual_session);
-        }
-        else{
-            log_info("Posilame druhemu hraci zpravu at ceka na jineho hrace");
-            //Napiseme druhemu clientovi
-            send_message_both_clients_in_session(STATUS_RESPONSE,"Wait for player to join...", actual_session);
-
-            reset_session_for_new_game(actual_session);
-        }
     }
 }
 

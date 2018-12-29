@@ -188,15 +188,21 @@ int nextTurn(game* actual_game){
 	// Zmena hrace
 	actual_game->actual_player ^= 1;
 	// Resetovani hodnot
-	actual_game->first_reveal = -1;
-	actual_game->second_reveal = -1;
+	reset_actual_revealed_pexesos(actual_game);
 
 	printf("SCORE P1:%d - P2:%d\n",actual_game->p1_score,actual_game->p2_score);
 	printf("Zbyva: %d\n",actual_game->remaining_pexeso_count);
 
 	return 1;
 }
-
+void reset_actual_revealed_pexesos(game* actual_game){
+    if(actual_game == NULL){
+        log_error("RESET ACTUAL REVEALED PEXESOS - Not valid params!");
+        return;
+    }
+    actual_game->first_reveal = -1;
+    actual_game->second_reveal = -1;
+}
 int is_game_over(game* actual_game){
     log_trace("IS GAME OVER");
     if(actual_game == NULL){

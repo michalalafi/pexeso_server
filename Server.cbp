@@ -64,6 +64,10 @@
 		</Unit>
 		<Unit filename="message_proccessing.h" />
 		<Unit filename="protocol.h" />
+		<Unit filename="server_stats.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="server_stats.h" />
 		<Unit filename="session.c">
 			<Option compilerVar="CC" />
 		</Unit>

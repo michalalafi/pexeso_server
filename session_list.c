@@ -160,7 +160,7 @@ int get_new_session_unique_id(session_list* actual_session_list){
     int unique_id = 0;
     session* existing_session = NULL;
     do{
-        unique_id = rand();
+        unique_id = rand() % 255;
         existing_session = get_session_by_id(unique_id, actual_session_list);
     }while(existing_session != NULL);
 
