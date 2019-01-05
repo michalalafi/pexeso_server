@@ -1,28 +1,55 @@
 #include "utils.h"
 
-
-void swap (char ** array, int i, int j)
+/*
+* Function: swap
+* ------------------------
+* Prohodi stringy v poli na indexech i a j
+*
+* array: pole stringu
+* i: prvni index
+* j: druhy index
+*
+* returns: void
+*/
+void swap(char** array, int i, int j)
 {
-	//printf("Vstupuje: '%s' a '%s' \n", array[i],array[j]);
+    if(array == NULL){
+        log_error("SWAP - Not valid params");
+        return;
+    }
 	int a_length = strlen(array[i]) + 1;
-	//printf("Ziskano a: %d\n", a_length);
+
 	char* temp = (char*) malloc(a_length * sizeof(char));
-	//	printf("Vytvoren temp\n");
+
 	strcpy(temp,array[i]);
-	//	printf("Temp: '%s' \n", temp);
+
 	int b_length = strlen(array[j]) + 1;
-	//	printf("Ziskano b: %d\n", b_length);
+
 	array[i] = (char*) malloc(b_length * sizeof(char));
 
 	strcpy(array[i],array[j]);
-	//	printf("Array[i]: '%s' \n", array[i]);
+
 	array[j] = (char*) malloc(a_length * sizeof(char));
 	strcpy(array[j],temp);
-	//	printf("Array[j]: '%s' \n", array[j]);
+
 	free(temp);
 
 }
+/*
+* Function: shuffle
+* ------------------------
+* Prohodi prvky v poli, zamicha je
+*
+* array: pole stringu
+* array_length: delka pole
+*
+* returns: void
+*/
 void shuffle(char** array, int array_length ){
+    if(array == NULL){
+        log_error("SHUFFLE - Not valid params");
+        return;
+    }
 	// Use a different seed value so that we don't get same
     // result each time we run this program
     srand ( time(NULL) );
@@ -33,12 +60,26 @@ void shuffle(char** array, int array_length ){
     {
         // Pick a random index from 0 to i
         int j = rand() % (i + 1);
-  		//	printf("------------I: %d a J: %d \n",i,j);
         // Swap array[i] with the element at random index j
         swap(array, i, j);
     }
 }
+/*
+* Function: duplicate
+* ------------------------
+* Zduplikuje prvky v poli
+*
+* array: pole stringu
+* array_length: delka pole
+*
+* returns: delka noveho pole
+*/
 int duplicate(char** array, int array_length){
+    if(array == NULL){
+        log_error("DUPLICATE - Not valid params");
+        return 0;
+    }
+
 	int new_array_length = array_length * 2;
 	array = (char**) realloc(array,new_array_length * sizeof(char*));
 
@@ -49,15 +90,41 @@ int duplicate(char** array, int array_length){
 	}
 	return new_array_length;
 }
-
+/*
+* Function: shrink_array
+* ------------------------
+* Zmeni velikost pole na zadanou delku
+*
+* array: pole stringu
+* new_array_length: nova delka pole
+*
+* returns: void
+*/
 void shrink_array(char** array, int new_array_length){
+    if(array == NULL){
+        log_error("SHRINK ARRAY - Not valid params");
+        return;
+    }
+
 	char** temp = realloc(array, sizeof(char*) * new_array_length);
 	if(temp){
 		array = temp;
 	}
 }
-
+/*
+* Function: replace_new_line_char
+* ------------------------
+* Nahradi konec radky koncem stringu
+*
+* string_to_replace: string ktery se upravi
+*
+* returns: void
+*/
 void replace_new_line_char(char* string_to_replace){
+    if(string_to_replace == NULL){
+        log_error("REPLACE NEW LINE CHAR - Not valid params");
+        return;
+    }
     int i = 0;
     for(i = strlen(string_to_replace); i > 0; i--){
         if(string_to_replace[i] == '\n'){
@@ -65,8 +132,20 @@ void replace_new_line_char(char* string_to_replace){
         }
     }
 }
-
+/*
+* Function: convert_string_to_long
+* ------------------------
+* Prevede string na long
+*
+* string: string na prevedeni
+*
+* returns: long/error
+*/
 long convert_string_to_long(char* string){
+    if(string == NULL){
+        log_error("CONVERT STRING TO LONG - Not valid params");
+        return -1;
+    }
     char* end;
     long number = strtol(string,&end, 0);
     if(*end == '\0'){

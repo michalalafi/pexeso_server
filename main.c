@@ -26,7 +26,15 @@
 
 int server_socket;
 struct sockaddr_in my_addr;
-
+/*
+* Function: server_stats_handle
+* ------------------------
+* Funkce pro vlakno pro obsluhu requestu admina
+*
+* vargp: server_stats;
+*
+* returns: void*
+*/
 void* server_stats_handle(void* vargp){
     log_info("SERVER STATS HANDLE - Started");
     server_stats* actual_server_stats = (server_stats*) vargp;
@@ -48,6 +56,15 @@ void* server_stats_handle(void* vargp){
     }
     return NULL;
 }
+/*
+* Function: server_setup
+* ------------------------
+* Priprava serveru, vraci 1 jestli se povedlo
+*
+* sounds_folder_path: cesta ke slozce se zvuky
+*
+* returns: ANO/NE
+*/
 int server_setup(char* sounds_folder_path){
 
     srand(time(NULL));
@@ -69,12 +86,20 @@ int server_setup(char* sounds_folder_path){
         log_error("SOUNDS FOLDER ISN'T AVAIBLE");
         return -1;
     }
-
-
     log_info("SERVER SETUPED!");
 
     return 0;
 }
+/*
+* Function: server_start
+* ------------------------
+* Start serveru, vraci 1 jestli se povedlo
+*
+* port: port serveru
+* adress: adressa serveru
+*
+* returns: ANOE/NE
+*/
 int server_start(int port, in_addr_t adress){
     server_socket = socket(AF_INET, SOCK_STREAM, 0);
 
@@ -97,8 +122,31 @@ int server_start(int port, in_addr_t adress){
 	}
 	return 0;
 }
+/*
+* Function: stop_server
+* ------------------------
+* Stop serveru
+*
+* actual_server_stats: container s listy
+*
+* returns: void
+*/
+void stop_server(server_stats* actual_server_stats){
+    log_trace("STOPING SERVER");
+    free_lobby(actual_server_stats->lobby);
+    free_session_list(actual_server_stats->session_list);
+    free_disconnected_clients_list(actual_server_stats->disconnected_clients_list);
+}
+/*
+* Function: server_listen
+* ------------------------
+* Spusteni listen, vraci 1 jestli se povede
+*
+* sounds_folder_path: cesta ke slozce se zvuky
+*
+* returns: ANO/NE
+*/
 int server_listen(char* sounds_folder_path){
-    //Co znamena 5?
     int return_value = listen(server_socket, 5);
     if (return_value == 0){
         log_info("LISTEN SUCCESSFUL");
@@ -162,7 +210,7 @@ int server_listen(char* sounds_folder_path){
 					if (a2read > 0){
                         char message[1024];
                         recv(fd, &message, 1024, 0);
-                        client_handle_container* h_container = create_client_handle_container(actual_lobby, actual_session_list, fd, message, actual_disconnected_clients, sounds_folder_path, client_socks);
+                        client_handle_container* h_container = create_client_handle_container(actual_lobby, actual_session_list, fd, message, actual_disconnected_clients, sounds_folder_path);
                         //TODO po pridani zpatky do lobby zmenit socket
                         //TODO free containter
                         handle_client(h_container);
@@ -181,9 +229,20 @@ int server_listen(char* sounds_folder_path){
 		handle_disconnected_clients_list(actual_session_list, actual_disconnected_clients);
 
 	}
+	stop_server(actual_server_stats);
 
 	return 0;
 }
+/*
+* Function: start
+* ------------------------
+* Spusteni podle parametru, 1 pokud se povede
+*
+* argc: pocet argumentu
+* argv: argumenty
+*
+* returns: ANO/NE
+*/
 int start(int argc, char* argv[]){
     int i;
     int port = 10000;
@@ -230,7 +289,7 @@ int start(int argc, char* argv[]){
     return 0;
 }
 /**
- * Hlavni funkce, ktera zprostredkovava pripojeni hracu
+ * Hlavni funkce, ktera zprostredkovava spusteni
  * @param argc
  * @param argv
  * @return

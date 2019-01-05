@@ -15,8 +15,6 @@ typedef struct GAME{
 	int revead_pexesos_indexes[PEXESO_COUNT]; // Jake byli jiz odhalene
 	int pexeso_count; // pocet pexesa
 	int remaining_pexeso_count; // kolik zbyva pexesa
-	//hraè 1
-	//hráè 2
 	int p1_score; // p1 score
 	int p2_score; // p2 score
 	int actual_player;//aktualni hrac;
@@ -34,7 +32,7 @@ int isValid(int puzzle_revealed, game* actual_game);
 
 int scored(game* actual_game);
 
-int nextTurn(game* actual_game);
+void nextTurn(game* actual_game);
 
 void reset_actual_revealed_pexesos(game* actual_game);
 

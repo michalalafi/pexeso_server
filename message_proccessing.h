@@ -25,4 +25,6 @@ char** split_parts(char* raw_message);
 int count_of_delimiter(char* string, char delimiter);
 
 char* create_raw_message_for_client(int action, char* params);
+
+void free_message(message* actual_message);
 #endif

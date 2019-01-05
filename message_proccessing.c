@@ -1,9 +1,17 @@
 #include "message_proccessing.h"
 
+
+/*
+* Function: create_message
+* ------------------------
+* Vytvori novou zpravu
+*
+* returns: nova zprava
+*/
 message* create_message(){
     message* new_message = (message*) malloc(sizeof(message));
     if(new_message == NULL){
-        printf("MESSAGE ERROR - Creating message failed! \n");
+        log_error("CREATE MESSAGE - Creating message failed");
         return NULL;
     }
     new_message->action = -50;
@@ -11,11 +19,24 @@ message* create_message(){
     new_message->params = NULL;
     return new_message;
 }
-
+/*
+* Function: extract_message
+* ------------------------
+* Vytvori novou zpravu podle zpravy od clienta
+*
+* raw_message: surova zprava od clienta
+*
+* returns: nova zprava
+*/
 message* extract_message(char* raw_message){
-    //printf("%s -> ",raw_message);
+    if(raw_message == NULL){
+        log_error("EXTRACT MESSAGE - Not valid params");
+        return NULL;
+    }
     message* extracted_message = create_message();
-
+    if(extracted_message == NULL){
+        return NULL;
+    }
     int delimiter_count = count_of_delimiter(raw_message, PARTS_DELIMITER_C);
     if(delimiter_count != MAX_DELIMITERS){
         return NULL;
@@ -43,24 +64,37 @@ message* extract_message(char* raw_message){
         extracted_message->params = malloc((strlen(parts[2]) +1) * sizeof(char));
         strcpy(extracted_message->params, parts[2]);
     }
-
-    //printf("Struct message: \n message->client_id = %d \n message->action = %d \n message->params = %s \n", extracted_message->client_id,extracted_message->action,extracted_message->params);
     return extracted_message;
 }
-
+/*
+* Function: create_raw_message_for_client
+* ------------------------
+* Vytvori novou zpravu pro clienta podle akce a parametru
+*
+* action: akce
+* params: parametry
+*
+* returns: pripravena zprava pro clienta
+*/
 char* create_raw_message_for_client(int action, char* params){
     char* raw_message = (char*) malloc(1024 * sizeof(char));
 
     sprintf(raw_message,"%d%c%s%c",action,PARTS_DELIMITER_C,params,'\0');
 
-    //printf("CREATED MESSAGE %s \n",raw_message);
-
     return raw_message;
 }
-
-char** split_parts(char* raw_message){
-    //printf("SPLIT PARTS \n");
+/*
+* Function: split_parts
+* ------------------------
+* Rozdeli string podle znaku na casti
+*
+* raw_message: string na rozdeleni
+*
+* returns: casti zpravy
+*/
+char** split_parts(char* raw_message){;
     if(raw_message == NULL){
+        log_error("SPLIT PARTS - Not valid params");
         return NULL;
     }
     char** parts = (char**) malloc(sizeof(char*) * MAX_PARTS);
@@ -79,28 +113,53 @@ char** split_parts(char* raw_message){
             return NULL;
         }
         parts[i] = (char*)malloc( (strlen(split) + 1) * sizeof(char));
-        //printf("Split %s \n",split);
         //Nakopirovani vysledku
         strcpy(parts[i], split);
         // Dalsi rozdeleni
         split = strtok(NULL,PARTS_DELIMITER_S);
         i++;
     }
-   /* for(i = 0; i < MAX_PARTS; i++){
-        printf("part[%d] = %s \n",i,parts[i]);
-    } */
-
     return parts;
-
 }
-
+/*
+* Function: count_of_delimiter
+* ------------------------
+* Spocita kolikrat je rozdelovaci znak ve stringu
+*
+* string: string na prohledani
+* delimiter: znak ktery hledame ve stringu
+*
+* returns: pocet vyskytu znaku
+*/
 int count_of_delimiter(char* string, char delimiter){
+    if(string == NULL){
+        log_error("COUNT OF DELIMITER - Not valid params");
+        return 0;
+    }
+
     int i = 0, count = 0;
     for(; i < strlen(string); i++){
         if(string[i] == delimiter)
             count++;
     }
     return count;
+}
+/*
+* Function: free_message
+* ------------------------
+* Uvolni zpravu od clienta
+*
+* actual_message: message ktera ma byt uvolnena
+*
+* returns: void
+*/
+void free_message(message* actual_message){
+    if(actual_message == NULL){
+        log_error("FREE MESSAGE - Not valid params");
+        return;
+    }
+    free(actual_message->params);
+    free(actual_message);
 }
 
 

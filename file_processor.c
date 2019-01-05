@@ -10,7 +10,7 @@
 */
 char* get_filename_ext(char* filename) {
     if(filename == NULL){
-        printf("FILENAME EXTENSTION ERROR - No filename passed! \n");
+        log_error("GET FILENAME EXTENSION - Not valid params");
         return NULL;
     }
     char *dot = strrchr(filename, '.');
@@ -28,7 +28,7 @@ char* get_filename_ext(char* filename) {
 */
 char** get_sounds_from_folder(char* folder_path, int* sounds_length){
     if(folder_path == NULL){
-        printf("GET SOUNDS FROM FOLDER ERROR - No foldername passed! \n");
+        log_error("GET SOUNDS FROM FOLDER - Not valid params");
         return NULL;
     }
 	DIR *dir;
@@ -63,49 +63,65 @@ char** get_sounds_from_folder(char* folder_path, int* sounds_length){
 		log_error("GET SOUNDS FROM FOLDER - Couldn't open the directory");
 		return NULL;
 	}
-	printf("---All sounds loaded!---\n");
+	log_info("GET SOUNDS FROM FOLDER - All sounds loaded");
 	*sounds_length = i;
 	return sounds;
 }
+/* Function: get_sounds_for_pexeso
+* ------------------------
+* Zpracuje zvuky a pripravi je pro novou hru
+*
+* folder_path: cesta ke slozce
+* pexeso_count: pocet pexes
+*
+* returns: pole zvuku
+*/
 char** get_sounds_for_pexeso(char* folder_path, int pexeso_count){
+    if(folder_path == NULL){
+        log_error("GET SOUNDS FOR PEXESO - Not valid params");
+        return NULL;
+    }
     // Pro ulozeni kolik je zvuku ve slozce
     int sounds_length = 0;
 	// Ziskame vsechny zvuky v zadane slozce
 	char** sounds = get_sounds_from_folder(folder_path, &sounds_length);
 	if(sounds == NULL || sounds_length == 0)
 	{
-        printf("SOUNDS LOADING ERROR - No sounds loaded!\n");
+        log_error("GET SOUNDS FOR PEXESO - No sounds loaded");
         return NULL;
 	}
-	print_all_sounds(sounds,sounds_length);
 	// Promichame je
-	printf("SHUFFLE\n");
 	shuffle(sounds, sounds_length);
 	print_all_sounds(sounds,sounds_length);
-
 	// Vezmeme jich polovicku
-	printf("SHRINK\n");
     int half_count = pexeso_count / 2;
     sounds_length = half_count;
 	shrink_array(sounds, half_count);
-	print_all_sounds(sounds,sounds_length);
 	// Zduplikujeme je
-	printf("DUPLICATE\n");
 	sounds_length = duplicate(sounds,sounds_length);
-	print_all_sounds(sounds,sounds_length);
 	// Promichame je
-	printf("SHUFFLE\n");
 	shuffle(sounds, sounds_length);
-	print_all_sounds(sounds,sounds_length);
 
 	if(sounds_length != pexeso_count){
-        printf("SOUNDS LOADING ERROR - Wanted count has not been achieved! \n");
+        log_error("GET SOUNDS FOR PEXESO - Wanted count has not been achieved");
+        return NULL;
 	}
-    printf("SOUNDS LOADED SUCCESSFULLY! \n");
+    log_info("GET SOUNDS FOR PEXESO - Sounds prepared for game");
     return sounds;
 }
-
+/* Function: is_folder_with_sounds_avaible
+* ------------------------
+* Zjisti jestli slozka se zvuky je dostupna
+*
+* folder_path: cesta ke slozce
+*
+* returns: Ano/Ne
+*/
 int is_folder_with_sounds_avaible(char* folder_path){
+    if(folder_path == NULL){
+        log_error("IS FOLDER WITH SOUNDS AVAIBLE - Not valid params");
+        return 0;
+    }
     DIR *dir = opendir(folder_path);
     if(dir != NULL){
         (void) closedir (dir);
@@ -126,13 +142,13 @@ int is_folder_with_sounds_avaible(char* folder_path){
 void print_all_sounds(char** sounds, int sound_length)
 {
     if(sounds == NULL){
-        printf("PRINT SOUNDS ERROR - No sounds passed! \n");
+        log_error("PRINT ALL SOUNDS - Not valid params");
         return;
     }
-	int i = 0;
-	for(; i < sound_length; i++)
+	int i;
+	for(i = 0; i < sound_length; i++)
 	{
-		printf("%d - ",i);
+		log_info("%d - ",i);
 		puts(sounds[i]);
 	}
 }

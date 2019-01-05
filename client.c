@@ -22,7 +22,7 @@
 client* create_client(int client_socket, int unique_id){
 	client* new_client = (client*) malloc(sizeof(client));
 	if(new_client == NULL){
-        printf("CLIENT ERROR - Creating client failed! \n");
+        log_error("CLIENT ERROR - Creating client failed!");
 		return NULL;
 	}
 	new_client->socket = client_socket;
@@ -35,8 +35,18 @@ client* create_client(int client_socket, int unique_id){
 
 	return new_client;
 }
+/*
+* Function: free_client
+* ------------------------
+* Uvolnime clienta
+*
+* actual_client: client na uvolneni
+*
+* returns: void
+*/
 void free_client(client* actual_client){
     if(actual_client == NULL){
+        log_error("FREE CLIENT - Not valid params");
         return;
     }
     free(actual_client->name);

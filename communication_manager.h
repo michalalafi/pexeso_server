@@ -26,7 +26,7 @@ void handle_client_connect(int client_socket, lobby* actual_lobby);
 
 void handle_client_disconnect(int client_socket, lobby* actual_lobby, disconnected_clients_list* actual_disconnected_clients_list, session_list* actual_session_list);
 
-void handle_client_correct_disconnect(int client_socket, lobby* actual_lobby, session_list* actual_session_list, fd_set client_socks);
+void handle_client_correct_disconnect(int client_socket, lobby* actual_lobby, session_list* actual_session_list);
 
 void handle_client_reconnect(int client_socket, message* client_message, disconnected_clients_list* actual_disconnected_clients_list, lobby* actual_lobby, session_list* actual_session_list);
 
@@ -38,7 +38,7 @@ void throw_away_connection_with_client(disconnected_client* actual_disconnected_
 
 void handle_client_remove_from_session(client* actual_client, session* actual_session, session_list* actual_session_list);
 
-void execute_client_action(client* actual_client, int action, char* params, client_handle_container* container, char* sounds_folder_path);
+void execute_client_action(client* actual_client, int action, char* params, client_handle_container* container, char* sounds_folder_path, message* client_message);
 
 void new_game_request(client* actual_client, char* params, session_list* actual_session_list, char* sounds_folder_path);
 

@@ -28,6 +28,8 @@ int get_new_client_unique_id(lobby* actual_lobby);
 
 int is_client_in_lobby_by_socket(int socket,lobby* actual_lobby);
 
+void free_lobby(lobby* actual_lobby);
+
 void print_clients(lobby* actual_lobby);
 
 #endif

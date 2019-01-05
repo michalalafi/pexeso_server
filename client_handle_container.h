@@ -5,6 +5,7 @@
 #include "session_list.h"
 #include "utils.h"
 #include "disconnected_clients.h"
+#include "log.h"
 
 typedef struct CLIENT_HANDLE_CONTAINER{
 	struct LOBBY* lobby;
@@ -13,10 +14,11 @@ typedef struct CLIENT_HANDLE_CONTAINER{
 	char* message;
 	char* sounds_folder_path;
 	struct DICONNECTED_CLIENTS_LIST* disconnected_clients_list;
-	fd_set client_set;
 }client_handle_container;
 
 client_handle_container* create_client_handle_container(lobby* actual_lobby, session_list* actual_session_list, int actual_client_socket, char* client_message, disconnected_clients_list* actual_disconnected_clients_list,
-char* actual_sounds_folder_path, fd_set client_set);
+char* actual_sounds_folder_path);
+
+void free_client_handle_container(client_handle_container* actual_container);
 
 #endif

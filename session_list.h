@@ -29,6 +29,8 @@ int get_new_session_unique_id(session_list* actual_session_list);
 
 int is_client_in_session_list(client* actual_client, session_list* actual_session_list);
 
+void free_session_list(session_list* actual_session_list);
+
 void print_session_list(session_list* actual_session_list);
 
 #endif
