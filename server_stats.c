@@ -64,7 +64,10 @@ void handle_admin_request(char* request, server_stats* actual_server_stats){
         print_clients(actual_server_stats->lobby);
     }
     else if(strcmp(request, "sessions") == 0){
-
+        print_session_list(actual_server_stats->session_list);
+    }
+    else if(strcmp(request, "disconnected") == 0){
+        print_disconnected_clients(actual_server_stats->disconnected_clients_list);
     }
     else{
         log_error("Not valid request");

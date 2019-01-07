@@ -8,7 +8,7 @@
 
 #include "file_processor.h"
 
-#define PEXESO_COUNT 8
+#define PEXESO_COUNT 64
 
 typedef struct GAME{
 	char** pexesos; // pexesa

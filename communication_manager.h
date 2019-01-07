@@ -19,6 +19,7 @@
 #include "game.h"
 
 #define DISCONECTED_TIME_VAL 10
+#define LOGGED_OUT_TIMEOUT 120
 
 void handle_client(client_handle_container* container);
 

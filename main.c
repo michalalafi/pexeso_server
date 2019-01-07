@@ -211,8 +211,6 @@ int server_listen(char* sounds_folder_path){
                         char message[1024];
                         recv(fd, &message, 1024, 0);
                         client_handle_container* h_container = create_client_handle_container(actual_lobby, actual_session_list, fd, message, actual_disconnected_clients, sounds_folder_path);
-                        //TODO po pridani zpatky do lobby zmenit socket
-                        //TODO free containter
                         handle_client(h_container);
 					}
 					// na socketu se stalo neco spatneho
@@ -233,6 +231,14 @@ int server_listen(char* sounds_folder_path){
 
 	return 0;
 }
+void help(){
+    log_info("To start server use this:");
+    log_info("  ./main -port <port> -address <adress> -folder <path to folder>");
+    log_info("  If no params, defaul will be used:");
+    log_info("  port - 10000");
+    log_info("  adress - INADDR_ANY");
+    log_info("  folder - sounds");
+}
 /*
 * Function: start
 * ------------------------
@@ -250,7 +256,7 @@ int start(int argc, char* argv[]){
     int adress_index = 0;
     in_addr_t adress = INADDR_ANY;
 
-    char* sounds_folder_path = "../../../sounds";
+    char* sounds_folder_path = "sounds";
 
     for(i = 0; i < argc; i++){
         if(strcmp(argv[i], "-port") == 0 && (i + 1) < argc){
@@ -270,6 +276,9 @@ int start(int argc, char* argv[]){
             sounds_folder_path = (char* )malloc(sizeof(char) * (strlen( argv[i + 1]) + 1));
             strcpy(sounds_folder_path, argv[i + 1]);
         }
+        else if(strcmp(argv[i], "-help") == 0){
+            help();
+        }
 
     }
     if(adress_result == 1){
@@ -280,7 +289,10 @@ int start(int argc, char* argv[]){
     }
     log_info("SERVER IS STARTING WITH PARAM- Folder of sounds: %s", sounds_folder_path);
     if(server_setup(sounds_folder_path) == -1)
+    {
+        help();
         return -1;
+    }
     if(server_start(port, adress))
         return -1;
     if(server_listen(sounds_folder_path))
