@@ -37,12 +37,12 @@ session* create_session(client* first_client, client* second_client, game* actua
 *
 * returns: void
 */
-void reset_session_for_new_game(session* actual_session){
+void reset_session_for_new_game(session* actual_session, int pexeso_count){
     if(actual_session == NULL){
         log_error("RESET SESSION FOR NEW GAME - Not valid params");
         return;
     }
-    free_game(actual_session->game);
+    free_game(actual_session->game, pexeso_count);
 
     actual_session->game = NULL;
     actual_session->want_first_client_play = -1;

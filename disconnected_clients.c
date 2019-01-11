@@ -57,7 +57,7 @@ disconnected_clients_list* create_disconnected_clients_list(){
 * returns: void
 */
 void add_disconnected_client_to_disconnected_clients_list(disconnected_client* new_disconnected_client, disconnected_clients_list* actual_disconnected_clients_list){
-    if(new_disconnected_client == NULL || actual_disconnected_clients_list){
+    if(new_disconnected_client == NULL || actual_disconnected_clients_list == NULL){
         log_error("ADD DISCONNECTED CLIENT TO DISCONNECTED CLIENTS LIST - Not valid params");
         return;
     }

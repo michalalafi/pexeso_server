@@ -90,6 +90,10 @@ char** get_sounds_for_pexeso(char* folder_path, int pexeso_count){
         log_error("GET SOUNDS FOR PEXESO - No sounds loaded");
         return NULL;
 	}
+	if(sounds_length < pexeso_count/2){
+        log_error("GET SOUNDS FOR PEXESO - Not enough sounds loaded");
+        return NULL;
+	}
 	// Promichame je
 	shuffle(sounds, sounds_length);
 	print_all_sounds(sounds,sounds_length);

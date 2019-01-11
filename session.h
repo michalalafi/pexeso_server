@@ -46,5 +46,5 @@ int is_client_on_turn(client* actual_client, session* actual_session);
 
 void free_session(session* actual_session);
 
-void reset_session_for_new_game(session* actual_session);
+void reset_session_for_new_game(session* actual_session, int pexeso_count);
 #endif

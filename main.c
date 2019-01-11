@@ -103,7 +103,7 @@ int server_setup(char* sounds_folder_path){
 int server_start(int port, in_addr_t adress){
     server_socket = socket(AF_INET, SOCK_STREAM, 0);
 
-    //SETSOCKOPT?
+    setsockopt(server_socket, SOL_SOCKET, SO_REUSEADDR, &(int){ 1 }, sizeof(int));
 
     memset(&my_addr, 0, sizeof(struct sockaddr_in));
 
@@ -146,7 +146,7 @@ void stop_server(server_stats* actual_server_stats){
 *
 * returns: ANO/NE
 */
-int server_listen(char* sounds_folder_path){
+int server_listen(char* sounds_folder_path, int pexeso_count){
     int return_value = listen(server_socket, 5);
     if (return_value == 0){
         log_info("LISTEN SUCCESSFUL");
@@ -180,11 +180,11 @@ int server_listen(char* sounds_folder_path){
 	while(actual_server_stats->run){
         client_set = client_socks;
 		// sada deskriptoru je po kazdem volani select prepsana sadou deskriptoru kde se neco delo
-		return_value = select( FD_SETSIZE +1, &client_set, ( fd_set *)0, ( fd_set *)0, /*( struct timeval *)1 */ &timeout);
+		return_value = select(FD_SETSIZE, &client_set, (fd_set *)0,(fd_set *)0, /*( struct timeval *)1 */ &timeout);
 		if(return_value == 0){
             log_info("SELECT TIMEOUT");
             timeout.tv_sec = 60;
-            handle_disconnected_clients_list(actual_session_list, actual_disconnected_clients);
+            handle_disconnected_clients_list(actual_session_list, actual_disconnected_clients, pexeso_count);
             continue;
 		}
 
@@ -210,21 +210,27 @@ int server_listen(char* sounds_folder_path){
 					if (a2read > 0){
                         char message[1024];
                         recv(fd, &message, 1024, 0);
-                        client_handle_container* h_container = create_client_handle_container(actual_lobby, actual_session_list, fd, message, actual_disconnected_clients, sounds_folder_path);
-                        handle_client(h_container);
+                        client_handle_container* h_container = create_client_handle_container(actual_lobby, actual_session_list, fd, message, actual_disconnected_clients, sounds_folder_path, pexeso_count);
+                        int handle_value = handle_client(h_container);
+
+                        if(handle_value == NOT_VALID_MESSAGE_SENDED){
+                            log_info("HANDLE CLIENT - Closing socket, not valid message");
+                            close(fd);
+                            FD_CLR( fd, &client_socks);
+                        }
 					}
 					// na socketu se stalo neco spatneho
 					else {
 						close(fd);
 						FD_CLR( fd, &client_socks);
 
-						handle_client_disconnect(fd, actual_lobby, actual_disconnected_clients, actual_session_list);
+						handle_client_disconnect(fd, actual_lobby, actual_disconnected_clients, actual_session_list, pexeso_count);
 						log_info("CLIENT HAS DISCONNECTED AND WAS REMOVED FROM SOCKET'S SET");
 					}
 				}
 			}
 		}
-		handle_disconnected_clients_list(actual_session_list, actual_disconnected_clients);
+		handle_disconnected_clients_list(actual_session_list, actual_disconnected_clients, pexeso_count);
 
 	}
 	stop_server(actual_server_stats);
@@ -232,12 +238,14 @@ int server_listen(char* sounds_folder_path){
 	return 0;
 }
 void help(){
+    log_info("HELP");
     log_info("To start server use this:");
-    log_info("  ./main -port <port> -address <adress> -folder <path to folder>");
+    log_info("  ./main -port <port> -address <adress> -folder <path to folder> -count <pexeso count>");
     log_info("  If no params, defaul will be used:");
     log_info("  port - 10000");
     log_info("  adress - INADDR_ANY");
     log_info("  folder - sounds");
+    log_info("  count - 32");
 }
 /*
 * Function: start
@@ -257,27 +265,51 @@ int start(int argc, char* argv[]){
     in_addr_t adress = INADDR_ANY;
 
     char* sounds_folder_path = "sounds";
+    int pexeso_count = 32;
 
-    for(i = 0; i < argc; i++){
+    for(i = 1; i < argc; i++){
         if(strcmp(argv[i], "-port") == 0 && (i + 1) < argc){
             int value = (int)convert_string_to_long(argv[i + 1]);
             if(value > MAX_PORT && value < 0){
-                log_error("NOT VALID PORT - Port is bigger than limit");
+                log_error("NOT VALID PORT - Port is out of limit, default will be used");
             }
             else{
+                i = i + 1; //Musime pridat aby jsme preskocili zpracovany
                 port = value;
             }
         }
         else if(strcmp(argv[i], "-address") == 0 && (i + 1) < argc){
             adress_result = inet_pton(AF_INET, argv[i + 1], &adress);
             adress_index = i + 1;
+
+            i = i + 1; //Musime pridat aby jsme preskocili zpracovany
         }
         else if(strcmp(argv[i], "-folder" ) == 0 && (i + 1) < argc){
             sounds_folder_path = (char* )malloc(sizeof(char) * (strlen( argv[i + 1]) + 1));
             strcpy(sounds_folder_path, argv[i + 1]);
+
+            i = i + 1; //Musime pridat aby jsme preskocili zpracovany
+        }
+        else if(strcmp(argv[i], "-count" ) == 0 && (i + 1) < argc){
+            int value = (int)convert_string_to_long(argv[i + 1]);
+            if(value < 0){
+                log_error("NOT VALID PEXESO COUNT - Default pexeso count will be used");
+            }
+            else{
+                i = i + 1; //Musime pridat aby jsme preskocili zpracovany
+                pexeso_count = value;
+            }
+
+            i = i + 1; //Musime pridat aby jsme preskocili zpracovany
         }
         else if(strcmp(argv[i], "-help") == 0){
             help();
+            return -1;
+        }
+        else{
+            log_error("NOT VALID PARAMS");
+            help();
+            return -1;
         }
 
     }
@@ -288,6 +320,7 @@ int start(int argc, char* argv[]){
         log_info("SERVER IS STARTING ON ADRESS: %s/%d", "INADDR_ANY", port);
     }
     log_info("SERVER IS STARTING WITH PARAM- Folder of sounds: %s", sounds_folder_path);
+    log_info("SERVER IS STARTING WITH PARAM- Pexeso count: %d", pexeso_count);
     if(server_setup(sounds_folder_path) == -1)
     {
         help();
@@ -295,7 +328,7 @@ int start(int argc, char* argv[]){
     }
     if(server_start(port, adress))
         return -1;
-    if(server_listen(sounds_folder_path))
+    if(server_listen(sounds_folder_path, pexeso_count))
         return -1;
 
     return 0;

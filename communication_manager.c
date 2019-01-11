@@ -11,7 +11,7 @@
 *
 * returns: void
 */
-void handle_client(client_handle_container* container){
+int handle_client(client_handle_container* container){
     log_trace("CLIENT HANDLE - Start");
     log_info("CLIENT HANDLE - Client request: '%s' length:%d", container->message, strlen(container->message));
     clock_t t = clock();
@@ -19,7 +19,7 @@ void handle_client(client_handle_container* container){
     if(container == NULL)
     {
         log_error("CLIENT HANDLE ERROR - Not valid params!");
-        return;
+        return 0;
     }
     //Zpracujeme zpravu od clienta
     message* client_message = extract_message(container->message);
@@ -41,6 +41,7 @@ void handle_client(client_handle_container* container){
         else{
             log_info("HANDLE CLIENT - Not valid message");
             send_client_message(container->client_socket, NOT_VALID_MESSAGE,"Not valid message");
+            return NOT_VALID_MESSAGE_SENDED;
         }
     }
     // Zprava je ve spravnem formatu, tudiz zpracujeme pozadavek
@@ -51,7 +52,7 @@ void handle_client(client_handle_container* container){
             //Pokud je client null a je zadost o reconnect
             if(client_message->action == RECONNECT_REQUEST){
                 log_info("HANDLE CLIENT - Reconnect request");
-                handle_client_reconnect(container->client_socket, client_message, container->disconnected_clients_list, container->lobby, container->session_list);
+                handle_client_reconnect(container->client_socket, client_message, container->disconnected_clients_list, container->lobby, container->session_list, container->pexeso_count);
             }
             //Pokud je client null tak posleme ze nepozadal o lobby
             else{
@@ -71,7 +72,7 @@ void handle_client(client_handle_container* container){
     free_client_handle_container(container);
     free_message(client_message);
     log_trace("CLIENT HANDLE - End with time: %fs\n", time_taken);
-	return;
+	return 0;
 }
 /*
 * Function: handle_client_connect
@@ -111,7 +112,7 @@ void handle_client_connect(int client_socket, lobby* actual_lobby){
 *
 * returns: void
 */
-void handle_client_disconnect(int client_socket, lobby* actual_lobby, disconnected_clients_list* actual_disconnected_clients_list, session_list* actual_session_list){
+void handle_client_disconnect(int client_socket, lobby* actual_lobby, disconnected_clients_list* actual_disconnected_clients_list, session_list* actual_session_list, int pexeso_count){
     log_trace("HANDLE CLIENT DISCONNECT - Start");
     //Najdeme clienta v lobby
     client* actual_client = find_client_by_socket(client_socket, actual_lobby);
@@ -143,7 +144,7 @@ void handle_client_disconnect(int client_socket, lobby* actual_lobby, disconnect
             //Smazeme z listu session
             remove_session_from_session_list(actual_session, actual_session_list);
             //Uvolnime hru
-            free_game(actual_session->game);
+            free_game(actual_session->game, pexeso_count);
             //Zrusime sessionu
             free_session(actual_session);
         }
@@ -170,7 +171,7 @@ void handle_client_disconnect(int client_socket, lobby* actual_lobby, disconnect
 *
 * returns: void
 */
-void handle_client_correct_disconnect(int client_socket, lobby* actual_lobby, session_list* actual_session_list){
+void handle_client_correct_disconnect(int client_socket, lobby* actual_lobby, session_list* actual_session_list, int pexeso_count){
     log_trace("HANDLE CLIENT CORRECT DISCONNECT - Start");
     //Najdeme clienta v lobby
     client* actual_client = find_client_by_socket(client_socket, actual_lobby);
@@ -183,7 +184,7 @@ void handle_client_correct_disconnect(int client_socket, lobby* actual_lobby, se
     //Ziskame sessionu pokud existuje
     session* actual_session = get_session_by_client(actual_client, actual_session_list);
     if(actual_session != NULL){
-        handle_client_remove_from_session(actual_client, actual_session, actual_session_list);
+        handle_client_remove_from_session(actual_client, actual_session, actual_session_list, pexeso_count);
     }
     log_trace("HANDLE CLIENT CORRECT DISCONNECT - End");
 }
@@ -201,7 +202,7 @@ void handle_client_correct_disconnect(int client_socket, lobby* actual_lobby, se
 *
 * returns: void
 */
-void handle_client_reconnect(int client_socket, message* client_message, disconnected_clients_list* actual_disconnected_clients_list, lobby* actual_lobby, session_list* actual_session_list){
+void handle_client_reconnect(int client_socket, message* client_message, disconnected_clients_list* actual_disconnected_clients_list, lobby* actual_lobby, session_list* actual_session_list, int pexeso_count){
     log_trace("HANDLE CLIENT RECONNECT - Start");
 
     disconnected_client* actual_disconnected_client = find_disconnected_client_by_id(client_message->client_id, actual_disconnected_clients_list);
@@ -237,7 +238,7 @@ void handle_client_reconnect(int client_socket, message* client_message, disconn
         else{
             log_trace("HANDLE CLIENT RECONNECT - Trying to restore session");
             if(actual_session->game != NULL){
-                send_client_message_with_int_param(actual_client->socket, NUMBER_OF_PEXESOS_RESPONSE, PEXESO_COUNT);
+                send_client_message_with_int_param(actual_client->socket, NUMBER_OF_PEXESOS_RESPONSE, pexeso_count);
                 //Napiseme ze zacla hra
                 send_client_message(actual_client->socket, NEW_GAME_BEGIN_RESPONSE, "");
                 //Napiseme jmeno clienta
@@ -248,7 +249,7 @@ void handle_client_reconnect(int client_socket, message* client_message, disconn
                 // Posleme odhalene pexesa
                 int i;
                 int first_pexeso = -1;
-                for(i = 0; i < PEXESO_COUNT; i++){
+                for(i = 0; i < pexeso_count; i++){
                     if(actual_session->game->revead_pexesos_indexes[i] != -1 && first_pexeso == -1)
                         first_pexeso = i;
                     else if(first_pexeso != -1 && actual_session->game->revead_pexesos_indexes[i] != -1){
@@ -278,7 +279,7 @@ void handle_client_reconnect(int client_socket, message* client_message, disconn
 *
 * returns: void
 */
-void handle_disconnected_clients_list(session_list* actual_session_list, disconnected_clients_list* actual_disconnected_clients_list){
+void handle_disconnected_clients_list(session_list* actual_session_list, disconnected_clients_list* actual_disconnected_clients_list, int pexeso_count){
     log_trace("HANDLE DISCONNECTED CLIENTS LIST");
     disconnected_client* pom = actual_disconnected_clients_list->first;
     time_t now_t = time(0);
@@ -287,7 +288,7 @@ void handle_disconnected_clients_list(session_list* actual_session_list, disconn
         disconnected_client* pom_to_throw_away = pom;
         pom = pom->next;
         if(diff_t > LOGGED_OUT_TIMEOUT){
-            throw_away_connection_with_client(pom_to_throw_away,actual_session_list, actual_disconnected_clients_list);
+            throw_away_connection_with_client(pom_to_throw_away,actual_session_list, actual_disconnected_clients_list, pexeso_count);
         }
     }
 }
@@ -302,14 +303,14 @@ void handle_disconnected_clients_list(session_list* actual_session_list, disconn
 *
 * returns: void
 */
-void throw_away_connection_with_client(disconnected_client* actual_disconnected_client, session_list* actual_session_list, disconnected_clients_list* actual_disconnected_clients_list){
+void throw_away_connection_with_client(disconnected_client* actual_disconnected_client, session_list* actual_session_list, disconnected_clients_list* actual_disconnected_clients_list, int pexeso_count){
     log_trace("THROW AWAY CONNECTION WITH CLIENT - Client: %s will be thrown away",actual_disconnected_client->client->name);
     //Odebereme ho z listu
     remove_disconnected_client_from_disconnected_clients_list(actual_disconnected_client, actual_disconnected_clients_list);
     //Ziskame sessionu pokud existuje
     session* actual_session = get_session_by_client(actual_disconnected_client->client, actual_session_list);
     if(actual_session != NULL){
-        handle_client_remove_from_session(actual_disconnected_client->client, actual_session, actual_session_list);
+        handle_client_remove_from_session(actual_disconnected_client->client, actual_session, actual_session_list, pexeso_count);
     }
 
     free_client(actual_disconnected_client->client);
@@ -326,7 +327,7 @@ void throw_away_connection_with_client(disconnected_client* actual_disconnected_
 *
 * returns: void
 */
-void handle_client_remove_from_session(client* actual_client, session* actual_session, session_list* actual_session_list){
+void handle_client_remove_from_session(client* actual_client, session* actual_session, session_list* actual_session_list, int pexeso_count){
     log_trace("HANDLE CLIENT REMOVE FROM SESSION");
     //Odebereme ho ze sessiony
     remove_client_from_session(actual_client, actual_session);
@@ -338,7 +339,7 @@ void handle_client_remove_from_session(client* actual_client, session* actual_se
             send_client_message(last_client_in_session->socket, OPPONENT_LEFT_COMPLETELY_RESPONSE,"");
             send_client_message(last_client_in_session->socket, STATUS_RESPONSE, "Wait for player to join...");
             //Vyresetujeme sessionu
-            reset_session_for_new_game(actual_session);
+            reset_session_for_new_game(actual_session, pexeso_count);
         }
     }
     else{
@@ -346,7 +347,7 @@ void handle_client_remove_from_session(client* actual_client, session* actual_se
         //Smazeme z listu session
         remove_session_from_session_list(actual_session, actual_session_list);
         //Uvolnime hru
-        free_game(actual_session->game);
+        free_game(actual_session->game, pexeso_count);
         //Zrusime sessionu
         free_session(actual_session);
     }
@@ -372,10 +373,10 @@ void execute_client_action(client* actual_client, int action, char* params, clie
             new_session_request(actual_client, container->session_list);
             break;
         case NEW_GAME_REQUEST:
-            new_game_request(actual_client, params, container->session_list, sounds_folder_path);
+            new_game_request(actual_client, params, container->session_list, sounds_folder_path, container->pexeso_count);
             break;
         case PEXESO_REVEALED_REQUEST:
-            pexeso_reveale_request(actual_client, params, container->session_list);
+            pexeso_reveale_request(actual_client, params, container->session_list, container->pexeso_count);
             break;
         case SESSION_ID_REQUEST:
             session_id_request(actual_client, container->session_list);
@@ -390,10 +391,10 @@ void execute_client_action(client* actual_client, int action, char* params, clie
             is_alive_request(actual_client);
             break;
         case DISCONNECT_REQUEST:
-            handle_client_correct_disconnect(container->client_socket, container->lobby, container->session_list);
+            handle_client_correct_disconnect(container->client_socket, container->lobby, container->session_list, container->pexeso_count);
             break;
         case RECONNECT_REQUEST:
-            handle_client_reconnect(container->client_socket, client_message, container->disconnected_clients_list, container->lobby, container->session_list);
+            handle_client_reconnect(container->client_socket, client_message, container->disconnected_clients_list, container->lobby, container->session_list, container->pexeso_count);
             break;
 
     }
@@ -467,7 +468,7 @@ void new_session_request(client* actual_client, session_list* actual_session_lis
 *
 * returns: void
 */
-void new_game_request(client* actual_client, char* params, session_list* actual_session_list, char* sounds_folder_path){
+void new_game_request(client* actual_client, char* params, session_list* actual_session_list, char* sounds_folder_path, int pexeso_count){
     log_trace("NEW GAME REQUEST - Start");
     session* actual_session = get_session_by_client(actual_client, actual_session_list);
     if(actual_session == NULL){
@@ -486,7 +487,7 @@ void new_game_request(client* actual_client, char* params, session_list* actual_
         log_info("NEW GAME REQUEST - Client wants to play");
         if(!is_session_valid(actual_session)){
             log_error("NEW GAME REQUEST - Session is not valid");
-            reset_session_for_new_game(actual_session);
+            reset_session_for_new_game(actual_session, pexeso_count);
             send_client_message(actual_client->socket, NEW_GAME_RESPONSE, ""); //Posleme new game response pro kontrolu u clienta
             send_client_message(actual_client->socket, STATUS_RESPONSE, "Wait for player to join...");
             send_client_message(actual_client->socket, OPPONENT_LEFT_COMPLETELY_RESPONSE, "");
@@ -496,14 +497,14 @@ void new_game_request(client* actual_client, char* params, session_list* actual_
             //Oba chteji hrat
             if(is_session_ready_to_play_game(actual_session)){
                 log_trace("NEW GAME REQUEST - Creating game");
-                actual_session->game = create_game_with_path(sounds_folder_path);
+                actual_session->game = create_game_with_path(sounds_folder_path, pexeso_count);
                 if(actual_session->game == NULL){
                     log_error("GAME CREATING FAILED");
                     return;
                 }
                 send_message_both_clients_in_session(NEW_GAME_RESPONSE, "", actual_session); // Posleme new game response pro controlu u clientu
 
-                send_message_both_clients_in_session_with_int_param(actual_session, NUMBER_OF_PEXESOS_RESPONSE, PEXESO_COUNT);
+                send_message_both_clients_in_session_with_int_param(actual_session, NUMBER_OF_PEXESOS_RESPONSE, pexeso_count);
                 //Napiseme ze zacla hra
                 send_message_both_clients_in_session(NEW_GAME_BEGIN_RESPONSE,"",actual_session);
                 //Napiseme jmeno clienta
@@ -524,7 +525,7 @@ void new_game_request(client* actual_client, char* params, session_list* actual_
     //Nechtel hrat
     else{
         //Odstranime ho ze sessiony
-        handle_client_remove_from_session(actual_client, actual_session, actual_session_list);
+        handle_client_remove_from_session(actual_client, actual_session, actual_session_list, pexeso_count);
 
         send_client_message(actual_client->socket, NEW_GAME_RESPONSE, ""); //Posleme new game response pro kontrolu u clienta
         send_client_message(actual_client->socket, RETURN_TO_LOBBY_RESPONSE, "");
@@ -543,7 +544,7 @@ void new_game_request(client* actual_client, char* params, session_list* actual_
 *
 * returns: void
 */
-void pexeso_reveale_request(client* actual_client, char* params, session_list* actual_session_list){
+void pexeso_reveale_request(client* actual_client, char* params, session_list* actual_session_list, int pexeso_count){
     log_trace("PEXESO REVEAL REQUEST - Start");
     session* actual_session = get_session_by_client(actual_client, actual_session_list);
     if(actual_session == NULL){
@@ -601,12 +602,12 @@ void pexeso_reveale_request(client* actual_client, char* params, session_list* a
                 if(is_game_over(actual_session->game)){
                     send_message_both_clients_in_session(END_OF_GAME,"",actual_session);
                     log_trace("PEXESO REVEAL REQUEST - Game over, reseting game and session");
-                    reset_session_for_new_game(actual_session);
+                    reset_session_for_new_game(actual_session, pexeso_count);
                 }
                 else{
                     nextTurn(actual_session->game);
-                    print_not_revealed_sounds(actual_session->game);
-                    print_revealed_sounds_indexes(actual_session->game);
+                    print_not_revealed_sounds(actual_session->game, pexeso_count);
+                    print_revealed_sounds_indexes(actual_session->game, pexeso_count);
                     send_who_is_on_turn_both_clients_in_session(actual_session);
                 }
             }

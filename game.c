@@ -23,8 +23,10 @@ game* create_game(char** sounds, int sound_count){
 	new_game->pexesos = sounds;
 	new_game->pexeso_count = sound_count;
 
+    new_game->revead_pexesos_indexes = malloc(sizeof(int) * sound_count);
+
     int i;
-    for(i = 0; i < PEXESO_COUNT; i++){
+    for(i = 0; i < sound_count; i++){
         new_game->revead_pexesos_indexes[i] = -1;
     }
 	new_game->remaining_pexeso_count = sound_count;
@@ -44,17 +46,17 @@ game* create_game(char** sounds, int sound_count){
 *
 * returns: nova hra
 */
-game* create_game_with_path(char* sounds_folder_path){
+game* create_game_with_path(char* sounds_folder_path, int pexeso_count){
     if(sounds_folder_path == NULL){
         log_error("CREATE GAME WITH PATH - Not valid params");
         return NULL;
     }
-    char** sounds = get_sounds_for_pexeso(sounds_folder_path, PEXESO_COUNT);
+    char** sounds = get_sounds_for_pexeso(sounds_folder_path, pexeso_count);
     if(sounds == NULL){
         log_error("CREATE GAME WITH PATH - Cannot load sounds");
         return NULL;
     }
-    return create_game(sounds, PEXESO_COUNT);
+    return create_game(sounds, pexeso_count);
 }
 /* Function: reveal
 * ------------------------
@@ -252,7 +254,7 @@ int is_game_over(game* actual_game){
 *
 * returns: void
 */
-void print_not_revealed_sounds(game* actual_game){
+void print_not_revealed_sounds(game* actual_game, int pexeso_count){
     log_info("NOT REVEALED SOUNDS");
     if(actual_game == NULL){
         log_error("PRINT NOT REVEALED SOUNDS - Not valid params");
@@ -264,7 +266,7 @@ void print_not_revealed_sounds(game* actual_game){
     }
 
     int i;
-    for(i = 0; i < PEXESO_COUNT; i++){
+    for(i = 0; i < pexeso_count; i++){
         log_info("      NotReveald[%d]:%s", i, actual_game->pexesos[i]);
     }
 }
@@ -276,7 +278,7 @@ void print_not_revealed_sounds(game* actual_game){
 *
 * returns: void
 */
-void print_revealed_sounds_indexes(game* actual_game){
+void print_revealed_sounds_indexes(game* actual_game, int pexeso_count){
     log_info("REVEALED SOUNDS");
     if(actual_game == NULL){
         log_error("PRINT REVEALED SOUNDS - Not valid params");
@@ -284,7 +286,7 @@ void print_revealed_sounds_indexes(game* actual_game){
     }
 
     int i;
-    for(i = 0; i < PEXESO_COUNT; i++){
+    for(i = 0; i < pexeso_count; i++){
         log_info("      Revealed[%d]:%d",i,actual_game->revead_pexesos_indexes[i]);
     }
 }
@@ -296,7 +298,7 @@ void print_revealed_sounds_indexes(game* actual_game){
 *
 * returns: void
 */
-void free_game(game* actual_game){
+void free_game(game* actual_game, int pexeso_count){
     if(actual_game == NULL){
         log_error("FREE GAME - Not valid params");
         return;
@@ -310,10 +312,11 @@ void free_game(game* actual_game){
     actual_game->remaining_pexeso_count = 0;
 
     int i;
-    for(i = 0; i < PEXESO_COUNT; i++){
+    for(i = 0; i < pexeso_count; i++){
         free(actual_game->pexesos[i]);
     }
 
     free(actual_game->pexesos);
+    free(actual_game->revead_pexesos_indexes);
     free(actual_game);
 }

@@ -15,7 +15,7 @@
 * returns: novy kontejner s vlozenimi parametry
 */
 client_handle_container* create_client_handle_container(lobby* actual_lobby, session_list* actual_session_list, int actual_client_socket, char* client_message, disconnected_clients_list* actual_disconnected_clients_list,
-char* actual_sounds_folder_path){
+char* actual_sounds_folder_path, int pexeso_count){
     if(actual_lobby == NULL || actual_session_list == NULL || actual_session_list == NULL || client_message == NULL || actual_sounds_folder_path == NULL){
         log_error("CREATE CLIENT HANDLE CONTAINER - Not valid params");
 		return NULL;
@@ -37,6 +37,8 @@ char* actual_sounds_folder_path){
     new_client_handle_container->message = (char*) malloc((strlen(client_message)+1) * sizeof(char));
 	strcpy(new_client_handle_container->message, client_message);
 	replace_new_line_char(new_client_handle_container->message);
+
+	new_client_handle_container->pexeso_count = pexeso_count;
 
 	return new_client_handle_container;
 }
