@@ -299,8 +299,6 @@ int start(int argc, char* argv[]){
                 i = i + 1; //Musime pridat aby jsme preskocili zpracovany
                 pexeso_count = value;
             }
-
-            i = i + 1; //Musime pridat aby jsme preskocili zpracovany
         }
         else if(strcmp(argv[i], "-help") == 0){
             help();
